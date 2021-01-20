@@ -1,23 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MatSliderModule } from '@angular/material/slider';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
 
+const MaterialModules: any[] = [
+
+]
 
 @NgModule({
-    imports: [
-        MatSliderModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule
-    ],
-    exports: [
-        MatSliderModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule
-    ]
+    imports: [MaterialModules],
+    exports: [MaterialModules]
 })
 
 export class MaterialModule{}
