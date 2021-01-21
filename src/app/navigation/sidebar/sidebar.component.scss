@@ -1,0 +1,9 @@
+.sidebar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background-color: aqua;
+    transition: width .5s ease-in-out;
+}

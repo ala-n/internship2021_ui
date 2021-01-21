@@ -4,17 +4,27 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
+
+import { AdminPageModule } from './pages/admin-page/admin-page.module';
+import { HomePageModule } from './pages/home-page/home-page.module';
+import { SharedModule } from './shared/shared.module';
+
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    SidebarComponent,
   ],
   imports: [
-    BrowserModule,
-    MaterialModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    BrowserModule,
+    AdminPageModule,
+    HomePageModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

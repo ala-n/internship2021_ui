@@ -1,0 +1,20 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+
+    &__bar {
+        display: flex;
+        height: 64px;
+        background-color: coral;
+    }
+
+    &__main {
+        display: flex;
+        height: 100%;
+
+        app-offer-list, app-map {
+            width: 100%;
+        }
+    }
+}
