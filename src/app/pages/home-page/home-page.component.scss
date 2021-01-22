@@ -1,7 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
-  height: calc(100% - 64px);
+  height: 100%;
 
   .home {
     &__main {
@@ -10,7 +10,7 @@
     }
     &__left,
     &__right {
-      flex-grow: 1;
+      width: 100%;
     }
   }
 }
