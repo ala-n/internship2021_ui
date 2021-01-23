@@ -16,10 +16,12 @@ const routes: Routes = [
       import('./pages/admin-page/admin-page.module')
         .then(m => m.AdminPageModule)
   },
-  { 
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'},
+    {
+      path: 'login',
+      loadChildren: () =>
+        import('./pages/log-in/log-in.module')
+          .then(m => m.LogInPageModule)
+    }
 ];
 
 @NgModule({

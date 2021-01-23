@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './custom-components/toolbar/toolbar.component';
 import { MapComponent } from './custom-components/map/map.component';
 import { MaterialModule } from './material-components/buttons/material.module';
+import { MaterialLogModule } from './material-components/login/materialLog.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { MaterialModule } from './material-components/buttons/material.module';
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    MaterialLogModule
   ],
   exports: [
     ToolbarComponent,
