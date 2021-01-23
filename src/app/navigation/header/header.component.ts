@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClick(): void {
+  toggleSidebarVisibility(): void {
     this.sidebarService.getSidebarVisibility().subscribe( value => this.isSidebarVisible = value);
     this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
   }

@@ -1,6 +1,6 @@
 <div class="sidebar" [class.sidebar_visible]="isSidebarVisible">
     sidebar
-    <button mat-icon-button (click)="onClick()"><mat-icon>person</mat-icon></button>
+    <button mat-icon-button (click)="toggleSidebarVisibility()"><mat-icon>person</mat-icon></button>
 </div>
 
-<div class="overlay" [class.overlay_visible]="isSidebarVisible" (click)="onClick()"></div>
+<div class="overlay" [class.overlay_visible]="isSidebarVisible" (click)="toggleSidebarVisibility()"></div>

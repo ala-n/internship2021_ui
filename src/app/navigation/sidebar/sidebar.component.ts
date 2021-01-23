@@ -18,7 +18,7 @@ export class SidebarComponent implements OnInit {
     });
   }
 
-  onClick(): void {
-    if (this.isSidebarVisible) this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
+  toggleSidebarVisibility(): void {
+    this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
   }
 }
