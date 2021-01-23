@@ -3,7 +3,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 const MaterialModules: any[] = [
     MatButtonModule
-]
+];
 
 @NgModule({
     imports: [MaterialModules],

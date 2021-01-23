@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,7 +17,7 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent,
+    SidebarComponent
   ],
   imports: [
     AppRoutingModule,
@@ -24,7 +25,9 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
     BrowserModule,
     AdminPageModule,
     HomePageModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
