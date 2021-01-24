@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
+// eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
   MatButtonModule,
   MatIconModule,

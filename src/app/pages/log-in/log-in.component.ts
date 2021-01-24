@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent {
-  signInSubmit(event: any) {
+  signInSubmit(event: Event): void {
     event.preventDefault();
   }
 }
