@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "eslint . --ext js,ts,json --quiet",
+    "lint": "eslint . --ext js,ts,json",
     "lint:fix": "eslint . --ext js,ts,json --quiet --fix",
     "format": "prettier --write .",
     "e2e": "ng e2e"
