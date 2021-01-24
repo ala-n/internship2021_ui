@@ -7,13 +7,12 @@ import { SidebarService } from './sidebar.service';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-
   isSidebarVisible!: boolean;
 
-  constructor(private sidebarService: SidebarService) { }
+  constructor(private sidebarService: SidebarService) {}
 
   ngOnInit(): void {
-    this.sidebarService.getSidebarVisibility().subscribe( value => {
+    this.sidebarService.getSidebarVisibility().subscribe((value) => {
       this.isSidebarVisible = value;
     });
   }

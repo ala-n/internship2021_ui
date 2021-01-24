@@ -6,20 +6,9 @@ import { HomePageComponent } from './home-page.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 @NgModule({
-  declarations: [
-    HomePageComponent,
-    OfferListComponent
-  ],
-  imports: [
-    CommonModule,
-    HomePageRoutingModule,
-    SharedModule
-  ],
-  exports: [
-    HomePageComponent,
-    OfferListComponent
-  ]
+  declarations: [HomePageComponent, OfferListComponent],
+  imports: [CommonModule, HomePageRoutingModule, SharedModule],
+  exports: [HomePageComponent, OfferListComponent]
 })
-export class HomePageModule { }
+export class HomePageModule {}

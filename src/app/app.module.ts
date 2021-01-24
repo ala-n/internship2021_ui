@@ -12,11 +12,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidebarComponent } from './navigation/sidebar/sidebar.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent
-  ],
+  declarations: [AppComponent, HeaderComponent, SidebarComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -28,4 +24,4 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

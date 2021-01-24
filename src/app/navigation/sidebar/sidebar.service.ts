@@ -5,7 +5,6 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SidebarService {
-
   isSidebarVisible: BehaviorSubject<boolean>;
 
   constructor() {

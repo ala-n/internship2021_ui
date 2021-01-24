@@ -1,8 +1,7 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
-@import "~leaflet/dist/leaflet.css";
+@import '~leaflet/dist/leaflet.css';
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -21,13 +20,15 @@ $exadel-app-warn: mat-palette($mat-red);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$exadel-app-theme: mat-light-theme((
-  color: (
-    primary: $exadel-app-primary,
-    accent: $exadel-app-accent,
-    warn: $exadel-app-warn,
+$exadel-app-theme: mat-light-theme(
+  (
+    color: (
+      primary: $exadel-app-primary,
+      accent: $exadel-app-accent,
+      warn: $exadel-app-warn
+    )
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -36,16 +37,23 @@ $exadel-app-theme: mat-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
+html,
+body {
   height: 100%;
   min-height: 100%;
- }
+}
 body {
   width: 100vw;
   margin: 0;
   background-position: center top;
   background-repeat: no-repeat;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
