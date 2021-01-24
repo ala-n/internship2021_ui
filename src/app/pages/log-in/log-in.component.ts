@@ -12,4 +12,7 @@ export class LogInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  signInSubmit(event: any) {
+    event.preventDefault();
+  }
 }

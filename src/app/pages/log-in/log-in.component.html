@@ -15,7 +15,7 @@
             <input matInput placeholder="Password">
           </mat-form-field>
         </mat-card-content>
-        <button mat-stroked-button color="accent" class="btn-block">Sign-in</button>
+        <button mat-stroked-button color="accent" class="btn-block" routerLink="/home" (click)="signInSubmit($event)">Sign-in</button>
       </form>
     </mat-card>
   

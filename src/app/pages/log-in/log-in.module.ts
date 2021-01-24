@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MaterialLogModule } from 'src/app/shared/material-components/login/materialLog.module';
+import { CommonModule } from '@angular/common'
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { LogInRoutingModule } from './log-in-routing.module';
 import { LogInComponent } from './log-in.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { LogInRoutingModule } from './log-in-routing.module';
 
 @NgModule({
     declarations: [
@@ -13,11 +13,11 @@ import { LogInComponent } from './log-in.component';
     imports: [
       CommonModule,
       LogInRoutingModule,
-      MaterialLogModule
+      SharedModule,
     ],
     exports: [
       LogInComponent,
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
   })
-  export class LogInPageModule { }
+export class LogInPageModule { }

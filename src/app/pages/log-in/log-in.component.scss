@@ -1,32 +1,12 @@
-html,
-body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	min-height: 100vh;
-	background-color: #e5e5e5;
-	font-family: 'Roboto', sans-serif;
-}
-
-.app-header {
-	justify-content: space-between;
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 2;
-	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
-}
-
 .main-wrapper {
-	margin-top: 1em;
-	margin-left: auto;
-    margin-right: auto;
-	width: 20em;
-	height: 12em;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: white;
 }
 
 .positronx {
@@ -111,10 +91,10 @@ body {
 	padding: 0.8375em 0;
 }
 
-span.mat-button-wrapper{
-	color: #fff;
-}
+// span.mat-button-wrapper{
+// 	color: #fff;
+// }
 
-body > app-root > app-log-in > div > mat-card > form > button{
-	color: #fff;
-}
+// body > app-root > app-log-in > div > mat-card > form > button {
+// 	color: #fff;
+// }

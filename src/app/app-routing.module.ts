@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminPageComponent } from './pages/admin-page/admin-page.component';
-import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/log-in/log-in.module')
+        .then(m => m.LogInPageModule)
+  },
   {
     path: 'home',
     loadChildren: () =>
@@ -16,12 +20,10 @@ const routes: Routes = [
       import('./pages/admin-page/admin-page.module')
         .then(m => m.AdminPageModule)
   },
-    {
-      path: 'login',
-      loadChildren: () =>
-        import('./pages/log-in/log-in.module')
-          .then(m => m.LogInPageModule)
-    }
+  { 
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'},
 ];
 
 @NgModule({
