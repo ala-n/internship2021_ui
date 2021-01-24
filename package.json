@@ -8,7 +8,7 @@
     "test": "ng test --watch=false",
     "test:watch": "ng test",
     "lint": "eslint . --ext js,ts,json",
-    "lint:fix": "eslint . --ext js,ts,json --quiet --fix",
+    "lint:fix": "eslint . --ext js,ts,json --fix",
     "format": "prettier --write .",
     "e2e": "ng e2e"
   },
