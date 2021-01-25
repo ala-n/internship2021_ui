@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { SidebarService } from '../sidebar/sidebar.service';
+import { Component, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,14 +7,10 @@ import { SidebarService } from '../sidebar/sidebar.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  isSidebarVisible!: boolean;
+  @Input() sidebarVisibility!: boolean;
+  @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
 
-  constructor(private sidebarService: SidebarService) {}
-
-  toggleSidebarVisibility(): void {
-    this.sidebarService
-      .getSidebarVisibility()
-      .subscribe((value) => (this.isSidebarVisible = value));
-    this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
+  openSidebar() {
+    this.sidebarVisibilityChange.emit(true);
   }
 }

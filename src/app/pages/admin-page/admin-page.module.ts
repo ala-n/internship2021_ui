@@ -6,7 +6,6 @@ import { AdminPageComponent } from './admin-page.component';
 
 @NgModule({
   declarations: [AdminPageComponent],
-  imports: [CommonModule, AdminPageRoutingModule],
-  exports: [AdminPageComponent]
+  imports: [CommonModule, AdminPageRoutingModule]
 })
 export class AdminPageModule {}
