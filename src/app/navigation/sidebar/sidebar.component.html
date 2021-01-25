@@ -1,11 +1,13 @@
 <mat-sidenav-container>
-    <mat-sidenav #sidenav [(opened)]="opened" position="end">
-        <button mat-icon-button (click)="sidenav.close()"><mat-icon>person</mat-icon></button>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <app-header [(sidebarVisibility)]="opened"></app-header>
-        <main>
-            <router-outlet></router-outlet>
-        </main>
-    </mat-sidenav-content>
+  <mat-sidenav #sidenav [(opened)]="opened" position="end">
+    <button mat-icon-button (click)="sidenav.close()">
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header [(sidebarVisibility)]="opened"></app-header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
 </mat-sidenav-container>

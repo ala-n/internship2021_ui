@@ -7,16 +7,15 @@ const routes: Routes = [
     path: 'login',
     component: LogInComponent
   },
-  { 
+  {
     path: '',
     loadChildren: () =>
-      import('./navigation/sidebar/sidebar.module')
-        .then(m => m.SidebarModule)
-  },
+      import('./navigation/sidebar/sidebar.module').then((m) => m.SidebarModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

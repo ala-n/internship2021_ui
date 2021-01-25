@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -6,15 +6,9 @@ import { EventEmitter } from '@angular/core';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent {
   @Input() sidebarVisibility!: boolean;
-  @Output() sidebarVisibilityChange = new EventEmitter<any>();
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
 
   openSidebar() {
     this.sidebarVisibilityChange.emit(true);

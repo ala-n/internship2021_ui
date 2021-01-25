@@ -9,12 +9,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { SidebarComponent } from './sidebar.component';
 import { RouterModule } from '@angular/router';
 
-
 @NgModule({
-  declarations: [
-    SidebarComponent,
-    HeaderComponent
-  ],
+  declarations: [SidebarComponent, HeaderComponent],
   imports: [
     CommonModule,
     SidebarRoutingModule,
@@ -24,4 +20,4 @@ import { RouterModule } from '@angular/router';
     AdminPageModule
   ]
 })
-export class SidebarModule { }
+export class SidebarModule {}

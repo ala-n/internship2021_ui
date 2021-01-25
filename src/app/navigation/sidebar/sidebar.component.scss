@@ -1,6 +1,7 @@
 mat-sidenav-container {
-  height: 100%
+  height: 100%;
 }
+
 mat-sidenav {
   width: 300px;
   max-width: 100%;
@@ -14,6 +15,7 @@ mat-sidenav-content {
   height: 100vh;
   overflow-x: hidden;
 }
+
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }

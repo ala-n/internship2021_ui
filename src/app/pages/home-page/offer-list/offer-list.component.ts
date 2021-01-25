@@ -1,15 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-offer-list',
   templateUrl: './offer-list.component.html',
   styleUrls: ['./offer-list.component.scss']
 })
-export class OfferListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
-}
+export class OfferListComponent {}

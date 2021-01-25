@@ -10,14 +10,16 @@ export const routes: Routes = [
       {
         path: 'home',
         loadChildren: () =>
-          import('../../pages/home-page/home-page.module')
-            .then(m => m.HomePageModule)
+          import('../../pages/home-page/home-page.module').then(
+            (m) => m.HomePageModule
+          )
       },
       {
         path: 'admin',
         loadChildren: () =>
-          import('../../pages/admin-page/admin-page.module')
-            .then(m => m.AdminPageModule)
+          import('../../pages/admin-page/admin-page.module').then(
+            (m) => m.AdminPageModule
+          )
       },
       {
         path: '',
@@ -25,11 +27,11 @@ export const routes: Routes = [
         pathMatch: 'full'
       }
     ]
-  },
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SidebarRoutingModule { }
+export class SidebarRoutingModule {}

@@ -1,17 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.scss']
 })
-export class HomePageComponent implements OnInit {
-
-  isMapVisible: boolean = false;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class HomePageComponent {
+  isMapVisible = false;
 }

@@ -11,9 +11,7 @@ import { SidebarModule } from './navigation/sidebar/sidebar.module';
 import { LogInPageModule } from './pages/log-in/log-in.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -27,4 +25,4 @@ import { LogInPageModule } from './pages/log-in/log-in.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
