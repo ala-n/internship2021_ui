@@ -1,4 +1,4 @@
-<mat-card *ngFor="let offer of offers" class = "offer-card">
+<mat-card class = "offer-card">
     <mat-card-header>
             <img class = "offer-card__image" mat-card-avatar src="{{offer.photoUrl}}">
             <mat-card-title-group class="offer-card-header">
@@ -21,4 +21,3 @@
             </div>
     </mat-card-header>
 </mat-card>
-<app-offer-item *ngFor="let offer of offers"></app-offer-item>

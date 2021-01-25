@@ -5,12 +5,14 @@ import { HomePageRoutingModule } from './home-page-routing.module';
 import { HomePageComponent } from './home-page.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { OfferItemComponent } from './offer-list/offer-item/offer-item.component';
 
 
 @NgModule({
   declarations: [
     HomePageComponent,
-    OfferListComponent
+    OfferListComponent,
+    OfferItemComponent
   ],
   imports: [
     CommonModule,

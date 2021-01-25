@@ -15,7 +15,7 @@ import { SidebarComponent } from './navigation/sidebar/sidebar.component';
   declarations: [
     AppComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     AppRoutingModule,

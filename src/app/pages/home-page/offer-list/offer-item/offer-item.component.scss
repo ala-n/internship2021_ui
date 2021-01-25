@@ -17,7 +17,7 @@
         margin: 0;
         border-radius: 0%;
     }
-    .offer-card__discount {
+    &__discount {
         top: 0;
         right: 0;
         position: absolute;
@@ -29,13 +29,13 @@
         font-size: 24px;
         font-weight: 500;
     }
-    .offer-card__properties {
+    &__properties {
         width: 150px;
     }
 }
 .offer-card-header {
     margin: 0;
-    .offer-card-header__title {
+    &__title {
         font-size: 16px;
         line-height: 24px;
         height: 48px;
