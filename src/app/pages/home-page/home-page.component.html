@@ -1,7 +1,21 @@
 <div class="home">
   <app-toolbar></app-toolbar>
   <div class="home__main">
-    <app-offer-list class="home__left"></app-offer-list>
+    <button
+      class="home__button"
+      mat-fab
+      color="primary"
+      (click)="isMapVisible = !isMapVisible"
+    >
+      <mat-icon *ngIf="isMapVisible; else mapIcon">list</mat-icon>
+      <ng-template #mapIcon>
+        <mat-icon>map</mat-icon>
+      </ng-template>
+    </button>
+    <app-offer-list
+      class="home__left"
+      [class.home__left_hidden]="isMapVisible"
+    ></app-offer-list>
     <app-map class="home__right"></app-map>
   </div>
 </div>
