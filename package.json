@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts}": [
+    "*.{ts}": [
       "npm run format",
       "npm run lint:fix"
     ]
