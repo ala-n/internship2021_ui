@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: [develop, main]
+
+  pull_request:
+    branches: [develop, main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.1.2
+
+      - name: Install dependencies
+        run: npm i
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test
