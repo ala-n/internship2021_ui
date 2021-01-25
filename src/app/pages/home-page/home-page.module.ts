@@ -16,10 +16,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
     CommonModule,
     HomePageRoutingModule,
     SharedModule
-  ],
-  exports: [
-    HomePageComponent,
-    OfferListComponent
   ]
 })
 export class HomePageModule { }

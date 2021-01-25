@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
+  isMapVisible: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

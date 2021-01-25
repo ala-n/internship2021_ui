@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,17 +7,11 @@ import { SidebarService } from './sidebar.service';
 })
 export class SidebarComponent implements OnInit {
 
-  isSidebarVisible!: boolean;
+  opened: boolean = false;
 
-  constructor(private sidebarService: SidebarService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.sidebarService.getSidebarVisibility().subscribe( value => {
-      this.isSidebarVisible = value;
-    });
   }
 
-  toggleSidebarVisibility(): void {
-    this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
-  }
 }
