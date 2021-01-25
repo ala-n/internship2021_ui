@@ -7,8 +7,8 @@
     "build": "ng build",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "test:watch": "ng test",
-    "lint": "eslint . --ext ts,json",
-    "lint:fix": "eslint . --ext ts,json --fix",
+    "lint": "eslint . --ext js,ts,json",
+    "lint:fix": "eslint . --ext js,ts,json --fix",
     "format": "prettier --write .",
     "e2e": "ng e2e"
   },
@@ -19,7 +19,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts}": [
+    "*.{js,ts}": [
       "npm run format",
       "npm run lint:fix"
     ]
