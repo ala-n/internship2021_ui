@@ -7,8 +7,8 @@
     "build": "ng build",
     "test": "ng test --browsers ChromeHeadless --watch=false",
     "test:watch": "ng test",
-    "lint": "eslint . --ext js,ts,json",
-    "lint:fix": "eslint . --ext js,ts,json --fix",
+    "lint": "eslint . --ext ts,json",
+    "lint:fix": "eslint . --ext ts,json --fix",
     "format": "prettier --write .",
     "e2e": "ng e2e"
   },
@@ -38,7 +38,9 @@
     "@angular/platform-browser-dynamic": "~11.0.6",
     "@angular/router": "~11.0.6",
     "@types/leaflet": "^1.5.21",
+    "@types/leaflet.markercluster": "^1.4.3",
     "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.4.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
