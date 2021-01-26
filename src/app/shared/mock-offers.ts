@@ -28,5 +28,4 @@ export const OFFERS : Offer[] = [
     numberOfUses: 18,
     numberOfViews: 212
 }
-
 ]
