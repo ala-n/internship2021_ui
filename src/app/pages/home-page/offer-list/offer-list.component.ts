@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./offer-list.component.scss']
 })
 export class OfferListComponent {
-  offers: Offer[];
+  offers!: Offer[];
   constructor(private offerService: OfferService) {}
   getOffers(): void {
   this.offers = this.offerService.getOffers();
