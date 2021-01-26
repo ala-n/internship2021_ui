@@ -1,24 +1,2 @@
-<mat-card *ngFor="let offer of offers" class = "offer-card">
-    <mat-card-header>
-            <img class = "offer-card__image" mat-card-avatar src="{{offer.photoUrl}}">
-            <mat-card-title-group class="offer-card-header">
-                <mat-card-title class="offer-card-header__title">{{offer.title}}</mat-card-title>
-                <mat-card-subtitle class="offer-card-header__subtitle">{{offer.vendorName}}</mat-card-subtitle>
-            </mat-card-title-group>
-            <div class="offer-card__discount">{{offer.discount}}</div>
-            <div class="offer-card__properties offer-card-properties">
-                <div class="stars">
-                    <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-                    <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-                    <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-                    <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-                    <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-                </div>
-                <mat-icon aria-hidden="false" aria-label="people">visibility</mat-icon>
-                <span class="offer-card-properties__viewsCount">{{offer.numberOfViews}}</span>
-                <mat-icon aria-hidden="false" aria-label="people">people</mat-icon>
-                <span class="offer-card-properties__usesCount">{{offer.numberOfUses}}</span>
-            </div>
-    </mat-card-header>
-</mat-card>
-<app-offer-item *ngFor="let offer of offers"></app-offer-item>
+<app-offer-item *ngFor="let offer of offers" [offer]="offer" class = "offer-card"></app-offer-item> 
+

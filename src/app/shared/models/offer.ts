@@ -3,12 +3,11 @@ export interface Offer {
     title: string;
     description: string;
     photoUrl: string;
-  // promocode: string;
     discount: string;
   // dateStart: string;
   // dateEnd: string;
   // VendorID: number;
-    vendorName: string;
+    vendorName: string; //will be deleted
   // isActive: boolean;
     numberOfUses: number;
     numberOfViews: number;
@@ -16,4 +15,11 @@ export interface Offer {
   // updateAt: string;
   // createBy: string;
   // updateBy: string;
+  promocode?: string;
+  location?: Location;
+}
+
+interface Location {
+  x: string;
+  y: string;
 }
