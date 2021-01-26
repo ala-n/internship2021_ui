@@ -1,22 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../sidebar/sidebar.service';
+import { Component, Input, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
+  @Input() sidebarVisibility!: boolean;
+  @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
 
-  isSidebarVisible!: boolean;
-
-  constructor(private sidebarService: SidebarService) { }
-
-  ngOnInit(): void {
-  }
-
-  toggleSidebarVisibility(): void {
-    this.sidebarService.getSidebarVisibility().subscribe( value => this.isSidebarVisible = value);
-    this.sidebarService.setSidebarVisibility(!this.isSidebarVisible);
+  openSidebar() {
+    this.sidebarVisibilityChange.emit(true);
   }
 }

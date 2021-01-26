@@ -7,25 +7,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
-
-import { HeaderComponent } from './navigation/header/header.component';
-import { SidebarComponent } from './navigation/sidebar/sidebar.component';
+import { SidebarModule } from './navigation/sidebar/sidebar.module';
+import { LogInPageModule } from './pages/log-in/log-in.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SidebarModule,
+    LogInPageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
