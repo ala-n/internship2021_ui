@@ -1,5 +1,5 @@
 import { Offer } from '../../../../shared/models/offer';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-offer-item',
@@ -7,6 +7,5 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./offer-item.component.scss']
 })
 export class OfferItemComponent {
-
   @Input() offer!: Offer;
 }

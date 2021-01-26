@@ -1,16 +1,16 @@
 export interface Offer {
-    id: number;
-    title: string;
-    description: string;
-    photoUrl: string;
-    discount: string;
+  id: number;
+  title: string;
+  description: string;
+  photoUrl: string;
+  discount: string;
   // dateStart: string;
   // dateEnd: string;
   // VendorID: number;
-    vendorName: string; //will be deleted
+  vendorName: string; //will be deleted
   // isActive: boolean;
-    numberOfUses: number;
-    numberOfViews: number;
+  numberOfUses: number;
+  numberOfViews: number;
   // createAt: string;
   // updateAt: string;
   // createBy: string;
@@ -19,7 +19,7 @@ export interface Offer {
   // location?: Location;
 }
 
-interface Location {
-  x: string;
-  y: string;
-}
+// interface Location {
+//   x: string;
+//   y: string;
+// }

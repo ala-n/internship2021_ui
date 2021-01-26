@@ -7,14 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './offer-list.component.html',
   styleUrls: ['./offer-list.component.scss']
 })
-
 export class OfferListComponent {
   offers!: Offer[];
   constructor(private offerService: OfferService) {}
   getOffers(): void {
-  this.offers = this.offerService.getOffers();
+    this.offers = this.offerService.getOffers();
   }
-  ngOnInit() {
-  this.getOffers();
+  ngOnInit(): void {
+    this.getOffers();
   }
-  }
+}

@@ -6,10 +6,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class OfferService {
-
-  constructor() { }
-
   getOffers(): Offer[] {
-  return OFFERS;
-}
+    return OFFERS;
+  }
 }
