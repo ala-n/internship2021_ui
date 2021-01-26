@@ -10,7 +10,7 @@ export class HeaderComponent {
   @Input() sidebarVisibility!: boolean;
   @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
 
-  openSidebar() {
+  openSidebar(): void {
     this.sidebarVisibilityChange.emit(true);
   }
 }
