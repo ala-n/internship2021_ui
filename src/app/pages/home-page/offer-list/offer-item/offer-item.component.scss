@@ -24,16 +24,17 @@
     box-sizing: border-box;
     font-size: 18px;
     font-weight: 500;
+    text-align: center;
   }
   &__properties {
-  width: 150px;
-  align-self: flex-end;
-  > mat-icon {
-    line-height: 24px;
-    font-size: 16px;
-    margin-left: 20px;
+    width: 150px;
+    align-self: flex-end;
+    > mat-icon {
+      line-height: 24px;
+      font-size: 16px;
+      margin-left: 20px;
+    }
   }
-}
 }
 .offer-card-header {
   margin: 0;
@@ -43,7 +44,6 @@
     height: 48px;
     max-width: 500px;
     overflow: hidden;
-    white-space: initial;
     text-overflow: ellipsis;
   }
   &__subtitle {
@@ -90,14 +90,15 @@
   }
 }
 @media screen and (max-width: 540px) {
-  .offer-card{
+  .offer-card {
+    width: 90%;
     &__image {
       width: 75px;
       height: 50px;
     }
     &__properties {
-    width: 150px;
-    align-self: flex-end;
+      width: 150px;
+      align-self: flex-end;
     }
     > mat-icon {
       line-height: 24px;
@@ -108,57 +109,58 @@
       padding: 5px;
       font-size: 16px;
     }
-  .offer-card-header {
-  margin: 0;
-    &__title { 
-      font-size: 12px;
-      line-height: 16px;
-      max-height: 32px;
+    .offer-card-header {
+      margin: 0;
+      &__title {
+        font-size: 12px;
+        line-height: 16px;
+        max-height: 32px;
+      }
+    }
+    .statistics {
+      &__viewsCount,
+      &__usesCount {
+        font-size: 10px;
+      }
+      > mat-icon {
+        margin-left: 2px;
+        font-size: 16px;
+      }
+    }
+    .card-properties {
+      margin-bottom: -15px;
     }
   }
-  .statistics {
-    &__viewsCount, &__usesCount{
-      font-size: 10px;
-    }
-    >mat-icon {
-      margin-left: 2px;
-      font-size: 16px;
-    }
-  }
-  .card-properties {
-    margin-bottom: -15px;
-  }
-}
 }
 @media screen and (max-width: 440px) {
-  .offer-card{
+  .offer-card {
     &__discount {
       padding: 5px;
       font-size: 12px;
     }
   }
   .stars {
-    min-width: 90px;
+    min-width: 85px;
     > mat-icon {
       font-size: 12px;
       margin-left: 0;
     }
   }
   .statistics {
-    &__viewsCount, &__usesCount{
+    &__viewsCount,
+    &__usesCount {
       font-size: 16px;
       margin-left: 0;
       line-height: 16px;
     }
-    >mat-icon {
-      font-size:  16px;
+    > mat-icon {
+      font-size: 16px;
       line-height: 16px;
     }
   }
 }
 @media screen and (max-width: 320px) {
   .offer-card {
-    width: 95%;
     &__image {
       width: 50px;
       height: 30px;
