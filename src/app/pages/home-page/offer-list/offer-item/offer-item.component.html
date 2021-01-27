@@ -24,7 +24,7 @@
       <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
       <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
     </div>
-    <div class="statistics">
+    <div class="statistics" *ngIf="offer">
       <mat-icon aria-hidden="false" aria-label="people">visibility</mat-icon>
       <span class="statistics__viewsCount">{{ offer.numberOfViews }}</span>
       <mat-icon aria-hidden="false" aria-label="people">people</mat-icon>

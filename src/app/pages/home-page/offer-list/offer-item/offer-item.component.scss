@@ -85,9 +85,6 @@
       margin-left: 2px;
     }
   }
-  .offer-card__properties {
-    margin-left: 10px;
-  }
 }
 @media screen and (max-width: 540px) {
   .offer-card {
@@ -99,11 +96,6 @@
     &__properties {
       width: 150px;
       align-self: flex-end;
-    }
-    > mat-icon {
-      line-height: 24px;
-      font-size: 16px;
-      margin-left: 5px;
     }
     &__discount {
       padding: 5px;
