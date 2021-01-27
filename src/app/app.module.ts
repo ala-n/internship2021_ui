@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
 import { SidebarModule } from './navigation/sidebar/sidebar.module';
-import { LogInPageModule } from './pages/log-in/log-in.module';
+import { LogInPageModule } from './pages/login-page/login-page.module';
 
 @NgModule({
   declarations: [AppComponent],
