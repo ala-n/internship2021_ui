@@ -4,26 +4,26 @@
     <span class="header__spacer"></span>
     <nav class="header__nav">
       <button
-      class="button button_l"
-      mat-button
-      *ngIf="!adminPageVisible; else homePageButton"
-      routerLink="admin"
-      (click)="toggleAdminPage()"
-    >
-      Manage
-    </button>
-    <ng-template #homePageButton>
-      <button
         class="button button_l"
         mat-button
-        routerLink="home"
+        *ngIf="!adminPageVisible; else homePageButton"
+        routerLink="admin"
         (click)="toggleAdminPage()"
       >
-        Home
+        Manage
       </button>
-    </ng-template>
-    <button class="button button_l" mat-button>Minsk</button>
-    <button class="button button_l" mat-button>EN</button>
+      <ng-template #homePageButton>
+        <button
+          class="button button_l"
+          mat-button
+          routerLink="home"
+          (click)="toggleAdminPage()"
+        >
+          Home
+        </button>
+      </ng-template>
+      <button class="button button_l" mat-button>Minsk</button>
+      <button class="button button_l" mat-button>EN</button>
     </nav>
     <div class="header__username mat-h2">Name Surname</div>
     <button class="button button_icon" mat-icon-button (click)="openSidenav()">
