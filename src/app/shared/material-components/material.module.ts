@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSelectModule } from '@angular/material/select';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -15,7 +16,8 @@ const MaterialModules: any[] = [
   MatIconModule,
   MatInputModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSelectModule
 ];
 
 @NgModule({
