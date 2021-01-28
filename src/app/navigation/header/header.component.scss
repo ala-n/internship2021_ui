@@ -8,23 +8,28 @@
   &__spacer {
     flex: 1 1 auto;
   }
-}
 
-.mat-h2 {
-  margin: 0 2em;
-  text-align: center;
-}
+  &__nav {
+    height: 100%;
 
-.button {
-  height: 100%;
-  border-radius: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .mat-h2 {
-    display: none;
+    > .button {
+      height: 100%;
+      border-radius: 0;
+    }
   }
-  .button_l {
-    display: none;
+
+  &__username {
+    margin: 0 2em;
+    text-align: center;
+  }
+
+
+  @media screen and (max-width: 768px) {
+    &__username {
+      display: none;
+    }
+    &__nav {
+      display: none;
+    }
   }
 }

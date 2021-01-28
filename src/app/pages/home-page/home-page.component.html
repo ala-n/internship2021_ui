@@ -11,8 +11,8 @@
       <mat-icon>map</mat-icon>
     </ng-template>
   </button>
-  <div class="home__main" [class.home__main_shift]="!isListVisible">
-    <app-offer-list class="home__left"></app-offer-list>
+  <div class="home__main">
+    <app-offer-list class="home__left" [class.home__left_hidden]="!isListVisible"></app-offer-list>
     <app-map class="home__right"></app-map>
   </div>
 </div>

@@ -2,7 +2,8 @@
   <mat-toolbar>
     <app-logo routerLink="home" (click)="adminPageVisible = false"></app-logo>
     <span class="header__spacer"></span>
-    <button
+    <nav class="header__nav">
+      <button
       class="button button_l"
       mat-button
       *ngIf="!adminPageVisible; else homePageButton"
@@ -23,8 +24,9 @@
     </ng-template>
     <button class="button button_l" mat-button>Minsk</button>
     <button class="button button_l" mat-button>EN</button>
-    <div class="mat-h2">Name Surname</div>
-    <button class="button" mat-icon-button (click)="openSidenav()">
+    </nav>
+    <div class="header__username mat-h2">Name Surname</div>
+    <button class="button button_icon" mat-icon-button (click)="openSidenav()">
       <mat-icon class="icon icon_l">perm_identity</mat-icon>
     </button>
   </mat-toolbar>

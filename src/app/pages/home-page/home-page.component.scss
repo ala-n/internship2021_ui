@@ -1,5 +1,4 @@
 .home {
-  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -9,18 +8,15 @@
     position: fixed;
     bottom: 3em;
     right: 3em;
-    z-index: 1100;
+    z-index: 501;
   }
 
   &__main {
+    position: relative;
     display: flex;
     height: 100%;
-    transition: transform 0.2s linear;
-    &_shift {
-      transform: translateX(-100%);
-      transition: transform 0.2s linear;
-    }
   }
+
   &__left,
   &__right {
     width: 100%;
@@ -33,6 +29,22 @@
     }
     &__button {
       display: block;
+    }
+
+    &__right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    &__left {
+      z-index: 500;
+      transition: opacity 0.1s linear;
+      &_hidden {
+        opacity: 0;
+        transition: opacity 0.1s linear;
+      }
     }
   }
 }

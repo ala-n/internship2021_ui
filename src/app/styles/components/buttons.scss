@@ -1,11 +1,16 @@
-.button {
-  &:focus {
-    outline: none;
-  }
-  &::ng-deep .mat-button-focus-overlay {
-    opacity: 0;
-  }
+.button.button {
 
+  &_icon {
+    &:focus {
+      outline: none;
+    }
+    &::ng-deep .mat-button-focus-overlay {
+      opacity: 0;
+    }
+  }
+}
+
+.button {
   &_l {
     font-size: 1em;
   }
