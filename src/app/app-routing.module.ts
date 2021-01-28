@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./navigation/sidebar/sidebar.module').then((m) => m.SidebarModule)
+      import('./navigation/sidenav/sidenav.module').then((m) => m.SidenavModule)
   }
 ];
 

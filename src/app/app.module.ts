@@ -7,8 +7,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { SharedModule } from './shared/shared.module';
-import { SidebarModule } from './navigation/sidebar/sidebar.module';
+import { SidenavModule } from './navigation/sidenav/sidenav.module';
 import { LogInPageModule } from './pages/log-in/log-in.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,11 +17,12 @@ import { LogInPageModule } from './pages/log-in/log-in.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
-    SharedModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
-    SidebarModule,
-    LogInPageModule
+    LogInPageModule,
+    SharedModule,
+    SidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,11 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav [(opened)]="opened" position="end">
-    <button mat-icon-button (click)="sidenav.close()">
-      <mat-icon>person</mat-icon>
+    <button class="button" mat-icon-button (click)="sidenav.close()">
+      <mat-icon class="icon icon_l">perm_identity</mat-icon>
     </button>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header [(sidebarVisibility)]="opened"></app-header>
+    <app-header [(sidenavVisibility)]="opened"></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
