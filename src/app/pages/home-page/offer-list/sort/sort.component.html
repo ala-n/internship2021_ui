@@ -1,11 +1,11 @@
 <div class="sort-panel">
-  <div class="sort-by">
+  <div class="sort">
     <mat-form-field appearance="fill">
       <mat-label>Sort By</mat-label>
         <mat-select>
-          <mat-option *ngFor="let item of sortValues" [value]="item.id">
-            {{item.viewValue}}
-          </mat-option>
+          <mat-option>Relevance</mat-option>
+          <mat-option>Rating</mat-option>
+          <mat-option>Distance</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
