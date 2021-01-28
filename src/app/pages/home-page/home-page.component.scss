@@ -21,6 +21,7 @@
   }
 
   &__left {
+    padding: 10px;
     transition: margin 0.3s linear;
     &_hidden {
       margin-left: -100%;
