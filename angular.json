@@ -126,8 +126,5 @@
       }
     }
   },
-  "defaultProject": "exadel-app",
-  "cli": {
-    "analytics": false
-  }
+  "defaultProject": "exadel-app"
 }
