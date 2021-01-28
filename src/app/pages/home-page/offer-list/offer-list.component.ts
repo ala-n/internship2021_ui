@@ -1,13 +1,14 @@
+import { Component, OnInit } from '@angular/core';
+
 import { Offer } from '../../../shared/models/offer';
 import { OfferService } from '../../../shared/services/offer.service';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-offer-list',
   templateUrl: './offer-list.component.html',
   styleUrls: ['./offer-list.component.scss']
 })
-export class OfferListComponent {
+export class OfferListComponent implements OnInit {
   offers!: Offer[];
   constructor(private offerService: OfferService) {}
   getOffers(): void {
