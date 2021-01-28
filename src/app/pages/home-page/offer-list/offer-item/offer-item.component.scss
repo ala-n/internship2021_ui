@@ -1,5 +1,5 @@
 :host::ng-deep .mat-card-header-text {
-  margin: 0px; 
+  margin: 0px;
 }
 
 .offer-card {
@@ -66,11 +66,11 @@
 
 .statistics {
   text-align: right;
-    > mat-icon {
-      font-size: 18px;
-      line-height: 18px;
-    }
+  > mat-icon {
+    font-size: 18px;
+    line-height: 18px;
   }
+}
 
 @media screen and (max-width: 1024px) {
   .offer-card {
@@ -103,14 +103,13 @@
       font-size: 14px;
       line-height: 14px;
     }
-    >mat-icon {
+    > mat-icon {
       width: 14px;
       height: 14px;
       font-size: 14px;
       margin-left: 0.5em;
     }
   }
-
 }
 
 @media screen and (max-width: 768px) {
@@ -145,20 +144,19 @@
     }
   }
   .stars {
-    >mat-icon{
-      font-size: 12px; 
+    > mat-icon {
+      font-size: 12px;
       width: 14px;
       height: 14px;
-
     }
   }
-    .statistics {
+  .statistics {
     &__viewsCount,
     &__usesCount {
       font-size: 12px;
       line-height: 12px;
     }
-    >mat-icon {
+    > mat-icon {
       font-size: 12px;
       margin-left: 0.5em;
     }
