@@ -16,10 +16,11 @@ export interface Offer {
   // createBy: string;
   // updateBy: string;
   // promocode?: string;
-  // location?: Location;
+  address: string;
+  location: Location;
 }
 
-// interface Location {
-//   x: string;
-//   y: string;
-// }
+interface Location {
+  x: number;
+  y: number;
+}

@@ -1,6 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  Injector,
+  OnInit
+} from '@angular/core';
 import * as L from 'leaflet';
+import { Marker } from 'leaflet';
 import 'leaflet.markercluster';
+import { Offer } from '../../models/offer';
+import { OfferService } from '../../services/offer.service';
+import { PopupComponent } from './popup/popup.component';
+
+interface MarkerMetaData {
+  name: string;
+  markerInstance: Marker;
+  componentInstance: ComponentRef<PopupComponent>;
+}
 
 @Component({
   selector: 'app-map',
@@ -8,30 +24,31 @@ import 'leaflet.markercluster';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  offers!: Offer[];
   map!: L.Map;
-
-  addressPoints = [
-    [53.89666423810507, 27.548806307401655, 'Гостиный двор'],
-    [53.89730906648985, 27.54977190264391, 'Седьмое небо'],
-    [53.897953884923716, 27.548570273009105, 'Simple'],
-    [53.89885787836365, 27.5456198430932, 'Catch'],
-    [53.90521078495627, 27.552494582918026, 'KFC'],
-    [53.90723000354542, 27.55088140776327, 'Hotfix'],
-    [53.93040237071748, 27.588482786387512, 'Coffee UTRO'],
-    [53.897095993211444, 27.581948454925474, 'Астара'],
-    [53.89398604259892, 27.566282814170943, 'Я ж тебе говорил!']
-  ];
+  markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
     iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',
     iconSize: [15, 30],
     iconAnchor: [18, 70],
-    popupAnchor: [-7, -76],
+    popupAnchor: [-10, -66],
     shadowUrl: '../../../assets/leaflet/images/marker-shadow.png',
     shadowSize: [28, 30],
     shadowAnchor: [18, 70]
   });
 
+  constructor(
+    private offerService: OfferService,
+    private resolver: ComponentFactoryResolver,
+    private injector: Injector
+  ) {}
+
   ngOnInit(): void {
+    this.offers = this.offerService.getOffers();
+    this.mapView();
+  }
+
+  private mapView() {
     const tiles = L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
@@ -41,19 +58,40 @@ export class MapComponent implements OnInit {
         }
       ),
       latlng = L.latLng(53.902284, 27.561831);
-
     const map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
-
-    const markers = L.markerClusterGroup();
-
-    for (const ad of this.addressPoints) {
-      const marker = L.marker(new L.LatLng(Number(ad[0]), Number(ad[1])), {
-        title: ad[2].toString(),
-        icon: this.myIcon
-      });
-      marker.bindPopup(ad[2].toString());
-      markers.addLayer(marker);
-    }
+    const markers = this.onMarker();
     map.addLayer(markers);
+  }
+
+  private onMarker() {
+    const markers = L.markerClusterGroup();
+    for (const offer of this.offers) {
+      const factory = this.resolver.resolveComponentFactory(PopupComponent);
+      const component = factory.create(this.injector);
+      const popupContent = component.location.nativeElement;
+      component.instance.offer = offer;
+      component.changeDetectorRef.detectChanges();
+      const marker = L.marker(
+        new L.LatLng(offer.location.x, offer.location.y),
+        {
+          title: offer.vendorName,
+          icon: this.myIcon
+        }
+      );
+      marker.bindPopup(popupContent);
+      markers.addLayer(marker);
+      this.markerPopup.push({
+        name: offer.vendorName,
+        markerInstance: marker,
+        componentInstance: component
+      });
+    }
+    return markers;
+  }
+
+  ngDoCheck(): void {
+    this.markerPopup.forEach((offer) => {
+      offer.componentInstance.changeDetectorRef.detectChanges();
+    });
   }
 }
