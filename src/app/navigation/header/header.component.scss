@@ -5,6 +5,22 @@
   align-items: center;
   width: 100%;
 
+  &__logo {
+    display: block;
+    height: 35px;
+    width: 200px;
+    background-image: url(../../../assets/images/logo.svg);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+  
+    @media screen and (max-width: 768px) {
+      height: 35px;
+      width: 70px;
+      background-image: url(../../../assets/images/logo_mobile.svg);
+    }
+  }
+
   &__spacer {
     flex: 1 1 auto;
   }

@@ -9,6 +9,6 @@ export class HomePageComponent {
   isListVisible = true;
 
   toggleListView(): void {
-    this.isListVisible = this.isListVisible ? false : true;
+    this.isListVisible = !this.isListVisible;
   }
 }
