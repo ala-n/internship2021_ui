@@ -7,10 +7,15 @@ import { EventEmitter } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  @Input() sidebarVisibility!: boolean;
-  @Output() sidebarVisibilityChange = new EventEmitter<boolean>();
+  @Input() sidenavVisibility!: boolean;
+  @Output() sidenavVisibilityChange = new EventEmitter<boolean>();
+  adminPageVisible = false;
 
-  openSidebar(): void {
-    this.sidebarVisibilityChange.emit(true);
+  openSidenav(): void {
+    this.sidenavVisibilityChange.emit(true);
+  }
+
+  toggleAdminPage(): void {
+    this.adminPageVisible = !this.adminPageVisible;
   }
 }

@@ -8,34 +8,43 @@
     position: fixed;
     bottom: 3em;
     right: 3em;
-    z-index: 1100;
+    z-index: 501;
   }
 
   &__main {
+    position: relative;
     display: flex;
     height: 100%;
   }
+
   &__left,
   &__right {
     width: 100%;
   }
 
-  &__left {
-    padding: 10px;
-    transition: margin 0.3s linear;
-    &_hidden {
-      margin-left: -100%;
-      transition: margin 0.3s linear;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1023px) {
     &__left,
     &__right {
       flex-shrink: 0;
     }
     &__button {
       display: block;
+    }
+
+    &__right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    &__left {
+      z-index: 500;
+      transition: opacity 0.1s linear;
+      &_hidden {
+        opacity: 0;
+        transition: opacity 0.1s linear;
+      }
     }
   }
 }
