@@ -1,5 +1,5 @@
-<div class="offer-popup" (click)="onPopup(offer)">
-  <img class="offer-popup__image" src="{{ offer.photoUrl }}" />
+<div class="offer-popup" (click)="onPopup(offer)" *ngIf="offer">
+  <img class="offer-popup__image" [src]="offer.photoUrl" />
   <p>{{ offer.vendorName }}</p>
   <p>{{ offer.address }}</p>
 </div>
