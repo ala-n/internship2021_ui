@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  isMapVisible = false;
+  isListVisible = true;
+
+  toggleListView(): void {
+    this.isListVisible = !this.isListVisible;
+  }
 }

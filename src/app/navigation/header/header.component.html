@@ -1,8 +1,36 @@
 <div class="header">
-  <button mat-button routerLink="home">Home</button>
-  <button mat-button routerLink="admin">Admin</button>
-  <button mat-button routerLink="login">Sing-in</button>
-  <button mat-icon-button (click)="openSidebar()">
-    <mat-icon>person</mat-icon>
-  </button>
+  <a
+    class="header__logo"
+    routerLink="home"
+    (click)="adminPageVisible = false"
+  ></a>
+  <nav class="header__nav">
+    <button
+      class="button button_l"
+      mat-button
+      *ngIf="!adminPageVisible; else homePageButton"
+      routerLink="admin"
+      (click)="toggleAdminPage()"
+    >
+      Manage
+    </button>
+    <ng-template #homePageButton>
+      <button
+        class="button button_l"
+        mat-button
+        routerLink="home"
+        (click)="toggleAdminPage()"
+      >
+        Home
+      </button>
+    </ng-template>
+    <button class="button button_l" mat-button>Minsk</button>
+    <button class="button button_l" mat-button>EN</button>
+  </nav>
+  <div class="header__profile header__profile_bg">
+    <span class="header__username">Name Surname</span>
+    <button class="button button_icon" mat-icon-button (click)="openSidenav()">
+      <mat-icon class="icon icon_l">perm_identity</mat-icon>
+    </button>
+  </div>
 </div>
