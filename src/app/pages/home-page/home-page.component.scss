@@ -8,7 +8,7 @@
     position: fixed;
     bottom: 3em;
     right: 3em;
-    z-index: 501;
+    z-index: 1101;
   }
 
   &__main {
@@ -39,11 +39,12 @@
     }
 
     &__left {
-      z-index: 500;
       transition: opacity 0.1s linear;
+      z-index: 1100;
       &_hidden {
         opacity: 0;
-        transition: opacity 0.1s linear;
+        transition: opacity 0.1s linear, z-index 0s 0.1s;
+        z-index: 0;
       }
     }
   }
