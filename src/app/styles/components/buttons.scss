@@ -1,3 +1,4 @@
+// hack for raising css specifity
 .button.button {
   &_icon {
     &:focus {
@@ -11,7 +12,7 @@
 
 .button {
   &_l {
-    font-size: 1em;
+    font-size: 1.4em;
   }
   &_s {
     font-size: 0.5em;
