@@ -10,7 +10,12 @@ export const OFFERS: Offer[] = [
     discount: '30%',
     vendorName: 'GYM24',
     numberOfUses: 21,
-    numberOfViews: 215
+    numberOfViews: 215,
+    address: 'ул. Лунная, д. 131',
+    location: {
+      x: 53.89666423810507,
+      y: 27.548806307401655
+    }
   },
   {
     id: 2,
@@ -23,7 +28,12 @@ export const OFFERS: Offer[] = [
     discount: '2 по цене 1',
     vendorName: 'Coffe Lab',
     numberOfUses: 31,
-    numberOfViews: 119
+    numberOfViews: 119,
+    address: 'ул. Лунная, д. 131',
+    location: {
+      x: 53.89730906648985,
+      y: 27.54977190264391
+    }
   },
   {
     id: 3,
@@ -34,6 +44,11 @@ export const OFFERS: Offer[] = [
     discount: '50 рублей',
     vendorName: 'Craft',
     numberOfUses: 18,
-    numberOfViews: 212
+    numberOfViews: 212,
+    address: 'ул. Лунная, д. 131',
+    location: {
+      x: 53.897953884923716,
+      y: 27.548570273009105
+    }
   }
 ];
