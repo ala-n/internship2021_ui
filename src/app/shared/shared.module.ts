@@ -5,21 +5,24 @@ import { MapComponent } from './custom-components/map/map.component';
 import { MaterialModule } from './material-components/material.module';
 import { LocationComponent } from './custom-components/location/location.component';
 import { LanguageComponent } from './custom-components/language/language.component';
+import { PopupComponent } from './custom-components/map/popup/popup.component';
 
 @NgModule({
   declarations: [
-    LocationComponent,
-    LanguageComponent,
+    ToolbarComponent,
     MapComponent,
-    ToolbarComponent
+    PopupComponent,
+    LocationComponent,
+    LanguageComponent
   ],
   imports: [CommonModule, MaterialModule],
   exports: [
-    LocationComponent,
-    LanguageComponent,
-    MapComponent,
     ToolbarComponent,
-    MaterialModule
-  ]
+    MapComponent,
+    MaterialModule,
+    LocationComponent,
+    LanguageComponent
+  ],
+  entryComponents: [PopupComponent]
 })
 export class SharedModule {}
