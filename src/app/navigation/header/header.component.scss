@@ -1,10 +1,12 @@
 @import '../../styles/custom-theme.scss';
+@import '../../styles/variables.scss';
 
 .header {
   display: flex;
   align-items: center;
   height: 64px;
   border-bottom: 1px solid rgba(61, 61, 61, 0.4);
+  color: $text-primary;
 
   &__logo {
     display: block;
@@ -24,15 +26,6 @@
     }
   }
 
-  &__toolbar {
-    height: 100%;
-
-    > .button {
-      height: 100%;
-      border-radius: 0;
-    }
-  }
-
   &__profile {
     display: flex;
     align-items: center;
@@ -43,6 +36,21 @@
   &__username {
     margin: 0 2em;
     font-size: 1.4em;
+  }
+
+  &__toolbar {
+    display: flex;
+    height: 100%;
+
+    > .button {
+      display: flex;
+      align-items: center;
+      border-radius: 0;
+
+      mat-icon {
+        padding-bottom: 5px;
+      }
+    }
   }
 
   @media screen and (max-width: 768px) {
@@ -61,6 +69,12 @@
       &_bg {
         background-color: rgba(101, 179, 204, 0.2);
         border-left: 1px solid rgba(61, 61, 61, 0.4);
+      }
+    }
+
+    .button {
+      &_search {
+        display: none;
       }
     }
   }

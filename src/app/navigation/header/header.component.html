@@ -13,6 +13,7 @@
       (click)="toggleAdminPage()"
     >
       Manage
+      <mat-icon>build</mat-icon>
     </a>
     <ng-template #homePageButton>
       <a
@@ -22,14 +23,18 @@
         (click)="toggleAdminPage()"
       >
         Home
+        <mat-icon>home</mat-icon>
       </a>
     </ng-template>
-    <app-language class="button button_l"></app-language>
-    <app-location class="button button_l"></app-location>
+    <app-location></app-location>
+    <app-language></app-language>
   </div>
+  <button class="button button_search" mat-icon-button>
+    <mat-icon class="icon icon_l">search</mat-icon>
+  </button>
   <div class="header__profile header__profile_bg">
     <span class="header__username">Name Surname</span>
-    <button class="button button_icon" mat-icon-button (click)="openSidenav()">
+    <button class="button" mat-icon-button (click)="openSidenav()">
       <mat-icon class="icon icon_l">perm_identity</mat-icon>
     </button>
   </div>
