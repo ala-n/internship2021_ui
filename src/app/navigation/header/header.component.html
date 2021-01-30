@@ -4,8 +4,8 @@
     routerLink="home"
     (click)="adminPageVisible = false"
   ></a>
-  <nav class="header__nav">
-    <button
+  <div class="header__toolbar">
+    <a
       class="button button_l"
       mat-button
       *ngIf="!adminPageVisible; else homePageButton"
@@ -13,20 +13,20 @@
       (click)="toggleAdminPage()"
     >
       Manage
-    </button>
+    </a>
     <ng-template #homePageButton>
-      <button
+      <a
         class="button button_l"
         mat-button
         routerLink="home"
         (click)="toggleAdminPage()"
       >
         Home
-      </button>
+      </a>
     </ng-template>
-    <button class="button button_l" mat-button>Minsk</button>
-    <button class="button button_l" mat-button>EN</button>
-  </nav>
+    <app-language class="button button_l"></app-language>
+    <app-location class="button button_l"></app-location>
+  </div>
   <div class="header__profile header__profile_bg">
     <span class="header__username">Name Surname</span>
     <button class="button button_icon" mat-icon-button (click)="openSidenav()">
