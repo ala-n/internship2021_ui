@@ -5,16 +5,15 @@ mat-sidenav-container {
 }
 
 mat-sidenav {
-  width: 300px;
+  width: 320px;
   max-width: 100%;
-  background-color: aqua;
 }
 
 mat-sidenav-content {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
 
