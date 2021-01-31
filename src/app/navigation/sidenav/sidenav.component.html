@@ -1,12 +1,8 @@
 <mat-sidenav-container>
   <mat-sidenav class="sidenav" #sidenav [(opened)]="opened" position="end">
-    <div class="sidenav__header">
+    <div class="sidenav__header" (click)="sidenav.close()">
       <span class="sidenav__username">Name Surname</span>
-      <button
-        class="button button_no-hover"
-        mat-icon-button
-        (click)="sidenav.close()"
-      >
+      <button class="button button_no-hover" mat-icon-button>
         <mat-icon class="icon icon_l">perm_identity</mat-icon>
       </button>
     </div>

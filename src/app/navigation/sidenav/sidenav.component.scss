@@ -16,9 +16,7 @@ mat-sidenav-container {
   }
 
   &__content {
-    display: flex;
-    flex-flow: column;
-    flex: 1 0 auto;
+    flex: 1;
   }
 
   &__toolbar {
@@ -34,6 +32,10 @@ mat-sidenav-container {
     justify-content: space-between;
     height: 48px;
     padding: 0 1em;
+  }
+
+  &__header {
+    cursor: pointer;
   }
 
   &__footer {

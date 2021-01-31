@@ -24,7 +24,7 @@
     width: 100%;
   }
 
-  @media screen and (max-width: $desktop - 1) {
+  @media screen and (max-width: $tablet) {
     &__left,
     &__right {
       flex-shrink: 0;
