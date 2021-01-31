@@ -1,12 +1,60 @@
 @import '../../styles/custom-theme.scss';
+@import '../../styles/variables.scss';
 
 mat-sidenav-container {
   height: 100%;
 }
 
-mat-sidenav {
-  width: 320px;
-  max-width: 100%;
+.sidenav {
+  width: 280px;
+  color: $text-primary;
+  background-color: $background-light;
+
+  &::ng-deep .mat-drawer-inner-container {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__content {
+    flex: 1 0 auto;
+  }
+
+  &__header,
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 1em;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    background-color: $background-blue;
+  }
+
+  &__username,
+  &__logout {
+    font-size: 1.4em;
+  }
+
+  mat-nav-list {
+    padding: 0;
+
+    &::ng-deep .mat-list-item {
+      height: 64px;
+    }
+
+    mat-icon {
+      margin-right: 1em;
+      padding-bottom: 10px;
+      font-size: 2em;
+    }
+
+    span {
+      font-size: 1.4em;
+    }
+  }
 }
 
 mat-sidenav-content {

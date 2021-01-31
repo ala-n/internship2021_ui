@@ -1,12 +1,36 @@
 <mat-sidenav-container>
-  <mat-sidenav #sidenav [(opened)]="opened" position="end">
-    <button
-      class="button button_icon"
-      mat-icon-button
-      (click)="sidenav.close()"
-    >
-      <mat-icon class="icon icon_l">perm_identity</mat-icon>
-    </button>
+  <mat-sidenav class="sidenav" #sidenav [(opened)]="opened" position="end">
+    <div class="sidenav__header">
+      <span class="sidenav__username">Name Surname</span>
+      <button
+        class="button button_no-hover"
+        mat-icon-button
+        (click)="sidenav.close()"
+      >
+        <mat-icon class="icon icon_l">perm_identity</mat-icon>
+      </button>
+    </div>
+    <div class="sidenav__content">
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item routerLink="." (click)="sidenav.close()">
+          <mat-icon>history</mat-icon>
+          <span>History</span>
+        </a>
+        <a mat-list-item routerLink="." (click)="sidenav.close()">
+          <mat-icon>star_border</mat-icon>
+          <span>Bookmarks</span>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="sidenav__footer">
+      <span class="sidenav__logout">Logout</span>
+      <button class="button button_no-hover" mat-icon-button routerLink="login">
+        <mat-icon class="icon icon_l">logout</mat-icon>
+      </button>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <app-header [(sidenavVisibility)]="opened"></app-header>

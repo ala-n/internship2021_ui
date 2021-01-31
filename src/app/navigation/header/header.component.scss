@@ -67,7 +67,7 @@
   @media screen and (min-width: 769px) {
     &__profile {
       &_bg {
-        background-color: rgba(101, 179, 204, 0.2);
+        background-color: $background-blue;
         border-left: 1px solid rgba(61, 61, 61, 0.4);
       }
     }

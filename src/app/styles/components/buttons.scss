@@ -1,20 +1,14 @@
-// hack for raising css specifity
-.button.button {
-  &_icon {
-    &:focus {
-      outline: none;
-    }
-    &::ng-deep .mat-button-focus-overlay {
-      opacity: 0;
-    }
-  }
-}
-
 .button {
   &_l {
     font-size: 1.4em;
   }
   &_s {
     font-size: 0.5em;
+  }
+
+  &_no-hover {
+    &::ng-deep .mat-button-focus-overlay {
+      background-color: transparent;
+    }
   }
 }
