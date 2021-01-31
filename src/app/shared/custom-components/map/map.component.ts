@@ -71,20 +71,19 @@ export class MapComponent implements OnInit {
       const popupContent = component.location.nativeElement;
       component.instance.offer = offer;
       component.changeDetectorRef.detectChanges();
-      const marker = L.marker(
-        new L.LatLng(offer.location.x, offer.location.y),
-        {
+      for (const loc of offer.location) {
+        const marker = L.marker(new L.LatLng(loc.x, loc.y), {
           title: offer.vendorName,
           icon: this.myIcon
-        }
-      );
-      marker.bindPopup(popupContent);
-      markers.addLayer(marker);
-      this.markerPopup.push({
-        name: offer.vendorName,
-        markerInstance: marker,
-        componentInstance: component
-      });
+        });
+        marker.bindPopup(popupContent);
+        markers.addLayer(marker);
+        this.markerPopup.push({
+          name: offer.vendorName,
+          markerInstance: marker,
+          componentInstance: component
+        });
+      }
     }
     return markers;
   }
