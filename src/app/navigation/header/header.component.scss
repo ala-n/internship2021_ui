@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   height: 64px;
-  border-bottom: 1px solid rgba(61, 61, 61, 0.4);
+  border-bottom: $border-primary;
   color: $text-primary;
 
   &__logo {
@@ -53,7 +53,7 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $tablet) {
     height: 48px;
 
     &__username {
@@ -64,11 +64,11 @@
     }
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: $tablet + 1) {
     &__profile {
       &_bg {
         background-color: $background-blue;
-        border-left: 1px solid rgba(61, 61, 61, 0.4);
+        border-left: $border-primary;
       }
     }
 

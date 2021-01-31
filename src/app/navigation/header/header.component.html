@@ -1,14 +1,10 @@
 <div class="header">
-  <a
-    class="header__logo"
-    routerLink="home"
-    (click)="adminPageVisible = false"
-  ></a>
+  <a class="header__logo" routerLink="home" (click)="toggleAdminPage()"></a>
   <div class="header__toolbar">
     <a
       class="button button_l"
       mat-button
-      *ngIf="!adminPageVisible; else homePageButton"
+      *ngIf="!adminPageVisibility; else homePageButton"
       routerLink="admin"
       (click)="toggleAdminPage()"
     >

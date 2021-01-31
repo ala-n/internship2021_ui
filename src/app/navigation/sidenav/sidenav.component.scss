@@ -16,7 +16,15 @@ mat-sidenav-container {
   }
 
   &__content {
+    display: flex;
+    flex-flow: column;
     flex: 1 0 auto;
+  }
+
+  &__toolbar {
+    display: flex;
+    justify-content: center;
+    height: 64px;
   }
 
   &__header,
@@ -41,18 +49,39 @@ mat-sidenav-container {
   mat-nav-list {
     padding: 0;
 
-    &::ng-deep .mat-list-item {
-      height: 64px;
+    a {
+      height: 48px;
     }
 
     mat-icon {
       margin-right: 1em;
-      padding-bottom: 10px;
-      font-size: 2em;
+      padding-bottom: 5px;
+      font-size: 1.5em;
     }
 
     span {
-      font-size: 1.4em;
+      font-size: 1.2em;
+    }
+  }
+
+  @media screen and (min-width: $tablet + 1) {
+    &__toolbar {
+      display: none;
+    }
+    mat-nav-list {
+      a {
+        height: 64px;
+        &:last-child {
+          display: none;
+        }
+      }
+      span {
+        font-size: 1.4em;
+      }
+      mat-icon {
+        padding-bottom: 10px;
+        font-size: 2em;
+      }
     }
   }
 }

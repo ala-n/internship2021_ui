@@ -21,8 +21,33 @@
           <mat-icon>star_border</mat-icon>
           <span>Bookmarks</span>
         </a>
+        <a
+          mat-list-item
+          routerLink="admin"
+          *ngIf="!adminVisible; else homePageButton"
+          (click)="sidenav.close()"
+          (click)="toggleAdminPage()"
+        >
+          <mat-icon>build</mat-icon>
+          <span>Manage</span>
+        </a>
+        <ng-template #homePageButton>
+          <a
+            mat-list-item
+            routerLink="home"
+            (click)="sidenav.close()"
+            (click)="toggleAdminPage()"
+          >
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+          </a>
+        </ng-template>
       </mat-nav-list>
       <mat-divider></mat-divider>
+      <div class="sidenav__toolbar">
+        <app-location></app-location>
+        <app-language></app-language>
+      </div>
     </div>
     <mat-divider></mat-divider>
     <div class="sidenav__footer">
@@ -33,7 +58,10 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header [(sidenavVisibility)]="opened"></app-header>
+    <app-header
+      [(sidenavVisibility)]="opened"
+      [(adminPageVisibility)]="adminVisible"
+    ></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
