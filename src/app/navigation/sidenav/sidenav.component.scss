@@ -32,7 +32,7 @@ mat-sidenav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 48px;
     padding: 0 1em;
   }
 
@@ -65,6 +65,11 @@ mat-sidenav-container {
   }
 
   @media screen and (min-width: $tablet + 1) {
+    &__header,
+    &__footer {
+      height: 64px;
+    }
+
     &__toolbar {
       display: none;
     }
