@@ -22,4 +22,8 @@ export class HeaderComponent {
     this.adminPageVisibility = !this.adminPageVisibility;
     this.adminPageVisibilityChange.emit(this.adminPageVisibility);
   }
+
+  openHomePage(): void {
+    this.adminPageVisibilityChange.emit(false);
+  }
 }
