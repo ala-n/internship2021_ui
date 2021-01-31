@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  opened = false;
+  opened!: boolean;
+  adminVisible!: boolean;
+
+  toggleAdminPage(): void {
+    this.adminVisible = !this.adminVisible;
+  }
 }

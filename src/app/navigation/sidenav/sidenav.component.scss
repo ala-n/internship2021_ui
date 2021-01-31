@@ -1,20 +1,103 @@
 @import '../../styles/custom-theme.scss';
+@import '../../styles/variables.scss';
 
 mat-sidenav-container {
   height: 100%;
 }
 
-mat-sidenav {
-  width: 300px;
-  max-width: 100%;
-  background-color: aqua;
+.sidenav {
+  width: 280px;
+  color: $text-primary;
+  background-color: $background-light;
+
+  &::ng-deep .mat-drawer-inner-container {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__toolbar {
+    display: flex;
+    justify-content: center;
+    height: 64px;
+  }
+
+  &__header,
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    padding: 0 1em;
+  }
+
+  &__header {
+    cursor: pointer;
+  }
+
+  &__footer {
+    flex-shrink: 0;
+    background-color: $background-blue;
+  }
+
+  &__username,
+  &__logout {
+    font-size: 1.4em;
+  }
+
+  mat-nav-list {
+    padding: 0;
+
+    a {
+      height: 48px;
+    }
+
+    mat-icon {
+      margin-right: 1em;
+      padding-bottom: 5px;
+      font-size: 1.5em;
+    }
+
+    span {
+      font-size: 1.2em;
+    }
+  }
+
+  @media screen and (min-width: $tablet + 1) {
+    &__header,
+    &__footer {
+      height: 64px;
+    }
+
+    &__toolbar {
+      display: none;
+    }
+    mat-nav-list {
+      a {
+        height: 64px;
+        &:last-child {
+          display: none;
+        }
+      }
+      span {
+        font-size: 1.4em;
+      }
+      mat-icon {
+        padding-bottom: 10px;
+        font-size: 2em;
+      }
+    }
+  }
 }
 
 mat-sidenav-content {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
 

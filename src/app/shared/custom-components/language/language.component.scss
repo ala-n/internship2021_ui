@@ -1,0 +1,12 @@
+@import '../../../styles/custom-theme.scss';
+
+.button {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-radius: 0;
+
+  mat-icon {
+    padding-bottom: 5px;
+  }
+}
