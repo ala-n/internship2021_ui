@@ -5,7 +5,7 @@
            [formControl]="control"
            [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+      <mat-option *ngFor="let street of filteredTags | async" [value]="street">
         {{street}}
       </mat-option>
     </mat-autocomplete>
