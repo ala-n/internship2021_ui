@@ -1,0 +1,27 @@
+@import '../../../styles/custom-theme.scss';
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 48px;
+
+  &_hidden {
+    display: none;
+  }
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.admin-sidenav {
+  width: 200px;
+  background: inherit;
+}
+
+.mat-sidenav-fixed {
+  position: absolute;
+}
