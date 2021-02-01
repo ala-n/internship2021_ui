@@ -1,12 +1,23 @@
 .container-of-chips{
-  margin-left: 2em;
+  margin-left: 3em;
 }
 
 .chips {
-  margin-right: 3em;
+  margin-right: 5em;
 }
+
 .chip {
-  border: 1px solid rgb(75, 72, 72);
+  border: 1px solid rgb(72, 72, 75);
   background-color: #fff;
   color: rgb(75, 72, 72);
+  margin-right: 5em;
+}
+.chip:hover {
+  border: 1px solid rgb(167, 211, 247);
+  color: rgb(167, 211, 247);
+  background-color: rgb(245, 255, 255);
+  
+}
+.mat-chip.mat-standard-chip::after {
+  background: #0000;
 }

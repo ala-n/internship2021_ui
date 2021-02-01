@@ -22,7 +22,7 @@ export class TagsComponent {
     {id: 7, name: 'Electronics'},
     {id: 8, name: 'Hotels'},
     {id: 9, name: 'Markets'},
-    {id: 10, name: 'Pharmacy'},
+    {id: 10, name: 'Pharmacy'}
   ];
 
 }

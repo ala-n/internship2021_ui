@@ -3,6 +3,9 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {startWith, map} from 'rxjs/operators';
 
+import { Tags } from 'src/app/shared/models/tags';
+import { SearchService } from 'src/app/shared/services/search.service';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -60,10 +63,10 @@ export class SearchComponent implements OnInit {
     'Medical',
     'Pills'
     ];
-  filteredStreets!: Observable<string[]>;
+  filteredTags!: Observable<string[]>;
 
   ngOnInit() {
-    this.filteredStreets = this.control.valueChanges.pipe(
+    this.filteredTags = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
