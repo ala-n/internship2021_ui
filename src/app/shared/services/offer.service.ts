@@ -1,4 +1,4 @@
-import { OFFERS } from '../mock-offers';
+import { OFFERS } from '../mocks/mock-offers';
 import { Offer } from '../models/offer';
 import { Injectable } from '@angular/core';
 

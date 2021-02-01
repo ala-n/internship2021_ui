@@ -1,7 +1,8 @@
 .toolbar {
-  background-color: coral;
+  background-color: #fff;
   display: flex;
   height: 64px;
+  align-items: center;
 
   @media screen and (max-width: 768px) {
     display: none;

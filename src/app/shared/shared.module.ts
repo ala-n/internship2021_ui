@@ -6,6 +6,8 @@ import { MaterialModule } from './material-components/material.module';
 import { LocationComponent } from './custom-components/location/location.component';
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
+import { SearchComponent } from './custom-components/toolbar/search/search.component';
+import { TagsComponent } from './custom-components/toolbar/tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +15,9 @@ import { PopupComponent } from './custom-components/map/popup/popup.component';
     MapComponent,
     PopupComponent,
     LocationComponent,
-    LanguageComponent
+    LanguageComponent,
+    SearchComponent,
+    TagsComponent
   ],
   imports: [CommonModule, MaterialModule],
   exports: [
