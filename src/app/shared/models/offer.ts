@@ -17,7 +17,7 @@ export interface Offer {
   // updateBy: string;
   // promocode?: string;
   address: string;
-  location: Location;
+  location: Location[];
 }
 
 interface Location {
