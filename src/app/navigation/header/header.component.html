@@ -28,7 +28,7 @@
   <button class="button button_search" mat-icon-button>
     <mat-icon class="icon icon_l">search</mat-icon>
   </button>
-  <div class="header__profile" (click)="openSidenav()">
+  <div class="header__profile" (click)="sidenavService.toggle()">
     <span class="header__username">Name Surname</span>
     <button class="button button_no-hover" mat-icon-button>
       <mat-icon class="icon icon_l">perm_identity</mat-icon>
