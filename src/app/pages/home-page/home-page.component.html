@@ -12,10 +12,9 @@
     </ng-template>
   </button>
   <div class="home__main">
-    <app-offer-list
-      class="home__left"
-      [class.home__left_hidden]="!isListVisible"
-    ></app-offer-list>
+    <div class="home__left" [class.home__left_hidden]="!isListVisible">
+      <router-outlet></router-outlet>
+    </div>
     <app-map class="home__right"></app-map>
   </div>
 </div>
