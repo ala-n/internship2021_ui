@@ -13,7 +13,7 @@ import { OfferService } from '../../services/offer.service';
 import { PopupComponent } from './popup/popup.component';
 
 interface MarkerMetaData {
-  name: string;
+  address: string;
   markerInstance: Marker;
   componentInstance: ComponentRef<PopupComponent>;
 }
@@ -66,20 +66,20 @@ export class MapComponent implements OnInit {
   private onMarker() {
     const markers = L.markerClusterGroup();
     for (const offer of this.offers) {
-      const factory = this.resolver.resolveComponentFactory(PopupComponent);
-      const component = factory.create(this.injector);
-      const popupContent = component.location.nativeElement;
-      component.instance.offer = offer;
-      component.changeDetectorRef.detectChanges();
       for (const loc of offer.location) {
+        const factory = this.resolver.resolveComponentFactory(PopupComponent);
+        const component = factory.create(this.injector);
+        const popupContent = component.location.nativeElement;
+        component.instance.offer = offer;
+        component.instance.address = loc.address;
         const marker = L.marker(new L.LatLng(loc.x, loc.y), {
-          title: offer.vendorName,
+          title: loc.address,
           icon: this.myIcon
         });
         marker.bindPopup(popupContent);
         markers.addLayer(marker);
         this.markerPopup.push({
-          name: offer.vendorName,
+          address: loc.address,
           markerInstance: marker,
           componentInstance: component
         });
