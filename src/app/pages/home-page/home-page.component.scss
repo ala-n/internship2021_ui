@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '/src/app/styles/variables.scss';
 
 .home {
   display: flex;
@@ -19,9 +19,20 @@
     height: 100%;
   }
 
-  &__left,
+  &__left {
+    width: calc(#{$large-desktop} / 2);
+    flex-shrink: 0;
+  }
+
   &__right {
     width: 100%;
+  }
+
+  @media screen and (max-width: $large-desktop) {
+    &__left {
+      width: 100%;
+      flex-shrink: 1;
+    }
   }
 
   @media screen and (max-width: $tablet) {
