@@ -1,3 +1,5 @@
+@import '/src/app/styles/variables.scss';
+
 :host {
-  background-color: rgb(221, 221, 221);
+  background-color: $background-normal;
 }
