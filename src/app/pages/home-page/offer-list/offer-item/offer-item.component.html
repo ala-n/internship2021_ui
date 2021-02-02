@@ -1,14 +1,16 @@
-<mat-card class="offer-card">
-  <mat-card-header *ngIf="offer">
+<mat-card class="offer-card" *ngIf="offer">
+  <mat-card-header>
     <img
       class="offer-card__image"
       mat-card-avatar
-      src="{{ offer.photoUrl }}"
-      alt=""
+      [src]="offer.photoUrl"
+      alt="offer image"
     />
     <mat-card-title-group class="offer-card-header">
       <mat-card-title class="offer-card-header__title">{{
-        offer.title
+        offer.title.length > 120
+          ? (offer.title | slice: 0:120) + '...'
+          : offer.title
       }}</mat-card-title>
       <mat-card-subtitle class="offer-card-header__subtitle">{{
         offer.vendorName
@@ -18,17 +20,21 @@
   </mat-card-header>
   <div class="offer-card__properties card-properties">
     <div class="stars">
-      <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="people">star</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
     </div>
-    <div class="statistics" *ngIf="offer">
-      <mat-icon aria-hidden="false" aria-label="people">visibility</mat-icon>
-      <span class="statistics__viewsCount">{{ offer.numberOfViews }}</span>
-      <mat-icon aria-hidden="false" aria-label="people">people</mat-icon>
-      <span class="statistics__usesCount">{{ offer.numberOfUses }}</span>
+    <div class="offer-card__statistics" *ngIf="offer">
+      <div class="offer-card__views">
+        <mat-icon aria-hidden="false" aria-label="views">visibility</mat-icon>
+        <span class="statistics__viewsCount">{{ offer.numberOfViews }}</span>
+      </div>
+      <div class="offer-card__using">
+        <mat-icon aria-hidden="false" aria-label="people">people</mat-icon>
+        <span class="statistics__usesCount">{{ offer.numberOfUses }}</span>
+      </div>
     </div>
   </div>
 </mat-card>
