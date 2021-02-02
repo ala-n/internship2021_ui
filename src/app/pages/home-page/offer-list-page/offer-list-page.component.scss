@@ -1,0 +1,5 @@
+@import '/src/app/styles/variables.scss';
+
+:host {
+  background-color: $background-normal;
+}
