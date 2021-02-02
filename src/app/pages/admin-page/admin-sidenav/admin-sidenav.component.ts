@@ -10,7 +10,7 @@ import { SidenavService } from 'src/app/navigation/sidenav/sidenav.service';
   styleUrls: ['./admin-sidenav.component.scss']
 })
 export class AdminSidenavComponent {
-  isOpened!: boolean;
+  isOpened = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
