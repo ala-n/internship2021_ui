@@ -1,23 +1,66 @@
-.container-of-chips{
+.container-of-chips {
   margin-left: 3em;
+  display: flex;
 }
 
-.chips {
-  margin-right: 5em;
+.mat-chip.mat-standard-chip::after {
+  background: #0000;
 }
 
 .chip {
   border: 1px solid rgb(72, 72, 75);
   background-color: #fff;
   color: rgb(75, 72, 72);
-  margin-right: 5em;
 }
 .chip:hover {
   border: 1px solid rgb(167, 211, 247);
   color: rgb(167, 211, 247);
   background-color: rgb(245, 255, 255);
-  
 }
-.mat-chip.mat-standard-chip::after {
-  background: #0000;
+
+.value-ect {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .value9 {
+    display: none;
+  }
+  .value10 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .value8 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1058px) {
+  .value-ect {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 1016px) {
+  .value7 {
+    display: none;
+  }
+}
+@media screen and (max-width: 942px) {
+  .value6 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 841px) {
+  .value5 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 771px) {
+  .value4 {
+    display: none;
+  }
 }

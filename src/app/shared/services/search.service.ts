@@ -1,12 +1,13 @@
-import { TAGS } from '../mocks/mock-tags';
-import { Tags } from '../models/tags';
 import { Injectable } from '@angular/core';
 
+import { SEARCHDATA } from '../mocks/mock-search-data';
+import { SearchData } from '../models/search-data';
+
 @Injectable({
-    providedIn: 'root'
-  })
-  export class SearchService {
-    getTags(): Tags[] {
-      return TAGS;
-    }
+  providedIn: 'root'
+})
+export class SearchService {
+  getSearchData(): SearchData[] {
+    return SEARCHDATA;
+  }
 }
