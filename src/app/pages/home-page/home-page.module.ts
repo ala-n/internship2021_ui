@@ -7,13 +7,15 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SortByComponent } from './offer-list/sort/sort.component';
 import { OfferItemPageComponent } from './offer-item-page/offer-item-page.component';
+import { OfferListPageComponent } from './offer-list-page/offer-list-page.component';
 
 @NgModule({
   declarations: [
     HomePageComponent,
     OfferListComponent,
     SortByComponent,
-    OfferItemPageComponent
+    OfferItemPageComponent,
+    OfferListPageComponent
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule]
 })
