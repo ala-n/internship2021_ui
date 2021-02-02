@@ -8,6 +8,7 @@ export interface Offer {
   // dateEnd: string;
   // VendorID: number;
   vendorName: string; //will be deleted
+  phoneNumber: string;
   // isActive: boolean;
   numberOfUses: number;
   numberOfViews: number;
@@ -16,11 +17,11 @@ export interface Offer {
   // createBy: string;
   // updateBy: string;
   // promocode?: string;
-  address: string;
   location: Location[];
 }
 
 interface Location {
   x: number;
   y: number;
+  address: string;
 }
