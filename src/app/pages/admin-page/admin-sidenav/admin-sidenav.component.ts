@@ -10,6 +10,8 @@ import { SidenavService } from 'src/app/navigation/sidenav/sidenav.service';
   styleUrls: ['./admin-sidenav.component.scss']
 })
 export class AdminSidenavComponent {
+  isOpened!: boolean;
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -21,4 +23,10 @@ export class AdminSidenavComponent {
     private breakpointObserver: BreakpointObserver,
     public sidenavService: SidenavService
   ) {}
+
+  closeSidenav(): void {
+    if (window.innerWidth < 600) {
+      this.isOpened = false;
+    }
+  }
 }
