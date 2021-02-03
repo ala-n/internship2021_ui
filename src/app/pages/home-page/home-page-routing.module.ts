@@ -13,7 +13,7 @@ const routes: Routes = [
       { path: 'offers/:id', component: OfferItemPageComponent }
     ]
   },
-  { path: '**', redirectTo: 'home/offers', pathMatch: 'full' }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
