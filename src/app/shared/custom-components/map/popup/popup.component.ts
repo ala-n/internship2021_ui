@@ -10,6 +10,7 @@ import { Offer } from '@shared/models/offer';
 export class PopupComponent {
   @Input() offer!: Offer;
   @Input() address!: string;
+  @Input() phoneNumber!: string;
 
   onPopup(offer: Offer): void {
     console.log(offer);

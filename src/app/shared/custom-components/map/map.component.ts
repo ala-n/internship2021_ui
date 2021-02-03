@@ -66,7 +66,7 @@ export class MapComponent implements OnInit {
   private onMarker() {
     const markers = L.markerClusterGroup();
     for (const offer of this.offers) {
-      for (const loc of offer.location) {
+      for (const loc of offer.offices) {
         const factory = this.resolver.resolveComponentFactory(PopupComponent);
         const component = factory.create(this.injector);
         const popupContent = component.location.nativeElement;
