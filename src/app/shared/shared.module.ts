@@ -34,9 +34,7 @@ import { environment } from 'src/environments/environment';
   providers: [
     {
       provide: ApiService,
-      useFactory: () => {
-        return environment.local ? new MockApiService() : new RealApiService();
-      }
+      useClass: environment.local ? MockApiService : RealApiService
     }
   ]
 })
