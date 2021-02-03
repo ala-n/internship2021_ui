@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { SidenavService } from 'src/app/navigation/sidenav/sidenav.service';
+import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
   selector: 'app-admin-sidenav',
@@ -21,7 +21,7 @@ export class AdminSidenavComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    public sidenavService: SidenavService
+    public navigationService: NavigationService
   ) {}
 
   closeSidenav(): void {

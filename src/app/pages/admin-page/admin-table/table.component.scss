@@ -1,3 +1,15 @@
+.mat-elevation-z8 {
+  box-shadow: none;
+  overflow: auto;
+}
+
 .full-width-table {
   width: 100%;
+  min-width: 500px;
+}
+
+mat-paginator {
+  &::ng-deep .mat-paginator-range-label {
+    margin: 0 0 0 auto;
+  }
 }

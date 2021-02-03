@@ -37,12 +37,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
-  <mat-paginator
-    #paginator
-    [length]="dataSource!.data.length"
-    [pageIndex]="0"
-    [pageSize]="10"
-  >
-  </mat-paginator>
 </div>
+<mat-paginator
+  #paginator
+  [length]="dataSource!.data.length"
+  [pageIndex]="0"
+  [pageSize]="10"
+>
+</mat-paginator>

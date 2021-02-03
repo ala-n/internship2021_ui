@@ -1,25 +1,29 @@
 <div class="header">
-  <a class="header__logo" routerLink="home" (click)="openHomePage()"></a>
+  <a
+    class="header__logo"
+    routerLink="home"
+    (click)="navigationService.goToHomePage()"
+  ></a>
   <div class="header__toolbar">
     <a
       class="button button_l"
       mat-button
-      *ngIf="!adminPageVisibility; else homePageButton"
-      routerLink="admin"
-      (click)="toggleAdminPage()"
+      *ngIf="navigationService.isHomePageOpened; else adminPageButton"
+      routerLink="home"
+      (click)="navigationService.toggleHomePage()"
     >
-      Manage
-      <mat-icon>build</mat-icon>
+      Home
+      <mat-icon>home</mat-icon>
     </a>
-    <ng-template #homePageButton>
+    <ng-template #adminPageButton>
       <a
         class="button button_l"
         mat-button
-        routerLink="home"
-        (click)="toggleAdminPage()"
+        routerLink="admin"
+        (click)="navigationService.toggleHomePage()"
       >
-        Home
-        <mat-icon>home</mat-icon>
+        Manage
+        <mat-icon>build</mat-icon>
       </a>
     </ng-template>
     <app-location></app-location>
@@ -28,7 +32,7 @@
   <button class="button button_search" mat-icon-button>
     <mat-icon class="icon icon_l">search</mat-icon>
   </button>
-  <div class="header__profile" (click)="sidenavService.toggle()">
+  <div class="header__profile" (click)="navigationService.toggleSidenav()">
     <span class="header__username">Name Surname</span>
     <button class="button button_no-hover" mat-icon-button>
       <mat-icon class="icon icon_l">perm_identity</mat-icon>
