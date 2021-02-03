@@ -18,7 +18,12 @@ export class OfferItemPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.offer = this.offerService.getOfferById(Number(params['id']));
+      try {
+        this.offer = this.offerService.getOfferById(Number(params['id']));
+      } catch (err) {
+        //TODO(abarmina): move to rxjs
+        console.log(err);
+      }
     });
   }
 }
