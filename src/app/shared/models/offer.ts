@@ -1,27 +1,32 @@
-export interface Offer {
-  id: number;
-  title: string;
+export interface Offer extends OfferBase {
   description: string;
-  photoUrl: string;
-  discount: string;
-  // dateStart: string;
-  // dateEnd: string;
-  // VendorID: number;
-  vendorName: string; //will be deleted
-  phoneNumber: string;
-  // isActive: boolean;
+  promocode?: string;
+  dateEnd: string;
+  vendorDescription: string;
   numberOfUses: number;
   numberOfViews: number;
-  // createAt: string;
-  // updateAt: string;
-  // createBy: string;
-  // updateBy: string;
-  // promocode?: string;
-  location: Location[];
+  // dateStart: string; will need it later
+  // isActive: boolean; will need it late
+  // createAt: string; will need it later
+  // updateAt: string; will need it later
+  // createBy: string; will need it later
+  // updateBy: string; will need it later
 }
 
-interface Location {
+export interface OfferBase {
+  id: number;
+  title: string;
+  photoUrl: string;
+  discount: string;
+  vendorName: string;
+  numberOfUses: number;
+  numberOfViews: number;
+  offices: Office[];
+}
+
+interface Office {
   x: number;
   y: number;
   address: string;
+  phoneNumber: string;
 }
