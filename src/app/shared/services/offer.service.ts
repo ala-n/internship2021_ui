@@ -9,4 +9,10 @@ export class OfferService {
   getOffers(): Offer[] {
     return OFFERS;
   }
+
+  getOfferById(id: number): Offer {
+    const offer = OFFERS.find((o) => o.id === id);
+    if (!offer) throw new Error('item not found');
+    return offer;
+  }
 }
