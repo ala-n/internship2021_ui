@@ -7,6 +7,10 @@ import { LocationComponent } from './custom-components/location/location.compone
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
+import { ApiService } from './services/api.service';
+import { MockApiService } from './services/mock-api.service';
+import { RealApiService } from './services/real-api.service';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,14 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
     LanguageComponent,
     OfferItemComponent
   ],
-  entryComponents: [PopupComponent]
+  entryComponents: [PopupComponent],
+  providers: [
+    {
+      provide: ApiService,
+      useFactory: () => {
+        return environment.local ? new MockApiService() : new RealApiService();
+      }
+    }
+  ]
 })
 export class SharedModule {}
