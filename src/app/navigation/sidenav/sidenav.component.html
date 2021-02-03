@@ -1,5 +1,10 @@
 <mat-sidenav-container>
-  <mat-sidenav class="sidenav" #sidenav [(opened)]="opened" position="end">
+  <mat-sidenav
+    class="sidenav"
+    #sidenav
+    [(opened)]="navigationService.isSidenavOpened"
+    position="end"
+  >
     <div class="sidenav__header" (click)="sidenav.close()">
       <span class="sidenav__username">Name Surname</span>
       <button class="button button_no-hover" mat-icon-button>
@@ -9,33 +14,33 @@
     <div class="sidenav__content">
       <mat-divider></mat-divider>
       <mat-nav-list>
-        <a mat-list-item routerLink="." (click)="sidenav.close()">
+        <a mat-list-item (click)="sidenav.close()">
           <mat-icon>history</mat-icon>
           <span>History</span>
         </a>
-        <a mat-list-item routerLink="." (click)="sidenav.close()">
+        <a mat-list-item (click)="sidenav.close()">
           <mat-icon>star_border</mat-icon>
           <span>Bookmarks</span>
         </a>
         <a
           mat-list-item
-          routerLink="admin"
-          *ngIf="!adminVisible; else homePageButton"
+          routerLink="home"
+          *ngIf="navigationService.isHomePageOpened; else adminPageButton"
           (click)="sidenav.close()"
-          (click)="toggleAdminPage()"
+          (click)="navigationService.toggleHomePage()"
         >
-          <mat-icon>build</mat-icon>
-          <span>Manage</span>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
         </a>
-        <ng-template #homePageButton>
+        <ng-template #adminPageButton>
           <a
             mat-list-item
-            routerLink="home"
+            routerLink="admin"
             (click)="sidenav.close()"
-            (click)="toggleAdminPage()"
+            (click)="navigationService.toggleHomePage()"
           >
-            <mat-icon>home</mat-icon>
-            <span>Home</span>
+            <mat-icon>build</mat-icon>
+            <span>Manage</span>
           </a>
         </ng-template>
       </mat-nav-list>
@@ -54,10 +59,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header
-      [(sidenavVisibility)]="opened"
-      [(adminPageVisibility)]="adminVisible"
-    ></app-header>
+    <app-header></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
