@@ -20,19 +20,12 @@
   }
 
   &__left {
-    width: calc(#{$large-desktop} / 2);
-    flex-shrink: 0;
+    max-width: calc(#{$large-desktop} / 2);
   }
 
-  &__right {
+  &__right,
+  &__left {
     width: 100%;
-  }
-
-  @media screen and (max-width: $large-desktop) {
-    &__left {
-      width: 100%;
-      flex-shrink: 1;
-    }
   }
 
   @media screen and (max-width: $tablet) {
@@ -40,6 +33,7 @@
     &__right {
       flex-shrink: 0;
     }
+
     &__button {
       display: block;
     }
