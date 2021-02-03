@@ -4,7 +4,7 @@
   class="link-reset"
   [routerLink]="['offers', offer.id]"
   queryParamsHandling="merge"
-  *ngFor="let offer of offers"
+  *ngFor="let offer of offers$ | async"
 >
   <app-offer-item [offer]="offer" class="offer-card"></app-offer-item>
 </a>
