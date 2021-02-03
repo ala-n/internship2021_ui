@@ -1,3 +1,5 @@
+@import '../../../../styles/variables.scss';
+
 .container-of-chips {
   margin-left: 3em;
   display: flex;
@@ -5,16 +7,16 @@
 
 .mat-chip.mat-standard-chip::after {
   background: #0000;
-}
+} // this style turn off :hover effect from button
 
 .chip {
-  border: 1px solid rgb(72, 72, 75);
-  background-color: #fff;
-  color: rgb(75, 72, 72);
+  border: 1px solid $text-secondary;
+  background-color: $background-light;
+  color: $text-secondary;
 }
 .chip:hover {
-  border: 1px solid rgb(167, 211, 247);
-  color: rgb(167, 211, 247);
+  border: 1px solid $blue-accent;
+  color: $blue-accent;
   background-color: rgb(245, 255, 255);
 }
 

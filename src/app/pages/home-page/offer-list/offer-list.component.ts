@@ -9,7 +9,6 @@ import { OfferService } from '../../../shared/services/offer.service';
   styleUrls: ['./offer-list.component.scss']
 })
 export class OfferListComponent implements OnInit {
-
   offers!: Offer[];
 
   constructor(private offerService: OfferService) {}
@@ -17,7 +16,7 @@ export class OfferListComponent implements OnInit {
   getOffers(): void {
     this.offers = this.offerService.getOffers();
   }
-  
+
   ngOnInit(): void {
     this.getOffers();
   }

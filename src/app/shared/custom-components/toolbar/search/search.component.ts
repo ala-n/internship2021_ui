@@ -15,18 +15,23 @@ export class SearchComponent implements OnInit {
   control = new FormControl();
 
   data!: SearchData[];
-  streets: any;
+
+  stringData!: string[];
+
+  filteredData!: Observable<string[]>;
 
   constructor(private searchService: SearchService) {}
 
-  filteredTags!: Observable<string[]>;
-
   ngOnInit() {
-    this.filteredTags = this.control.valueChanges.pipe(
+    this.filteredData = this.control.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))
     );
+    console.log(this.filteredData);
     this.getSearchData();
+    this.stringData = this.data.map((object) => {
+      return object.Data;
+    });
   }
 
   getSearchData(): void {
@@ -35,9 +40,9 @@ export class SearchComponent implements OnInit {
 
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
-    return this.streets.filter((street: string) =>
-      this._normalizeValue(street).includes(filterValue)
-    );
+    return this.stringData.filter((street: string) => {
+      return this._normalizeValue(street).includes(filterValue);
+    });
   }
 
   private _normalizeValue(value: string): string {
