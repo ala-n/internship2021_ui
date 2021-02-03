@@ -14,7 +14,7 @@
     width: 200px;
     margin-right: auto;
     padding: 0 1em;
-    background-image: url(../../../assets/images/logo.svg);
+    background-image: url(/assets/images/logo.svg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -22,7 +22,7 @@
     @media screen and (max-width: $tablet) {
       height: 30px;
       width: 60px;
-      background-image: url(../../../assets/images/logo_mobile.svg);
+      background-image: url(/assets/images/logo_mobile.svg);
     }
   }
 
