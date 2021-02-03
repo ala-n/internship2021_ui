@@ -1,6 +1,6 @@
-import { Component, Input, Output } from '@angular/core';
-import { EventEmitter } from '@angular/core';
-import { SidenavService } from '../sidenav/sidenav.service';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -8,18 +8,16 @@ import { SidenavService } from '../sidenav/sidenav.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  // binding for syncing admin page opening from header/sidenav
-  @Input() adminPageVisibility!: boolean;
-  @Output() adminPageVisibilityChange = new EventEmitter<boolean>();
+  homePageVisibility!: boolean;
 
-  constructor(public sidenavService: SidenavService) {}
-
-  toggleAdminPage(): void {
-    this.adminPageVisibility = !this.adminPageVisibility;
-    this.adminPageVisibilityChange.emit(this.adminPageVisibility);
-  }
-
-  openHomePage(): void {
-    this.adminPageVisibilityChange.emit(false);
+  constructor(
+    public navigationService: NavigationService,
+    private router: Router
+  ) {
+    // hotfix of problem: after page refresh "home/manage: navigation buttons return to default state
+    // like we are on home-page;
+    // TODO find better solution
+    this.homePageVisibility = this.router.url === '/home' ? false : true;
+    this.navigationService.setHomePageVisibility(this.homePageVisibility);
   }
 }

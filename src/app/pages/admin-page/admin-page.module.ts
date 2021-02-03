@@ -7,9 +7,10 @@ import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminSidenavModule } from './admin-sidenav/admin-sidenav.module';
+import { TableComponent } from './admin-table/table.component';
 
 @NgModule({
-  declarations: [AdminPageComponent, AdminSidenavComponent],
+  declarations: [AdminPageComponent, AdminSidenavComponent, TableComponent],
   imports: [
     CommonModule,
     AdminPageRoutingModule,

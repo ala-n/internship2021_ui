@@ -13,13 +13,24 @@
   }
 }
 
-.sidenav-container {
-  height: 100%;
-}
-
 .admin-sidenav {
-  width: 200px;
-  background: inherit;
+  &__container {
+    height: 100%;
+  }
+
+  &__drawer {
+    width: 200px;
+    background: inherit;
+  }
+
+  &__content {
+    padding: 0.5em;
+  }
+
+  &__card {
+    padding: 1em 0;
+    overflow: hidden;
+  }
 }
 
 .mat-sidenav-fixed {

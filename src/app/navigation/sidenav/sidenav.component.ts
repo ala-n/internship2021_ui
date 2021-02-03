@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidenavService } from './sidenav.service';
+import { NavigationService } from '../../shared/services/navigation.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -7,11 +7,5 @@ import { SidenavService } from './sidenav.service';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  adminVisible!: boolean;
-
-  constructor(public sidenavService: SidenavService) {}
-
-  toggleAdminPage(): void {
-    this.adminVisible = !this.adminVisible;
-  }
+  constructor(public navigationService: NavigationService) {}
 }

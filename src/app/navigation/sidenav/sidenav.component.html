@@ -2,7 +2,7 @@
   <mat-sidenav
     class="sidenav"
     #sidenav
-    [(opened)]="sidenavService.opened"
+    [(opened)]="navigationService.isSidenavOpened"
     position="end"
   >
     <div class="sidenav__header" (click)="sidenav.close()">
@@ -24,23 +24,23 @@
         </a>
         <a
           mat-list-item
-          routerLink="admin"
-          *ngIf="!adminVisible; else homePageButton"
+          routerLink="home"
+          *ngIf="navigationService.isHomePageOpened; else adminPageButton"
           (click)="sidenav.close()"
-          (click)="toggleAdminPage()"
+          (click)="navigationService.toggleHomePage()"
         >
-          <mat-icon>build</mat-icon>
-          <span>Manage</span>
+          <mat-icon>home</mat-icon>
+          <span>Home</span>
         </a>
-        <ng-template #homePageButton>
+        <ng-template #adminPageButton>
           <a
             mat-list-item
-            routerLink="home"
+            routerLink="admin"
             (click)="sidenav.close()"
-            (click)="toggleAdminPage()"
+            (click)="navigationService.toggleHomePage()"
           >
-            <mat-icon>home</mat-icon>
-            <span>Home</span>
+            <mat-icon>build</mat-icon>
+            <span>Manage</span>
           </a>
         </ng-template>
       </mat-nav-list>
@@ -59,7 +59,7 @@
     </div>
   </mat-sidenav>
   <mat-sidenav-content>
-    <app-header [(adminPageVisibility)]="adminVisible"></app-header>
+    <app-header></app-header>
     <main>
       <router-outlet></router-outlet>
     </main>
