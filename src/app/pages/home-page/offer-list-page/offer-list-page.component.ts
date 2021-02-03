@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Offer } from 'src/app/shared/models/offer';
-import { OfferService } from 'src/app/shared/services/offer.service';
+import { Offer } from '@shared/models/offer';
+import { OfferService } from '@shared/services/offer.service';
 
 @Component({
   selector: 'app-offer-list-page',
