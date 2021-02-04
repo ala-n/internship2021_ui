@@ -12,6 +12,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -27,7 +28,8 @@ const MaterialModules: any[] = [
   MatSortModule,
   MatTableModule,
   MatToolbarModule,
-  MatSelectModule
+  MatSelectModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({

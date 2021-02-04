@@ -1,4 +1,5 @@
 @import '../../../styles/custom-theme.scss';
+@import '/src/app/styles/variables.scss';
 
 .button {
   display: flex;
@@ -8,5 +9,19 @@
 
   mat-icon {
     padding-bottom: 5px;
+  }
+}
+
+.cdk-overlay-pane {
+  height: 150px;
+}
+
+.location {
+  font-size: 1.4em;
+  border-bottom: 1em solid transparent;
+  font-weight: 500;
+
+  &__label {
+    color: $text-primary;
   }
 }
