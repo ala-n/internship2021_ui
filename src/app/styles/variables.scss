@@ -6,14 +6,23 @@ $text-secondary: #787d7e;
 $blue-primary: #0e7cb9;
 $blue-accent: #65b3cc;
 
+// color-accent for discounts
+$color-discount: #fe912a;
+
 // background styling
 $background-light: #fefefe;
+$background-normal: #f4f4f4;
 $background-blue: rgba(101, 179, 204, 0.2);
+$background-icon: rgba(
+  $color: #000000,
+  $alpha: 0.6
+);
 
 // border styling
 $border-primary: 1px solid rgba(61, 61, 61, 0.4);
 
 // @media points
+$large-desktop: 1920px;
 $desktop: 1024px;
 $tablet: 768px;
 $mobile: 425px;

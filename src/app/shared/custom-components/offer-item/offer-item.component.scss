@@ -1,0 +1,135 @@
+@import '/src/app/styles/variables.scss';
+
+:host::ng-deep .mat-card-header-text {
+  margin: 1em;
+}
+
+.offer-card {
+  margin: 0.5em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #383c3d;
+  padding-top: 1.5em;
+
+  &__image {
+    display: inline-block;
+    width: 100px;
+    object-fit: cover;
+    height: 75px;
+    border-radius: 0%;
+  }
+
+  &__discount {
+    top: 0;
+    right: 0;
+    position: absolute;
+    background-color: rgba($color: $color-discount, $alpha: 0.3);
+    color: $color-discount;
+    min-width: 50px;
+    padding: 0.2em 1em;
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom-left-radius: 0.5em;
+  }
+
+  &__properties {
+    align-self: flex-end;
+    color: $background-icon;
+    position: relative;
+    top: 0.5em;
+  }
+
+  &__statistics {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__views,
+  &__using {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > mat-icon {
+      margin-right: 0.1em;
+    }
+  }
+}
+
+.offer-card-header {
+  max-width: 600px;
+
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  &__subtitle {
+    margin-bottom: 0;
+  }
+}
+
+.stars {
+  width: 120px;
+  text-align: center;
+  color: $blue-primary;
+
+  > mat-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  :host::ng-deep .mat-card-header-text {
+    margin: 0.5em;
+  }
+
+  .offer-card {
+    &__image {
+      width: 75px;
+      height: 55px;
+    }
+
+    &__discount {
+      font-size: 16px;
+    }
+    &__statistics {
+      font-size: 12px;
+
+      mat-icon {
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+      }
+    }
+
+    .offer-card-header {
+      &__title {
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+
+  .stars {
+    width: 75px;
+    mat-icon {
+      width: 15px;
+      height: 15px;
+      font-size: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .offer-card {
+    &__image {
+      width: 50px;
+      height: 40px;
+    }
+  }
+}
