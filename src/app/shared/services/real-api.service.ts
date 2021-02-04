@@ -1,6 +1,7 @@
-import { Offer } from '@shared/models/offer';
 import { Observable, throwError } from 'rxjs';
 import { ApiService } from './api.service';
+
+import { Offer } from '@shared/models/offer';
 
 export class RealApiService extends ApiService {
   getOffers(): Observable<Offer[]> {

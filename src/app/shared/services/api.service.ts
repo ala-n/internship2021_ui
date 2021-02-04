@@ -1,5 +1,6 @@
-import { Offer } from '@shared/models/offer';
 import { Observable } from 'rxjs';
+
+import { Offer } from '@shared/models/offer';
 
 export abstract class ApiService {
   abstract getOffers(): Observable<Offer[]>;
