@@ -1,7 +1,7 @@
 @import '/src/app/styles/variables.scss';
 
 :host::ng-deep .mat-card-header-text {
-  margin: 1em;
+  margin: 0.6em;
 }
 
 .offer-card {
@@ -83,9 +83,9 @@
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: $desktop) {
   :host::ng-deep .mat-card-header-text {
-    margin: 0.5em;
+    margin: 0.3em;
   }
 
   .offer-card {
@@ -125,10 +125,7 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-}
-
-@media screen and (max-width: 425px) {
+@media screen and (max-width: $mobile) {
   .offer-card {
     &__image {
       width: 50px;

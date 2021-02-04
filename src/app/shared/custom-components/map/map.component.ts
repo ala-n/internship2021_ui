@@ -8,7 +8,7 @@ import {
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 import 'leaflet.markercluster';
-import { Offer } from '../../models/offer';
+import { Offer } from '../../models/types';
 import { OfferService } from '../../services/offer.service';
 import { PopupComponent } from './popup/popup.component';
 

@@ -1,7 +1,19 @@
 @import '/src/app/styles/variables.scss';
 
 :host {
-  display: block;
-  height: 100%;
-  background-color: $background-normal;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.offers {
+  flex-grow: 1;
+  overflow: auto;
+  /* for Firefox */
+  min-height: 0;
 }

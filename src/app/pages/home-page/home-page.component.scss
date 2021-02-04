@@ -21,6 +21,8 @@
 
   &__left {
     max-width: calc(#{$large-desktop} / 2);
+    background-color: $background-normal;
+    position: relative;
   }
 
   &__right,
