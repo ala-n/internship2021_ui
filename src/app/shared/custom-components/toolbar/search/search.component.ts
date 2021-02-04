@@ -14,12 +14,12 @@ import { SearchService } from 'src/app/shared/services/search.service';
 export class SearchComponent implements OnInit {
   control = new FormControl();
 
-  data!: SearchData[];
+  data!: SearchData[]; // Array of object, that contains a string data
 
-  stringData!: string[];
+  stringData!: string[]; // Array of string, that was made from data
 
-  filteredData!: Observable<string[]>;
-
+  filteredData!: Observable<string[]>; // Array of filtred data, that application
+  // show user when he enter data
   constructor(private searchService: SearchService) {}
 
   ngOnInit() {
@@ -27,8 +27,9 @@ export class SearchComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
-    console.log(this.filteredData);
+
     this.getSearchData();
+
     this.stringData = this.data.map((object) => {
       return object.Data;
     });
@@ -38,13 +39,14 @@ export class SearchComponent implements OnInit {
     this.data = this.searchService.getSearchData();
   }
 
+  // This function fiter data in search, according to your you input
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
     return this.stringData.filter((street: string) => {
       return this._normalizeValue(street).includes(filterValue);
     });
   }
-
+  // This function make all Text to lowercase
   private _normalizeValue(value: string): string {
     return value.toLowerCase().replace(/\s/g, '');
   }

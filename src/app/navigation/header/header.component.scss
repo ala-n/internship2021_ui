@@ -10,6 +10,7 @@
 
   &__logo {
     display: block;
+    box-sizing: content-box;
     height: 35px;
     width: 200px;
     margin-right: auto;

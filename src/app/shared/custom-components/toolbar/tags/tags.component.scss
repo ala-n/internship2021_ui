@@ -6,8 +6,9 @@
 }
 
 .mat-chip.mat-standard-chip::after {
+  // this style turn off :hover effect from mat-button
   background: #0000;
-} // this style turn off :hover effect from button
+}
 
 .chip {
   border: 1px solid $text-secondary;
@@ -21,6 +22,7 @@
 }
 
 .value-ect {
+  // this button ect (...)
   display: none;
 }
 

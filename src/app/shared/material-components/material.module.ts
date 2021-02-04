@@ -11,10 +11,10 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -31,9 +31,9 @@ const MaterialModules: any[] = [
   MatTableModule,
   MatToolbarModule,
   MatSelectModule,
-  MatAutocompleteModule,
   ReactiveFormsModule,
-  MatChipsModule
+  MatChipsModule,
+  MatAutocompleteModule
 ];
 
 @NgModule({
