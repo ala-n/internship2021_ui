@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { Offer } from '@shared/models/offer';
+import { Offer } from '@shared/models/types';
 
 @Component({
   selector: 'app-popup',

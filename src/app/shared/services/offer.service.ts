@@ -1,5 +1,5 @@
 import { OFFERS } from '../mock-offers';
-import { Offer } from '../models/offer';
+import { Offer } from '../models/types';
 import { Injectable } from '@angular/core';
 
 @Injectable({

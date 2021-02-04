@@ -2,13 +2,9 @@ export interface Offer extends OfferBase {
   description: string;
   promocode?: string;
   dateEnd: string;
-  vendorDescription: string;
   numberOfUses: number;
   numberOfViews: number;
-  // dateStart: string; will need it later
   // isActive: boolean; will need it late
-  // createAt: string; will need it later
-  // updateAt: string; will need it later
   // createBy: string; will need it later
   // updateBy: string; will need it later
 }
@@ -21,6 +17,14 @@ export interface OfferBase {
   vendorName: string;
   numberOfUses: number;
   numberOfViews: number;
+  offices: Office[];
+}
+
+export interface Vendor {
+  id: number;
+  title: string;
+  description: string;
+  website: string;
   offices: Office[];
 }
 
