@@ -1,17 +1,6 @@
 @import '../../../styles/custom-theme.scss';
 @import '/src/app/styles/variables.scss';
 
-.button {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  border-radius: 0;
-
-  mat-icon {
-    padding-bottom: 5px;
-  }
-}
-
 .cdk-overlay-pane {
   height: 150px;
 }
