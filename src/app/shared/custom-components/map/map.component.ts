@@ -56,7 +56,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.mapView();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 
@@ -75,7 +75,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.addLayer(markers);
   }
 
-  async setView() {
+  async setView(): Promise<void> {
     const provider = new OpenStreetMapProvider();
     const results = await provider.search({ query: this.mapService.getCity() });
     this.map.setView([Number(results[0].y), Number(results[0].x)]);

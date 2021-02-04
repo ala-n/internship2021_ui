@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Offer } from '@shared/models/offer';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { OfferService } from './offer.service';
 
@@ -13,15 +14,15 @@ export class MapService {
   }
 
   // TODO: use directly from component
-  getOfferData() {
+  getOfferData(): Offer[] {
     return this.offerService.getOffers();
   }
 
-  setCity(city: string) {
+  setCity(city: string): void {
     this._city$.next(city);
   }
 
-  getCity() {
+  getCity(): string {
     return this._city$.getValue();
   }
 

@@ -46,11 +46,11 @@ export class LocationComponent implements OnInit {
     );
   }
 
-  onClick(event: string) {
+  onClick(event: string): void {
     this.mapService.setCity(event);
   }
 
-  focusOut() {
+  focusOut(): void {
     if (!this.myControl.value) {
       this.onClick(this.defaultCity);
     }
