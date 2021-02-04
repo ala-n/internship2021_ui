@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { Offer } from '@shared/models/offer';
 import { ApiService } from '@shared/services/api.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offer-list-page',
