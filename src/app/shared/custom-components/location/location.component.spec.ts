@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@shared/material-components/material.module';
 
 import { LocationComponent } from './location.component';
 
@@ -8,7 +10,8 @@ describe('LocationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LocationComponent]
+      declarations: [LocationComponent],
+      imports: [NoopAnimationsModule, MaterialModule]
     }).compileComponents();
   });
 

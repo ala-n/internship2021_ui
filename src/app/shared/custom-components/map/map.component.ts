@@ -3,13 +3,16 @@ import {
   ComponentFactoryResolver,
   ComponentRef,
   Injector,
+  OnDestroy,
   OnInit
 } from '@angular/core';
+import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
+import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
+import { Subscription } from 'rxjs';
 import { Offer } from '../../models/offer';
-import { OfferService } from '../../services/offer.service';
 import { PopupComponent } from './popup/popup.component';
 
 interface MarkerMetaData {
@@ -23,7 +26,9 @@ interface MarkerMetaData {
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnDestroy {
+  subscription: Subscription[] = [];
+
   offers!: Offer[];
   map!: L.Map;
   markerPopup: MarkerMetaData[] = [];
@@ -38,14 +43,21 @@ export class MapComponent implements OnInit {
   });
 
   constructor(
-    private offerService: OfferService,
+    private mapService: MapService,
     private resolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
 
   ngOnInit(): void {
-    this.offers = this.offerService.getOffers();
+    this.offers = this.mapService.getOfferData();
+    this.subscription.push(
+      this.mapService.city$.subscribe(() => this.setView())
+    );
     this.mapView();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 
   private mapView() {
@@ -57,10 +69,16 @@ export class MapComponent implements OnInit {
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
         }
       ),
-      latlng = L.latLng(53.902284, 27.561831);
-    const map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
+      latlng = L.latLng(0, 0);
+    this.map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
     const markers = this.onMarker();
-    map.addLayer(markers);
+    this.map.addLayer(markers);
+  }
+
+  async setView(): Promise<void> {
+    const provider = new OpenStreetMapProvider();
+    const results = await provider.search({ query: this.mapService.getCity() });
+    this.map.setView([Number(results[0].y), Number(results[0].x)]);
   }
 
   private onMarker() {
