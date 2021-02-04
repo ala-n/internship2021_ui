@@ -8,10 +8,8 @@ import { LocationComponent } from './custom-components/location/location.compone
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
-
 import { ApiService } from './services/api.service';
-import { MockApiService } from './services/mock-api.service';
-import { RealApiService } from './services/real-api.service';
+import { MockApiService } from './services/api.service.mock';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
@@ -36,7 +34,7 @@ import { environment } from 'src/environments/environment';
   providers: [
     {
       provide: ApiService,
-      useClass: environment.local ? MockApiService : RealApiService
+      useClass: environment.local ? MockApiService : ApiService
     }
   ]
 })

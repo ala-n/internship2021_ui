@@ -1,8 +1,15 @@
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 
 import { Offer } from '@shared/models/offer';
 
-export abstract class ApiService {
-  abstract getOffers(): Observable<Offer[]>;
-  abstract getOfferById(id: number): Observable<Offer>;
+export class ApiService {
+  getOffers(): Observable<Offer[]> {
+    return throwError('Method is not implemented yet');
+  }
+
+  // TODO(abarmina) remove after implementation
+  // eslint-disable-next-line
+  getOfferById(id: number): Observable<Offer> {
+    return throwError('Method is not implemented yet');
+  }
 }
