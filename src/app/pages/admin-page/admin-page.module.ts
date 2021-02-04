@@ -5,7 +5,7 @@ import { AdminPageRoutingModule } from './admin-page-routing.module';
 import { AdminPageComponent } from './admin-page.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { SharedModule } from 'src/app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { AdminSidenavModule } from './admin-sidenav/admin-sidenav.module';
 import { TableComponent } from './admin-table/table.component';
 
