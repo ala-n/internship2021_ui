@@ -5,6 +5,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 import { TableComponent } from './table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('TableComponent', () => {
   let component: TableComponent;
@@ -18,7 +19,8 @@ describe('TableComponent', () => {
           NoopAnimationsModule,
           MatPaginatorModule,
           MatSortModule,
-          MatTableModule
+          MatTableModule,
+          HttpClientModule
         ]
       }).compileComponents();
     })

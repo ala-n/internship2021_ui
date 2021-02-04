@@ -2,8 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
-import { Offer } from 'src/app/shared/models/offer';
-import { OfferService } from 'src/app/shared/services/offer.service';
+import { Vendor } from '@shared/models/vendor';
+import { VendorService } from '@shared/services/vendor.service';
 import { TableDataSource } from './table-datasource';
 
 @Component({
@@ -14,28 +14,36 @@ import { TableDataSource } from './table-datasource';
 export class TableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  @ViewChild(MatTable) table!: MatTable<Offer>;
+  @ViewChild(MatTable) table!: MatTable<Vendor>;
   dataSource!: TableDataSource;
+  vendors!: Vendor[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'id',
-    'vendorName',
+    'name',
     'branchOffices',
     'offers',
     'webSite',
     'updated'
   ];
 
-  constructor(private offerService: OfferService) {}
+  constructor(private vendorService: VendorService) {}
 
   ngOnInit(): void {
-    this.dataSource = new TableDataSource(this.offerService.getOffers());
+    this.getVendors();
+    this.dataSource = new TableDataSource(this.vendors);
+  }
+
+  getVendors(): void {
+    this.vendorService
+      .getVendors()
+      .subscribe((vendors) => (this.vendors = vendors));
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+    this.table.dataSource = this.vendors;
   }
 }
