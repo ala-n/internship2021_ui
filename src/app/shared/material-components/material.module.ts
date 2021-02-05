@@ -15,11 +15,14 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import { MatChipsModule } from '@angular/material/chips';
+
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
   MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
+  MatChipsModule,
   MatDividerModule,
   MatFormFieldModule,
   MatIconModule,

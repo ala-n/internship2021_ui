@@ -6,6 +6,10 @@ import { MaterialModule } from './material-components/material.module';
 import { LocationComponent } from './custom-components/location/location.component';
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
+
+import { SearchComponent } from './custom-components/toolbar/search/search.component';
+import { TagsComponent } from './custom-components/toolbar/tags/tags.component';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
 
@@ -16,6 +20,8 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
     PopupComponent,
     LocationComponent,
     LanguageComponent,
+    SearchComponent,
+    TagsComponent,
     OfferItemComponent
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
