@@ -1,6 +1,4 @@
-import { Offer } from '../models/offer';
-
-export const OFFERS: Offer[] = [
+export default [
   {
     id: 1,
     title:

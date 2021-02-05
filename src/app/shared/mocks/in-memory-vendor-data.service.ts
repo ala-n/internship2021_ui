@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Vendor } from '../models/vendor';
 import vendors from './vendors';
+import offers from './offers';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import vendors from './vendors';
 export class InMemoryVendorDataService implements InMemoryDbService {
   // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   createDb() {
-    return { vendors };
+    return { vendors, offers };
   }
 
   // If the vendors array is empty,

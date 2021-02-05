@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -10,7 +11,7 @@ import { OfferService } from '@shared/services/offer.service';
   styleUrls: ['./offer-item-page.component.scss']
 })
 export class OfferItemPageComponent implements OnInit {
-  offer!: Offer;
+  offer$!: Observable<Offer>;
 
   constructor(
     private route: ActivatedRoute,
@@ -19,12 +20,7 @@ export class OfferItemPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      try {
-        this.offer = this.offerService.getOfferById(Number(params['id']));
-      } catch (err) {
-        //TODO(abarmina): move to rxjs
-        console.log(err);
-      }
+      this.offer$ = this.offerService.getOfferById(Number(params['id']));
     });
   }
 }

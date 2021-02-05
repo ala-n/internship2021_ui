@@ -14,7 +14,7 @@ export class MapService {
   }
 
   // TODO: use directly from component
-  getOfferData(): Offer[] {
+  getOfferData(): Observable<Offer[]> {
     return this.offerService.getOffers();
   }
 
