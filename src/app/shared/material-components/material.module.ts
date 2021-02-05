@@ -11,6 +11,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatSortModule } from '@angular/material/sort';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
@@ -29,6 +31,8 @@ const MaterialModules: any[] = [
   MatTableModule,
   MatToolbarModule,
   MatSelectModule,
+  ReactiveFormsModule,
+  MatChipsModule,
   MatAutocompleteModule
 ];
 

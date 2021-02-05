@@ -1,0 +1,70 @@
+@import '../../../../styles/variables.scss';
+
+.container-of-chips {
+  margin-left: 3em;
+  display: flex;
+}
+
+.mat-chip.mat-standard-chip::after {
+  // this style turn off :hover effect from mat-button
+  background: #0000;
+}
+
+.chip {
+  border: 1px solid $text-secondary;
+  background-color: $background-light;
+  color: $text-secondary;
+}
+.chip:hover {
+  border: 1px solid $blue-accent;
+  color: $blue-accent;
+  background-color: rgb(245, 255, 255);
+}
+
+.value-ect {
+  // this button ect (...)
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .value9 {
+    display: none;
+  }
+  .value10 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .value8 {
+    display: none;
+  }
+}
+@media screen and (max-width: 1058px) {
+  .value-ect {
+    display: inline-block;
+  }
+}
+
+@media screen and (max-width: 1016px) {
+  .value7 {
+    display: none;
+  }
+}
+@media screen and (max-width: 942px) {
+  .value6 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 841px) {
+  .value5 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 771px) {
+  .value4 {
+    display: none;
+  }
+}

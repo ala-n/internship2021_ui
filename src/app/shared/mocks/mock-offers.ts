@@ -1,4 +1,4 @@
-import { Offer } from './models/offer';
+import { Offer } from '../models/offer';
 export const OFFERS: Offer[] = [
   {
     id: 1,
