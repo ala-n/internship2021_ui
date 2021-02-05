@@ -16,10 +16,10 @@ export class TableComponent implements AfterViewInit, OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Vendor>;
   dataSource!: TableDataSource;
-  vendors!: Vendor[];
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
+    'edit',
     'id',
     'name',
     'branchOffices',
@@ -28,22 +28,17 @@ export class TableComponent implements AfterViewInit, OnInit {
     'updated'
   ];
 
-  constructor(private vendorService: VendorService) {}
-
-  ngOnInit(): void {
-    this.getVendors();
-    this.dataSource = new TableDataSource(this.vendors);
+  constructor(private vendorService: VendorService) {
+    this.dataSource = new TableDataSource(this.vendorService);
   }
 
-  getVendors(): void {
-    this.vendorService
-      .getVendors()
-      .subscribe((vendors) => (this.vendors = vendors));
+  ngOnInit(): void {
+    this.dataSource.getVendors();
   }
 
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.vendors;
+    this.table.dataSource = this.dataSource;
   }
 }

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vendor } from '@shared/models/vendor';
 import { Observable } from 'rxjs';
@@ -7,15 +7,23 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class VendorService {
-  private vendorsUrl = 'api/vendors';
+  static VENDORS_URL = 'api/vendors';
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  // };
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
 
   constructor(private http: HttpClient) {}
 
   getVendors(): Observable<Vendor[]> {
-    return this.http.get<Vendor[]>(this.vendorsUrl);
+    return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
+  }
+
+  addVendor(vendor: Vendor): Observable<Vendor> {
+    return this.http.post<Vendor>(
+      VendorService.VENDORS_URL,
+      vendor,
+      this.httpOptions
+    );
   }
 }

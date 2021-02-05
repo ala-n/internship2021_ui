@@ -6,6 +6,7 @@ import { MaterialModule } from './material-components/material.module';
 import { LocationComponent } from './custom-components/location/location.component';
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,11 +16,13 @@ import { PopupComponent } from './custom-components/map/popup/popup.component';
     LocationComponent,
     LanguageComponent
   ],
-  imports: [CommonModule, MaterialModule],
+  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   exports: [
     ToolbarComponent,
     MapComponent,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     LocationComponent,
     LanguageComponent
   ],

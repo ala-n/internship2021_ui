@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
 import { Vendor } from 'src/app/shared/models/vendor';
+import { VendorService } from '@shared/services/vendor.service';
 
 /**
  * Data source for the Table view. This class should
@@ -15,9 +16,15 @@ export class TableDataSource extends DataSource<Vendor> {
   paginator!: MatPaginator;
   sort!: MatSort;
 
-  constructor(VendorData: Vendor[]) {
+  constructor(private vendorService: VendorService) {
     super();
-    this.data = VendorData;
+    this.data = [];
+  }
+
+  getVendors(): void {
+    this.vendorService.getVendors().subscribe((vendors) => {
+      this.data = vendors;
+    });
   }
 
   /**

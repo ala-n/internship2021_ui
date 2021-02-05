@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .mat-elevation-z8 {
   box-shadow: none;
   overflow: auto;
@@ -5,11 +7,27 @@
 
 .full-width-table {
   width: 100%;
-  min-width: 500px;
+  min-width: 600px;
 }
 
-mat-paginator {
-  &::ng-deep .mat-paginator-range-label {
-    margin: 0 0 0 auto;
+.table {
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.button {
+  &_edit {
+    width: max-content;
+  }
+
+  &_add {
+    margin: 0 1em;
+
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
   }
 }
