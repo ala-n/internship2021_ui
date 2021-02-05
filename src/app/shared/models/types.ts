@@ -1,12 +1,9 @@
-export interface Offer extends OfferBase {
-  description: string;
-  promocode?: string;
-  dateEnd: string;
-  numberOfUses: number;
-  numberOfViews: number;
-  // isActive: boolean; will need it late
-  // createBy: string; will need it later
-  // updateBy: string; will need it later
+interface Office {
+  x: number;
+  y: number;
+  address: string;
+  phoneNumber: string;
+  city: string;
 }
 
 export interface OfferBase {
@@ -20,17 +17,24 @@ export interface OfferBase {
   offices: Office[];
 }
 
+export interface Offer extends OfferBase {
+  description: string;
+  promocode?: string;
+  dateEnd: string;
+  numberOfUses: number;
+  numberOfViews: number;
+  // eslint-disable-next-line @typescript-eslint/ban-types
+  photoGallery?: object;
+  // isActive: boolean; will need it later
+  // updateBy: string; will need it later
+}
+
 export interface Vendor {
   id: number;
+  name: string;
   title: string;
   description: string;
   website: string;
   offices: Office[];
-}
-
-interface Office {
-  x: number;
-  y: number;
-  address: string;
-  phoneNumber: string;
+  // isActive: boolean; will need it later
 }

@@ -12,24 +12,29 @@ export const OFFERS: Offer[] = [
     dateEnd: '01.04.21',
     discount: 'до 55%',
     vendorName: 'Марсель',
-    // vendorDescription:
-    //   'Марсель - крупнейшая в Беларуси сеть салонов красоты с акцентом на заботу о здоровье и красоте. Более 100 000 клиентов ежегодно пользуются многочисленными услугами, включая SPA на двоих, хамам, сауны, джакузи, кедровую бочку. Мобильное приложение, продажа сертификатов онлайн и оформление в открытках ручной работы делает обращение к нам приятным и особенным!',
-    // vendorWebsite: 'https://marsel.by/';
-    // vendorTitle: 'Марсель: салоны красоты Минска'
     numberOfUses: 21,
     numberOfViews: 215,
+    photoGallery: [
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
+    ],
     offices: [
       {
         x: 53.950248766494305,
         y: 27.678503384991703,
         address: 'ул. Шафарнянская, д. 3',
-        phoneNumber: '+ 375 29 668 16 97'
+        phoneNumber: '+ 375 29 668 16 97',
+        city: 'Минск'
       },
       {
         x: 53.90630545040514,
         y: 27.579132898483202,
         address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
-        phoneNumber: '+ 375 29 634 67 74'
+        phoneNumber: '+ 375 29 634 67 74',
+        city: 'Минск'
       }
     ]
   },
@@ -55,11 +60,6 @@ export const OFFERS: Offer[] = [
     dateEnd: '05.05.2021',
     discount: 'до 70%',
     vendorName: 'SushiChefArts',
-    // vendorDescription: `Ароматное румяное тесто, усыпанное нежнейшим сыром, таящим во рту, украшенное пикантными колбасками и дольками сочных томатов, политое ароматным сливочным соусом, покорит ваше сердце раз и навсегда.
-    // Наши профессионалы-пиццайоло знают толк в искусстве выпечки настоящей пиццы. Каждое блюдо фирменного меню разработано с учетом всех тонкостей европейской кухни: гармоничное сочетание отборных сыров, свежих помидор, грибов, нежнейших соусов и настоящего волшебнейшего теста.
-    // Вам не придется долго думать, как порадовать себя и своих близких. Переходите в каталог нашего меню и скорее заказывайте пиццу для настоящего наслаждения.`,
-    // vendorWebsite: 'https://pizzachefarts.by/';
-    // vendorTitle: 'Доставка вкусной пиццы на дом'
     numberOfUses: 100,
     numberOfViews: 119,
     offices: [
@@ -67,7 +67,8 @@ export const OFFERS: Offer[] = [
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
-        phoneNumber: '+375 44 771-51-51'
+        phoneNumber: '+375 44 771-51-51',
+        city: 'Минск'
       }
     ]
   },
@@ -92,39 +93,45 @@ export const OFFERS: Offer[] = [
     dateEnd: '31.03.2021',
     discount: '40%',
     vendorName: 'PizzaMania',
-    // vendorDescription: `Зона доставки расширена. Внимание! С 24.02.2020 В зону доставки входит весь г. Минск.
-    // Минимальная сумма заказа. Минимальная сумма заказа для бесплатной доставки 15 руб.
-    // Оплата. Оплата курьеру картой или наличными.
-    // Доставка. Время работы службы доставки ежедневно с 10:00 до 23:00. Заказы принимаются до 22:30.
-    // Изображения продуктов могут отличаться от продуктов в заказе.`,
-    // vendorWebsite: 'https://pizzamania.by/';
-    // vendorTitle: 'Убей голод'
     numberOfUses: 139,
     numberOfViews: 212,
+    photoGallery: [
+      'https://pizzamania.by/admin/uploads/items/260.png',
+      'https://pizzamania.by/admin/uploads/items/236.png',
+      'https://pizzamania.by/admin/uploads/items/191.png',
+      'https://pizzamania.by/admin/uploads/items/189.png',
+      'https://pizzamania.by/admin/uploads/items/19.png',
+      'https://pizzamania.by/admin/uploads/items/17.png',
+      'https://pizzamania.by/admin/uploads/items/16.png'
+    ],
     offices: [
       {
         x: 53.86553289876855,
         y: 27.45302363896044,
         address: 'ул. Рафиева, д. 44',
-        phoneNumber: '+375 17 375-58-58'
+        phoneNumber: '+375 17 375-58-58',
+        city: 'Минск'
       },
       {
         x: 53.883091927066054,
         y: 27.567344627318217,
         address: 'ул. Маяковского, д. 10',
-        phoneNumber: '+375 17 375-58-58'
+        phoneNumber: '+375 17 375-58-58',
+        city: 'Минск'
       },
       {
         x: 53.86734233325647,
         y: 27.65028647149643,
         address: 'ул. Центральная, д. 9',
-        phoneNumber: '+375 44 553-40-00'
+        phoneNumber: '+375 44 553-40-00',
+        city: 'Минск'
       },
       {
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66'
+        phoneNumber: '+ 375 29 120 68 66',
+        city: 'Минск'
       }
     ]
   },
@@ -147,11 +154,6 @@ export const OFFERS: Offer[] = [
     discount: '60%',
     dateEnd: '09.06.2021',
     vendorName: 'SushiChefArts',
-    // vendorDescription: `Ароматное румяное тесто, усыпанное нежнейшим сыром, таящим во рту, украшенное пикантными колбасками и дольками сочных томатов, политое ароматным сливочным соусом, покорит ваше сердце раз и навсегда.
-    //   Наши профессионалы-пиццайоло знают толк в искусстве выпечки настоящей пиццы. Каждое блюдо фирменного меню разработано с учетом всех тонкостей европейской кухни: гармоничное сочетание отборных сыров, свежих помидор, грибов, нежнейших соусов и настоящего волшебнейшего теста.
-    //   Вам не придется долго думать, как порадовать себя и своих близких. Переходите в каталог нашего меню и скорее заказывайте пиццу для настоящего наслаждения.`,
-    // vendorWebsite: 'https://pizzachefarts.by/';
-    // vendorTitle: 'Доставка вкусной пиццы на дом'
     numberOfUses: 68,
     numberOfViews: 69,
     offices: [
@@ -159,13 +161,15 @@ export const OFFERS: Offer[] = [
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
-        phoneNumber: '+375 44 771-51-51'
+        phoneNumber: '+375 44 771-51-51',
+        city: 'Минск'
       },
       {
         x: 53.85829633426384,
         y: 27.43278622731758,
         address: 'ул. Слободская, д. 27',
-        phoneNumber: '+375 44 771-51-51'
+        phoneNumber: '+375 44 771-51-51',
+        city: 'Минск'
       }
     ]
   },
@@ -180,10 +184,6 @@ export const OFFERS: Offer[] = [
     discount: 'от 10 до 25%',
     dateEnd: '28.04.2021',
     vendorName: 'Luxe',
-    // vendorDescription:
-    //   'Сделать так, чтобы ваш подарок не забыли никогда - это к нам. Приехать и бесплатно попробовать шоколад - добро пожаловать!',
-    // vendorWebsite: 'https://www.instagram.com/kardash.by/';
-    // vendorTitle: 'Шоколадные букеты на любой вкус'
     numberOfUses: 3,
     numberOfViews: 90,
     offices: [
@@ -191,7 +191,8 @@ export const OFFERS: Offer[] = [
         x: 53.83947974668578,
         y: 27.640475169645576,
         address: 'ул. Голодеда, д. 15',
-        phoneNumber: '+ 375 25 788 41 32'
+        phoneNumber: '+ 375 25 788 41 32',
+        city: 'Минск'
       }
     ]
   },
@@ -205,9 +206,6 @@ export const OFFERS: Offer[] = [
     discount: '35%',
     dateEnd: '29.02.2021',
     vendorName: 'ФОЦ им. Машерова',
-    // vendorDescription: `Можно воспользоваться бассейном, сауной, тренажерным залом. В комплексе есть все для здорового и активного отдыха!`,
-    // vendorWebsite: 'http://focsport.by/';
-    // vendorTitle: 'Комплекс для активного отдыха!'
     numberOfUses: 78,
     numberOfViews: 292,
     offices: [
@@ -215,7 +213,8 @@ export const OFFERS: Offer[] = [
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66'
+        phoneNumber: '+ 375 29 120 68 66',
+        city: 'Минск'
       }
     ]
   },
@@ -237,9 +236,6 @@ export const OFFERS: Offer[] = [
     discount: '65%',
     dateEnd: '17.03.2021',
     vendorName: 'ФОЦ им. Машерова',
-    // vendorDescription: `Можно воспользоваться бассейном, сауной, тренажерным залом. В комплексе есть все для здорового и активного отдыха!`,
-    // vendorWebsite: 'http://focsport.by/';
-    // vendorTitle: 'Комплекс для активного отдыха!'
     numberOfUses: 0,
     numberOfViews: 5,
     offices: [
@@ -247,7 +243,8 @@ export const OFFERS: Offer[] = [
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66'
+        phoneNumber: '+ 375 29 120 68 66',
+        city: 'Минск'
       }
     ]
   },
@@ -266,9 +263,6 @@ export const OFFERS: Offer[] = [
     discount: '65%',
     dateEnd: '17.03.2021',
     vendorName: 'ФОЦ им. Машерова',
-    // vendorDescription: `Можно воспользоваться бассейном, сауной, тренажерным залом. В комплексе есть все для здорового и активного отдыха!`,
-    // vendorWebsite: 'http://focsport.by/';
-    // vendorTitle: 'Комплекс для активного отдыха!'
     numberOfUses: 431,
     numberOfViews: 990,
     offices: [
@@ -276,7 +270,8 @@ export const OFFERS: Offer[] = [
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66'
+        phoneNumber: '+ 375 29 120 68 66',
+        city: 'Минск'
       }
     ]
   },
@@ -289,13 +284,7 @@ export const OFFERS: Offer[] = [
       'https://www.slivki.by/znijki-media/w250_162/default/1009921/1600269916_1600269911_Screenshot_18.jpg',
     discount: 'до 1000 рублей',
     dateEnd: '01.04.2021',
-    vendorName: 'Детский развлекательный центр «Йети и дети»',
-    // vendorDescription: `ЙЕТИ и ДЕТИ – это свежий взгляд на привычные вещи и возрождение традиций качественного семейного досуга, который наполняет детей и родителей энергией и вдохновением. В семейном центре гостей ждут развлечения, грамотно объединенные в единую концепцию на одной площадке. Творческая и сплоченная команда, влюбленная в свое дело, создает профессиональный подход к организации семейного досуга, где родителям уютно, а детям интересно.
-
-    // Ждем в гости.
-    // С любовью и заботой «ЙЕТИ и ДЕТИ».`,
-    // vendorWebsite: 'https://yetideti.by/Grodno';
-    // vendorTitle: 'Комплекс для активного отдыха!'
+    vendorName: '«Йети и дети»',
     numberOfUses: 40,
     numberOfViews: 56,
     offices: [
@@ -303,7 +292,103 @@ export const OFFERS: Offer[] = [
         x: 53.65034593967492,
         y: 23.85468398498308,
         address: 'пр-т Янки Купалы, д. 87',
-        phoneNumber: '+ 375 29 120 68 66'
+        phoneNumber: '+ 375 29 120 68 66',
+        city: 'Гродно'
+      }
+    ]
+  },
+  {
+    id: 10,
+    title:
+      'Аренда комнаты в центре музыкальных развлечений «Rockplay» для компании до 6 человек',
+    description: `Предварительная запись с упоминанием акции по телефону обязательна. Акция действует только с понедельника по четверг при аренде комнаты продолжительностью не менее 2 часов`,
+    photoUrl:
+      'https://grodno.slivki.by/znijki-media/w522_322/default/1009921/rocktz11.jpg',
+    discount: '1 час бесплатно',
+    dateEnd: '13.04.2022',
+    vendorName: 'Rockplay',
+    numberOfUses: 88,
+    numberOfViews: 103,
+    offices: [
+      {
+        x: 53.684909765450755,
+        y: 23.845177013681916,
+        address: 'ул. Буденного, д. 54/1',
+        phoneNumber: '+ 375 29 232 99 23',
+        city: 'Гродно'
+      }
+    ]
+  },
+  {
+    id: 11,
+    title:
+      'Мастер-класс, экспресс или полный курс по визажу от «Студии Ирины Лесовой»!',
+    description: `Внимание! Купон является первоначальным взносом от общей стоимости. Оставшуюся стоимость необходимо доплатить на месте. Преподаватель Ирина Лесовая - визажист-стилист, гример кино и телевидения. Общий стаж работы более 20 лет.`,
+    photoUrl:
+      'https://kupikupon.com.ua/system/deals/logos/152269/deal_615x301/8484_01.jpg?1600357423',
+    discount: 'до 70%',
+    dateEnd: '31.04.2021',
+    vendorName: 'Студия Ирины Лесовой',
+    numberOfUses: 2,
+    numberOfViews: 300,
+    offices: [
+      {
+        x: 50.42837142443786,
+        y: 30.517745728722034,
+        address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
+        phoneNumber: '+38 044 223-77-60',
+        city: 'Киев'
+      }
+    ]
+  },
+  {
+    id: 12,
+    title:
+      'Третья вещь в подарок при покупке любых костюмов, пальто, рубашек или галстуков в бутике Fashion Wear Milano',
+    description: ``, //TODO(abarmina) if there is no description, the text "vendor did not provide a description" is needed
+    photoUrl:
+      'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464',
+    promocode: 'WEAR3=2',
+    discount: '3 по цене 2',
+    dateEnd: '01.05.2021',
+    vendorName: 'Fashion Wear Milano',
+    numberOfUses: 32,
+    numberOfViews: 56,
+    offices: [
+      {
+        x: 50.44025486038732,
+        y: 30.52230314847687,
+        address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
+        phoneNumber: '+38 098 983-07-77',
+        city: 'Киев'
+      }
+    ]
+  },
+  {
+    id: 13,
+    title: 'Шиномонтаж от автокомплекса «Матерый шиномонтаж»',
+    description: `Шиномонтаж и балансировка колес радиусом от R12 до R18, ремонт бокового пореза или дошиповка колес от автокомплекса «Матерый шиномонтаж»`,
+    photoUrl:
+      'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg',
+    discount: '-50%',
+    dateEnd: '01.05.2021',
+    vendorName: 'Матерый шиномонтаж',
+    numberOfUses: 49,
+    numberOfViews: 62,
+    offices: [
+      {
+        x: 56.781522754305485,
+        y: 60.61757015808883,
+        address: 'Монтёрская улица, д.10а',
+        phoneNumber: '+7 343 385-07-00',
+        city: 'Екатеринбург'
+      },
+      {
+        x: 56.84222661082884,
+        y: 60.66575335424758,
+        address: 'ул. Малышева, 145а',
+        phoneNumber: '+7 343 383-42-43',
+        city: 'Екатеринбург'
       }
     ]
   }
