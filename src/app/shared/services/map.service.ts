@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Offer } from '@shared/models/offer';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { OfferService } from './offer.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +7,8 @@ import { OfferService } from './offer.service';
 export class MapService {
   private _city$: BehaviorSubject<string>;
 
-  constructor(private offerService: OfferService) {
+  constructor() {
     this._city$ = new BehaviorSubject<string>('');
-  }
-
-  // TODO: use directly from component
-  getOfferData(): Observable<Offer[]> {
-    return this.offerService.getOffers();
   }
 
   setCity(city: string): void {

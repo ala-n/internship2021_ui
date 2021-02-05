@@ -7,6 +7,7 @@ import {
   OnInit
 } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
+import { OfferService } from '@shared/services/offer.service';
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -29,7 +30,7 @@ interface MarkerMetaData {
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
 
-  offers!: Offer[];
+  offers: Offer[] = [];
   map!: L.Map;
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
@@ -44,18 +45,19 @@ export class MapComponent implements OnInit, OnDestroy {
 
   constructor(
     private mapService: MapService,
+    private offerService: OfferService,
     private resolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
 
   ngOnInit(): void {
-    this.mapService.getOfferData().subscribe((offers) => {
+    this.offerService.getOffers().subscribe((offers) => {
       this.offers = offers;
+      this.mapView();
     });
     this.subscription.push(
       this.mapService.city$.subscribe(() => this.setView())
     );
-    this.mapView();
   }
 
   ngOnDestroy(): void {
