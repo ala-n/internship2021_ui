@@ -7,6 +7,7 @@ import { LocationComponent } from './custom-components/location/location.compone
 import { LanguageComponent } from './custom-components/language/language.component';
 import { PopupComponent } from './custom-components/map/popup/popup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MapComponent,
     PopupComponent,
     LocationComponent,
-    LanguageComponent
+    LanguageComponent,
+    OfferItemComponent
   ],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   exports: [
@@ -24,7 +26,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     LocationComponent,
-    LanguageComponent
+    LanguageComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    OfferItemComponent
   ],
   entryComponents: [PopupComponent]
 })

@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -16,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
+  MatAutocompleteModule,
   MatButtonModule,
   MatCardModule,
   MatDividerModule,

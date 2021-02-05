@@ -1,4 +1,26 @@
-<button class="button button_l" mat-button>
-  Minsk
-  <mat-icon>place</mat-icon>
-</button>
+<form>
+  <mat-form-field class="location">
+    <mat-label class="location__label">Minsk</mat-label>
+    <input
+      type="text"
+      placeholder="Pick city..."
+      aria-label="Minsk"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+      (focusout)="focusOut()"
+    />
+    <mat-autocomplete
+      class="location__default"
+      autoActiveFirstOption
+      #auto="matAutocomplete"
+    >
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+        (onSelectionChange)="onClick(option)"
+        >{{ option }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

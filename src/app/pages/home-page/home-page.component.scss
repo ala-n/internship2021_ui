@@ -1,4 +1,4 @@
-@import '../../styles/variables.scss';
+@import '/src/app/styles/variables.scss';
 
 .home {
   display: flex;
@@ -19,8 +19,12 @@
     height: 100%;
   }
 
-  &__left,
-  &__right {
+  &__left {
+    max-width: calc(#{$large-desktop} / 2);
+  }
+
+  &__right,
+  &__left {
     width: 100%;
   }
 
@@ -29,6 +33,7 @@
     &__right {
       flex-shrink: 0;
     }
+
     &__button {
       display: block;
     }
