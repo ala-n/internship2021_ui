@@ -29,7 +29,8 @@ const imports: any = [
 if (!environment.production) {
   imports.push(
     HttpClientInMemoryWebApiModule.forRoot(InMemoryVendorDataService, {
-      dataEncapsulation: false
+      dataEncapsulation: false,
+      delay: 100
     })
   );
 }
