@@ -29,6 +29,8 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
     ToolbarComponent,
     MapComponent,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     LocationComponent,
     LanguageComponent,
     FormsModule,

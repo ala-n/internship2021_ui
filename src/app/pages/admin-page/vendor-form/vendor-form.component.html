@@ -1,0 +1,52 @@
+<form [formGroup]="vendorForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Vendor" formControlName="name" />
+        <mat-error *ngIf="vendorForm.controls['name'].hasError('required')">
+          Vendor name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Web-Site" formControlName="website" />
+        <mat-error *ngIf="vendorForm.controls['website'].hasError('required')">
+          Web-Site is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <input matInput placeholder="Title" formControlName="title" />
+        <mat-error
+          *ngIf="vendorForm.controls['description'].hasError('required')"
+        >
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <textarea
+          matInput
+          placeholder="Description"
+          formControlName="description"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="goBack()"
+    [disabled]="vendorForm.invalid"
+  >
+    Submit
+  </button>
+</form>
