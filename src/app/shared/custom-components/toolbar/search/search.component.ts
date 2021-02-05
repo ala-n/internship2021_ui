@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit {
   // show user when he enter data
   constructor(private searchService: SearchService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.filteredData = this.control.valueChanges.pipe(
       startWith(''),
       map((value) => this._filter(value))

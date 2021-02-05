@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { SEARCHDATA } from '../mocks/mock-search-data';
+import { SEARCH_DATA } from '../mocks/mock-search-data';
 import { SearchData } from '../models/search-data';
 
 @Injectable({
@@ -8,6 +8,6 @@ import { SearchData } from '../models/search-data';
 })
 export class SearchService {
   getSearchData(): SearchData[] {
-    return SEARCHDATA;
+    return SEARCH_DATA;
   }
 }
