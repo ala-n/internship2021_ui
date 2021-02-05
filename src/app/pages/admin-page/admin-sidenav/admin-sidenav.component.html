@@ -33,7 +33,7 @@
     <mat-toolbar>Moderator panel</mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list>
-      <a mat-list-item routerLink="." (click)="closeSidenav()">Vendors</a>
+      <a mat-list-item routerLink="vendors" (click)="closeSidenav()">Vendors</a>
       <a mat-list-item routerLink="." (click)="closeSidenav()">Offers</a>
       <a mat-list-item routerLink="." (click)="closeSidenav()">Statistics</a>
     </mat-nav-list>
@@ -41,7 +41,7 @@
   <mat-sidenav-content class="admin-sidenav__content">
     <mat-card class="admin-sidenav__card">
       <mat-card-content>
-        <app-table></app-table>
+        <router-outlet></router-outlet>
       </mat-card-content>
     </mat-card>
   </mat-sidenav-content>

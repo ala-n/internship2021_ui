@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Offer } from '@shared/models/types';
+import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
 
 @Component({

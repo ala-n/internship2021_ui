@@ -1,10 +1,4 @@
-interface Office {
-  x: number;
-  y: number;
-  address: string;
-  phoneNumber: string;
-  city: string;
-}
+import { Office } from './office';
 
 export interface OfferBase {
   id: number;
@@ -27,14 +21,4 @@ export interface Offer extends OfferBase {
   photoGallery?: object;
   // isActive: boolean; will need it later
   // updateBy: string; will need it later
-}
-
-export interface Vendor {
-  id: number;
-  name: string;
-  title: string;
-  description: string;
-  website: string;
-  offices: Office[];
-  // isActive: boolean; will need it later
 }

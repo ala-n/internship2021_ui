@@ -1,7 +1,9 @@
+@import '/src/app/styles/variables.scss';
+
 .offer-popup {
   display: flex;
   align-items: center;
-  padding: 1em 0.7em 0.3em 0.7em;
+  padding: 1em 0.7em;
   cursor: pointer;
 
   &__image {
@@ -20,13 +22,15 @@
   &__address {
     font-size: 13px;
   }
+
+  &__phone {
+    color: $text-secondary;
+  }
 }
 
 .leaflet-popup-content {
-  width: 250px;
+  width: 230px;
   margin: 0;
-  max-height: 250px;
-  overflow: scroll;
   @media screen and (max-width: 768px) {
     width: 200px;
   }
@@ -34,5 +38,4 @@
 
 .leaflet-popup-content-wrapper {
   padding: 0;
-  overflow: hidden;
 }
