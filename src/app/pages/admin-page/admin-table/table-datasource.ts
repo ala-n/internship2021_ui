@@ -18,7 +18,7 @@ export class TableDataSource extends DataSource<Vendor> {
 
   constructor(private vendorService: VendorService) {
     super();
-    // this.data = [];
+    this.data = [];
   }
 
   getVendors(): void {
