@@ -67,11 +67,10 @@ export class InMemoryVendorDataService implements InMemoryDbService {
     return { vendors };
   }
 
-  // Overrides the genId method to ensure that a hero always has an id.
-  // If the heroes array is empty,
+  // If the vendors array is empty,
   // the method below returns the initial number (11).
-  // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // if the vendors array is not empty, the method below returns the highest
+  // vendor id + 1.
   genId(vendors: Vendor[]): number {
     return vendors.length > 0
       ? Math.max(...vendors.map((vendor) => vendor.id)) + 1

@@ -26,7 +26,7 @@ export class VendorFormComponent {
     private location: Location
   ) {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.vendorService.addVendor(this.vendorForm.value).subscribe((vendor) => {
       this.vendors.push(vendor);
     });

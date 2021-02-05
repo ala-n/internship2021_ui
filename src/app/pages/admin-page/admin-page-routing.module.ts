@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'admin/vendors',
+    redirectTo: 'vendors',
     pathMatch: 'full'
   }
 ];
