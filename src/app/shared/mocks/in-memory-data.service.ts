@@ -7,7 +7,7 @@ import offers from './offers';
 @Injectable({
   providedIn: 'root'
 })
-export class InMemoryVendorDataService implements InMemoryDbService {
+export class InMemoryDataService implements InMemoryDbService {
   // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   createDb() {
     return { vendors, offers };
