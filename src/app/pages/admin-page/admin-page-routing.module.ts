@@ -20,13 +20,13 @@ const routes: Routes = [
       {
         path: 'form',
         component: VendorFormComponent
+      },
+      {
+        path: '',
+        redirectTo: 'vendors',
+        pathMatch: 'full'
       }
     ]
-  },
-  {
-    path: '',
-    redirectTo: 'vendors',
-    pathMatch: 'full'
   }
 ];
 
