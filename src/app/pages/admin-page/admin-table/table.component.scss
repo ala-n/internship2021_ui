@@ -1,20 +1,35 @@
 @import '../../../styles/variables.scss';
 
-.mat-elevation-z8 {
-  box-shadow: none;
-  overflow: auto;
-}
-
-.full-width-table {
-  width: 100%;
-  min-width: 600px;
-}
-
 .table {
+  box-shadow: none;
+
+  &__body {
+    overflow: auto;
+
+    .full-width-table {
+      width: 100%;
+      min-width: 600px;
+    }
+  }
+
+  &__header,
   &__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 1em;
+  }
+
+  &__spinner {
+    margin: 0 auto;
+  }
+
+  &__search {
+    margin: 1em 0;
+    &::ng-deep .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 
@@ -24,8 +39,6 @@
   }
 
   &_add {
-    margin: 0 1em;
-
     @media screen and (max-width: $tablet) {
       display: none;
     }

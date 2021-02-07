@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     name: 'KFC',
-    title: '',
+    title: 'wbwrbwrb',
     description: '',
     website: 'www.kfc.by',
     updated: '23.01.21',
@@ -11,7 +11,7 @@ export default [
   {
     id: 2,
     name: '24-fitness',
-    title: '',
+    title: 'erberberb',
     description: '',
     website: 'www.fit24.by',
     updated: '22.01.21',
@@ -20,7 +20,7 @@ export default [
   {
     id: 3,
     name: 'BeautyBox',
-    title: '',
+    title: 'dfbsdfb',
     description: '',
     website: 'www.Bbox.by',
     updated: '24.01.21',
@@ -29,7 +29,7 @@ export default [
   {
     id: 4,
     name: 'Твой велик',
-    title: '',
+    title: 'adfbadfb',
     description: '',
     website: 'www.twoj-velik.by',
     updated: '26.01.21',
@@ -38,7 +38,7 @@ export default [
   {
     id: 5,
     name: 'Wildberries',
-    title: '',
+    title: 'abrbafdb',
     description: '',
     website: 'www.wildberries.com',
     updated: '26.01.21',
@@ -47,7 +47,7 @@ export default [
   {
     id: 6,
     name: '21vek',
-    title: '',
+    title: 'abrbarb',
     description: '',
     website: 'www.21vek.by',
     updated: '28.01.21',

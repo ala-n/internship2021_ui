@@ -1,21 +1,21 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
-import { TableDataSource } from './table-datasource';
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements AfterViewInit, OnInit {
+export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatTable) table!: MatTable<Vendor>;
-  dataSource!: TableDataSource;
+  dataSource = new MatTableDataSource();
+  isLoading = true;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -29,16 +29,19 @@ export class TableComponent implements AfterViewInit, OnInit {
   ];
 
   constructor(private vendorService: VendorService) {
-    this.dataSource = new TableDataSource(this.vendorService);
+    this.vendorService.getVendors().subscribe((vendors) => {
+      this.isLoading = false;
+      this.dataSource.data = vendors;
+    });
   }
 
   ngOnInit(): void {
-    this.dataSource.getVendors();
-  }
-
-  ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.table.dataSource = this.dataSource;
+  }
+
+  applyFilter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }

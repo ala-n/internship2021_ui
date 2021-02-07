@@ -14,6 +14,10 @@ const routes: Routes = [
         component: TableComponent
       },
       {
+        path: 'vendors/:id',
+        component: VendorFormComponent
+      },
+      {
         path: 'form',
         component: VendorFormComponent
       }
