@@ -14,6 +14,7 @@ import { Marker } from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
+import { switchMap, tap } from 'rxjs/operators';
 import { Vendor } from '../../models/vendor';
 import { PopupComponent } from './popup/popup.component';
 
@@ -52,13 +53,18 @@ export class MapComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.vendorService.getVendors().subscribe((vendors) => {
-      this.vendors = vendors;
-      this.mapView();
-    });
-    this.subscription.push(
-      this.mapService.city$.subscribe((city) => this.setView(city))
-    );
+    const subscription$ = this.vendorService
+      .getVendors()
+      .pipe(
+        tap((vendors) => {
+          this.vendors = vendors;
+          this.mapView();
+        }),
+        switchMap(() => this.mapService.city$)
+      )
+      .subscribe((city) => this.setView(city));
+
+    this.subscription.push(subscription$);
   }
 
   ngOnDestroy(): void {
@@ -83,9 +89,7 @@ export class MapComponent implements OnInit, OnDestroy {
   async setView(city: string): Promise<void> {
     const provider = new OpenStreetMapProvider();
     const results = await provider.search({ query: city });
-    //TODO(abarmina) fix quick refresh bug.
-    if (this.map)
-      this.map.setView([Number(results[0].y), Number(results[0].x)]);
+    this.map.setView([Number(results[0].y), Number(results[0].x)]);
   }
 
   private onMarker() {

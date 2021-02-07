@@ -9,8 +9,6 @@ export class MapService {
   readonly city$ = this._city$.asObservable();
 
   setCity(city: string): void {
-    console.log(city);
-
     this._city$.next(city);
   }
 }
