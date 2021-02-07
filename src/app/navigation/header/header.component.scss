@@ -10,11 +10,10 @@
 
   &__logo {
     display: block;
-    box-sizing: content-box;
     height: 35px;
     width: 200px;
     margin-right: auto;
-    padding: 0 1em;
+    margin-left: 1em;
     background-image: url(/assets/images/logo.svg);
     background-position: center;
     background-size: contain;

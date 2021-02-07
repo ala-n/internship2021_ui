@@ -1,7 +1,7 @@
 @import '/src/app/styles/variables.scss';
 
 ::ng-deep #cdk-overlay-0 {
-  height: 150px;
+  max-height: 150px;
 }
 
 ::ng-deep .mat-input-element::placeholder {
