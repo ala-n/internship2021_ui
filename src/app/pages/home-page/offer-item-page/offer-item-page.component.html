@@ -1,1 +1,4 @@
-<app-offer-item [offer]="offer"></app-offer-item>
+<app-offer-item
+  *ngIf="offer$ | async as offer"
+  [offer]="offer"
+></app-offer-item>
