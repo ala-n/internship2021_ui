@@ -10,11 +10,11 @@ import { MapService } from '@shared/services/map.service';
 import { VendorService } from '@shared/services/vendor.service';
 
 import * as L from 'leaflet';
-import { Marker } from 'leaflet';
+import { Marker, MarkerClusterGroup } from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { Vendor } from '../../models/vendor';
 import { PopupComponent } from './popup/popup.component';
 
@@ -32,7 +32,6 @@ interface MarkerMetaData {
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
 
-  vendors: Vendor[] = [];
   map!: L.Map;
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
@@ -56,10 +55,8 @@ export class MapComponent implements OnInit, OnDestroy {
     const subscription$ = this.vendorService
       .getVendors()
       .pipe(
-        tap((vendors) => {
-          this.vendors = vendors;
-          this.mapView();
-        }),
+        map((vendors) => this.initMarkers(vendors)),
+        tap((markers) => this.mapView(markers)),
         switchMap(() => this.mapService.city$)
       )
       .subscribe((city) => this.setView(city));
@@ -71,7 +68,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 
-  private mapView() {
+  private mapView(markers: MarkerClusterGroup) {
     const tiles = L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
@@ -82,7 +79,6 @@ export class MapComponent implements OnInit, OnDestroy {
       ),
       latlng = L.latLng(0, 0);
     this.map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
-    const markers = this.onMarker();
     this.map.addLayer(markers);
   }
 
@@ -92,9 +88,9 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.setView([Number(results[0].y), Number(results[0].x)]);
   }
 
-  private onMarker() {
+  private initMarkers(vendors: Vendor[]) {
     const markers = L.markerClusterGroup();
-    for (const vendor of this.vendors) {
+    for (const vendor of vendors) {
       for (const loc of vendor.offices) {
         const factory = this.resolver.resolveComponentFactory(PopupComponent);
         const component = factory.create(this.injector);
