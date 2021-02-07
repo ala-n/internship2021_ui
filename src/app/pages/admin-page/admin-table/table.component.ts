@@ -38,6 +38,10 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    this.dataSource.filterPredicate = (data: any, filter) => {
+      return data.name.toLowerCase().indexOf(filter) != -1;
+    };
   }
 
   applyFilter(event: Event): void {

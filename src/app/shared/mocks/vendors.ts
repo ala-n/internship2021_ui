@@ -33,7 +33,7 @@ export default [
     description: '',
     website: 'www.twoj-velik.by',
     updated: '26.01.21',
-    isActive: true
+    isActive: false
   },
   {
     id: 5,

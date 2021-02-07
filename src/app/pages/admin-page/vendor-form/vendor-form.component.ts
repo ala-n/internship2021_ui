@@ -23,7 +23,6 @@ export class VendorFormComponent implements OnInit {
 
   vendors: Vendor[] = [];
   vendor!: Vendor;
-  hasUnitNumber = false;
 
   constructor(
     private fb: FormBuilder,
