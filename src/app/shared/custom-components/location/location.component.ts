@@ -22,23 +22,17 @@ export class LocationComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.onClick(this.defaultCity);
+    this.mapService.setCity(this.defaultCity);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0
+    return this.options.filter((option) =>
+      option.toLowerCase().startsWith(filterValue)
     );
   }
 
-  onClick(event: string): void {
-    this.mapService.setCity(event);
-  }
-
-  focusOut(): void {
-    if (!this.myControl.value) {
-      this.onClick(this.defaultCity);
-    }
+  onSelectionChanged(option: string): void {
+    this.mapService.setCity(option);
   }
 }

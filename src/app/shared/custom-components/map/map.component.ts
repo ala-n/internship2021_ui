@@ -57,7 +57,7 @@ export class MapComponent implements OnInit, OnDestroy {
       this.mapView();
     });
     this.subscription.push(
-      this.mapService.city$.subscribe(() => this.setView())
+      this.mapService.city$.subscribe((city) => this.setView(city))
     );
   }
 
@@ -80,9 +80,9 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.addLayer(markers);
   }
 
-  async setView(): Promise<void> {
+  async setView(city: string): Promise<void> {
     const provider = new OpenStreetMapProvider();
-    const results = await provider.search({ query: this.mapService.getCity() });
+    const results = await provider.search({ query: city });
     //TODO(abarmina) fix quick refresh bug.
     if (this.map)
       this.map.setView([Number(results[0].y), Number(results[0].x)]);
