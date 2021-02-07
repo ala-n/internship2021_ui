@@ -1,20 +1,16 @@
 <form>
-  <mat-form-field class="location">
-    <mat-label class="location__label">Minsk</mat-label>
+  <!-- use "standard" to make floating label as placeholder -->
+  <mat-form-field class="location" appearance="standard">
     <input
       type="text"
-      placeholder="Pick city..."
-      aria-label="Minsk"
+      placeholder="Minsk"
+      aria-label="Location"
       matInput
       [formControl]="myControl"
       [matAutocomplete]="auto"
       (focusout)="focusOut()"
     />
-    <mat-autocomplete
-      class="location__default"
-      autoActiveFirstOption
-      #auto="matAutocomplete"
-    >
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option
         *ngFor="let option of filteredOptions | async"
         [value]="option"
