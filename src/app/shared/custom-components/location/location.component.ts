@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MapService } from '@shared/services/map.service';
 import { Observable } from 'rxjs';
@@ -7,27 +7,14 @@ import { map, startWith } from 'rxjs/operators';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
-  myControl = new FormControl();
-  options: string[] = [
-    'Moscow',
-    'Kyiv',
-    'Tashkent',
-    'Moscow',
-    'Kyiv',
-    'Tashkent',
-    'Moscow',
-    'Kyiv',
-    'Tashkent',
-    'Moscow',
-    'Kyiv',
-    'Tashkent'
-  ];
+  options: string[] = ['Minsk', 'Grodno', 'Kyiv', 'Yekaterinburg'];
   filteredOptions!: Observable<string[]>;
   defaultCity = 'Minsk';
+  myControl = new FormControl(this.defaultCity);
+  currentCity = this.defaultCity;
 
   constructor(private mapService: MapService) {}
 
@@ -36,23 +23,25 @@ export class LocationComponent implements OnInit {
       startWith(''),
       map((value) => this._filter(value))
     );
-    this.onClick(this.defaultCity);
+    this.mapService.setCity(this.defaultCity);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-    return this.options.filter(
-      (option) => option.toLowerCase().indexOf(filterValue) === 0
+    return this.options.filter((option) =>
+      option.toLowerCase().startsWith(filterValue)
     );
   }
 
-  onClick(event: string): void {
-    this.mapService.setCity(event);
+  onSelectionChanged(option: string): void {
+    this.currentCity = option;
+    this.mapService.setCity(option);
   }
 
-  focusOut(): void {
-    if (!this.myControl.value) {
-      this.onClick(this.defaultCity);
+  focusOut(e: FocusEvent): void {
+    const relatedTarget = e.relatedTarget as HTMLElement;
+    if (!relatedTarget || relatedTarget.tagName !== 'MAT-OPTION') {
+      this.myControl.setValue(this.currentCity);
     }
   }
 }

@@ -17,8 +17,7 @@ export interface Offer extends OfferBase {
   dateEnd: string;
   numberOfUses: number;
   numberOfViews: number;
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  photoGallery?: object;
+  photoGallery?: string[];
   // isActive: boolean; will need it later
   // updateBy: string; will need it later
 }
