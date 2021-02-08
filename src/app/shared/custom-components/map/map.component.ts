@@ -7,12 +7,14 @@ import {
   OnInit
 } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
+import { VendorService } from '@shared/services/vendor.service';
+
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
-import { Offer } from '../../models/offer';
+import { Vendor } from '../../models/vendor';
 import { PopupComponent } from './popup/popup.component';
 
 interface MarkerMetaData {
@@ -29,7 +31,7 @@ interface MarkerMetaData {
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
 
-  offers!: Offer[];
+  vendors: Vendor[] = [];
   map!: L.Map;
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
@@ -44,16 +46,19 @@ export class MapComponent implements OnInit, OnDestroy {
 
   constructor(
     private mapService: MapService,
+    private vendorService: VendorService,
     private resolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
 
   ngOnInit(): void {
-    this.offers = this.mapService.getOfferData();
+    this.vendorService.getVendors().subscribe((vendors) => {
+      this.vendors = vendors;
+      this.mapView();
+    });
     this.subscription.push(
       this.mapService.city$.subscribe(() => this.setView())
     );
-    this.mapView();
   }
 
   ngOnDestroy(): void {
@@ -78,18 +83,21 @@ export class MapComponent implements OnInit, OnDestroy {
   async setView(): Promise<void> {
     const provider = new OpenStreetMapProvider();
     const results = await provider.search({ query: this.mapService.getCity() });
-    this.map.setView([Number(results[0].y), Number(results[0].x)]);
+    //TODO(abarmina) fix quick refresh bug.
+    if (this.map)
+      this.map.setView([Number(results[0].y), Number(results[0].x)]);
   }
 
   private onMarker() {
     const markers = L.markerClusterGroup();
-    for (const offer of this.offers) {
-      for (const loc of offer.location) {
+    for (const vendor of this.vendors) {
+      for (const loc of vendor.offices) {
         const factory = this.resolver.resolveComponentFactory(PopupComponent);
         const component = factory.create(this.injector);
         const popupContent = component.location.nativeElement;
-        component.instance.offer = offer;
+        component.instance.vendor = vendor;
         component.instance.address = loc.address;
+        component.instance.phoneNumber = loc.phoneNumber;
         const marker = L.marker(new L.LatLng(loc.x, loc.y), {
           title: loc.address,
           icon: this.myIcon

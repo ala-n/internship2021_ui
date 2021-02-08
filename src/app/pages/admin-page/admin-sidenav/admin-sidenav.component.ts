@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
@@ -13,7 +13,7 @@ export class AdminSidenavComponent {
   isOpened = true;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
+    .observe('(max-width: 768px)')
     .pipe(
       map((result) => result.matches),
       shareReplay()
@@ -25,7 +25,7 @@ export class AdminSidenavComponent {
   ) {}
 
   closeSidenav(): void {
-    if (window.innerWidth < 600) {
+    if (window.innerWidth <= 768) {
       this.isOpened = false;
     }
   }

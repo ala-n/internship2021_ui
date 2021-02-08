@@ -1,14 +1,31 @@
 @import '../../../styles/variables.scss';
 
 .table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  // TODO set height automatically
+  height: calc(100vh - 71px);
   box-shadow: none;
 
   &__body {
     overflow: auto;
+    flex: 1 0 1px;
 
     .full-width-table {
       width: 100%;
       min-width: 600px;
+
+      &::ng-deep .mat-cell {
+        padding-right: 0.25em;
+        &:first-of-type {
+          padding-left: 1em;
+        }
+      }
     }
   }
 
@@ -18,6 +35,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 1em;
+    background-color: #fff;
   }
 
   &__spinner {
@@ -31,6 +49,13 @@
       padding: 0;
     }
   }
+
+  &__paginator {
+    &::ng-deep .mat-paginator-page-size-label,
+    &::ng-deep .mat-paginator-range-label {
+      margin: 0;
+    }
+  }
 }
 
 .button {
@@ -38,9 +63,26 @@
     width: max-content;
   }
 
-  &_add {
-    @media screen and (max-width: $tablet) {
+  &_add_mobile {
+    display: none;
+    margin-left: 1em;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .button {
+    &_add_desktop {
       display: none;
+    }
+    &_add_mobile {
+      display: block;
+    }
+  }
+  .table {
+    &__paginator {
+      &::ng-deep .mat-paginator-container {
+        justify-content: flex-start;
+      }
     }
   }
 }

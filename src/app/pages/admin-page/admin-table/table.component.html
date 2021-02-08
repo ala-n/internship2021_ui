@@ -1,6 +1,6 @@
 <mat-spinner class="table__spinner" *ngIf="isLoading"></mat-spinner>
 
-<div class="table mat-elevation-z8" *ngIf="!isLoading">
+<div class="table mat-elevation-z8" [hidden]="isLoading">
   <div class="table__header">
     <mat-form-field class="table__search" appearance="outline">
       <mat-label>Search</mat-label>
@@ -54,16 +54,24 @@
 
       <ng-container matColumnDef="updated">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
-        <td mat-cell *matCellDef="let row">{{ row.updated }}</td>
+        <td mat-cell *matCellDef="let row">
+          {{ row.updated }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ input.value }}"
+        </td>
+      </tr>
     </table>
   </div>
   <div class="table__footer">
     <button
-      class="button_add"
+      class="button button_add_desktop"
       mat-raised-button
       routerLink="/admin/form"
       color="primary"
@@ -71,6 +79,7 @@
       Add Vendor
     </button>
     <mat-paginator
+      class="table__paginator"
       #paginator
       [length]="dataSource.data.length"
       [pageIndex]="0"
@@ -78,5 +87,13 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
     </mat-paginator>
+    <button
+      class="button button_add_mobile"
+      mat-fab
+      routerLink="/admin/form"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>
