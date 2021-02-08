@@ -10,10 +10,11 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
-  myControl = new FormControl();
   options: string[] = ['Minsk', 'Grodno', 'Kyiv', 'Yekaterinburg'];
   filteredOptions!: Observable<string[]>;
   defaultCity = 'Minsk';
+  myControl = new FormControl(this.defaultCity);
+  currentCity!: string;
 
   constructor(private mapService: MapService) {}
 
@@ -33,6 +34,7 @@ export class LocationComponent implements OnInit {
   }
 
   onSelectionChanged(option: string): void {
+    this.currentCity = option;
     this.mapService.setCity(option);
   }
 }
