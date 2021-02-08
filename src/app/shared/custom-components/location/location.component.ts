@@ -14,7 +14,7 @@ export class LocationComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
   defaultCity = 'Minsk';
   myControl = new FormControl(this.defaultCity);
-  currentCity!: string;
+  currentCity = this.defaultCity;
 
   constructor(private mapService: MapService) {}
 
@@ -36,5 +36,12 @@ export class LocationComponent implements OnInit {
   onSelectionChanged(option: string): void {
     this.currentCity = option;
     this.mapService.setCity(option);
+  }
+
+  focusOut(e: FocusEvent): void {
+    const relatedTarget = e.relatedTarget as HTMLElement;
+    if (!relatedTarget || relatedTarget.tagName !== 'MAT-OPTION') {
+      this.myControl.setValue(this.currentCity);
+    }
   }
 }
