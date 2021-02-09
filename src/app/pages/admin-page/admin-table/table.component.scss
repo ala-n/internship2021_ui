@@ -8,8 +8,6 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
-  // TODO set height automatically
-  height: calc(100vh - 71px);
   box-shadow: none;
 
   &__body {
@@ -79,6 +77,11 @@
     }
   }
   .table {
+    &__header {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     &__paginator {
       &::ng-deep .mat-paginator-container {
         justify-content: flex-start;
