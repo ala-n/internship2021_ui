@@ -18,7 +18,11 @@ const routes: Routes = [
         component: VendorFormComponent
       },
       {
-        path: 'form',
+        path: 'vendor-form',
+        component: VendorFormComponent
+      },
+      {
+        path: 'office-form',
         component: VendorFormComponent
       },
       {

@@ -5,24 +5,27 @@ import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
+import { Office } from '@shared/models/office';
 
 @Component({
-  selector: 'app-vendor-form',
-  templateUrl: './vendor-form.component.html',
-  styleUrls: ['./vendor-form.component.scss']
+  selector: 'app-office-form',
+  templateUrl: './office-form.component.html',
+  styleUrls: ['./office-form.component.scss']
 })
-export class VendorFormComponent implements OnInit {
-  vendorForm = this.fb.group({
+export class OfficeFormComponent implements OnInit {
+  officeForm = this.fb.group({
     id: null,
-    name: [null, Validators.required],
-    title: [null, Validators.required],
-    description: null,
-    website: [null, Validators.required],
+    country: [null, Validators.required],
+    city: [null, Validators.required],
+    street: [null, Validators.required],
+    room: null,
+    phone: null,
+    email: null,
     isActive: null
   });
 
   vendors: Vendor[] = [];
-  vendor!: Vendor;
+  offices!: Office[];
 
   constructor(
     private fb: FormBuilder,
@@ -38,13 +41,15 @@ export class VendorFormComponent implements OnInit {
           .getVendor(Number(params['id']))
           .pipe(first())
           .subscribe((vendor) => {
-            this.vendor = vendor;
-            this.vendorForm.setValue({
+            this.offices = vendor.offices;
+            this.officeForm.setValue({
               id: vendor.id,
-              name: vendor.name,
-              title: vendor.title,
-              website: vendor.website,
-              description: vendor.description,
+              country: vendor.name,
+              city: vendor.title,
+              street: vendor.website,
+              room: vendor.description,
+              phone: vendor.description,
+              email: vendor.description,
               isActive: vendor.isActive
             });
           });
@@ -54,11 +59,11 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    if (this.vendor) {
-      this.vendorService.updateVendor(this.vendorForm.value).subscribe();
+    if (this.offices) {
+      this.vendorService.updateVendor(this.officeForm.value).subscribe();
     } else {
       this.vendorService
-        .addVendor(this.vendorForm.value)
+        .addVendor(this.officeForm.value)
         .subscribe((vendor) => {
           this.vendors.push(vendor);
         });

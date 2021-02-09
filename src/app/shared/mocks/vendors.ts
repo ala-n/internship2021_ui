@@ -12,14 +12,24 @@ export default [
         y: 27.678503384991703,
         address: 'ул. Шафарнянская, д. 3',
         phoneNumber: '+ 375 29 668 16 97',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Шафарнянская',
+        house: '3',
+        email: 'marsel1@gmail.com',
+        isActive: true
       },
       {
         x: 53.90630545040514,
         y: 27.579132898483202,
         address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
         phoneNumber: '+ 375 29 634 67 74',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Захарова',
+        house: '23',
+        email: 'marsel2@gmail.com',
+        isActive: true
       }
     ],
     updated: '05.02.2021',
@@ -39,14 +49,24 @@ export default [
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '84',
+        email: 'sushi2@gmail.com',
+        isActive: true
       },
       {
         x: 53.85829633426384,
         y: 27.43278622731758,
         address: 'ул. Слободская, д. 27',
         phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Слободская',
+        house: '27',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ],
     updated: '04.02.2021',
@@ -68,28 +88,48 @@ export default [
         y: 27.45302363896044,
         address: 'ул. Рафиева, д. 44',
         phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Рафиева',
+        house: '44',
+        email: 'pizza1@gmail.com',
+        isActive: true
       },
       {
         x: 53.883091927066054,
         y: 27.567344627318217,
         address: 'ул. Маяковского, д. 10',
         phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Маяковского',
+        house: '10',
+        email: 'pizza2@gmail.com',
+        isActive: true
       },
       {
         x: 53.86734233325647,
         y: 27.65028647149643,
         address: 'ул. Центральная, д. 9',
         phoneNumber: '+375 44 553-40-00',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Центральная',
+        house: '9',
+        email: 'pizza3@gmail.com',
+        isActive: true
       },
       {
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '23к1',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.02.2021',
@@ -108,7 +148,12 @@ export default [
         y: 27.640475169645576,
         address: 'ул. Голодеда, д. 15',
         phoneNumber: '+ 375 25 788 41 32',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Голодеда',
+        house: '15',
+        email: 'luxe@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.01.2021',
@@ -126,7 +171,12 @@ export default [
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '23к1',
+        email: 'fok@gmail.com',
+        isActive: true
       }
     ],
     updated: '09.12.2020',
@@ -147,7 +197,12 @@ export default [
         y: 23.85468398498308,
         address: 'пр-т Янки Купалы, д. 87',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Гродно'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Янки Купалы',
+        house: '87',
+        email: 'yetideti@gmail.com',
+        isActive: true
       }
     ],
     updated: '27.11.2020',
@@ -165,7 +220,12 @@ export default [
         y: 23.845177013681916,
         address: 'ул. Буденного, д. 54/1',
         phoneNumber: '+ 375 29 232 99 23',
-        city: 'Гродно'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Буденного',
+        house: '54/1',
+        email: 'rock@gmail.com',
+        isActive: true
       }
     ],
     updated: '04.01.2021',
@@ -183,7 +243,13 @@ export default [
         y: 30.517745728722034,
         address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
         phoneNumber: '+38 044 223-77-60',
-        city: 'Киев'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Ивана Федорова',
+        house: '6',
+        room: '2',
+        email: 'rock@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.01.2021',
@@ -201,7 +267,13 @@ export default [
         y: 30.52230314847687,
         address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
         phoneNumber: '+38 098 983-07-77',
-        city: 'Киев'
+        country: 'Belarus',
+        city: 'Минск',
+        street: 'Рогнеденская',
+        house: '3',
+        room: '4',
+        email: 'fashion-wear@gmail.com',
+        isActive: true
       }
     ],
     updated: '21.12.2020',
@@ -221,7 +293,13 @@ export default [
         y: 60.61757015808883,
         address: 'Монтёрская улица, д.10а',
         phoneNumber: '+7 343 385-07-00',
-        city: 'Екатеринбург'
+        country: 'Belarus',
+        city: 'Екатеринбург',
+        street: 'Рогнеденская',
+        house: '3',
+        room: '4',
+        email: 'fashion-wear@gmail.com',
+        isActive: true
       },
       {
         x: 56.84222661082884,

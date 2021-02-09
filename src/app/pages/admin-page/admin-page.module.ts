@@ -9,6 +9,7 @@ import { AdminPageComponent } from './admin-page.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
 import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
+import { OfficeFormComponent } from './forms/office-form/office-form.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
     AdminSidenavComponent,
     VendorFormComponent,
     AdminSidenavComponent,
-    VendorTableComponent
+    VendorTableComponent,
+    OfficeFormComponent
   ],
   imports: [CommonModule, AdminPageRoutingModule, LayoutModule, SharedModule]
 })
