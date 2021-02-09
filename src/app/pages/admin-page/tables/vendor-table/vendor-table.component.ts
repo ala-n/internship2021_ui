@@ -31,7 +31,7 @@ export class VendorTableComponent implements OnInit {
   constructor(private vendorService: VendorService) {
     this.vendorService
       .getVendors()
-      .pipe(first()) //TODO how to check if unsubscribed?
+      .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
       .subscribe((vendors) => {
         this.isLoading = false;
         this.dataSource.data = vendors;
@@ -44,7 +44,11 @@ export class VendorTableComponent implements OnInit {
 
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Vendor, filter) => {
-      return data.name.toLowerCase().indexOf(filter) != -1;
+      const filterObj = JSON.parse(filter);
+      if (!filter) return true;
+      if (filterObj.isActive && String(data.isActive) !== filterObj.isActive) return false;
+      if (!filterObj.name) return true;
+      return data.name.toLowerCase().indexOf(filterObj.name.toLowerCase()) != -1;
     };
     // custom sort: string date transformes to Date format for correct sorting
     this.dataSource.sortingDataAccessor = (
@@ -56,7 +60,7 @@ export class VendorTableComponent implements OnInit {
       switch (property) {
         case 'updated': {
           const parts = item.updated.split('.');
-          return new Date(+parts[2], +parts[1] - 1, +parts[0]);
+          return new Date(+parts[2], +parts[1] - 1, +parts[0]); //TODO extract to utilites
         }
         default:
           return item['updated'];
@@ -64,9 +68,11 @@ export class VendorTableComponent implements OnInit {
     };
   }
 
-  applyFilter(event: Event): void {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(value: string, name: string): void {
+    // we create an object where keys are properties to filter and values are values from controls
+    const currentFilter = JSON.parse(this.dataSource.filter || "{}");
+    const newFilter = Object.assign({}, currentFilter, { [name]: value });//UrlSearchParams
+    this.dataSource.filter = JSON.stringify(newFilter)
 
     //back to first page after search filtering
     if (this.dataSource.paginator) {
