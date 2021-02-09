@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MapService } from '@shared/services/map.service';
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { map, withLatestFrom } from 'rxjs/operators';
+
+import { MapService } from '@shared/services/map.service';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-location',
@@ -10,27 +12,27 @@ import { map, startWith } from 'rxjs/operators';
   styleUrls: ['./location.component.scss']
 })
 export class LocationComponent implements OnInit {
-  options: string[] = ['Minsk', 'Grodno', 'Kyiv', 'Yekaterinburg'];
-  filteredOptions!: Observable<string[]>;
-  defaultCity = 'Minsk';
-  myControl = new FormControl(this.defaultCity);
-  currentCity = this.defaultCity;
+  filteredOptions$!: Observable<string[]>;
+  currentCity = 'Minsk';
+  myControl = new FormControl(this.currentCity);
+  selectedOption!: string;
 
-  constructor(private mapService: MapService) {}
+  constructor(
+    private mapService: MapService,
+    private locationService: LocationService
+  ) {}
 
   ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value))
+    this.filteredOptions$ = this.myControl.valueChanges.pipe(
+      withLatestFrom(this.locationService.getCities()),
+      map(([value, cities]) => {
+        const filterValue = value.toLowerCase();
+        return cities.filter((option) =>
+          option.toLowerCase().startsWith(filterValue)
+        );
+      })
     );
-    this.mapService.setCity(this.defaultCity);
-  }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.options.filter((option) =>
-      option.toLowerCase().startsWith(filterValue)
-    );
+    this.mapService.setCity(this.currentCity);
   }
 
   onSelectionChanged(option: string): void {
