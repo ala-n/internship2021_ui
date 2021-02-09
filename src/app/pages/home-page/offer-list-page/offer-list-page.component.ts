@@ -15,6 +15,7 @@ export class OfferListPageComponent {
   getOffers(): void {
     this.offers$ = this.offerService.getOffers();
   }
+
   ngOnInit(): void {
     this.getOffers();
   }
