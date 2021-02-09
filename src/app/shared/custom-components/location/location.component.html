@@ -9,6 +9,7 @@
       [formControl]="myControl"
       [matAutocomplete]="auto"
       (focusout)="focusOut($event)"
+      (focusin)="focusIn($event)"
     />
     <mat-autocomplete
       (optionSelected)="onSelectionChanged($event.option.value)"

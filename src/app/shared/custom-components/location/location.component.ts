@@ -26,7 +26,7 @@ export class LocationComponent implements OnInit {
     this.filteredOptions$ = this.myControl.valueChanges.pipe(
       withLatestFrom(this.locationService.getCities()),
       map(([value, cities]) => {
-        const filterValue = value.toLowerCase();
+        const filterValue = (value || '').toLowerCase();
         return cities.filter((option) =>
           option.toLowerCase().startsWith(filterValue)
         );
@@ -38,6 +38,13 @@ export class LocationComponent implements OnInit {
   onSelectionChanged(option: string): void {
     this.currentCity = option;
     this.mapService.setCity(option);
+  }
+
+  focusIn(e: FocusEvent): void {
+    const relatedTarget = e.relatedTarget as HTMLElement;
+    if (!relatedTarget || relatedTarget.tagName !== 'MAT-OPTION') {
+      this.myControl.reset();
+    }
   }
 
   focusOut(e: FocusEvent): void {
