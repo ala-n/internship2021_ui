@@ -6,7 +6,11 @@
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" #input />
     </mat-form-field>
-    <mat-button-toggle-group class="table__filter" aria-label="Filter Vendors">
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      class="table__filter"
+      aria-label="Filter Vendors"
+    >
       <mat-button-toggle value="all">All</mat-button-toggle>
       <mat-button-toggle value="true">Active</mat-button-toggle>
       <mat-button-toggle value="false">Inactive</mat-button-toggle>

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminPageComponent } from './admin-page.component';
-import { TableComponent } from './admin-table/table.component';
-import { VendorFormComponent } from './vendor-form/vendor-form.component';
+import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
+import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
 
 const routes: Routes = [
   {
@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'vendors',
-        component: TableComponent
+        component: VendorTableComponent
       },
       {
         path: 'vendors/:id',
