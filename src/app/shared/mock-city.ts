@@ -1,1 +1,0 @@
-// city = [Tashkent, Brest, Gomel, Grodno, Minsk, Vitebsk, Dresden, Klaipėda, Vilnius, Bialystock, Szczecin, Warsaw, Poznan, Chelyabinsk, Yekaterinburg, Kharkiv, Kyiv, Lviv, Odesa, Vinnytsia, Walnut Creek, Boulder];

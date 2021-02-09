@@ -1,11 +1,11 @@
 <div class="sort-panel">
-  <div class="sort">
+  <div>
     <mat-form-field appearance="fill">
       <mat-label>Sort By</mat-label>
-      <mat-select>
-        <mat-option>Relevance</mat-option>
-        <mat-option>Rating</mat-option>
-        <mat-option>Distance</mat-option>
+      <mat-select [formControl]="sortControl" disableOptionCentering>
+        <mat-option *ngFor="let value of SORT_OPTIONS" [value]="value">{{
+          value
+        }}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

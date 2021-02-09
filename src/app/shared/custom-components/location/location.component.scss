@@ -1,16 +1,12 @@
-@import '../../../styles/custom-theme.scss';
 @import '/src/app/styles/variables.scss';
 
-.cdk-overlay-pane {
-  height: 150px;
+::ng-deep #cdk-overlay-0 {
+  max-height: 150px;
 }
 
 .location {
   font-size: 1.4em;
-  border-bottom: 1em solid transparent;
+  bottom: 1em;
+  max-width: 140px;
   font-weight: 500;
-
-  &__label {
-    color: $text-primary;
-  }
 }
