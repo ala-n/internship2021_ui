@@ -1,0 +1,91 @@
+@import '/src/app/styles/variables.scss';
+
+.table {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: none;
+
+  &__body {
+    overflow: auto;
+    flex: 1 0 1px;
+
+    .full-width-table {
+      width: 100%;
+      min-width: 600px;
+
+      &::ng-deep .mat-cell {
+        padding-right: 0.25em;
+        &:first-of-type {
+          padding-left: 1em;
+        }
+      }
+    }
+  }
+
+  &__header,
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1em;
+    background-color: #fff;
+  }
+
+  &__spinner {
+    margin: 0 auto;
+  }
+
+  &__search {
+    margin: 1em 0;
+    &::ng-deep .mat-form-field-wrapper {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__paginator {
+    &::ng-deep .mat-paginator-page-size-label,
+    &::ng-deep .mat-paginator-range-label {
+      margin: 0;
+    }
+  }
+}
+
+.button {
+  &_edit {
+    width: max-content;
+  }
+
+  &_add_mobile {
+    display: none;
+    margin-left: 1em;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .button {
+    &_add_desktop {
+      display: none;
+    }
+    &_add_mobile {
+      display: block;
+    }
+  }
+  .table {
+    &__header {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__paginator {
+      &::ng-deep .mat-paginator-container {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
