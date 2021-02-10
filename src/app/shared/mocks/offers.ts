@@ -19,6 +19,7 @@ export default [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
     ],
+    city: 'Minsk',
     offices: [
       {
         x: 53.950248766494305,
@@ -60,6 +61,7 @@ export default [
     vendorName: 'SushiChefArts',
     numberOfUses: 100,
     numberOfViews: 119,
+    city: 'Minsk',
     offices: [
       {
         x: 53.938102489505866,
@@ -102,6 +104,7 @@ export default [
       'https://pizzamania.by/admin/uploads/items/17.png',
       'https://pizzamania.by/admin/uploads/items/16.png'
     ],
+    city: 'Minsk',
     offices: [
       {
         x: 53.86553289876855,
@@ -154,6 +157,7 @@ export default [
     vendorName: 'SushiChefArts',
     numberOfUses: 68,
     numberOfViews: 69,
+    city: 'Minsk',
     offices: [
       {
         x: 53.938102489505866,
@@ -181,9 +185,10 @@ export default [
     promocode: 'Luxe25',
     discount: 'от 10 до 25%',
     dateEnd: '28.04.2021',
-    vendorName: 'Luxe',
+    vendorName: 'Minsk',
     numberOfUses: 3,
     numberOfViews: 90,
+    city: 'Minsk',
     offices: [
       {
         x: 53.83947974668578,
@@ -206,6 +211,7 @@ export default [
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 78,
     numberOfViews: 292,
+    city: 'Minsk',
     offices: [
       {
         x: 53.91137617684785,
@@ -236,6 +242,7 @@ export default [
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 0,
     numberOfViews: 5,
+    city: 'Minsk',
     offices: [
       {
         x: 53.91137617684785,
@@ -263,6 +270,7 @@ export default [
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 431,
     numberOfViews: 990,
+    city: 'Minsk',
     offices: [
       {
         x: 53.91137617684785,
@@ -285,6 +293,7 @@ export default [
     vendorName: '«Йети и дети»',
     numberOfUses: 40,
     numberOfViews: 56,
+    city: 'Grodno',
     offices: [
       {
         x: 53.65034593967492,
@@ -307,6 +316,7 @@ export default [
     vendorName: 'Rockplay',
     numberOfUses: 88,
     numberOfViews: 103,
+    city: 'Grodno',
     offices: [
       {
         x: 53.684909765450755,
@@ -329,6 +339,7 @@ export default [
     vendorName: 'Студия Ирины Лесовой',
     numberOfUses: 2,
     numberOfViews: 300,
+    city: 'Kyiv',
     offices: [
       {
         x: 50.42837142443786,
@@ -352,6 +363,7 @@ export default [
     vendorName: 'Fashion Wear Milano',
     numberOfUses: 32,
     numberOfViews: 56,
+    city: 'Kyiv',
     offices: [
       {
         x: 50.44025486038732,
@@ -373,6 +385,7 @@ export default [
     vendorName: 'Матерый шиномонтаж',
     numberOfUses: 49,
     numberOfViews: 62,
+    city: 'Yekaterinburg',
     offices: [
       {
         x: 56.781522754305485,

@@ -8,6 +8,7 @@ export interface OfferBase {
   vendorName: string;
   numberOfUses: number;
   numberOfViews: number;
+  city: string;
   offices: Office[];
 }
 
