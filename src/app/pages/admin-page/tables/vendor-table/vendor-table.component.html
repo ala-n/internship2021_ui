@@ -4,14 +4,15 @@
   <div class="table__header">
     <mat-form-field class="table__search" appearance="outline">
       <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter($event)" #input />
+      <input matInput (keyup)="applyFilter(input.value, 'name')" #input />
     </mat-form-field>
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
       aria-label="Filter Vendors"
+      (click)="applyFilter(group.value, 'isActive')"
     >
-      <mat-button-toggle value="all">All</mat-button-toggle>
+      <mat-button-toggle value="">All</mat-button-toggle>
       <mat-button-toggle value="true">Active</mat-button-toggle>
       <mat-button-toggle value="false">Inactive</mat-button-toggle>
     </mat-button-toggle-group>
