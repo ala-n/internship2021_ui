@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { User } from '@shared/models/user';
+import { Token } from '../models/token';
+import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { HttpService} from './http.service';
+import { LoginData} from '@shared/models/login_data'
 
 @Injectable({
   providedIn: 'root'
@@ -12,18 +15,14 @@ export class AuthService {
 
   // API path
   basePath = 'https://my-site.com/server/';
+  HttpService: any;
 
   constructor(
     private router: Router,
-    private http: HttpClient
-  ) { }
+    private httpService: HttpService
+  ) {}
 
-  // Http Options
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
-  };
+  
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {
@@ -44,9 +43,8 @@ export class AuthService {
 
 
   // Verify user credentials on server to get token
-  loginForm(data: Object): Observable<User> {
-    return this.http
-      .post<User>(this.basePath, data, this.httpOptions)
+  loginForm(data: LoginData): Observable<Token> {
+    return this.httpService.postLogin(data)
       .pipe(
         retry(2),
         catchError(this.handleError)
@@ -54,9 +52,9 @@ export class AuthService {
   }
 
   // After login save token and other values(if any) in localStorage
-  setUser(resp: User) {
-    localStorage.setItem('name', resp.name);
-    localStorage.setItem('access_token', resp.Token);
+  setUser(resp: Token) {
+    sessionStorage.setItem('name', resp.name);
+    sessionStorage.setItem('access_token', resp.token);
     this.router.navigate(['/']);
   }
 
@@ -65,25 +63,21 @@ export class AuthService {
     return localStorage.getItem('access_token') != null; // session storage
   }
 
-  // After clearing localStorage redirect to login screen
+  // After clearing sessionStorage redirect to login screen
   logout() {
-    localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate(['/login']);
   }
 
 
   // Get data from server for Dashboard
-  getData(data: Object): Observable<User> {
-    return this.http
-      .post<User>(this.basePath, data, this.httpOptions) 
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
-  }
-  errorHandler(error: Response){
-    if(error.status === 401 || error.status === 403){
-      this.logout();
-    }
-  }
+  // getData(data: Object): Observable<User> {
+  //   return this.http
+  //     .post<User>(this.basePath, data, this.httpOptions) 
+  //     .pipe(
+  //       retry(2),
+  //       catchError(this.handleError)
+  //     );
+  // }
+ 
 }

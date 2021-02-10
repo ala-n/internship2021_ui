@@ -1,7 +1,8 @@
-export interface User {
+export interface User{
     _id: number;
     name: string;
     login: string;
+    password: string;
     photoURl: string;
     Phone: string;
     isActive: boolean;
@@ -9,6 +10,7 @@ export interface User {
     UpdateAt: string;
     CreatedBy: User["_id"];
     UpdateBy: User["_id"];
+    Location: Object;
     Role: string;
-    Token: string;
+    token: string;
 }

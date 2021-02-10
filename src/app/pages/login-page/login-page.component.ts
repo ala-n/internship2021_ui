@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
+import { User } from '@shared/models/user';
 import { AuthService } from '@shared/services/auth.service';
+import { LoginData} from '@shared/models/login_data';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +13,7 @@ export class LogInComponent {
   // signInSubmit(event: Event): void {
   //   event.preventDefault();
   // }
-  model: any = {};
+  model: LoginData = {};
 
   constructor(
     private authService: AuthService
@@ -23,7 +26,7 @@ export class LogInComponent {
   login() {
     this.model.action = 'login';
     this.authService.loginForm(this.model).subscribe(response => {
-      if (response.Token != null) {
+      if (response.token != null) {
         this.authService.setUser(response);
       }
     }, error => {
