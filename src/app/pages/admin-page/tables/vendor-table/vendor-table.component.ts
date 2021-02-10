@@ -46,9 +46,12 @@ export class VendorTableComponent implements OnInit {
     this.dataSource.filterPredicate = (data: Vendor, filter) => {
       const filterObj = JSON.parse(filter);
       if (!filter) return true;
-      if (filterObj.isActive && String(data.isActive) !== filterObj.isActive) return false;
+      if (filterObj.isActive && String(data.isActive) !== filterObj.isActive)
+        return false;
       if (!filterObj.name) return true;
-      return data.name.toLowerCase().indexOf(filterObj.name.toLowerCase()) != -1;
+      return (
+        data.name.toLowerCase().indexOf(filterObj.name.toLowerCase()) != -1
+      );
     };
     // custom sort: string date transformes to Date format for correct sorting
     this.dataSource.sortingDataAccessor = (
@@ -70,9 +73,9 @@ export class VendorTableComponent implements OnInit {
 
   applyFilter(value: string, name: string): void {
     // we create an object where keys are properties to filter and values are values from controls
-    const currentFilter = JSON.parse(this.dataSource.filter || "{}");
-    const newFilter = Object.assign({}, currentFilter, { [name]: value });//UrlSearchParams
-    this.dataSource.filter = JSON.stringify(newFilter)
+    const currentFilter = JSON.parse(this.dataSource.filter || '{}');
+    const newFilter = Object.assign({}, currentFilter, { [name]: value }); //UrlSearchParams
+    this.dataSource.filter = JSON.stringify(newFilter);
 
     //back to first page after search filtering
     if (this.dataSource.paginator) {
