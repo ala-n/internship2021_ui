@@ -13,7 +13,7 @@ import { LocationService } from '@shared/services/location.service';
 })
 export class LocationComponent implements OnInit {
   filteredOptions$!: Observable<string[]>;
-  currentCity = 'Minsk';
+  currentCity = 'Минск';
   myControl = new FormControl(this.currentCity);
   selectedOption!: string;
 
