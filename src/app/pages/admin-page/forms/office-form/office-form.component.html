@@ -1,0 +1,105 @@
+<form class="form" [formGroup]="officeForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col col_group">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Country</mat-label>
+            <input matInput formControlName="country" />
+            <mat-error
+              *ngIf="officeForm.controls['country'].hasError('required')"
+            >
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>City</mat-label>
+            <input matInput formControlName="city" />
+            <mat-error *ngIf="officeForm.controls['city'].hasError('required')">
+              City is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <div class="col col_group">
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Street</mat-label>
+            <input matInput formControlName="street" />
+            <mat-error
+              *ngIf="officeForm.controls['street'].hasError('required')"
+            >
+              Street is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <div class="row row_nowrap">
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>House</mat-label>
+                <input matInput formControlName="house" />
+                <mat-error
+                  *ngIf="officeForm.controls['house'].hasError('required')"
+                >
+                  House is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Room</mat-label>
+                <input matInput formControlName="room" />
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" />
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" />
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-slide-toggle formControlName="isActive" color="primary"
+        >Activate</mat-slide-toggle
+      >
+    </div>
+  </div>
+  <div class="actions">
+    <button
+      type="button"
+      class="button"
+      mat-raised-button
+      (click)="navigationService.goBack()"
+    >
+      Cancel
+    </button>
+    <button
+      class="button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="navigationService.goBack()"
+      [disabled]="officeForm.invalid"
+    >
+      Save
+    </button>
+  </div>
+</form>

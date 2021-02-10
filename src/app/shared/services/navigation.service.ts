@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class NavigationService {
   isSidenavOpened!: boolean;
   isHomePageOpened!: boolean;
+
+  constructor(private location: Location) {}
 
   toggleSidenav(): void {
     this.isSidenavOpened = !this.isSidenavOpened;
@@ -23,5 +26,9 @@ export class NavigationService {
 
   setHomePageVisibility(value: boolean): void {
     this.isHomePageOpened = value;
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 }

@@ -24,9 +24,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" />
-        <mat-error
-          *ngIf="vendorForm.controls['description'].hasError('required')"
-        >
+        <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
           Title is <strong>required</strong>
         </mat-error>
       </mat-form-field>
@@ -36,7 +34,13 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Description</mat-label>
-        <textarea matInput formControlName="description"></textarea>
+        <textarea
+          matInput
+          formControlName="description"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+          cdkAutosizeMaxRows="8"
+        ></textarea>
       </mat-form-field>
     </div>
   </div>
@@ -48,7 +52,12 @@
     </div>
   </div>
   <div class="actions">
-    <button type="button" class="button" mat-raised-button (click)="goBack()">
+    <button
+      type="button"
+      class="button"
+      mat-raised-button
+      (click)="navigationService.goBack()"
+    >
       Cancel
     </button>
     <button
@@ -56,7 +65,7 @@
       mat-raised-button
       color="primary"
       type="submit"
-      (click)="goBack()"
+      (click)="navigationService.goBack()"
       [disabled]="vendorForm.invalid"
     >
       Save
