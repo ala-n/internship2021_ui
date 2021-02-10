@@ -39,13 +39,13 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Valid from</mat-label>
-            <input matInput formControlName="dateStart" />
+            <input type="date" matInput formControlName="dateStart" />
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Valid to</mat-label>
-            <input matInput formControlName="dateEnd" />
+            <input type="date" matInput formControlName="dateEnd" />
             <mat-error
               *ngIf="offerForm.controls['dateEnd'].hasError('required')"
             >
