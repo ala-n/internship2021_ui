@@ -1,4 +1,13 @@
-<app-offer-item
-  *ngIf="offer$ | async as offer"
-  [offer]="offer"
-></app-offer-item>
+<div *ngIf="offer$ | async as offer" class="item">
+  <app-offer-item [offer]="offer"></app-offer-item>
+
+  <mat-tab-group
+    mat-stretch-tabs
+    class="example-stretched-tabs mat-elevation-z4 item__tab"
+  >
+    <mat-tab label="DESCRIPTION"> {{ offer.description }} </mat-tab>
+    <mat-tab label="ADDRESSES">
+      <p *ngFor="let office of offer.offices">{{ office.address }}</p>
+    </mat-tab>
+  </mat-tab-group>
+</div>
