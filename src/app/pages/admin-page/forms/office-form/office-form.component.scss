@@ -24,15 +24,18 @@
   width: 100%;
   display: flex;
   flex-flow: row wrap;
+  &_nowrap {
+    flex-wrap: nowrap;
+    .col {
+      min-width: 0;
+    }
+  }
 }
 
 .col {
   flex: 1;
-  min-width: 200px;
+  min-width: 180px;
   margin-right: 20px;
-  @media screen and (max-width: $mobile) {
-    margin: 0;
-  }
 }
 
 .col:last-child {
@@ -43,5 +46,28 @@
   margin-left: auto;
   .button {
     margin-left: 20px;
+  }
+}
+
+@media screen and (max-width: $desktop - 1) {
+  .col {
+    &_group {
+      margin: 0;
+      min-width: 390px;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile - 1) {
+  .col {
+    margin: 0;
+    min-width: 195px;
+  }
+  .row {
+    &_nowrap > .col {
+      &:last-child {
+        margin-left: 20px;
+      }
+    }
   }
 }

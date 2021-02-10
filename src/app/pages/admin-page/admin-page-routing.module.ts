@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminPageComponent } from './admin-page.component';
 import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
+import { OfficeFormComponent } from './forms/office-form/office-form.component';
 
 const routes: Routes = [
   {
@@ -23,7 +24,11 @@ const routes: Routes = [
       },
       {
         path: 'office-form',
-        component: VendorFormComponent
+        component: OfficeFormComponent
+      },
+      {
+        path: 'offices/:id',
+        component: OfficeFormComponent
       },
       {
         path: '',

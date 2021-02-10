@@ -18,6 +18,7 @@ export class OfficeFormComponent implements OnInit {
     country: [null, Validators.required],
     city: [null, Validators.required],
     street: [null, Validators.required],
+    house: [null, Validators.required],
     room: null,
     phone: null,
     email: null,
@@ -36,21 +37,23 @@ export class OfficeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      if (params['id']) {
+      const id = params['id'];
+      if (id) {
         this.vendorService
-          .getVendor(Number(params['id']))
+          .getVendor(Number(id))
           .pipe(first())
           .subscribe((vendor) => {
             this.offices = vendor.offices;
             this.officeForm.setValue({
-              id: vendor.id,
-              country: vendor.name,
-              city: vendor.title,
-              street: vendor.website,
-              room: vendor.description,
-              phone: vendor.description,
-              email: vendor.description,
-              isActive: vendor.isActive
+              id: this.offices[id].id,
+              country: this.offices[id].country,
+              city: this.offices[id].city,
+              street: this.offices[id].street,
+              house: this.offices[id].house,
+              room: this.offices[id].room,
+              phone: this.offices[id].phoneNumber,
+              email: this.offices[id].email,
+              isActive: this.offices[id].isActive
             });
           });
       }
@@ -59,14 +62,14 @@ export class OfficeFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    if (this.offices) {
-      this.vendorService.updateVendor(this.officeForm.value).subscribe();
-    } else {
-      this.vendorService
-        .addVendor(this.officeForm.value)
-        .subscribe((vendor) => {
-          this.vendors.push(vendor);
-        });
-    }
+    // if (this.offices) {
+    //   this.vendorService.updateVendor(this.officeForm.value).subscribe();
+    // } else {
+    //   this.vendorService
+    //     .addVendor(this.officeForm.value)
+    //     .subscribe((vendor) => {
+    //       this.vendors.push(vendor);
+    //     });
+    // }
   }
 }

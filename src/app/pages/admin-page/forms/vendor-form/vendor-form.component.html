@@ -24,9 +24,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput formControlName="title" />
-        <mat-error
-          *ngIf="vendorForm.controls['description'].hasError('required')"
-        >
+        <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
           Title is <strong>required</strong>
         </mat-error>
       </mat-form-field>
