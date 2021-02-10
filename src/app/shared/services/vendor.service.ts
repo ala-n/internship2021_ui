@@ -20,8 +20,21 @@ export class VendorService {
     return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
   }
 
+  getVendor(id: number): Observable<Vendor> {
+    const url = `${VendorService.VENDORS_URL}/${id}`;
+    return this.http.get<Vendor>(url);
+  }
+
   addVendor(vendor: Vendor): Observable<Vendor> {
     return this.http.post<Vendor>(
+      VendorService.VENDORS_URL,
+      vendor,
+      this.httpOptions
+    );
+  }
+
+  updateVendor(vendor: Vendor): Observable<Vendor> {
+    return this.http.put<Vendor>(
       VendorService.VENDORS_URL,
       vendor,
       this.httpOptions

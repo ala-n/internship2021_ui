@@ -1,0 +1,68 @@
+<form class="form" [formGroup]="vendorForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Vendor</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="vendorForm.controls['name'].hasError('required')">
+          Vendor name is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Web-Site</mat-label>
+        <input matInput formControlName="website" />
+        <mat-error *ngIf="vendorForm.controls['website'].hasError('required')">
+          Web-Site is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" />
+        <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
+          Title is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-slide-toggle formControlName="isActive" color="primary"
+        >Activate</mat-slide-toggle
+      >
+    </div>
+  </div>
+  <div class="actions">
+    <button
+      type="button"
+      class="button"
+      mat-raised-button
+      (click)="navigationService.goBack()"
+    >
+      Cancel
+    </button>
+    <button
+      class="button"
+      mat-raised-button
+      color="primary"
+      type="submit"
+      (click)="navigationService.goBack()"
+      [disabled]="vendorForm.invalid"
+    >
+      Save
+    </button>
+  </div>
+</form>
