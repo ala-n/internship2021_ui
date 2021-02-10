@@ -17,6 +17,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -37,7 +38,8 @@ const MaterialModules: any[] = [
   MatSlideToggleModule,
   MatSortModule,
   MatTableModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatTabsModule
 ];
 
 @NgModule({

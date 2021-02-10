@@ -1,0 +1,14 @@
+@import '/src/app/styles/variables.scss';
+
+.item {
+  padding: 1em 1em;
+
+  &__tab {
+    background-color: $background-light;
+  }
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  padding: 1em;
+  line-height: 24px;
+}

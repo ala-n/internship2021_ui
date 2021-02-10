@@ -50,7 +50,7 @@ export class OfferFormComponent implements OnInit {
               discount: offer.discount,
               description: offer.description,
               // dateStart: offer.dateStart,
-              dateEnd: offer.dateEnd,
+              dateEnd: offer.dateEnd
               // isActive: offer.isActive
             });
           });
@@ -60,14 +60,14 @@ export class OfferFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-  //   if (this.offer) {
-  //     this.offerService.updateOffer(this.offerForm.value).subscribe();
-  //   } else {
-  //     this.offerService
-  //       .addOffer(this.offerForm.value)
-  //       .subscribe((offer) => {
-  //         this.offers.push(offer);
-  //       });
-  //   }
+    //   if (this.offer) {
+    //     this.offerService.updateOffer(this.offerForm.value).subscribe();
+    //   } else {
+    //     this.offerService
+    //       .addOffer(this.offerForm.value)
+    //       .subscribe((offer) => {
+    //         this.offers.push(offer);
+    //       });
+    //   }
   }
 }
