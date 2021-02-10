@@ -5,7 +5,9 @@
     mat-stretch-tabs
     class="example-stretched-tabs mat-elevation-z4 item__tab"
   >
-    <mat-tab label="DESCRIPTION"> {{ offer.description }} </mat-tab>
+    <mat-tab label="DESCRIPTION">
+      {{ offer.description || 'Sorry, this offer is without description' }}
+    </mat-tab>
     <mat-tab label="ADDRESSES">
       <p *ngFor="let office of offer.offices">{{ office.address }}</p>
     </mat-tab>
