@@ -8,18 +8,32 @@ export default [
     website: 'marsel.by',
     offices: [
       {
+        id: 1,
         x: 53.950248766494305,
         y: 27.678503384991703,
         address: 'ул. Шафарнянская, д. 3',
         phoneNumber: '+ 375 29 668 16 97',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Шафарнянская',
+        house: '3',
+        room: '',
+        email: 'marsel1@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 53.90630545040514,
         y: 27.579132898483202,
         address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
         phoneNumber: '+ 375 29 634 67 74',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Захарова',
+        house: '23',
+        room: '',
+        email: 'marsel2@gmail.com',
+        isActive: true
       }
     ],
     updated: '05.02.2021',
@@ -35,18 +49,32 @@ export default [
     website: 'pizzachefarts.by',
     offices: [
       {
+        id: 1,
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '84',
+        room: '',
+        email: 'sushi2@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 53.85829633426384,
         y: 27.43278622731758,
         address: 'ул. Слободская, д. 27',
         phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Слободская',
+        house: '27',
+        room: '',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ],
     updated: '04.02.2021',
@@ -64,32 +92,60 @@ export default [
     website: 'pizzamania.by',
     offices: [
       {
+        id: 1,
         x: 53.86553289876855,
         y: 27.45302363896044,
         address: 'ул. Рафиева, д. 44',
         phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Рафиева',
+        house: '44',
+        room: '',
+        email: 'pizza1@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 53.883091927066054,
         y: 27.567344627318217,
         address: 'ул. Маяковского, д. 10',
         phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Маяковского',
+        house: '10',
+        room: '',
+        email: 'pizza2@gmail.com',
+        isActive: true
       },
       {
+        id: 3,
         x: 53.86734233325647,
         y: 27.65028647149643,
         address: 'ул. Центральная, д. 9',
         phoneNumber: '+375 44 553-40-00',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Центральная',
+        house: '9',
+        room: '',
+        email: 'pizza3@gmail.com',
+        isActive: true
       },
       {
+        id: 4,
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '23к1',
+        room: '',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.02.2021',
@@ -104,11 +160,18 @@ export default [
     website: 'instagram.com/kardash.by/',
     offices: [
       {
+        id: 1,
         x: 53.83947974668578,
         y: 27.640475169645576,
         address: 'ул. Голодеда, д. 15',
         phoneNumber: '+ 375 25 788 41 32',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Голодеда',
+        house: '15',
+        room: '',
+        email: 'luxe@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.01.2021',
@@ -122,11 +185,18 @@ export default [
     website: 'focsport.by',
     offices: [
       {
+        id: 1,
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '23к1',
+        room: '',
+        email: 'fok@gmail.com',
+        isActive: true
       }
     ],
     updated: '09.12.2020',
@@ -143,11 +213,18 @@ export default [
     website: 'yetideti.by',
     offices: [
       {
+        id: 1,
         x: 53.65034593967492,
         y: 23.85468398498308,
         address: 'пр-т Янки Купалы, д. 87',
         phoneNumber: '+ 375 29 120 68 66',
-        city: 'Гродно'
+        country: 'Беларусь',
+        city: 'Гродно',
+        street: 'Янки Купалы',
+        house: '87',
+        room: '',
+        email: 'yetideti@gmail.com',
+        isActive: true
       }
     ],
     updated: '27.11.2020',
@@ -161,11 +238,18 @@ export default [
     website: 'rockplay.by',
     offices: [
       {
+        id: 1,
         x: 53.684909765450755,
         y: 23.845177013681916,
         address: 'ул. Буденного, д. 54/1',
         phoneNumber: '+ 375 29 232 99 23',
-        city: 'Гродно'
+        country: 'Беларусь',
+        city: 'Гродно',
+        street: 'ул.Буденного',
+        house: '54/1',
+        room: '',
+        email: 'rock@gmail.com',
+        isActive: true
       }
     ],
     updated: '04.01.2021',
@@ -179,11 +263,18 @@ export default [
     website: 'visagist.com.ua',
     offices: [
       {
+        id: 1,
         x: 50.42837142443786,
         y: 30.517745728722034,
         address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
         phoneNumber: '+38 044 223-77-60',
-        city: 'Киев'
+        country: 'Украина',
+        city: 'Киев',
+        street: 'ул.Ивана Федорова',
+        house: '6',
+        room: '2',
+        email: 'ira.les@gmail.com',
+        isActive: true
       }
     ],
     updated: '01.01.2021',
@@ -197,11 +288,18 @@ export default [
     website: 'fashion-wear.com.ua',
     offices: [
       {
+        id: 1,
         x: 50.44025486038732,
         y: 30.52230314847687,
         address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
         phoneNumber: '+38 098 983-07-77',
-        city: 'Киев'
+        country: 'Украина',
+        city: 'Киве',
+        street: 'ул.Рогнеденская',
+        house: '3',
+        room: '4',
+        email: 'fashion-wear@gmail.com',
+        isActive: true
       }
     ],
     updated: '21.12.2020',
@@ -217,21 +315,35 @@ export default [
     website: '', // without website
     offices: [
       {
+        id: 1,
         x: 56.781522754305485,
         y: 60.61757015808883,
         address: 'Монтёрская улица, д.10а',
         phoneNumber: '+7 343 385-07-00',
-        city: 'Екатеринбург'
+        country: 'Россия',
+        city: 'Екатеринбург',
+        street: 'ул. Монтёрская',
+        house: '10а',
+        room: '',
+        email: 'wheel1@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 56.84222661082884,
         y: 60.66575335424758,
         address: 'ул. Малышева, 145а',
         phoneNumber: '+7 343 383-42-43',
-        city: 'Екатеринбург'
+        country: 'Россия',
+        city: 'Екатеринбург',
+        street: 'ул. Малышева',
+        house: '145а',
+        room: '',
+        email: 'wheel2@gmail.com',
+        isActive: false
       }
     ],
     updated: '04.12.2020',
-    isActive: true
+    isActive: false
   }
 ];

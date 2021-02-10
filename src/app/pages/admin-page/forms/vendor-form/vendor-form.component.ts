@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
   selector: 'app-vendor-form',
@@ -27,8 +27,8 @@ export class VendorFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private vendorService: VendorService,
-    private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public navigationService: NavigationService
   ) {}
 
   ngOnInit(): void {
@@ -63,9 +63,5 @@ export class VendorFormComponent implements OnInit {
           this.vendors.push(vendor);
         });
     }
-  }
-
-  goBack(): void {
-    this.location.back();
   }
 }
