@@ -185,7 +185,7 @@ export default [
     promocode: 'Luxe25',
     discount: 'от 10 до 25%',
     dateEnd: '28.04.2021',
-    vendorName: 'Минск',
+    vendorName: 'Luxe',
     numberOfUses: 3,
     numberOfViews: 90,
     city: 'Минск',
