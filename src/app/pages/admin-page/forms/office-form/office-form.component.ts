@@ -21,7 +21,7 @@ export class OfficeFormComponent implements OnInit {
     house: [null, Validators.required],
     room: null,
     phone: null,
-    email: null,
+    email: [null, Validators.email],
     isActive: null
   });
 
