@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -10,14 +10,15 @@ import { Offer } from '../models/offer';
 export class OfferService {
   static OFFERS_URL = 'api/offers';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
   constructor(private http: HttpClient) {}
 
-  getOffers(): Observable<Offer[]> {
-    return this.http.get<Offer[]>(OfferService.OFFERS_URL);
+  getOffers(params: { city: string }): Observable<Offer[]> {
+    if (params) {
+      return this.http.get<Offer[]>(
+        `${OfferService.OFFERS_URL}/?city=${params.city}`
+      );
+    }
+    return this.http.get<Offer[]>(`${OfferService.OFFERS_URL}`);
   }
 
   getOfferById(id: number): Observable<Offer> {
