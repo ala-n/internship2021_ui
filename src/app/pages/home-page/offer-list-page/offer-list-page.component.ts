@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { Offer } from '@shared/models/offer';
-import { OfferService } from '@shared/services/offer.service';
 import { Observable } from 'rxjs';
+
+import { Offer } from '@shared/models/offer';
+import { MapService } from '@shared/services/map.service';
+import { OfferService } from '@shared/services/offer.service';
 
 @Component({
   selector: 'app-offer-list-page',
@@ -10,12 +12,14 @@ import { Observable } from 'rxjs';
 })
 export class OfferListPageComponent {
   offers$!: Observable<Offer[]>;
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private mapService: MapService
+  ) {}
 
-  getOffers(): void {
-    this.offers$ = this.offerService.getOffers();
-  }
   ngOnInit(): void {
-    this.getOffers();
+    this.mapService.city$.subscribe((city) => {
+      this.offers$ = this.offerService.getOffers({ city });
+    });
   }
 }
