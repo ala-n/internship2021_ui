@@ -36,7 +36,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '05.02.2021',
+    updated: '2021-02-05',
     isActive: true
   },
   {
@@ -77,7 +77,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '04.02.2021',
+    updated: '2021-02-04',
     isActive: true
   },
   {
@@ -148,7 +148,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '01.02.2021',
+    updated: '2021-02-01',
     isActive: true
   },
   {
@@ -174,7 +174,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '01.01.2021',
+    updated: '2021-01-01',
     isActive: true
   },
   {
@@ -199,7 +199,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '09.12.2020',
+    updated: '2020-12-09',
     isActive: true
   },
   {
@@ -227,7 +227,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '27.11.2020',
+    updated: '2020-11-27',
     isActive: true
   },
   {
@@ -252,7 +252,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '04.01.2021',
+    updated: '2021-01-04',
     isActive: true
   },
   {
@@ -277,7 +277,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '01.01.2021',
+    updated: '2021-01-01',
     isActive: true
   },
   {
@@ -302,7 +302,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '21.12.2020',
+    updated: '2020-12-21',
     isActive: true
   },
   {
@@ -343,7 +343,7 @@ export default [
         isActive: false
       }
     ],
-    updated: '04.12.2020',
+    updated: '2020-12-04',
     isActive: false
   }
 ];

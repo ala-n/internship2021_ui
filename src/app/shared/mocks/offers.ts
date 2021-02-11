@@ -7,12 +7,13 @@ export default [
     Стоимость массажей: от 18 руб. от 30 руб. Стоимость и виды массажа смотрите ниже. Услуги расположены по возрастанию цены (от дешевых к дорогим)`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-minsk-skidka-marsel-1.jpg',
-    dateStart: '01.02.2021',
-    dateEnd: '01.04.2021',
+    dateStart: '2021-02-01',
+    dateEnd: '2021-04-01',
     discount: 'до 55%',
     vendorName: 'Марсель',
     numberOfUses: 21,
     numberOfViews: 215,
+    updated: '2021-02-01',
     photoGallery: [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
@@ -71,12 +72,13 @@ export default [
       — Скидка 70% на целый день посещения аквапарка и банного комплекса для взрослых в выходные дни (225 руб. + доплата 1570 руб. вместо 3590 руб.)`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609413591_ChefArts_No_Logo_1528x972.jpg',
-    dateStart: '01.01.2021',
-    dateEnd: '05.05.2021',
+    dateStart: '2021-01-01',
+    dateEnd: '2021-05-05',
     discount: 'до 70%',
     vendorName: 'SushiChefArts',
     numberOfUses: 100,
     numberOfViews: 119,
+    updated: '2021-02-05',
     city: 'Минск',
     offices: [
       {
@@ -113,12 +115,13 @@ export default [
     - Возможен заказ пицц из 2-х половинок`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-minsk-pizzamania-kar-9.jpg',
-    dateStart: '01.02.2020',
-    dateEnd: '31.03.2021',
+    dateStart: '2020-02-01',
+    dateEnd: '2021-03-31',
     discount: '40%',
     vendorName: 'PizzaMania',
     numberOfUses: 139,
     numberOfViews: 212,
+    updated: '2021-01-01',
     photoGallery: [
       'https://pizzamania.by/admin/uploads/items/260.png',
       'https://pizzamania.by/admin/uploads/items/236.png',
@@ -205,11 +208,12 @@ export default [
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/glav2.jpg',
     promocode: 'UYT783I',
     discount: '60%',
-    dateStart: '01.01.2021',
-    dateEnd: '09.06.2021',
+    dateStart: '2021-01-01',
+    dateEnd: '2021-06-09',
     vendorName: 'SushiChefArts',
     numberOfUses: 68,
     numberOfViews: 69,
+    updated: '2021-02-07',
     city: 'Минск',
     offices: [
       {
@@ -249,11 +253,12 @@ export default [
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg',
     promocode: 'Luxe25',
     discount: 'от 10 до 25%',
-    dateStart: '01.03.2021',
-    dateEnd: '28.04.2021',
+    dateStart: '2021-03-01',
+    dateEnd: '2021-04-28',
     vendorName: 'Luxe',
     numberOfUses: 3,
     numberOfViews: 90,
+    updated: '2021-01-01',
     city: 'Минск',
     offices: [
       {
@@ -279,11 +284,12 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg',
     discount: '35%',
-    dateStart: '01.10.2020',
-    dateEnd: '29.02.2021',
+    dateStart: '2020-10-01',
+    dateEnd: '2021-09-30',
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 78,
     numberOfViews: 292,
+    updated: '2021-02-10',
     city: 'Минск',
     offices: [
       {
@@ -317,11 +323,12 @@ export default [
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/otzyvy-banya-bochka.jpg',
     promocode: 'kiss1703',
     discount: '65%',
-    dateStart: '11.01.2021',
-    dateEnd: '17.03.2021',
+    dateStart: '2021-11-01',
+    dateEnd: '2021-03-17',
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 0,
     numberOfViews: 5,
+    updated: '2021-01-11',
     city: 'Минск',
     offices: [
       {
@@ -352,11 +359,12 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w500_324/default/1009921/1588077039_7929355.jpg',
     discount: '65%',
-    dateStart: '15.12.2020',
-    dateEnd: '17.03.2021',
+    dateStart: '2020-12-15',
+    dateEnd: '2021-03-17',
     vendorName: 'ФОЦ им. Машерова',
     numberOfUses: 431,
     numberOfViews: 990,
+    updated: '2021-02-21',
     city: 'Минск',
     offices: [
       {
@@ -382,11 +390,12 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w250_162/default/1009921/1600269916_1600269911_Screenshot_18.jpg',
     discount: 'до 1000 рублей',
-    dateStart: '05.02.2021',
-    dateEnd: '01.04.2021',
+    dateStart: '2021-02-05',
+    dateEnd: '2021-04-01',
     vendorName: '«Йети и дети»',
     numberOfUses: 40,
     numberOfViews: 56,
+    updated: '2021-03-01',
     city: 'Гродно',
     offices: [
       {
@@ -412,11 +421,12 @@ export default [
     photoUrl:
       'https://grodno.slivki.by/znijki-media/w522_322/default/1009921/rocktz11.jpg',
     discount: '1 час бесплатно',
-    dateStart: '01.03.2021',
-    dateEnd: '13.04.2022',
+    dateStart: '2021-03-01',
+    dateEnd: '2022-03-31',
     vendorName: 'Rockplay',
     numberOfUses: 88,
     numberOfViews: 103,
+    updated: '2021-02-04',
     city: 'Гродно',
     offices: [
       {
@@ -442,11 +452,12 @@ export default [
     photoUrl:
       'https://kupikupon.com.ua/system/deals/logos/152269/deal_615x301/8484_01.jpg?1600357423',
     discount: 'до 70%',
-    dateStart: '02.01.2021',
-    dateEnd: '31.04.2021',
+    dateStart: '2021-01-02',
+    dateEnd: '2021-04-30',
     vendorName: 'Студия Ирины Лесовой',
     numberOfUses: 2,
     numberOfViews: 300,
+    updated: '2021-02-11',
     city: 'Киев',
     offices: [
       {
@@ -473,11 +484,12 @@ export default [
       'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464',
     promocode: 'WEAR3=2',
     discount: '3 по цене 2',
-    dateStart: '01.02.2021',
-    dateEnd: '01.05.2021',
+    dateStart: '2021-02-01',
+    dateEnd: '2021-05-01',
     vendorName: 'Fashion Wear Milano',
     numberOfUses: 32,
     numberOfViews: 56,
+    updated: '2021-02-22',
     city: 'Киев',
     offices: [
       {
@@ -502,12 +514,13 @@ export default [
     photoUrl:
       'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg',
     discount: '-50%',
-    dateStart: '01.04.2021',
-    dateEnd: '01.05.2021',
+    dateStart: '2021-04-01',
+    dateEnd: '2021-05-01',
     vendorName: 'Матерый шиномонтаж',
     numberOfUses: 49,
     numberOfViews: 62,
     city: 'Екатеринбург',
+    updated: '2021-02-05',
     offices: [
       {
         x: 56.781522754305485,
