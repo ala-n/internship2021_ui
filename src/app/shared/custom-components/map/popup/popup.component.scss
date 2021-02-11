@@ -31,7 +31,7 @@
 .leaflet-popup-content {
   width: 240px;
   margin: 0;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: $tablet) {
     width: 200px;
   }
 }

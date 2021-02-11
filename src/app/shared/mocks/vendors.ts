@@ -15,8 +15,8 @@ export default [
         phoneNumber: '+ 375 29 668 16 97',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Шафарнянская',
-        house: '3',
+        street: 'ул. Шафарнянская',
+        house: 'д. 3',
         room: '',
         email: 'marsel1@gmail.com',
         isActive: true
@@ -29,14 +29,14 @@ export default [
         phoneNumber: '+ 375 29 634 67 74',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Захарова',
-        house: '23',
+        street: 'ул. Захарова',
+        house: 'д. 23',
         room: '',
         email: 'marsel2@gmail.com',
         isActive: true
       }
     ],
-    updated: '05.02.2021',
+    updated: '2021-02-05',
     isActive: true
   },
   {
@@ -56,8 +56,8 @@ export default [
         phoneNumber: '+375 44 771-51-51',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Победителей',
-        house: '84',
+        street: 'пр. Победителей',
+        house: 'д. 84',
         room: '',
         email: 'sushi2@gmail.com',
         isActive: true
@@ -70,14 +70,14 @@ export default [
         phoneNumber: '+375 44 771-51-51',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Слободская',
-        house: '27',
+        street: 'ул. Слободская',
+        house: 'д. 27',
         room: '',
         email: 'sushi1@gmail.com',
         isActive: true
       }
     ],
-    updated: '04.02.2021',
+    updated: '2021-02-04',
     isActive: true
   },
   {
@@ -99,8 +99,8 @@ export default [
         phoneNumber: '+375 17 375-58-58',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Рафиева',
-        house: '44',
+        street: 'ул. Рафиева',
+        house: 'д. 44',
         room: '',
         email: 'pizza1@gmail.com',
         isActive: true
@@ -113,8 +113,8 @@ export default [
         phoneNumber: '+375 17 375-58-58',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Маяковского',
-        house: '10',
+        street: 'ул. Маяковского',
+        house: 'д. 10',
         room: '',
         email: 'pizza2@gmail.com',
         isActive: true
@@ -127,8 +127,8 @@ export default [
         phoneNumber: '+375 44 553-40-00',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Центральная',
-        house: '9',
+        street: 'ул. Центральная',
+        house: 'д. 9',
         room: '',
         email: 'pizza3@gmail.com',
         isActive: true
@@ -141,14 +141,14 @@ export default [
         phoneNumber: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Победителей',
-        house: '23к1',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
         room: '',
         email: 'sushi1@gmail.com',
         isActive: true
       }
     ],
-    updated: '01.02.2021',
+    updated: '2021-02-01',
     isActive: true
   },
   {
@@ -167,14 +167,14 @@ export default [
         phoneNumber: '+ 375 25 788 41 32',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Голодеда',
-        house: '15',
+        street: 'ул. Голодеда',
+        house: 'д. 15',
         room: '',
         email: 'luxe@gmail.com',
         isActive: true
       }
     ],
-    updated: '01.01.2021',
+    updated: '2021-01-01',
     isActive: true
   },
   {
@@ -192,14 +192,14 @@ export default [
         phoneNumber: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Минск',
-        street: 'Победителей',
-        house: '23к1',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
         room: '',
         email: 'fok@gmail.com',
         isActive: true
       }
     ],
-    updated: '09.12.2020',
+    updated: '2020-12-09',
     isActive: true
   },
   {
@@ -220,14 +220,14 @@ export default [
         phoneNumber: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Гродно',
-        street: 'Янки Купалы',
-        house: '87',
+        street: 'пр. Янки Купалы',
+        house: 'д. 87',
         room: '',
         email: 'yetideti@gmail.com',
         isActive: true
       }
     ],
-    updated: '27.11.2020',
+    updated: '2020-11-27',
     isActive: true
   },
   {
@@ -246,13 +246,13 @@ export default [
         country: 'Беларусь',
         city: 'Гродно',
         street: 'ул.Буденного',
-        house: '54/1',
+        house: 'д. 54/1',
         room: '',
         email: 'rock@gmail.com',
         isActive: true
       }
     ],
-    updated: '04.01.2021',
+    updated: '2021-01-04',
     isActive: true
   },
   {
@@ -271,13 +271,13 @@ export default [
         country: 'Украина',
         city: 'Киев',
         street: 'ул.Ивана Федорова',
-        house: '6',
+        house: 'д. 6',
         room: '2',
         email: 'ira.les@gmail.com',
         isActive: true
       }
     ],
-    updated: '01.01.2021',
+    updated: '2021-01-01',
     isActive: true
   },
   {
@@ -296,13 +296,13 @@ export default [
         country: 'Украина',
         city: 'Киве',
         street: 'ул.Рогнеденская',
-        house: '3',
+        house: 'д. 3',
         room: '4',
         email: 'fashion-wear@gmail.com',
         isActive: true
       }
     ],
-    updated: '21.12.2020',
+    updated: '2020-12-21',
     isActive: true
   },
   {
@@ -323,7 +323,7 @@ export default [
         country: 'Россия',
         city: 'Екатеринбург',
         street: 'ул. Монтёрская',
-        house: '10а',
+        house: 'д. 10а',
         room: '',
         email: 'wheel1@gmail.com',
         isActive: true
@@ -337,13 +337,13 @@ export default [
         country: 'Россия',
         city: 'Екатеринбург',
         street: 'ул. Малышева',
-        house: '145а',
+        house: 'д. 145а',
         room: '',
         email: 'wheel2@gmail.com',
         isActive: false
       }
     ],
-    updated: '04.12.2020',
+    updated: '2020-12-04',
     isActive: false
   }
 ];

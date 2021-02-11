@@ -30,6 +30,10 @@
   flex: 1;
   min-width: 200px;
   margin-right: 20px;
+
+  @media screen and (max-width: $mobile) {
+    margin: 0;
+  }
 }
 
 .col:last-child {
@@ -40,11 +44,5 @@
   margin-left: auto;
   .button {
     margin-left: 20px;
-  }
-}
-
-@media screen and (max-width: $mobile - 1) {
-  .col {
-    margin: 0;
   }
 }
