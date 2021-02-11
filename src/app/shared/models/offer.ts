@@ -15,10 +15,11 @@ export interface OfferBase {
 export interface Offer extends OfferBase {
   description: string;
   promocode?: string;
+  dateStart: string;
   dateEnd: string;
   numberOfUses: number;
   numberOfViews: number;
   photoGallery?: string[];
-  // isActive: boolean; will need it later
-  // updateBy: string; will need it later
+  isActive: boolean;
+  updated: string;
 }
