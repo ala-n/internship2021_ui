@@ -5,6 +5,7 @@ import { VendorTableComponent } from './tables/vendor-table/vendor-table.compone
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
 import { OfficeFormComponent } from './forms/office-form/office-form.component';
 import { OfferFormComponent } from './forms/offer-form/offer-form.component';
+import { OfferTableComponent } from './tables/offer-table/offer-table.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'vendor-form',
         component: VendorFormComponent
+      },
+      {
+        path: 'offers',
+        component: OfferTableComponent
       },
       {
         path: 'office-form',
