@@ -14,6 +14,7 @@ export default [
     numberOfUses: 21,
     numberOfViews: 215,
     updated: '2021-02-01',
+    isActive: true,
     photoGallery: [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
@@ -79,6 +80,7 @@ export default [
     numberOfUses: 100,
     numberOfViews: 119,
     updated: '2021-02-05',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
@@ -122,6 +124,7 @@ export default [
     numberOfUses: 139,
     numberOfViews: 212,
     updated: '2021-01-01',
+    isActive: true,
     photoGallery: [
       'https://pizzamania.by/admin/uploads/items/260.png',
       'https://pizzamania.by/admin/uploads/items/236.png',
@@ -214,6 +217,7 @@ export default [
     numberOfUses: 68,
     numberOfViews: 69,
     updated: '2021-02-07',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
@@ -259,6 +263,7 @@ export default [
     numberOfUses: 3,
     numberOfViews: 90,
     updated: '2021-01-01',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
@@ -290,6 +295,7 @@ export default [
     numberOfUses: 78,
     numberOfViews: 292,
     updated: '2021-02-10',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
@@ -329,6 +335,7 @@ export default [
     numberOfUses: 0,
     numberOfViews: 5,
     updated: '2021-01-11',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
@@ -365,6 +372,7 @@ export default [
     numberOfUses: 431,
     numberOfViews: 990,
     updated: '2021-02-21',
+    isActive: false,
     city: 'Минск',
     offices: [
       {
@@ -396,6 +404,7 @@ export default [
     numberOfUses: 40,
     numberOfViews: 56,
     updated: '2021-03-01',
+    isActive: true,
     city: 'Гродно',
     offices: [
       {
@@ -427,6 +436,7 @@ export default [
     numberOfUses: 88,
     numberOfViews: 103,
     updated: '2021-02-04',
+    isActive: true,
     city: 'Гродно',
     offices: [
       {
@@ -458,6 +468,7 @@ export default [
     numberOfUses: 2,
     numberOfViews: 300,
     updated: '2021-02-11',
+    isActive: true,
     city: 'Киев',
     offices: [
       {
@@ -490,6 +501,7 @@ export default [
     numberOfUses: 32,
     numberOfViews: 56,
     updated: '2021-02-22',
+    isActive: false,
     city: 'Киев',
     offices: [
       {
@@ -519,8 +531,9 @@ export default [
     vendorName: 'Матерый шиномонтаж',
     numberOfUses: 49,
     numberOfViews: 62,
-    city: 'Екатеринбург',
     updated: '2021-02-05',
+    isActive: true,
+    city: 'Екатеринбург',
     offices: [
       {
         x: 56.781522754305485,
