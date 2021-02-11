@@ -8,9 +8,7 @@
     />
     <mat-card-title-group class="offer-card-header">
       <mat-card-title class="offer-card-header__title">{{
-        offer.title.length > 120
-          ? (offer.title | slice: 0:120) + '...'
-          : offer.title
+        offer.title
       }}</mat-card-title>
       <mat-card-subtitle class="offer-card-header__subtitle">{{
         offer.vendorName

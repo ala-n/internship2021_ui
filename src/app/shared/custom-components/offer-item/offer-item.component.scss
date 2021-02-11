@@ -64,6 +64,12 @@
   &__title {
     font-size: 16px;
     line-height: 24px;
+
+    // Limiting text to 2 lines
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
   }
 
   &__subtitle {
