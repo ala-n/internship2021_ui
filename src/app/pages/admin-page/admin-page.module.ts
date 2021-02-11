@@ -11,6 +11,8 @@ import { VendorTableComponent } from './tables/vendor-table/vendor-table.compone
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
 import { OfficeFormComponent } from './forms/office-form/office-form.component';
 import { OfferFormComponent } from './forms/offer-form/offer-form.component';
+import { OfferTableComponent } from './tables/offer-table/offer-table.component';
+import { TruncatePipe } from '@shared/pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { OfferFormComponent } from './forms/offer-form/offer-form.component';
     AdminSidenavComponent,
     VendorTableComponent,
     OfficeFormComponent,
-    OfferFormComponent
+    OfferFormComponent,
+    OfferTableComponent,
+    TruncatePipe
   ],
   imports: [CommonModule, AdminPageRoutingModule, LayoutModule, SharedModule]
 })
