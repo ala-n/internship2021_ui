@@ -43,8 +43,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
       if (!filter) return true;
-      // if (filterObj.isActive && String(data.isActive) !== filterObj.isActive)
-      //   return false;
+      if (filterObj.isActive && String(data.isActive) !== filterObj.isActive)
+        return false;
       if (!filterObj.title) return true;
       return (
         data.title.toLowerCase().indexOf(filterObj.title.toLowerCase()) != -1
@@ -58,6 +58,10 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
       switch (property) {
         case 'validTo':
           return new Date(item.dateEnd);
+        case 'validFrom':
+          return new Date(item.dateStart);
+        case 'updated':
+          return new Date(item.updated);
         default:
           return item[property];
       }

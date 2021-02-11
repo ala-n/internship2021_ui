@@ -30,10 +30,17 @@
   &__header,
   &__footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0 1em;
     background-color: #fff;
+  }
+
+  &__header {
+    justify-content: space-between;
+    @media screen and (max-width: $mobile) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
 
   &__spinner {
@@ -49,21 +56,13 @@
   }
 
   &__paginator {
+    margin-left: auto;
     &::ng-deep .mat-paginator-page-size-label,
     &::ng-deep .mat-paginator-range-label {
       margin: 0;
     }
-  }
-}
 
-@media screen and (max-width: $mobile) {
-  .table {
-    &__header {
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    &__paginator {
+    @media screen and (max-width: $mobile) {
       &::ng-deep .mat-paginator-container {
         justify-content: flex-start;
       }

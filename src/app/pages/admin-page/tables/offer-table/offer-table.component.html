@@ -57,7 +57,9 @@
 
       <ng-container matColumnDef="validFrom">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
-        <td mat-cell *matCellDef="let offer">11.09.2021</td>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.dateStart | date: 'dd.MM.yyyy' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="validTo">
@@ -69,7 +71,9 @@
 
       <ng-container matColumnDef="updated">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
-        <td mat-cell *matCellDef="let offer">11.09.2021</td>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.updated | date: 'dd.MM.yyyy' }}
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
