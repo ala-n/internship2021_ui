@@ -42,6 +42,18 @@ const routes: Routes = [
         component: OfficeTableComponent
       },
       {
+        path: 'vendors/:id/offers',
+        component: OfferTableComponent
+      },
+      {
+        path: 'vendors/:id/offers/form',
+        component: OfferFormComponent
+      },
+      {
+        path: 'vendors/:id/offers/:offerId',
+        component: OfferFormComponent
+      },
+      {
         path: 'vendors/:id/offices/form',
         component: OfficeFormComponent
       },

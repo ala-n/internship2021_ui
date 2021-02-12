@@ -2,9 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-table',
@@ -29,16 +30,42 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     'updated'
   ];
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.offerService
-      .getOffers()
-      .pipe(first())
-      .subscribe((offers: Offer[]) => {
-        this.isLoading = false;
-        this.dataSource.data = offers as Offer[];
-      });
+    this.isLoading = true;
+    console.log(this.isLoading);
+    this.route.params.subscribe((params) => {
+      const vendorId = Number(params['id']);
+      if (vendorId) {
+        this.offerService
+          .getOffers()
+          .pipe(
+            map((offers) =>
+              offers.filter((offer: Offer) => {
+                return offer.vendorId === vendorId;
+              })
+            )
+          )
+          .subscribe((offers: Offer[]) => {
+            this.isLoading = false;
+            console.log(this.isLoading);
+            this.dataSource.data = offers as Offer[];
+          });
+      } else {
+        this.offerService
+          .getOffers()
+          .pipe(first())
+          .subscribe((offers: Offer[]) => {
+            this.isLoading = false;
+            console.log(this.isLoading);
+            this.dataSource.data = offers as Offer[];
+          });
+      }
+    });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
