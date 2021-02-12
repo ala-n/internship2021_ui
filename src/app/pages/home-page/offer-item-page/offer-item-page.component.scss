@@ -1,14 +1,31 @@
 @import '/src/app/styles/variables.scss';
 
-.item {
-  padding: 1em 1em;
+::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {
+  color: $background-light;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba($color: $background-tabs, $alpha: 0.8);
 
-  &__tab {
-    background-color: $background-light;
+  &.mat-tab-label-active {
+    background-color: rgba($color: $background-tabs, $alpha: 0.9);
+    opacity: 0.9;
   }
 }
 
 ::ng-deep .mat-tab-body-wrapper {
-  padding: 1em;
+  padding: 1.5em 2em;
   line-height: 24px;
+
+  @media screen and (max-width: $mobile) {
+    padding: 1em 1em;
+  }
+}
+
+.item {
+  padding: 1em 1em;
+
+  &__tab {
+    margin-top: 1em;
+    background-color: $background-light;
+    border-radius: 10px;
+  }
 }
