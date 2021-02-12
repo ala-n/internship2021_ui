@@ -1,44 +1,60 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import { User } from '../models/user';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+import { AuthService } from './auth.service';
 
 @Injectable({
     providedIn: 'root'
   })
 export class HttpService {
 
-    basePath = 'http://localhost:3000/postuser';
+  constructor(private http: HttpClient, private auth: AuthService){ }
 
-    constructor(private http: HttpClient){ }
+  // Http Options
+  get httpOptions () {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.token 
+    })
+    return {headers}
+  };
 
-    // Http Options
-    httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json'
-      })
-    };
+  get token() {
+    return sessionStorage.getItem('access_token'); // session storage
+  }
 
-    postLogin(data: Object): Observable<User>{
-        return this.http.post<User>(this.basePath, data, this.httpOptions); 
+  get(baseURL: string): any { 
+    return this.http.get(baseURL, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+  post(baseURL: string, data: Object): any {
+    return this.http.post(baseURL, data, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  } 
+  
+  put(baseURL: string, data: Object): any { 
+    return this.http.put(baseURL, data, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  } 
+
+  delete(baseURL: string): any{
+    return this.http.delete(baseURL, this.httpOptions).pipe(
+      catchError(this.errorHandler)
+    );
+  } 
+
+  errorHandler(error: HttpErrorResponse): any{
+    if(error.status === 401 || error.status === 403){
+      this.auth.logout();
     }
-    errorHandler(error: Response){
-        if(error.status === 401 || error.status === 403){
-          this.logout();
-        }
-      }
+    return throwError(
+      'Something bad happened; please try again later.');
+  }
 
-    // get(){ // + assing + error handler
-
-    // }
-    // post(){
-
-    // }
-    // put(){
-
-    // }
-    // delete(){
-
-    // }
 }

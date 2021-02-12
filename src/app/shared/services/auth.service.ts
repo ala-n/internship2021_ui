@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Token } from '../models/token';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
-import { HttpService} from './http.service';
-import { LoginData} from '@shared/models/login_data'
+import { LoginData} from '@shared/models/login_data';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +13,20 @@ import { LoginData} from '@shared/models/login_data'
 export class AuthService {
 
   // API path
-  basePath = 'https://my-site.com/server/';
-  HttpService: any;
+  URL = 'http://localhost:3000/postuser';
 
   constructor(
     private router: Router,
-    private httpService: HttpService
+    private http: HttpClient,
+    private baseHttp: HttpService
   ) {}
 
-  
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  };
+
 
   // Handle API errors
   handleError(error: HttpErrorResponse) {
@@ -41,14 +45,9 @@ export class AuthService {
       'Something bad happened; please try again later.');
   }
 
-
-  // Verify user credentials on server to get token
   loginForm(data: LoginData): Observable<Token> {
-    return this.httpService.postLogin(data)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
+    return this.baseHttp
+      .post<Token>(this.URL, data);
   }
 
   // After login save token and other values(if any) in localStorage
@@ -60,7 +59,7 @@ export class AuthService {
 
   // Checking if token is set
   isLoggedIn() {
-    return localStorage.getItem('access_token') != null; // session storage
+    return sessionStorage.getItem('access_token') != null; // session storage
   }
 
   // After clearing sessionStorage redirect to login screen
@@ -69,15 +68,4 @@ export class AuthService {
     this.router.navigate(['/login']);
   }
 
-
-  // Get data from server for Dashboard
-  // getData(data: Object): Observable<User> {
-  //   return this.http
-  //     .post<User>(this.basePath, data, this.httpOptions) 
-  //     .pipe(
-  //       retry(2),
-  //       catchError(this.handleError)
-  //     );
-  // }
- 
 }

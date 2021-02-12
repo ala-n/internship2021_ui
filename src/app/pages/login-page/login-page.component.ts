@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '@shared/models/user';
 import { AuthService } from '@shared/services/auth.service';
 import { LoginData} from '@shared/models/login_data';
+import { Token } from '@shared/models/token';
 
 
 @Component({
@@ -14,7 +15,6 @@ export class LogInComponent {
   //   event.preventDefault();
   // }
   model: LoginData = {};
-
   constructor(
     private authService: AuthService
   ) {}
