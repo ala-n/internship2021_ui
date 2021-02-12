@@ -33,9 +33,9 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.offerService
-      .getOffers() //TODO how to check if unsubscribed? .tapone() find out
+      .getOffers()
       .pipe(first())
-      .subscribe((offers) => {
+      .subscribe((offers: Offer[]) => {
         this.isLoading = false;
         this.dataSource.data = offers as Offer[];
       });
@@ -50,11 +50,11 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
         data.title.toLowerCase().indexOf(filterObj.title.toLowerCase()) != -1
       );
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.dataSource.sortingDataAccessor = (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       item: any,
       property: string
-    ): any => {
+    ) => {
       switch (property) {
         case 'validTo':
           return new Date(item.dateEnd);

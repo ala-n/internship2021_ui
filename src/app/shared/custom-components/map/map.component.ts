@@ -97,7 +97,7 @@ export class MapComponent implements OnInit, OnDestroy {
         const popupContent = component.location.nativeElement;
         component.instance.vendor = vendor;
         component.instance.address = loc.address;
-        component.instance.phoneNumber = loc.phoneNumber;
+        component.instance.phoneNumber = loc.phone;
         const marker = L.marker(new L.LatLng(loc.x, loc.y), {
           title: loc.address,
           icon: this.myIcon

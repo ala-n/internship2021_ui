@@ -21,10 +21,10 @@
     <table class="full-width-table" mat-table matSort [dataSource]="dataSource">
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let row">
+        <td mat-cell *matCellDef="let offer">
           <button
             class="button_edit"
-            routerLink="/admin/offers/{{ row.id }}"
+            routerLink="/admin/offers/{{ offer.id }}"
             mat-icon-button
             color="primary"
           >

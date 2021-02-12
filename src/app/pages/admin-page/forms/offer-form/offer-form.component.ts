@@ -42,7 +42,7 @@ export class OfferFormComponent implements OnInit {
         this.offerService
           .getOfferById(Number(params['id']))
           .pipe(first())
-          .subscribe((offer) => {
+          .subscribe((offer: Offer) => {
             this.offer = offer;
             this.offerForm.setValue({
               id: offer.id,
