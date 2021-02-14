@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
@@ -25,7 +24,6 @@ export class OfficeFormComponent implements OnInit {
     isActive: null
   });
 
-  vendors: Vendor[] = [];
   offices!: Office[];
 
   constructor(
@@ -37,23 +35,24 @@ export class OfficeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const id = params['id'];
-      if (id) {
+      const vendorId = Number(params['id']);
+      const officeId = Number(params['officeId']) - 1;
+      if (vendorId) {
         this.vendorService
-          .getVendor(Number(id))
+          .getVendor(vendorId)
           .pipe(first())
           .subscribe((vendor) => {
             this.offices = vendor.offices;
             this.officeForm.setValue({
-              id: this.offices[id].id,
-              country: this.offices[id].country,
-              city: this.offices[id].city,
-              street: this.offices[id].street,
-              house: this.offices[id].house,
-              room: this.offices[id].room,
-              phone: this.offices[id].phoneNumber,
-              email: this.offices[id].email,
-              isActive: this.offices[id].isActive
+              id: this.offices[officeId].id,
+              country: this.offices[officeId].country,
+              city: this.offices[officeId].city,
+              street: this.offices[officeId].street,
+              house: this.offices[officeId].house,
+              room: this.offices[officeId].room,
+              phone: this.offices[officeId].phone,
+              email: this.offices[officeId].email,
+              isActive: this.offices[officeId].isActive
             });
           });
       }

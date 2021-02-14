@@ -28,7 +28,9 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
     'updated'
   ];
 
-  constructor(private vendorService: VendorService) {
+  constructor(private vendorService: VendorService) {}
+
+  ngOnInit(): void {
     this.vendorService
       .getVendors()
       .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
@@ -36,9 +38,6 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
         this.isLoading = false;
         this.dataSource.data = vendors;
       });
-  }
-
-  ngOnInit(): void {
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Vendor, filter) => {
       const filterObj = JSON.parse(filter);
@@ -51,8 +50,8 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       );
     };
     // custom sort: string date transformes to Date format for correct sorting
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.dataSource.sortingDataAccessor = (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       item: any,
       property: string
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
