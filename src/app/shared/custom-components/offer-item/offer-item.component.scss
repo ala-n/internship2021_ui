@@ -1,65 +1,50 @@
 @import '/src/app/styles/variables.scss';
-
-:host::ng-deep .mat-card-header-text {
-  margin: 0.6em;
-}
+$small-card: 1500px;
 
 .offer-card {
+  position: relative;
   display: flex;
-  margin-bottom: 0.5em;
   align-items: center;
-  justify-content: space-between;
-  color: #383c3d;
-  padding-top: 1.5em;
+  color: $text-primary;
+  margin-bottom: 0.5em;
+
+  &__link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  &__content {
+    display: flex;
+  }
 
   &__image {
-    display: inline-block;
-    width: 100px;
     object-fit: cover;
-    height: 75px;
-    border-radius: 0%;
-  }
+    width: 20%;
+    margin-right: 1em;
 
-  &__discount {
-    top: 0;
-    right: 0;
-    position: absolute;
-    background-color: rgba($color: $color-discount, $alpha: 0.3);
-    color: $color-discount;
-    min-width: 50px;
-    padding: 0.2em 1em;
-    font-size: 18px;
-    font-weight: 500;
-    border-bottom-left-radius: 0.5em;
-  }
+    @media screen and (max-width: $small-card) {
+      max-width: 120px;
+    }
 
-  &__properties {
-    align-self: flex-end;
-    color: $background-icon;
-    position: relative;
-    top: 0.5em;
-  }
-
-  &__statistics {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  &__views,
-  &__using {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    > mat-icon {
-      margin-right: 0.1em;
+    @media screen and (max-width: $mobile) {
+      display: none;
     }
   }
-}
 
-.offer-card-header {
-  max-width: 600px;
+  &__text {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: $small-card) {
+      position: relative;
+      top: 0.3em;
+    }
+  }
 
   &__title {
     font-size: 16px;
@@ -72,70 +57,101 @@
     -webkit-line-clamp: 2;
   }
 
-  &__subtitle {
-    margin-bottom: 0;
+  &__vendor {
+    color: $text-secondary;
+  }
+
+  &__properties {
+    position: relative;
+    top: 1em;
+
+    @media screen and (max-width: $small-card) {
+      display: flex;
+      align-items: flex-start;
+      width: auto;
+      top: 0em;
+    }
+
+    @media screen and (max-width: $mobile) {
+      top: 0.3em;
+    }
+  }
+
+  &__statistics {
+    display: flex;
+    justify-content: space-around;
+    color: $background-icon;
+
+    @media screen and (max-width: $small-card) {
+      order: -1;
+    }
+  }
+
+  &__views,
+  &__using {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5em;
+
+    > mat-icon {
+      margin-right: 0.1em;
+
+      @media screen and (max-width: $mobile) {
+        width: 17px;
+        font-size: 17px;
+        line-height: 19px;
+      }
+    }
+
+    @media screen and (max-width: $small-card) {
+      margin-right: 0.5em;
+      margin-top: 0;
+    }
+
+    @media screen and (max-width: $mobile) {
+      align-items: flex-start;
+    }
+  }
+
+  &__discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgba($color: $color-discount, $alpha: 0.3);
+    color: $color-discount;
+    padding: 0.2em 1em;
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom-left-radius: 0.5em;
+
+    @media screen and (max-width: $small-card) {
+      font-size: 16px;
+      padding: 0.2em 0.5em;
+    }
+  }
+
+  @media screen and (max-width: $small-card) {
+    flex-flow: column;
+    align-items: flex-end;
+    padding-bottom: 0.3em;
   }
 }
 
 .stars {
   width: 120px;
-  text-align: center;
+  height: 24px;
   color: $blue-primary;
 
   > mat-icon {
-    width: 24px;
-    height: 24px;
-    font-size: 24px;
-  }
-}
-
-@media screen and (max-width: $desktop) {
-  :host::ng-deep .mat-card-header-text {
-    margin: 0.3em;
-  }
-
-  .offer-card {
-    &__image {
-      width: 75px;
-      height: 55px;
-    }
-
-    &__discount {
-      font-size: 16px;
-    }
-    &__statistics {
-      font-size: 12px;
-
-      mat-icon {
-        width: 14px;
-        height: 14px;
-        font-size: 14px;
-      }
-    }
-
-    .offer-card-header {
-      &__title {
-        font-size: 14px;
-        line-height: 18px;
-      }
+    @media screen and (max-width: $mobile) {
+      width: 19px;
+      font-size: 19px;
     }
   }
 
-  .stars {
-    width: 75px;
-    mat-icon {
-      width: 15px;
-      height: 15px;
-      font-size: 15px;
-    }
-  }
-}
-
-@media screen and (max-width: $mobile) {
-  .offer-card {
-    &__image {
-      width: 50px;
-      height: 40px;
-    }
+  @media screen and (max-width: $mobile) {
+    width: 95px;
+    height: 19px;
   }
 }
