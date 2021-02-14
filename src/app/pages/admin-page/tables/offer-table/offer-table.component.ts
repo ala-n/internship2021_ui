@@ -36,35 +36,23 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.isLoading = true;
-    console.log(this.isLoading);
     this.route.params.subscribe((params) => {
       const vendorId = Number(params['id']);
-      if (vendorId) {
-        this.offerService
-          .getOffers()
-          .pipe(
-            map((offers) =>
-              offers.filter((offer: Offer) => {
-                return offer.vendorId === vendorId;
-              })
-            )
+      this.offerService
+        .getOffers()
+        .pipe(
+          first(),
+          map((offers) =>
+            offers.filter((offer: Offer) => {
+              if (!vendorId) return true;
+              return offer.vendorId === vendorId;
+            })
           )
-          .subscribe((offers: Offer[]) => {
-            this.isLoading = false;
-            console.log(this.isLoading);
-            this.dataSource.data = offers as Offer[];
-          });
-      } else {
-        this.offerService
-          .getOffers()
-          .pipe(first())
-          .subscribe((offers: Offer[]) => {
-            this.isLoading = false;
-            console.log(this.isLoading);
-            this.dataSource.data = offers as Offer[];
-          });
-      }
+        )
+        .subscribe((offers: Offer[]) => {
+          this.isLoading = false;
+          this.dataSource.data = offers as Offer[];
+        });
     });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {

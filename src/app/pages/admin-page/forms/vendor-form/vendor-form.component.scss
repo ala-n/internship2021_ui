@@ -28,10 +28,12 @@
 
 .col {
   flex: 1;
-  min-width: 200px;
+  min-width: 0;
   margin-right: 20px;
 
   @media screen and (max-width: $mobile) {
+    width: 100%;
+    flex: 1 0 100%;
     margin: 0;
   }
 }

@@ -33,7 +33,9 @@
     <mat-toolbar>Moderator panel</mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list>
-      <a mat-list-item routerLink="vendors" (click)="closeSidenav()">Vendors</a>
+      <a mat-list-item [routerLink]="['vendors']" (click)="closeSidenav()"
+        >Vendors</a
+      >
       <a mat-list-item routerLink="offers" (click)="closeSidenav()">Offers</a>
       <a mat-list-item routerLink="." (click)="closeSidenav()">Statistics</a>
     </mat-nav-list>
