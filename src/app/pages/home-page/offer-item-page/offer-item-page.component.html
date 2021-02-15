@@ -1,10 +1,7 @@
 <div *ngIf="offer$ | async as offer" class="item">
   <app-offer-item [offer]="offer"></app-offer-item>
 
-  <mat-tab-group
-    mat-stretch-tabs
-    class="example-stretched-tabs mat-elevation-z4 item__tab"
-  >
+  <mat-tab-group mat-stretch-tabs>
     <mat-tab label="description">
       <div class="item__header">
         <div class="item__date-end">valid to {{ offer.dateEnd }}</div>
