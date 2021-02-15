@@ -31,7 +31,6 @@
   &__footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 0 1em;
     background-color: #fff;
   }
@@ -57,33 +56,16 @@
   }
 
   &__paginator {
+    margin-left: auto;
     &::ng-deep .mat-paginator-page-size-label,
     &::ng-deep .mat-paginator-range-label {
       margin: 0;
     }
+
     @media screen and (max-width: $mobile) {
       &::ng-deep .mat-paginator-container {
         justify-content: flex-start;
       }
-    }
-  }
-}
-
-.button {
-  &_edit {
-    width: max-content;
-  }
-
-  &_add_mobile {
-    display: none;
-    margin-left: 1em;
-    @media screen and (max-width: $mobile) {
-      display: block;
-    }
-  }
-  &_add_desktop {
-    @media screen and (max-width: $mobile) {
-      display: none;
     }
   }
 }

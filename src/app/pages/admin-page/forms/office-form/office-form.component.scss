@@ -21,21 +21,38 @@
 }
 
 .row {
-  width: 100%;
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
   &_nowrap {
     flex-wrap: nowrap;
     .col {
-      min-width: 0;
+      &:last-child {
+        margin-right: 0;
+      }
+      @media screen and (max-width: $mobile) {
+        flex: 1 0 0%;
+      }
     }
   }
 }
 
 .col {
   flex: 1;
-  min-width: 180px;
+  min-width: 0;
   margin-right: 20px;
+
+  &_group {
+    @media screen and (max-width: $desktop) {
+      flex: 1 0 100%;
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: $mobile) {
+    flex: 1 0 100%;
+    width: 100%;
+  }
 }
 
 .col:last-child {
@@ -46,28 +63,5 @@
   margin-left: auto;
   .button {
     margin-left: 20px;
-  }
-}
-
-@media screen and (max-width: $desktop - 1) {
-  .col {
-    &_group {
-      margin: 0;
-      min-width: 390px;
-    }
-  }
-}
-
-@media screen and (max-width: $mobile - 1) {
-  .col {
-    margin: 0;
-    min-width: 195px;
-  }
-  .row {
-    &_nowrap > .col {
-      &:last-child {
-        margin-left: 20px;
-      }
-    }
   }
 }

@@ -7,11 +7,16 @@ export default [
     Стоимость массажей: от 18 руб. от 30 руб. Стоимость и виды массажа смотрите ниже. Услуги расположены по возрастанию цены (от дешевых к дорогим)`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-minsk-skidka-marsel-1.jpg',
-    dateEnd: '01.04.21',
+    dateStart: '2021-02-01',
+    dateEnd: '2021-04-01',
     discount: 'до 55%',
     vendorName: 'Марсель',
+    vendorId: 1,
     numberOfUses: 21,
     numberOfViews: 215,
+    updated: '2021-02-01',
+    promocode: '34B2J3IB',
+    isActive: true,
     photoGallery: [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
@@ -22,18 +27,32 @@ export default [
     city: 'Минск',
     offices: [
       {
+        id: 1,
         x: 53.950248766494305,
         y: 27.678503384991703,
         address: 'ул. Шафарнянская, д. 3',
-        phoneNumber: '+ 375 29 668 16 97',
-        city: 'Минск'
+        phone: '+ 375 29 668 16 97',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Шафарнянская',
+        house: '3',
+        room: '',
+        email: 'marsel1@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 53.90630545040514,
         y: 27.579132898483202,
         address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
-        phoneNumber: '+ 375 29 634 67 74',
-        city: 'Минск'
+        phone: '+ 375 29 634 67 74',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Захарова',
+        house: '23',
+        room: '',
+        email: 'marsel2@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -56,19 +75,31 @@ export default [
       — Скидка 70% на целый день посещения аквапарка и банного комплекса для взрослых в выходные дни (225 руб. + доплата 1570 руб. вместо 3590 руб.)`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609413591_ChefArts_No_Logo_1528x972.jpg',
-    dateEnd: '05.05.2021',
+    dateStart: '2021-01-01',
+    dateEnd: '2021-05-05',
     discount: 'до 70%',
     vendorName: 'SushiChefArts',
+    vendorId: 2,
     numberOfUses: 100,
     numberOfViews: 119,
+    updated: '2021-02-05',
+    promocode: '34B2EFW',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
+        id: 1,
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
-        phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        phone: '+375 44 771-51-51',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '84',
+        room: '',
+        email: 'sushi2@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -90,11 +121,16 @@ export default [
     - Возможен заказ пицц из 2-х половинок`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-minsk-pizzamania-kar-9.jpg',
-    dateEnd: '31.03.2021',
+    dateStart: '2020-02-01',
+    dateEnd: '2021-03-31',
     discount: '40%',
     vendorName: 'PizzaMania',
+    vendorId: 3,
     numberOfUses: 139,
     numberOfViews: 212,
+    updated: '2021-01-01',
+    promocode: '34BEFWWWIB',
+    isActive: true,
     photoGallery: [
       'https://pizzamania.by/admin/uploads/items/260.png',
       'https://pizzamania.by/admin/uploads/items/236.png',
@@ -107,32 +143,60 @@ export default [
     city: 'Минск',
     offices: [
       {
+        id: 1,
         x: 53.86553289876855,
         y: 27.45302363896044,
         address: 'ул. Рафиева, д. 44',
-        phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        phone: '+375 17 375-58-58',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Рафиева',
+        house: '44',
+        room: '',
+        email: 'pizza1@gmail.com',
+        isActive: true
       },
       {
+        id: 2,
         x: 53.883091927066054,
         y: 27.567344627318217,
         address: 'ул. Маяковского, д. 10',
-        phoneNumber: '+375 17 375-58-58',
-        city: 'Минск'
+        phone: '+375 17 375-58-58',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Маяковского',
+        house: '10',
+        room: '',
+        email: 'pizza2@gmail.com',
+        isActive: true
       },
       {
+        id: 3,
         x: 53.86734233325647,
         y: 27.65028647149643,
         address: 'ул. Центральная, д. 9',
-        phoneNumber: '+375 44 553-40-00',
-        city: 'Минск'
+        phone: '+375 44 553-40-00',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Центральная',
+        house: '9',
+        room: '',
+        email: 'pizza3@gmail.com',
+        isActive: true
       },
       {
+        id: 4,
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        phone: '+ 375 29 120 68 66',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'Победителей',
+        house: '23к1',
+        room: '',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -151,27 +215,43 @@ export default [
     - Один промокод - до 2-х пицц или один сет со скидкой.`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/glav2.jpg',
-    promocode: 'UYT783I',
     discount: '60%',
-    dateEnd: '09.06.2021',
+    dateStart: '2021-01-01',
+    dateEnd: '2021-06-09',
     vendorName: 'SushiChefArts',
+    vendorId: 2,
     numberOfUses: 68,
     numberOfViews: 69,
+    updated: '2021-02-07',
+    promocode: 'UYT783I',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
-        phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        phone: '+375 44 771-51-51',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
+        room: '',
+        email: 'sushi1@gmail.com',
+        isActive: true
       },
       {
         x: 53.85829633426384,
         y: 27.43278622731758,
         address: 'ул. Слободская, д. 27',
-        phoneNumber: '+375 44 771-51-51',
-        city: 'Минск'
+        phone: '+375 44 771-51-51',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
+        room: '',
+        email: 'sushi1@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -182,20 +262,30 @@ export default [
     description: `Внимание! Индивидуальные заказы принимаются минимум за день. В наличии есть готовые изделия, их доставка осуществляется после 14:30 в течение 2-4 часов. Промокод дает право на скидку от 10 до 25% на шоколадные розы в букетах из бельгийского шоколада «Standart» и «luxe», шоколад в коробке, шоколадную подписку. Iоколад «Luxe» (100-110 г) из бельгийского, либо итальянского шоколада c добавлением орехов, ягод и различных бонусов.`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg',
-    promocode: 'Luxe25',
     discount: 'от 10 до 25%',
-    dateEnd: '28.04.2021',
+    dateStart: '2021-03-01',
+    dateEnd: '2021-04-28',
     vendorName: 'Luxe',
+    vendorId: 4,
     numberOfUses: 3,
     numberOfViews: 90,
+    updated: '2021-01-01',
+    promocode: 'Luxe25',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
         x: 53.83947974668578,
         y: 27.640475169645576,
         address: 'ул. Голодеда, д. 15',
-        phoneNumber: '+ 375 25 788 41 32',
-        city: 'Минск'
+        phone: '+ 375 25 788 41 32',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'ул. Голодеда',
+        house: 'д. 15',
+        room: '',
+        email: 'luxe@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -207,18 +297,29 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg',
     discount: '35%',
-    dateEnd: '29.02.2021',
+    dateStart: '2020-10-01',
+    dateEnd: '2021-09-30',
     vendorName: 'ФОЦ им. Машерова',
+    vendorId: 5,
     numberOfUses: 78,
     numberOfViews: 292,
+    updated: '2021-02-10',
+    promocode: '',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        phone: '+ 375 29 120 68 66',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
+        room: '',
+        email: 'fok@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -236,20 +337,30 @@ export default [
     - спа-музыка, ароматерапия, консультация массажиста`,
     photoUrl:
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/otzyvy-banya-bochka.jpg',
-    promocode: 'kiss1703',
     discount: '65%',
-    dateEnd: '17.03.2021',
+    dateStart: '2021-11-01',
+    dateEnd: '2021-03-17',
     vendorName: 'ФОЦ им. Машерова',
+    vendorId: 5,
     numberOfUses: 0,
     numberOfViews: 5,
+    updated: '2021-01-11',
+    promocode: 'kiss1703',
+    isActive: true,
     city: 'Минск',
     offices: [
       {
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        phone: '+ 375 29 120 68 66',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
+        room: '',
+        email: 'fok@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -266,18 +377,29 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w500_324/default/1009921/1588077039_7929355.jpg',
     discount: '65%',
-    dateEnd: '17.03.2021',
+    dateStart: '2020-12-15',
+    dateEnd: '2021-03-17',
     vendorName: 'ФОЦ им. Машерова',
+    vendorId: 5,
     numberOfUses: 431,
     numberOfViews: 990,
+    updated: '2021-02-21',
+    promocode: '',
+    isActive: false,
     city: 'Минск',
     offices: [
       {
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
-        phoneNumber: '+ 375 29 120 68 66',
-        city: 'Минск'
+        phone: '+ 375 29 120 68 66',
+        country: 'Беларусь',
+        city: 'Минск',
+        street: 'пр. Победителей',
+        house: 'д. 23к1',
+        room: '',
+        email: 'fok@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -289,18 +411,29 @@ export default [
     photoUrl:
       'https://www.slivki.by/znijki-media/w250_162/default/1009921/1600269916_1600269911_Screenshot_18.jpg',
     discount: 'до 1000 рублей',
-    dateEnd: '01.04.2021',
+    dateStart: '2021-02-05',
+    dateEnd: '2021-04-01',
     vendorName: '«Йети и дети»',
+    vendorId: 6,
     numberOfUses: 40,
     numberOfViews: 56,
+    updated: '2021-03-01',
+    promocode: '',
+    isActive: true,
     city: 'Гродно',
     offices: [
       {
         x: 53.65034593967492,
         y: 23.85468398498308,
         address: 'пр-т Янки Купалы, д. 87',
-        phoneNumber: '+ 375 29 120 68 66',
-        city: 'Гродно'
+        phone: '+ 375 29 120 68 66',
+        country: 'Беларусь',
+        city: 'Гродно',
+        street: 'пр. Янки Купалы',
+        house: 'д. 87',
+        room: '',
+        email: 'yetideti@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -312,18 +445,29 @@ export default [
     photoUrl:
       'https://grodno.slivki.by/znijki-media/w522_322/default/1009921/rocktz11.jpg',
     discount: '1 час бесплатно',
-    dateEnd: '13.04.2022',
+    dateStart: '2021-03-01',
+    dateEnd: '2022-03-31',
     vendorName: 'Rockplay',
+    vendorId: 7,
     numberOfUses: 88,
     numberOfViews: 103,
+    updated: '2021-02-04',
+    promocode: 'VWEVWE888',
+    isActive: true,
     city: 'Гродно',
     offices: [
       {
         x: 53.684909765450755,
         y: 23.845177013681916,
         address: 'ул. Буденного, д. 54/1',
-        phoneNumber: '+ 375 29 232 99 23',
-        city: 'Гродно'
+        phone: '+ 375 29 232 99 23',
+        country: 'Беларусь',
+        city: 'Гродно',
+        street: 'ул.Буденного',
+        house: 'д. 54/1',
+        room: '',
+        email: 'rock@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -335,18 +479,29 @@ export default [
     photoUrl:
       'https://kupikupon.com.ua/system/deals/logos/152269/deal_615x301/8484_01.jpg?1600357423',
     discount: 'до 70%',
-    dateEnd: '31.04.2021',
+    dateStart: '2021-01-02',
+    dateEnd: '2021-04-30',
     vendorName: 'Студия Ирины Лесовой',
+    vendorId: 8,
     numberOfUses: 2,
     numberOfViews: 300,
+    updated: '2021-02-11',
+    promocode: '',
+    isActive: true,
     city: 'Киев',
     offices: [
       {
         x: 50.42837142443786,
         y: 30.517745728722034,
         address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
-        phoneNumber: '+38 044 223-77-60',
-        city: 'Киев'
+        phone: '+38 044 223-77-60',
+        country: 'Украина',
+        city: 'Киев',
+        street: 'ул.Ивана Федорова',
+        house: 'д. 6',
+        room: '2',
+        email: 'ira.les@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -357,20 +512,30 @@ export default [
     description: ``, //TODO(abarmina) if there is no description, the text "vendor did not provide a description" is needed
     photoUrl:
       'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464',
-    promocode: 'WEAR3=2',
     discount: '3 по цене 2',
-    dateEnd: '01.05.2021',
+    dateStart: '2021-02-01',
+    dateEnd: '2021-05-01',
     vendorName: 'Fashion Wear Milano',
+    vendorId: 9,
     numberOfUses: 32,
     numberOfViews: 56,
+    updated: '2021-02-22',
+    promocode: 'WEAR32',
+    isActive: false,
     city: 'Киев',
     offices: [
       {
         x: 50.44025486038732,
         y: 30.52230314847687,
         address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
-        phoneNumber: '+38 098 983-07-77',
-        city: 'Киев'
+        phone: '+38 098 983-07-77',
+        country: 'Украина',
+        city: 'Киве',
+        street: 'ул.Рогнеденская',
+        house: 'д. 3',
+        room: '4',
+        email: 'fashion-wear@gmail.com',
+        isActive: true
       }
     ]
   },
@@ -381,25 +546,42 @@ export default [
     photoUrl:
       'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg',
     discount: '-50%',
-    dateEnd: '01.05.2021',
+    dateStart: '2021-04-01',
+    dateEnd: '2021-05-01',
     vendorName: 'Матерый шиномонтаж',
+    vendorId: 10,
     numberOfUses: 49,
     numberOfViews: 62,
+    updated: '2021-02-05',
+    promocode: '',
+    isActive: true,
     city: 'Екатеринбург',
     offices: [
       {
         x: 56.781522754305485,
         y: 60.61757015808883,
         address: 'Монтёрская улица, д.10а',
-        phoneNumber: '+7 343 385-07-00',
-        city: 'Екатеринбург'
+        phone: '+7 343 385-07-00',
+        country: 'Россия',
+        city: 'Екатеринбург',
+        street: 'ул. Монтёрская',
+        house: 'д. 10а',
+        room: '',
+        email: 'wheel1@gmail.com',
+        isActive: true
       },
       {
         x: 56.84222661082884,
         y: 60.66575335424758,
         address: 'ул. Малышева, 145а',
-        phoneNumber: '+7 343 383-42-43',
-        city: 'Екатеринбург'
+        phone: '+7 343 383-42-43',
+        country: 'Россия',
+        city: 'Екатеринбург',
+        street: 'ул. Малышева',
+        house: 'д. 145а',
+        room: '',
+        email: 'wheel2@gmail.com',
+        isActive: false
       }
     ]
   }

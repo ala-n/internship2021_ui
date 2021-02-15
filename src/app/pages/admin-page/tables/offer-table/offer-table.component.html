@@ -4,7 +4,7 @@
   <div class="table__header">
     <mat-form-field class="table__search" appearance="outline">
       <mat-label>Search</mat-label>
-      <input matInput (keyup)="applyFilter(input.value, 'name')" #input />
+      <input matInput (keyup)="applyFilter(input.value, 'title')" #input />
     </mat-form-field>
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
@@ -21,10 +21,10 @@
     <table class="full-width-table" mat-table matSort [dataSource]="dataSource">
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let vendor">
+        <td mat-cell *matCellDef="let offer">
           <button
             class="button_edit"
-            [routerLink]="[vendor.id]"
+            routerLink="/admin/offers/{{ offer.id }}"
             mat-icon-button
             color="primary"
           >
@@ -35,46 +35,51 @@
 
       <ng-container matColumnDef="id">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
-        <td mat-cell *matCellDef="let vendor">{{ vendor.id }}</td>
+        <td mat-cell *matCellDef="let offer">{{ offer.id }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="name">
+      <ng-container matColumnDef="vendorName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
-        <td mat-cell *matCellDef="let vendor">{{ vendor.name }}</td>
+        <td mat-cell *matCellDef="let offer">{{ offer.vendorName }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="branchOffices">
-        <th mat-header-cell *matHeaderCellDef>Branch Offices</th>
-        <td mat-cell *matCellDef="let vendor">
-          <a routerLink="/admin/vendors/{{ vendor.id }}/offices"
-            >Show offices</a
-          >
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.title | truncate: 50 }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="offers">
-        <th mat-header-cell *matHeaderCellDef>Offers</th>
-        <td mat-cell *matCellDef="let vendor">
-          <a routerLink="/admin/vendors/{{ vendor.id }}/offers">Show offers</a>
+      <ng-container matColumnDef="discout">
+        <th mat-header-cell *matHeaderCellDef>Discount</th>
+        <td mat-cell *matCellDef="let offer">{{ offer.discount }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="validFrom">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.dateStart | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="webSite">
-        <th mat-header-cell *matHeaderCellDef>Web-Site</th>
-        <td mat-cell *matCellDef="let vendor">{{ vendor.website }}</td>
+      <ng-container matColumnDef="validTo">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid To</th>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.dateEnd | date: 'dd.MM.yyyy' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="updated">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
-        <td mat-cell *matCellDef="let vendor">
-          {{ vendor.updated | date: 'dd.MM.yyyy' }}
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.updated | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let vendor; columns: displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-      <tr class="mat-row" *matNoDatavendor>
+      <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">
           No results matching "{{ input.value }}"
         </td>
@@ -82,14 +87,6 @@
     </table>
   </div>
   <div class="table__footer">
-    <button
-      class="button button_add_desktop"
-      mat-raised-button
-      [routerLink]="['form']"
-      color="primary"
-    >
-      Add Vendor
-    </button>
     <mat-paginator
       class="table__paginator"
       #paginator
@@ -99,13 +96,5 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
     </mat-paginator>
-    <button
-      class="button button_add_mobile"
-      mat-fab
-      [routerLink]="['form']"
-      color="primary"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
   </div>
 </div>

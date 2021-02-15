@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,7 @@ import { first } from 'rxjs/operators';
   templateUrl: './vendor-table.component.html',
   styleUrls: ['./vendor-table.component.scss']
 })
-export class VendorTableComponent implements OnInit {
+export class VendorTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource = new MatTableDataSource<Vendor>();
@@ -28,7 +28,9 @@ export class VendorTableComponent implements OnInit {
     'updated'
   ];
 
-  constructor(private vendorService: VendorService) {
+  constructor(private vendorService: VendorService) {}
+
+  ngOnInit(): void {
     this.vendorService
       .getVendors()
       .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
@@ -36,12 +38,6 @@ export class VendorTableComponent implements OnInit {
         this.isLoading = false;
         this.dataSource.data = vendors;
       });
-  }
-
-  ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Vendor, filter) => {
       const filterObj = JSON.parse(filter);
@@ -55,20 +51,25 @@ export class VendorTableComponent implements OnInit {
     };
     // custom sort: string date transformes to Date format for correct sorting
     this.dataSource.sortingDataAccessor = (
-      item: Vendor,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      item: any,
       property: string
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
       //TODO question about types
       switch (property) {
         case 'updated': {
-          const parts = item.updated.split('.');
-          return new Date(+parts[2], +parts[1] - 1, +parts[0]); //TODO extract to utilites
+          return new Date(item.updated);
         }
         default:
-          return item['updated'];
+          return item[property];
       }
     };
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   applyFilter(value: string, name: string): void {

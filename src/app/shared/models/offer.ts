@@ -6,6 +6,7 @@ export interface OfferBase {
   photoUrl: string;
   discount: string;
   vendorName: string;
+  vendorId: number;
   numberOfUses: number;
   numberOfViews: number;
   city: string;
@@ -15,10 +16,11 @@ export interface OfferBase {
 export interface Offer extends OfferBase {
   description: string;
   promocode?: string;
+  dateStart: string;
   dateEnd: string;
   numberOfUses: number;
   numberOfViews: number;
   photoGallery?: string[];
-  // isActive: boolean; will need it later
-  // updateBy: string; will need it later
+  isActive: boolean;
+  updated: string;
 }
