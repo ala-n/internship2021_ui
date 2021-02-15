@@ -8,18 +8,15 @@ import {
 } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
 import { VendorService } from '@shared/services/vendor.service';
-
 import * as L from 'leaflet';
-import { Marker, MarkerClusterGroup } from 'leaflet';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { Marker } from 'leaflet';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
 import { Vendor } from '../../models/vendor';
 import { PopupComponent } from './popup/popup.component';
+import { Offer } from '@shared/models/offer';
 
 interface MarkerMetaData {
-  address: string;
   markerInstance: Marker;
   componentInstance: ComponentRef<PopupComponent>;
 }
@@ -31,9 +28,12 @@ interface MarkerMetaData {
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
+  vendorRequest$!: Subscription;
 
   map!: L.Map;
+  city!: string;
   markerPopup: MarkerMetaData[] = [];
+  markerAll = new L.MarkerClusterGroup({ animateAddingMarkers: true });
   myIcon = L.icon({
     iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',
     iconSize: [15, 30],
@@ -52,23 +52,40 @@ export class MapComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    const subscription$ = this.vendorService
-      .getVendors()
-      .pipe(
-        map((vendors) => this.initMarkers(vendors)),
-        tap((markers) => this.mapView(markers)),
-        switchMap(() => this.mapService.city$)
-      )
-      .subscribe((city) => this.setView(city));
-
+    this.mapView();
+    const subscription$ = this.mapService.city$.subscribe((city) => {
+      this.onChangeMarkerVendor();
+      this.city = city;
+    });
     this.subscription.push(subscription$);
+
+    const offSubscription$ = this.mapService.offer$.subscribe((offer) => {
+      if (offer == null) this.onChangeMarkerVendor();
+      else this.onChangeMarkerOffer(offer);
+    });
+    this.subscription.push(offSubscription$);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.forEach((s: Subscription) => s.unsubscribe());
+  onChangeMarkerVendor(): void {
+    this.vendorRequest$ = this.vendorService
+      .getVendors()
+      .subscribe((vendors) => {
+        const markers = this.initMarkers(vendors, this.city);
+        this.markerAll.clearLayers();
+        this.markerAll.addLayers(markers);
+        this.map.addLayer(this.markerAll);
+      });
   }
 
-  private mapView(markers: MarkerClusterGroup) {
+  onChangeMarkerOffer(offer: Offer): void {
+    this.vendorRequest$.unsubscribe();
+    const markers = this.initOfferMarkers(offer);
+    this.markerAll.clearLayers();
+    this.markerAll.addLayers(markers);
+    this.map.addLayer(this.markerAll);
+  }
+
+  private mapView() {
     const tiles = L.tileLayer(
         'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
         {
@@ -78,34 +95,34 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       ),
       latlng = L.latLng(0, 0);
-    this.map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
-    this.map.addLayer(markers);
+    this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
+    this.map.eachLayer((layer) => {
+      if (layer instanceof L.MarkerClusterGroup) {
+        this.map.removeLayer(layer);
+      }
+    });
   }
 
-  async setView(city: string): Promise<void> {
-    const provider = new OpenStreetMapProvider();
-    const results = await provider.search({ query: city });
-    this.map.setView([Number(results[0].y), Number(results[0].x)]);
-  }
-
-  private initMarkers(vendors: Vendor[]) {
-    const markers = L.markerClusterGroup();
+  private initMarkers(vendors: Vendor[], city: string) {
+    this.mapService.getCityView(city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const markers = [];
     for (const vendor of vendors) {
-      for (const loc of vendor.offices) {
+      for (const office of vendor.offices) {
         const factory = this.resolver.resolveComponentFactory(PopupComponent);
         const component = factory.create(this.injector);
         const popupContent = component.location.nativeElement;
-        component.instance.vendor = vendor;
-        component.instance.address = loc.address;
-        component.instance.phoneNumber = loc.phoneNumber;
-        const marker = L.marker(new L.LatLng(loc.x, loc.y), {
-          title: loc.address,
+        component.instance.office = office;
+        component.instance.vendorName = vendor.name;
+        component.instance.address = office.address;
+        component.instance.phoneNumber = office.phoneNumber;
+        const marker = L.marker(new L.LatLng(office.x, office.y), {
           icon: this.myIcon
         });
         marker.bindPopup(popupContent);
-        markers.addLayer(marker);
+        markers.push(marker);
         this.markerPopup.push({
-          address: loc.address,
           markerInstance: marker,
           componentInstance: component
         });
@@ -114,9 +131,40 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
+  private initOfferMarkers(offer: Offer) {
+    const { city, offices, vendorName } = offer;
+    this.mapService.getCityView(city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const markers = [];
+    for (const office of offices) {
+      const factory = this.resolver.resolveComponentFactory(PopupComponent);
+      const component = factory.create(this.injector);
+      const popupContent = component.location.nativeElement;
+      component.instance.office = office;
+      component.instance.vendorName = vendorName;
+      component.instance.address = office.address;
+      component.instance.phoneNumber = office.phoneNumber;
+      const marker = L.marker(new L.LatLng(office.x, office.y), {
+        icon: this.myIcon
+      });
+      marker.bindPopup(popupContent);
+      markers.push(marker);
+      this.markerPopup.push({
+        markerInstance: marker,
+        componentInstance: component
+      });
+    }
+    return markers;
+  }
+
   ngDoCheck(): void {
     this.markerPopup.forEach((offer) => {
       offer.componentInstance.changeDetectorRef.detectChanges();
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 }

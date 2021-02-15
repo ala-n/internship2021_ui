@@ -1,7 +1,7 @@
-<div class="offer-popup" (click)="onPopup(vendor)" *ngIf="vendor">
+<div class="offer-popup" (click)="onPopup(office)" *ngIf="office">
   <img class="offer-popup__image" src="/assets/images/vendor_logo.jpg" />
   <div>
-    <div class="offer-popup__name">{{ vendor.name }}</div>
+    <div class="offer-popup__name">{{ vendorName }}</div>
     <div class="offer-popup__address">{{ address }}</div>
     <div class="offer-popup__phone">{{ phoneNumber }}</div>
   </div>

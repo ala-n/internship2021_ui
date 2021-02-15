@@ -8,10 +8,11 @@ import { Vendor } from '@shared/models/vendor';
   encapsulation: ViewEncapsulation.None
 })
 export class PopupComponent {
-  @Input() vendor!: Vendor;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  @Input() office!: any;
+  @Input() vendorName!: string;
   @Input() address!: string;
   @Input() phoneNumber!: string;
-
   onPopup(vendor: Vendor): void {
     console.log(vendor);
   }
