@@ -1,4 +1,6 @@
 @import '/src/app/styles/variables.scss';
+
+// variable that is needed only for the layout of this card
 $small-card: 1500px;
 
 .offer-card {
@@ -83,6 +85,7 @@ $small-card: 1500px;
     color: $background-icon;
 
     @media screen and (max-width: $small-card) {
+      // we change the order of the items in the container - statistics will be first
       order: -1;
     }
   }
