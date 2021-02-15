@@ -96,11 +96,6 @@ export class MapComponent implements OnInit, OnDestroy {
       ),
       latlng = L.latLng(0, 0);
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
-    this.map.eachLayer((layer) => {
-      if (layer instanceof L.MarkerClusterGroup) {
-        this.map.removeLayer(layer);
-      }
-    });
   }
 
   private initMarkers(vendors: Vendor[], city: string) {
