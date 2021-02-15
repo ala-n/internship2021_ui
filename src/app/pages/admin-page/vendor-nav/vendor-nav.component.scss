@@ -1,0 +1,27 @@
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.vendor-nav {
+  //   flex: 1 0 1px;
+  padding: 0;
+  border-radius: 4px 0 0;
+
+  &__menu {
+    display: flex;
+    // flex: 1 0 100%;
+    max-width: 500px;
+    padding: 0;
+
+    a {
+      display: flex;
+      justify-content: center;
+      height: 56px;
+    }
+  }
+
+  &__content {
+    position: relative;
+  }
+}

@@ -11,7 +11,8 @@ import { VendorService } from '@shared/services/vendor.service';
 
 import * as L from 'leaflet';
 import { Marker, MarkerClusterGroup } from 'leaflet';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+// import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { EsriProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -83,7 +84,8 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   async setView(city: string): Promise<void> {
-    const provider = new OpenStreetMapProvider();
+    // const provider = new OpenStreetMapProvider();
+    const provider = new EsriProvider();
     const results = await provider.search({ query: city });
     this.map.setView([Number(results[0].y), Number(results[0].x)]);
   }

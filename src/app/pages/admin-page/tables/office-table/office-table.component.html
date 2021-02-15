@@ -20,7 +20,7 @@
         <td mat-cell *matCellDef="let office">
           <button
             class="button_edit"
-            routerLink="/admin/vendors/{{ vendorId }}/offices/{{ office.id }}"
+            [routerLink]="[office.id]"
             mat-icon-button
             color="primary"
           >
@@ -81,7 +81,7 @@
     <button
       class="button button_add_desktop"
       mat-raised-button
-      routerLink="/admin/vendors/{{ vendorId }}/offices/form"
+      [routerLink]="['form']"
       color="primary"
     >
       Add Office
@@ -98,7 +98,7 @@
     <button
       class="button button_add_mobile"
       mat-fab
-      routerLink="/admin/vendors/{{ vendorId }}/offices/form"
+      [routerLink]="['form']"
       color="primary"
     >
       <mat-icon>add</mat-icon>

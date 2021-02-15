@@ -33,9 +33,10 @@ export class VendorFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      if (params['id']) {
+      const vendorId = Number(params['id']);
+      if (vendorId) {
         this.vendorService
-          .getVendor(Number(params['id']))
+          .getVendor(vendorId)
           .pipe(first())
           .subscribe((vendor) => {
             this.vendor = vendor;

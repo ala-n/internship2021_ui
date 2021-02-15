@@ -12,7 +12,9 @@
 
   &__body {
     overflow: auto;
-    flex: 1 0 1px;
+    @media screen and (max-width: $mobile) {
+      flex: 1 0 1px;
+    }
 
     .full-width-table {
       width: 100%;

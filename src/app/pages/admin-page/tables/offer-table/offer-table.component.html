@@ -24,7 +24,7 @@
         <td mat-cell *matCellDef="let offer">
           <button
             class="button_edit"
-            routerLink="/admin/offers/{{ offer.id }}"
+            [routerLink]="[offer.id]"
             mat-icon-button
             color="primary"
           >

@@ -46,6 +46,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
           .subscribe((vendor: Vendor) => {
             if (vendor.offices)
               this.dataSource.data = vendor.offices as Office[];
+            this.isLoading = false;
           });
       }
     });
