@@ -42,7 +42,20 @@
       </div>
     </mat-tab>
     <mat-tab label="addresses">
-      <p *ngFor="let office of offer.offices">{{ office.address }}</p>
+      <div *ngFor="let office of offer.offices" class="item__address">
+        <mat-icon class="item__location-icon">location_on</mat-icon>
+        <div>
+          <div>
+            <!-- I'll rewrite it later //TODO(abarmina) -->
+            {{
+              office.room
+                ? office.street + ', ' + office.house + ', ' + office.room
+                : office.street + ', ' + office.house
+            }}
+          </div>
+          <div>{{ office.phone }}</div>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>
