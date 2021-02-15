@@ -1,4 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 
 @Component({
@@ -8,8 +9,7 @@ import { Vendor } from '@shared/models/vendor';
   encapsulation: ViewEncapsulation.None
 })
 export class PopupComponent {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Input() office!: any;
+  @Input() office!: Office;
   @Input() vendorName!: string;
   @Input() address!: string;
   @Input() phoneNumber!: string;
