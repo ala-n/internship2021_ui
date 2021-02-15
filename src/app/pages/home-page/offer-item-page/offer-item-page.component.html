@@ -5,10 +5,46 @@
     mat-stretch-tabs
     class="example-stretched-tabs mat-elevation-z4 item__tab"
   >
-    <mat-tab label="DESCRIPTION">
-      {{ offer.description || 'Sorry, this offer is without description' }}
+    <mat-tab label="description">
+      <div class="item__header">
+        <div class="item__date-end">valid to {{ offer.dateEnd }}</div>
+        <div class="item__actions">
+          <button
+            *ngIf="offer.promocode"
+            mat-button
+            class="button"
+            [cdkCopyToClipboard]="offer.promocode"
+          >
+            {{ offer.promocode }}
+            <mat-icon class="item__copy-icon">content_copy</mat-icon>
+          </button>
+          <button mat-stroked-button class="button button--preorder">
+            pre-order
+          </button>
+        </div>
+      </div>
+
+      <p>
+        {{ offer.description || 'Sorry, this offer is without description' }}
+      </p>
+      <div class="item__footer">
+        <div class="item__rate">
+          <div class="item__text">Did you use the offer? Rate it!</div>
+          <button mat-flat-button class="button button--review">review</button>
+        </div>
+        <div class="item__favorite">
+          <div>Add to bookmarks</div>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </div>
     </mat-tab>
-    <mat-tab label="ADDRESSES">
+    <mat-tab label="addresses">
       <p *ngFor="let office of offer.offices">{{ office.address }}</p>
     </mat-tab>
   </mat-tab-group>

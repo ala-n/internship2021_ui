@@ -20,6 +20,20 @@
   }
 }
 
+::ng-deep .mat-tab-label-container {
+  text-transform: uppercase;
+}
+
+.button {
+  text-transform: uppercase;
+  color: $blue-primary;
+
+  &--review {
+    color: white;
+    background-color: $blue-primary;
+  }
+}
+
 .item {
   padding: 1em 1em;
 
@@ -27,5 +41,57 @@
     margin-top: 1em;
     background-color: $background-light;
     border-radius: 10px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5em;
+
+    @media screen and (max-width: $mobile) {
+      flex-flow: column;
+    }
+  }
+
+  &__date-end {
+    text-transform: uppercase;
+    font-weight: 500;
+
+    @media screen and (max-width: $mobile) {
+      align-self: flex-start;
+    }
+  }
+
+  &__actions {
+    display: flex;
+  }
+
+  &__copy-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &__favorite,
+  &__rate {
+    display: flex;
+    align-items: center;
+  }
+
+  &__text {
+    margin-right: 0.5em;
+
+    @media screen and (max-width: $mobile) {
+      max-width: 140px;
+      line-height: 14px;
+    }
+  }
+
+  &__footer {
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 }
