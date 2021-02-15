@@ -20,9 +20,9 @@ export class OfferFormComponent implements OnInit {
     dateStart: null,
     dateEnd: [null, Validators.required],
     promocode: null,
-    images: null,
-    offices: null,
-    tags: null,
+    // images: null,
+    // offices: null,
+    // tags: null,
     isActive: null
   });
 
@@ -42,16 +42,17 @@ export class OfferFormComponent implements OnInit {
         this.offerService
           .getOfferById(Number(params['id']))
           .pipe(first())
-          .subscribe((offer) => {
+          .subscribe((offer: Offer) => {
             this.offer = offer;
             this.offerForm.setValue({
               id: offer.id,
               title: offer.title,
               discount: offer.discount,
               description: offer.description,
-              // dateStart: offer.dateStart,
-              dateEnd: offer.dateEnd
-              // isActive: offer.isActive
+              dateStart: offer.dateStart,
+              dateEnd: offer.dateEnd,
+              promocode: offer.promocode,
+              isActive: offer.isActive
             });
           });
       }

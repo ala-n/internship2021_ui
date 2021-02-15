@@ -116,7 +116,7 @@ export class MapComponent implements OnInit, OnDestroy {
         component.instance.office = office;
         component.instance.vendorName = vendor.name;
         component.instance.address = office.address;
-        component.instance.phoneNumber = office.phoneNumber;
+        component.instance.phoneNumber = office.phone;
         const marker = L.marker(new L.LatLng(office.x, office.y), {
           icon: this.myIcon
         });
@@ -144,7 +144,7 @@ export class MapComponent implements OnInit, OnDestroy {
       component.instance.office = office;
       component.instance.vendorName = vendorName;
       component.instance.address = office.address;
-      component.instance.phoneNumber = office.phoneNumber;
+      component.instance.phoneNumber = office.phone;
       const marker = L.marker(new L.LatLng(office.x, office.y), {
         icon: this.myIcon
       });

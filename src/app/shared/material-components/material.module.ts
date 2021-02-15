@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -39,7 +40,8 @@ const MaterialModules: any[] = [
   MatSortModule,
   MatTableModule,
   MatToolbarModule,
-  MatTabsModule
+  MatTabsModule,
+  ClipboardModule
 ];
 
 @NgModule({

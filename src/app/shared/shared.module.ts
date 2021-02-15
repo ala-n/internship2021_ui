@@ -13,6 +13,8 @@ import { TagsComponent } from './custom-components/toolbar/tags/tags.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
 
+import { RouterModule } from '@angular/router';
+
 @NgModule({
   declarations: [
     ToolbarComponent,
@@ -24,7 +26,13 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
     TagsComponent,
     OfferItemComponent
   ],
-  imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule
+  ],
   exports: [
     ToolbarComponent,
     MapComponent,
@@ -34,7 +42,6 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
     LocationComponent,
     LanguageComponent,
     FormsModule,
-    ReactiveFormsModule,
     OfferItemComponent
   ],
   entryComponents: [PopupComponent]

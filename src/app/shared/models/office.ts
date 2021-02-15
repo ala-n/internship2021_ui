@@ -3,7 +3,7 @@ export interface Office {
   x: number;
   y: number;
   address: string; //must be joined to string from separate fields
-  phoneNumber: string;
+  phone: string;
   country: string;
   city: string;
   street: string;

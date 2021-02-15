@@ -2,9 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-table',
@@ -29,16 +30,30 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     'updated'
   ];
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
-    this.offerService
-      .getOffers() //TODO how to check if unsubscribed? .tapone() find out
-      .pipe(first())
-      .subscribe((offers) => {
-        this.isLoading = false;
-        this.dataSource.data = offers as Offer[];
-      });
+    this.route.params.subscribe((params) => {
+      const vendorId = Number(params['id']);
+      this.offerService
+        .getOffers()
+        .pipe(
+          first(),
+          map((offers) =>
+            offers.filter((offer: Offer) => {
+              if (!vendorId) return true;
+              return offer.vendorId === vendorId;
+            })
+          )
+        )
+        .subscribe((offers: Offer[]) => {
+          this.isLoading = false;
+          this.dataSource.data = offers as Offer[];
+        });
+    });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
@@ -50,11 +65,11 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
         data.title.toLowerCase().indexOf(filterObj.title.toLowerCase()) != -1
       );
     };
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     this.dataSource.sortingDataAccessor = (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       item: any,
       property: string
-    ): any => {
+    ) => {
       switch (property) {
         case 'validTo':
           return new Date(item.dateEnd);

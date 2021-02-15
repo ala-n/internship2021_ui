@@ -6,6 +6,7 @@ export interface OfferBase {
   photoUrl: string;
   discount: string;
   vendorName: string;
+  vendorId: number;
   numberOfUses: number;
   numberOfViews: number;
   city: string;
