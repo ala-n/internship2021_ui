@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { Observable, Subject } from 'rxjs';
@@ -18,16 +19,16 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private readonly offerService: OfferService,
-    private readonly mapService: MapService
+    private readonly mapService: MapService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.offer$ = this.offerService.getOfferById(Number(params['id']));
+      this.offer$.subscribe((offer) => this.mapService.setOffer(offer));
     });
-
     this.mapService.city$
       .pipe(skip(1), takeUntil(this.destroy$))
       .subscribe(() => {
@@ -35,8 +36,13 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       });
   }
 
+  onClickOffice(office: Office): void {
+    this.mapService.setOffice(office);
+  }
+
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+    this.mapService.clearOffer();
   }
 }
