@@ -42,7 +42,11 @@
       </div>
     </mat-tab>
     <mat-tab label="addresses">
-      <div *ngFor="let office of offer.offices" class="item__address">
+      <div
+        *ngFor="let office of offer.offices"
+        class="item__address"
+        (click)="onClickOffice(office)"
+      >
         <mat-icon class="item__location-icon">location_on</mat-icon>
         <div>
           <div>
