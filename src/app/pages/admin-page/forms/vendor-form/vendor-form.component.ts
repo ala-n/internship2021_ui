@@ -35,7 +35,7 @@ export class VendorFormComponent implements OnInit {
     this.route.params.subscribe((params) => {
       if (params['id']) {
         this.vendorService
-          .getVendor(Number(params['id']))
+          .getVendorById(Number(params['id']))
           .pipe(first())
           .subscribe((vendor) => {
             this.vendor = vendor;
