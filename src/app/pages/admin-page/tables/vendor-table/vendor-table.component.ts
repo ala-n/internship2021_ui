@@ -34,9 +34,9 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
     this.vendorService
       .getVendors()
       .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
-      .subscribe((vendors) => {
+      .subscribe((vendors: Vendor[]) => {
+        if (vendors) this.dataSource.data = vendors as Vendor[];
         this.isLoading = false;
-        this.dataSource.data = vendors;
       });
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Vendor, filter) => {

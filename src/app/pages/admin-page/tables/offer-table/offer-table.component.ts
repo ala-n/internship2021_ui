@@ -50,8 +50,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
           )
         )
         .subscribe((offers: Offer[]) => {
+          if (offers) this.dataSource.data = offers as Offer[];
           this.isLoading = false;
-          this.dataSource.data = offers as Offer[];
         });
     });
 

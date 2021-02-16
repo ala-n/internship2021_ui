@@ -4,8 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
-import { Vendor } from '@shared/models/vendor';
-import { VendorService } from '@shared/services/vendor.service';
+import { OfficeService } from '@shared/services/office.service';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -32,7 +31,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private vendorService: VendorService,
+    private officeService: OfficeService,
     private route: ActivatedRoute
   ) {}
 
@@ -40,12 +39,13 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
     this.route.params.subscribe((params) => {
       this.vendorId = Number(params['id']);
       if (this.vendorId) {
-        this.vendorService
-          .getVendor(this.vendorId)
+        this.officeService
+          .getVendorOffices(this.vendorId)
           .pipe(first())
-          .subscribe((vendor: Vendor) => {
-            if (vendor.offices)
-              this.dataSource.data = vendor.offices as Office[];
+          .subscribe((offices: Office[]) => {
+            if (offices) this.dataSource.data = offices as Office[];
+            console.log(this.dataSource.data);
+
             this.isLoading = false;
           });
       }
