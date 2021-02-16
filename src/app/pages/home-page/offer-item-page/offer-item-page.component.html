@@ -1,15 +1,61 @@
 <div *ngIf="offer$ | async as offer" class="item">
   <app-offer-item [offer]="offer"></app-offer-item>
 
-  <mat-tab-group
-    mat-stretch-tabs
-    class="example-stretched-tabs mat-elevation-z4 item__tab"
-  >
-    <mat-tab label="DESCRIPTION">
-      {{ offer.description || 'Sorry, this offer is without description' }}
+  <mat-tab-group mat-stretch-tabs>
+    <mat-tab label="description">
+      <div class="item__header">
+        <div class="item__date-end">valid to {{ offer.dateEnd }}</div>
+        <div class="item__actions">
+          <button
+            *ngIf="offer.promocode"
+            mat-button
+            class="button"
+            [cdkCopyToClipboard]="offer.promocode"
+          >
+            {{ offer.promocode }}
+            <mat-icon class="item__copy-icon">content_copy</mat-icon>
+          </button>
+          <button mat-stroked-button class="button button--preorder">
+            pre-order
+          </button>
+        </div>
+      </div>
+
+      <p>
+        {{ offer.description || 'Sorry, this offer is without description' }}
+      </p>
+      <div class="item__footer">
+        <div class="item__rate">
+          <div class="item__text">Did you use the offer? Rate it!</div>
+          <button mat-flat-button class="button button--review">review</button>
+        </div>
+        <div class="item__favorite">
+          <div>Add to bookmarks</div>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="button with a heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+        </div>
+      </div>
     </mat-tab>
-    <mat-tab label="ADDRESSES">
-      <p *ngFor="let office of offer.offices">{{ office.address }}</p>
+    <mat-tab label="addresses">
+      <div *ngFor="let office of offer.offices" class="item__address">
+        <mat-icon class="item__location-icon">location_on</mat-icon>
+        <div>
+          <div>
+            <!-- I'll rewrite it later //TODO(abarmina) -->
+            {{
+              office.room
+                ? office.street + ', ' + office.house + ', ' + office.room
+                : office.street + ', ' + office.house
+            }}
+          </div>
+          <div>{{ office.phone }}</div>
+        </div>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>

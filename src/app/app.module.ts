@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 
 // TODO: replace with something more strict
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-const imports: any = [
+const imports: any[] = [
   AppRoutingModule,
   BrowserAnimationsModule,
   BrowserModule,
