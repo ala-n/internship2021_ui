@@ -27,8 +27,10 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.offer$ = this.offerService.getOfferById(Number(params['id']));
-      this.offer$.subscribe((offer) => this.mapService.setOffer(offer));
     });
+    this.offer$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((offer) => this.mapService.setOffer(offer));
     this.mapService.city$
       .pipe(skip(1), takeUntil(this.destroy$))
       .subscribe(() => {
