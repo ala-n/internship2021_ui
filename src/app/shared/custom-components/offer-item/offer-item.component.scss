@@ -60,7 +60,13 @@ $small-card: 1500px;
   }
 
   &__vendor {
+    position: relative;
+    z-index: 2;
     color: $text-secondary;
+
+    &:hover {
+      color: $blue-primary;
+    }
   }
 
   &__properties {
