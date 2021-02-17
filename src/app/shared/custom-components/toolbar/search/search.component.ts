@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit {
     this.getSearchData();
 
     this.stringData = this.data.map((object) => {
-      return object.Data;
+      return object.data;
     });
   }
 
