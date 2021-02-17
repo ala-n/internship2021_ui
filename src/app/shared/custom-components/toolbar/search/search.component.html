@@ -6,6 +6,8 @@
     [formControl]="control"
     [matAutocomplete]="auto"
   />
+  <button class="search-logo"></button>
+  <!--Search image -->
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let value of filteredData | async" [value]="value">
       {{ value }}
