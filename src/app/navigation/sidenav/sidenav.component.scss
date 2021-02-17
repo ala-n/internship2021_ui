@@ -1,5 +1,5 @@
-@import '../../styles/custom-theme.scss';
-@import '../../styles/variables.scss';
+@import '/src/app/styles/custom-theme.scss';
+@import '/src/app/styles/variables.scss';
 
 mat-sidenav-container {
   height: 100%;
@@ -16,7 +16,7 @@ mat-sidenav-container {
   }
 
   &__content {
-    flex: 1;
+    flex: 1 0 1px;
   }
 
   &__toolbar {
@@ -98,7 +98,7 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow-x: hidden;
+  // overflow-x: hidden;
 }
 
 main {

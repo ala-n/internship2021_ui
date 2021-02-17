@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 
 import { Offer } from '@shared/models/offer';
+import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 
 @Component({
@@ -9,12 +11,15 @@ import { OfferService } from '@shared/services/offer.service';
   styleUrls: ['./offer-list-page.component.scss']
 })
 export class OfferListPageComponent {
-  offers!: Offer[];
-  constructor(private offerService: OfferService) {}
-  getOffers(): void {
-    this.offers = this.offerService.getOffers();
-  }
+  offers$!: Observable<Offer[]>;
+  constructor(
+    private offerService: OfferService,
+    private mapService: MapService
+  ) {}
+
   ngOnInit(): void {
-    this.getOffers();
+    this.mapService.city$.subscribe((city) => {
+      this.offers$ = this.offerService.getOffers({ city });
+    });
   }
 }

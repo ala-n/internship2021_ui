@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-
 import { Offer } from '@shared/models/offer';
 
 @Component({

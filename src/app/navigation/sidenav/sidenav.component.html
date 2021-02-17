@@ -35,7 +35,7 @@
         <ng-template #adminPageButton>
           <a
             mat-list-item
-            routerLink="admin"
+            [routerLink]="['admin']"
             (click)="navigationService.toggleSidenav()"
             (click)="navigationService.toggleHomePage()"
           >

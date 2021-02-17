@@ -1,25 +1,12 @@
-import {
-  Component,
-  ComponentFactoryResolver,
-  ComponentRef,
-  Injector,
-  OnDestroy,
-  OnInit
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
+import { VendorService } from '@shared/services/vendor.service';
 import * as L from 'leaflet';
-import { Marker } from 'leaflet';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
-import { Offer } from '../../models/offer';
-import { PopupComponent } from './popup/popup.component';
-
-interface MarkerMetaData {
-  address: string;
-  markerInstance: Marker;
-  componentInstance: ComponentRef<PopupComponent>;
-}
+import { Vendor } from '../../models/vendor';
+import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 
 @Component({
   selector: 'app-map',
@@ -28,36 +15,63 @@ interface MarkerMetaData {
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
+  vendorRequest$!: Subscription;
 
-  offers!: Offer[];
   map!: L.Map;
-  markerPopup: MarkerMetaData[] = [];
-  myIcon = L.icon({
-    iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',
-    iconSize: [15, 30],
-    iconAnchor: [18, 70],
-    popupAnchor: [-10, -66],
-    shadowUrl: '../../../assets/leaflet/images/marker-shadow.png',
-    shadowSize: [28, 30],
-    shadowAnchor: [18, 70]
-  });
+  city!: string;
+  markerAll = new L.MarkerClusterGroup({ animateAddingMarkers: true });
+  name!: string;
 
   constructor(
     private mapService: MapService,
-    private resolver: ComponentFactoryResolver,
-    private injector: Injector
+    private vendorService: VendorService
   ) {}
 
   ngOnInit(): void {
-    this.offers = this.mapService.getOfferData();
-    this.subscription.push(
-      this.mapService.city$.subscribe(() => this.setView())
-    );
     this.mapView();
+    const subscription$ = this.mapService.city$.subscribe((city) => {
+      this.onChangeMarkerVendor();
+      this.city = city;
+    });
+    this.subscription.push(subscription$);
+
+    const offersSubscription$ = this.mapService.offer$.subscribe((offer) => {
+      if (offer == null) this.onChangeMarkerVendor();
+      else this.onChangeMarkerOffers(offer);
+    });
+    this.subscription.push(offersSubscription$);
+
+    const officeSubscription$ = this.mapService.office$.subscribe((office) => {
+      if (office !== null) this.onChangeMarkerOffice(office);
+    });
+    this.subscription.push(officeSubscription$);
   }
 
-  ngOnDestroy(): void {
-    this.subscription.forEach((s: Subscription) => s.unsubscribe());
+  onChangeMarkerOffice(office: Office): void {
+    this.vendorRequest$.unsubscribe();
+    const markers = this.initOfficeMarkers(office);
+    this.markerAll.clearLayers();
+    this.markerAll.addLayers(markers);
+    this.map.addLayer(this.markerAll);
+  }
+
+  onChangeMarkerVendor(): void {
+    this.vendorRequest$ = this.vendorService
+      .getVendors()
+      .subscribe((vendors) => {
+        const markers = this.initVendorMarkers(vendors, this.city);
+        this.markerAll.clearLayers();
+        this.markerAll.addLayers(markers);
+        this.map.addLayer(this.markerAll);
+      });
+  }
+
+  onChangeMarkerOffers(offer: Offer): void {
+    this.vendorRequest$.unsubscribe();
+    const markers = this.initOfferMarkers(offer);
+    this.markerAll.clearLayers();
+    this.markerAll.addLayers(markers);
+    this.map.addLayer(this.markerAll);
   }
 
   private mapView() {
@@ -70,45 +84,51 @@ export class MapComponent implements OnInit, OnDestroy {
         }
       ),
       latlng = L.latLng(0, 0);
-    this.map = L.map('map', { center: latlng, zoom: 12, layers: [tiles] });
-    const markers = this.onMarker();
-    this.map.addLayer(markers);
+    this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
   }
 
-  async setView(): Promise<void> {
-    const provider = new OpenStreetMapProvider();
-    const results = await provider.search({ query: this.mapService.getCity() });
-    this.map.setView([Number(results[0].y), Number(results[0].x)]);
-  }
-
-  private onMarker() {
-    const markers = L.markerClusterGroup();
-    for (const offer of this.offers) {
-      for (const loc of offer.location) {
-        const factory = this.resolver.resolveComponentFactory(PopupComponent);
-        const component = factory.create(this.injector);
-        const popupContent = component.location.nativeElement;
-        component.instance.offer = offer;
-        component.instance.address = loc.address;
-        const marker = L.marker(new L.LatLng(loc.x, loc.y), {
-          title: loc.address,
-          icon: this.myIcon
-        });
-        marker.bindPopup(popupContent);
-        markers.addLayer(marker);
-        this.markerPopup.push({
-          address: loc.address,
-          markerInstance: marker,
-          componentInstance: component
-        });
+  private initVendorMarkers(vendors: Vendor[], city: string) {
+    this.mapService.getCityView(city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const markers = [];
+    for (const vendor of vendors) {
+      for (const office of vendor.offices) {
+        const marker = this.mapService.getMarkers(office, vendor.name);
+        markers.push(marker);
       }
     }
     return markers;
   }
 
-  ngDoCheck(): void {
-    this.markerPopup.forEach((offer) => {
-      offer.componentInstance.changeDetectorRef.detectChanges();
+  private initOfferMarkers(offer: Offer) {
+    const { city, offices, vendorName } = offer;
+    this.mapService.getCityView(city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
     });
+    const markers = [];
+    for (const office of offices) {
+      const marker = this.mapService.getMarkers(office, vendorName);
+      markers.push(marker);
+    }
+    return markers;
+  }
+
+  private initOfficeMarkers(office: Office) {
+    const markers = [];
+    this.mapService.getCityView(office.city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const marker = this.mapService.getMarkers(office, 'Lol');
+    markers.push(marker);
+    return markers;
+  }
+
+  ngDoCheck(): void {
+    this.mapService.doCheckMap();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 }

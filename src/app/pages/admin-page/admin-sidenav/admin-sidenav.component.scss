@@ -1,4 +1,4 @@
-@import '../../../styles/custom-theme.scss';
+@import '/src/app/styles//custom-theme.scss';
 
 .admin-toolbar {
   display: flex;
@@ -24,12 +24,15 @@
   }
 
   &__content {
+    display: flex;
+    flex-direction: column;
     padding: 0.5em;
   }
 
   &__card {
+    flex: 1 0 1px;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
   }
 }
 

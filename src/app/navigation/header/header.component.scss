@@ -1,5 +1,5 @@
-@import '../../styles/custom-theme.scss';
-@import '../../styles/variables.scss';
+@import '/src/app/styles/custom-theme.scss';
+@import '/src/app/styles/variables.scss';
 
 .header {
   display: flex;
@@ -8,13 +8,16 @@
   border-bottom: $border-primary;
   color: $text-primary;
 
+  @media screen and (max-width: $tablet) {
+    height: 48px;
+  }
+
   &__logo {
     display: block;
-    box-sizing: content-box;
     height: 35px;
     width: 200px;
     margin-right: auto;
-    padding: 0 1em;
+    margin-left: 1em;
     background-image: url(/assets/images/logo.svg);
     background-position: center;
     background-size: contain;
@@ -27,22 +30,36 @@
     }
   }
 
+  &__location {
+    margin: 0 0.5em;
+  }
+
   &__profile {
     display: flex;
     align-items: center;
     height: 100%;
     padding: 0 1em;
     cursor: pointer;
+    @media screen and (min-width: $tablet + 1) {
+      background-color: $background-blue;
+      border-left: $border-primary;
+    }
   }
 
   &__username {
     margin: 0 2em;
     font-size: 1.4em;
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
   }
 
   &__toolbar {
     display: flex;
     height: 100%;
+    @media screen and (max-width: $tablet) {
+      display: none;
+    }
 
     > .button {
       display: flex;
@@ -55,26 +72,11 @@
     }
   }
 
-  @media screen and (max-width: $tablet) {
-    height: 48px;
-
-    &__username {
+  .button {
+    &_search {
       display: none;
-    }
-    &__toolbar {
-      display: none;
-    }
-  }
-
-  @media screen and (min-width: $tablet + 1) {
-    &__profile {
-      background-color: $background-blue;
-      border-left: $border-primary;
-    }
-
-    .button {
-      &_search {
-        display: none;
+      @media screen and (max-width: $tablet) {
+        display: block;
       }
     }
   }

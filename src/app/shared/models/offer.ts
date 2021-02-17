@@ -1,27 +1,26 @@
-export interface Offer {
+import { Office } from './office';
+
+export interface OfferBase {
   id: number;
   title: string;
-  description: string;
   photoUrl: string;
   discount: string;
-  // dateStart: string;
-  // dateEnd: string;
-  // VendorID: number;
-  vendorName: string; //will be deleted
-  phoneNumber: string;
-  // isActive: boolean;
+  vendorName: string;
+  vendorId: number;
   numberOfUses: number;
   numberOfViews: number;
-  // createAt: string;
-  // updateAt: string;
-  // createBy: string;
-  // updateBy: string;
-  // promocode?: string;
-  location: Location[];
+  city: string;
+  offices: Office[];
 }
 
-interface Location {
-  x: number;
-  y: number;
-  address: string;
+export interface Offer extends OfferBase {
+  description: string;
+  promocode?: string;
+  dateStart: string;
+  dateEnd: string;
+  numberOfUses: number;
+  numberOfViews: number;
+  photoGallery?: string[];
+  isActive: boolean;
+  updated: string;
 }

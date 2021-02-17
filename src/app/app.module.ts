@@ -10,12 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogInPageModule } from './pages/login-page/login-page.module';
 import { SharedModule } from './shared/shared.module';
 import { SidenavModule } from './navigation/sidenav/sidenav.module';
-import { InMemoryVendorDataService } from '@shared/mocks/in-memory-vendor-data.service';
+import { InMemoryDataService } from '@shared/mocks/in-memory-data.service';
 import { environment } from 'src/environments/environment';
 
 // TODO: replace with something more strict
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-const imports: any = [
+const imports: any[] = [
   AppRoutingModule,
   BrowserAnimationsModule,
   BrowserModule,
@@ -28,8 +28,9 @@ const imports: any = [
 // Replace HttpClient with a test data provider
 if (!environment.production) {
   imports.push(
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryVendorDataService, {
-      dataEncapsulation: false
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      dataEncapsulation: false,
+      delay: 100
     })
   );
 }

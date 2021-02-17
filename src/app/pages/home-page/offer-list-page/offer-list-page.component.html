@@ -1,10 +1,8 @@
-<app-sort></app-sort>
-
-<a
-  class="link-reset"
-  [routerLink]="['offers', offer.id]"
-  queryParamsHandling="merge"
-  *ngFor="let offer of offers"
->
-  <app-offer-item [offer]="offer" class="offer-card"></app-offer-item>
-</a>
+<app-sort class="sort"></app-sort>
+<div class="offers" *ngIf="offers$ | async as offers">
+  <app-offer-item
+    *ngFor="let offer of offers"
+    [offer]="offer"
+    class="offer-card"
+  ></app-offer-item>
+</div>

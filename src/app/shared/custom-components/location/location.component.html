@@ -1,24 +1,24 @@
 <form>
-  <mat-form-field class="location">
-    <mat-label class="location__label">Minsk</mat-label>
+  <!-- use "standard" to make floating label as placeholder -->
+  <mat-form-field class="location" appearance="standard">
     <input
       type="text"
-      placeholder="Pick city..."
-      aria-label="Minsk"
+      placeholder="Location"
+      aria-label="Location"
       matInput
       [formControl]="myControl"
       [matAutocomplete]="auto"
-      (focusout)="focusOut()"
+      (focusout)="focusOut($event)"
+      (focusin)="focusIn($event)"
     />
     <mat-autocomplete
-      class="location__default"
+      (optionSelected)="onSelectionChanged($event.option.value)"
       autoActiveFirstOption
       #auto="matAutocomplete"
     >
       <mat-option
-        *ngFor="let option of filteredOptions | async"
+        *ngFor="let option of filteredOptions$ | async"
         [value]="option"
-        (onSelectionChange)="onClick(option)"
         >{{ option }}
       </mat-option>
     </mat-autocomplete>

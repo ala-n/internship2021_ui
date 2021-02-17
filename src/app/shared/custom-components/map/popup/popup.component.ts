@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 
 @Component({
   selector: 'app-popup',
@@ -8,10 +8,11 @@ import { Offer } from '@shared/models/offer';
   encapsulation: ViewEncapsulation.None
 })
 export class PopupComponent {
-  @Input() offer!: Offer;
+  @Input() office!: Office;
+  @Input() vendorName!: string;
   @Input() address!: string;
-
-  onPopup(offer: Offer): void {
-    console.log(offer);
+  @Input() phoneNumber!: string;
+  onPopup(office: Office): void {
+    console.log(office);
   }
 }
