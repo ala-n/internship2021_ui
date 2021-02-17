@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from '@shared/models/user';
 import { AuthService } from '@shared/services/auth.service';
 import { LoginData} from '@shared/models/login_data';
-import { Token } from '@shared/models/token';
+import { HttpService } from '@shared/services/http.service';
 
 
 @Component({
@@ -11,12 +10,15 @@ import { Token } from '@shared/models/token';
   styleUrls: ['./login-page.component.scss']
 })
 export class LogInComponent {
+  // Old function to login without any authentication
   // signInSubmit(event: Event): void {
   //   event.preventDefault();
   // }
+
   model: LoginData = {};
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private http: HttpService
   ) {}
 
   ngOnInit() {

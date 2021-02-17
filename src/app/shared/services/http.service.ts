@@ -10,10 +10,10 @@ import { AuthService } from './auth.service';
   })
 export class HttpService {
 
-  constructor(private http: HttpClient, private auth: AuthService){ }
+  constructor(private http: HttpClient, private httpAuth: AuthService ){ }
 
   // Http Options
-  get httpOptions () {
+  get httpOptions (): any {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': 'Bearer ' + this.token 
@@ -21,8 +21,8 @@ export class HttpService {
     return {headers}
   };
 
-  get token() {
-    return sessionStorage.getItem('access_token'); // session storage
+  get token(): any {
+    return sessionStorage.getItem('access_token'); 
   }
 
   get(baseURL: string): any { 
@@ -31,13 +31,13 @@ export class HttpService {
     );
   }
 
-  post(baseURL: string, data: Object): any {
+  post(baseURL: string, data: unknown): any {
     return this.http.post(baseURL, data, this.httpOptions).pipe(
       catchError(this.errorHandler)
     );
-  } 
+  }
   
-  put(baseURL: string, data: Object): any { 
+  put(baseURL: string, data: unknown): any { 
     return this.http.put(baseURL, data, this.httpOptions).pipe(
       catchError(this.errorHandler)
     );
@@ -51,10 +51,10 @@ export class HttpService {
 
   errorHandler(error: HttpErrorResponse): any{
     if(error.status === 401 || error.status === 403){
-      this.auth.logout();
+      this.httpAuth.logout();
     }
     return throwError(
       'Something bad happened; please try again later.');
   }
-
+  
 }

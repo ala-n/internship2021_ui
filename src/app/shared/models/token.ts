@@ -1,4 +1,5 @@
 export interface Token {
-    name: string;
+    firstName: string;
+    lastName: string;
     token: string;
 }
