@@ -4,6 +4,15 @@
   display: flex;
   flex-flow: row wrap;
   padding: 1em;
+
+  &__header {
+    height: 56px;
+    width: 100%;
+    border-bottom: $border-primary;
+    span {
+      color: $blue-primary;
+    }
+  }
 }
 
 .full-width {

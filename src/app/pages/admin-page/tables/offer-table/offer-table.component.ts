@@ -39,6 +39,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.vendorId = Number(params['id']);
+      if (this.vendorId)
+        this.displayedColumns.splice(this.displayedColumns.indexOf('id'), 1);
       this.offerService
         .getOffers()
         .pipe(

@@ -8,6 +8,7 @@ import { OfferFormComponent } from './forms/offer-form/offer-form.component';
 import { OfferTableComponent } from './tables/offer-table/offer-table.component';
 import { OfficeTableComponent } from './tables/office-table/office-table.component';
 import { VendorNavComponent } from './vendor-nav/vendor-nav.component';
+import { FormGuard } from '@shared/guards/form.guard';
 
 const routes: Routes = [
   {
@@ -20,6 +21,22 @@ const routes: Routes = [
           {
             path: '',
             component: VendorTableComponent
+          },
+          {
+            path: 'details/:id/offices/form',
+            component: OfficeFormComponent
+          },
+          {
+            path: 'details/:id/offices/:officeId',
+            component: OfficeFormComponent
+          },
+          {
+            path: 'details/:id/offers/form',
+            component: OfferFormComponent
+          },
+          {
+            path: 'details/:id/offers/:offerId',
+            component: OfferFormComponent
           },
           {
             path: 'details',
@@ -38,15 +55,8 @@ const routes: Routes = [
                 children: [
                   {
                     path: '',
-                    component: OfficeTableComponent
-                  },
-                  {
-                    path: 'form',
-                    component: OfficeFormComponent
-                  },
-                  {
-                    path: ':officeId',
-                    component: OfficeFormComponent
+                    component: OfficeTableComponent,
+                    canActivate: [FormGuard]
                   }
                 ]
               },
@@ -55,15 +65,8 @@ const routes: Routes = [
                 children: [
                   {
                     path: '',
-                    component: OfferTableComponent
-                  },
-                  {
-                    path: 'form',
-                    component: OfferFormComponent
-                  },
-                  {
-                    path: ':offerId',
-                    component: OfferFormComponent
+                    component: OfferTableComponent,
+                    canActivate: [FormGuard]
                   }
                 ]
               }
@@ -99,6 +102,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [FormGuard]
 })
 export class AdminPageRoutingModule {}

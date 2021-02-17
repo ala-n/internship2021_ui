@@ -21,7 +21,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
 
   displayedColumns = [
     'edit',
-    'id',
+    // 'id',
     'country',
     'city',
     'street',
@@ -44,8 +44,6 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
           .pipe(first())
           .subscribe((offices: Office[]) => {
             if (offices) this.dataSource.data = offices as Office[];
-            console.log(this.dataSource.data);
-
             this.isLoading = false;
           });
       }

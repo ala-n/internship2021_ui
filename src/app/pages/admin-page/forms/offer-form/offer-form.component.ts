@@ -41,7 +41,7 @@ export class OfferFormComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       const offerId = Number(params['offerId']);
-      // this.vendorId = Number(params['id']);
+      this.vendorId = Number(params['id']);
       if (offerId) {
         this.offerService
           .getOfferById(offerId)
