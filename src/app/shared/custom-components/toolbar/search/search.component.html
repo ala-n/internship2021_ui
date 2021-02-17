@@ -1,12 +1,12 @@
-<form class="example-form">
+<form class="search-form">
   <input
     type="text"
-    class="search"
+    class="search-form__search"
     placeholder="Search"
     [formControl]="control"
     [matAutocomplete]="auto"
   />
-  <button class="search-logo"></button>
+  <button class="search-form__search-button-image"></button>
   <!--Search image -->
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let value of filteredData | async" [value]="value">
