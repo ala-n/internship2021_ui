@@ -71,3 +71,22 @@
     }
   }
 }
+
+.button {
+  &_edit {
+    width: max-content;
+  }
+
+  &_add_mobile {
+    display: none;
+    margin-left: 1em;
+    @media screen and (max-width: $mobile) {
+      display: block;
+    }
+  }
+  &_add_desktop {
+    @media screen and (max-width: $mobile) {
+      display: none;
+    }
+  }
+}

@@ -66,17 +66,24 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>Images</mat-label>
-            <input matInput />
+            <input matInput formControlName="images" />
           </mat-form-field>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
+    <!-- TODO we don't need to show Brand name for user in form control but we need to keep this information -->
+    <div class="col" hidden>
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Brand</mat-label>
+        <input matInput formControlName="vendorName" />
+      </mat-form-field>
+    </div>
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Select branch offices</mat-label>
-        <input matInput />
+        <input matInput formControlName="offices" />
       </mat-form-field>
     </div>
   </div>
@@ -84,7 +91,7 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Tags</mat-label>
-        <input matInput />
+        <input matInput formControlName="tags" />
       </mat-form-field>
     </div>
   </div>

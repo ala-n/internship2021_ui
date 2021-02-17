@@ -83,7 +83,7 @@ const routes: Routes = [
             component: OfferFormComponent
           },
           {
-            path: ':id',
+            path: ':offerId',
             component: OfferFormComponent
           }
         ]

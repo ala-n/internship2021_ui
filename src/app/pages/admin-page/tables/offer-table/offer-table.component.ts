@@ -17,6 +17,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<Offer>();
   isLoading = true;
+  vendorId!: number;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -37,15 +38,15 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      const vendorId = Number(params['id']);
+      this.vendorId = Number(params['id']);
       this.offerService
         .getOffers()
         .pipe(
           first(),
           map((offers) =>
             offers.filter((offer: Offer) => {
-              if (!vendorId) return true;
-              return offer.vendorId === vendorId;
+              if (!this.vendorId) return true;
+              return offer.vendorId === this.vendorId;
             })
           )
         )

@@ -18,7 +18,7 @@ export class VendorFormComponent implements OnInit {
     title: [null, Validators.required],
     description: null,
     website: [null, Validators.required],
-    isActive: null
+    isActive: false
   });
 
   vendors: Vendor[] = [];

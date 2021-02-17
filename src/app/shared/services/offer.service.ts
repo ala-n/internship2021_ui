@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
 
@@ -10,6 +11,10 @@ import { Offer } from '../models/offer';
 export class OfferService {
   static OFFERS_URL = 'api/offers';
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   constructor(private http: HttpClient) {}
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
@@ -18,10 +23,36 @@ export class OfferService {
         `${OfferService.OFFERS_URL}/?city=${params.city}`
       );
     }
-    return this.http.get<Offer[]>(`${OfferService.OFFERS_URL}`);
+    return this.http.get<Offer[]>(OfferService.OFFERS_URL);
   }
 
   getOfferById(id: number): Observable<Offer> {
     return this.http.get<Offer>(`${OfferService.OFFERS_URL}/${id}`);
+  }
+
+  getVendorOffers(vendorId: number): Observable<Offer[]> {
+    return this.http
+      .get<Offer[]>(`${OfferService.OFFERS_URL}`)
+      .pipe(
+        map((offers) => offers.filter((offer) => offer.vendorId === vendorId))
+      );
+  }
+
+  addOffer(offer: Offer, vendorId: number): Observable<Offer> {
+    offer.vendorId = vendorId;
+    return this.http.post<Offer>(
+      OfferService.OFFERS_URL,
+      offer,
+      this.httpOptions
+    );
+  }
+
+  updateOffer(offer: Offer, vendorId: number): Observable<Offer> {
+    offer.vendorId = vendorId;
+    return this.http.put<Offer>(
+      OfferService.OFFERS_URL,
+      offer,
+      this.httpOptions
+    );
   }
 }

@@ -20,14 +20,16 @@ export class OfferFormComponent implements OnInit {
     dateStart: null,
     dateEnd: [null, Validators.required],
     promocode: null,
-    // images: null,
-    // offices: null,
-    // tags: null,
-    isActive: null
+    images: null,
+    vendorName: null,
+    offices: null,
+    tags: null,
+    isActive: false
   });
 
   offers: Offer[] = [];
   offer!: Offer;
+  vendorId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -38,12 +40,15 @@ export class OfferFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      if (params['id']) {
+      const offerId = Number(params['offerId']);
+      // this.vendorId = Number(params['id']);
+      if (offerId) {
         this.offerService
-          .getOfferById(Number(params['id']))
+          .getOfferById(offerId)
           .pipe(first())
           .subscribe((offer: Offer) => {
             this.offer = offer;
+            this.vendorId = offer.vendorId;
             this.offerForm.setValue({
               id: offer.id,
               title: offer.title,
@@ -52,6 +57,10 @@ export class OfferFormComponent implements OnInit {
               dateStart: offer.dateStart,
               dateEnd: offer.dateEnd,
               promocode: offer.promocode,
+              vendorName: offer.vendorName,
+              images: '',
+              offices: '',
+              tags: '',
               isActive: offer.isActive
             });
           });
@@ -61,14 +70,17 @@ export class OfferFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    //   if (this.offer) {
-    //     this.offerService.updateOffer(this.offerForm.value).subscribe();
-    //   } else {
-    //     this.offerService
-    //       .addOffer(this.offerForm.value)
-    //       .subscribe((offer) => {
-    //         this.offers.push(offer);
-    //       });
-    //   }
+    if (this.offer) {
+      this.offerService
+        .updateOffer(this.offerForm.value, this.vendorId)
+        .subscribe();
+    } else {
+      this.offerService
+        .addOffer(this.offerForm.value, this.vendorId)
+        .subscribe((offer) => {
+          // TODO do we need this when we connect back-end?
+          this.offers.push(offer);
+        });
+    }
   }
 }

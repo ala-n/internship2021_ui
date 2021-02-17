@@ -87,6 +87,15 @@
     </table>
   </div>
   <div class="table__footer">
+    <button
+      class="button button_add_desktop"
+      mat-raised-button
+      *ngIf="vendorId"
+      [routerLink]="['form']"
+      color="primary"
+    >
+      Add Offer
+    </button>
     <mat-paginator
       class="table__paginator"
       #paginator
@@ -96,5 +105,14 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
     </mat-paginator>
+    <button
+      class="button button_add_mobile"
+      mat-fab
+      *ngIf="vendorId"
+      [routerLink]="['form']"
+      color="primary"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>

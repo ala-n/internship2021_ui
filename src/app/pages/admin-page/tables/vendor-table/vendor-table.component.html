@@ -47,14 +47,22 @@
       <ng-container matColumnDef="branchOffices">
         <th mat-header-cell *matHeaderCellDef>Branch Offices</th>
         <td mat-cell *matCellDef="let vendor">
-          <a [routerLink]="['details', vendor.id, 'offices']">Show offices</a>
+          <a
+            [routerLink]="['details', vendor.id, 'offices']"
+            (click)="setVendorId(vendor.id)"
+            >Show offices</a
+          >
         </td>
       </ng-container>
 
       <ng-container matColumnDef="offers">
         <th mat-header-cell *matHeaderCellDef>Offers</th>
         <td mat-cell *matCellDef="let vendor">
-          <a [routerLink]="['details', vendor.id, 'offers']">Show offers</a>
+          <a
+            [routerLink]="['details', vendor.id, 'offers']"
+            (click)="setVendorId(vendor.id)"
+            >Show offers</a
+          >
         </td>
       </ng-container>
 
@@ -87,7 +95,7 @@
       [routerLink]="['details', 'form']"
       color="primary"
     >
-      Add Vendor
+      Add Brand
     </button>
     <mat-paginator
       class="table__paginator"
