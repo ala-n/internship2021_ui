@@ -83,8 +83,4 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
-
-  setVendorId(id: number): void {
-    this.vendorService.set(id);
-  }
 }

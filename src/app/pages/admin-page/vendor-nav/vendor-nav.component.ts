@@ -1,17 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { VendorService } from '@shared/services/vendor.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-vendor-nav',
   templateUrl: './vendor-nav.component.html',
   styleUrls: ['./vendor-nav.component.scss']
 })
-export class VendorNavComponent implements OnInit {
-  vendorId!: number;
+export class VendorNavComponent implements OnInit, OnDestroy {
+  vendorId = '';
+  subscriptions: Subscription[] = [];
 
-  constructor(private vendorService: VendorService) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.vendorId = this.vendorService.get();
+    this.subscriptions.push(
+      this.route.params.subscribe((params) => {
+        this.vendorId = params.id;
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach((subs) => subs.unsubscribe());
   }
 }

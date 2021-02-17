@@ -9,7 +9,6 @@ import { Vendor } from '@shared/models/vendor';
 })
 export class VendorService {
   static VENDORS_URL = 'api/vendors';
-  private currentId!: number;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,14 +23,6 @@ export class VendorService {
   getVendor(id: number): Observable<Vendor> {
     const url = `${VendorService.VENDORS_URL}/${id}`;
     return this.http.get<Vendor>(url);
-  }
-
-  set(id: number): void {
-    this.currentId = id;
-  }
-
-  get(): number {
-    return this.currentId;
   }
 
   addVendor(vendor: Vendor): Observable<Vendor> {

@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 @Injectable()
 export class FormGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    if (route.params.id === 'undefined') {
+    if (isNaN(+route.params.id)) {
       alert('Please, complete and confirm brand information first!');
       return false;
     }

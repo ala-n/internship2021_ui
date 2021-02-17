@@ -26,7 +26,7 @@ export class OfficeFormComponent implements OnInit {
 
   office!: Office;
   offices: Office[] = [];
-  vendorId!: number;
+  // vendorId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -35,10 +35,15 @@ export class OfficeFormComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
+  get vendorId() {
+    return +this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
+    //TODO try to make without subscribe using snapshot
     this.route.params.subscribe((params) => {
       const officeId = Number(params['officeId']);
-      this.vendorId = Number(params['id']);
+      // this.vendorId = Number(params['id']);
       if (officeId) {
         this.officeService
           .getOffice(officeId)
