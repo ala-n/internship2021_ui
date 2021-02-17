@@ -1,0 +1,12 @@
+{
+  "HOME": {
+    "TEXT": "Home",
+    "LANG": "EN",
+    "SORT": {
+      "BY": "Sort By",
+      "DISTANCE": "distance",
+      "RELEVANCE": "relevance",
+      "RATING": "rating"
+    }
+  }
+}
