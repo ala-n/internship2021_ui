@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -33,7 +33,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.vendorService
       .getVendors()
-      .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
+      .pipe(take(1))
       .subscribe((vendors: Vendor[]) => {
         if (vendors) this.dataSource.data = vendors as Vendor[];
         this.isLoading = false;

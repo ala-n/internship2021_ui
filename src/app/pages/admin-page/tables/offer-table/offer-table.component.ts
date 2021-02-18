@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
-import { first, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-table',
@@ -45,7 +45,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     this.offerService
       .getOffers()
       .pipe(
-        first(),
+        take(1),
         map((offers) =>
           offers.filter((offer: Offer) => {
             if (!this.vendorId) return true;

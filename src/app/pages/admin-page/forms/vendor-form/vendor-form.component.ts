@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
@@ -36,7 +36,7 @@ export class VendorFormComponent implements OnInit {
     if (vendorId) {
       this.vendorService
         .getVendor(vendorId)
-        .pipe(first())
+        .pipe(take(1))
         .subscribe((vendor) => {
           this.vendor = vendor;
           this.vendorForm.setValue({

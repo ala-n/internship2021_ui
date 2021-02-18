@@ -4,7 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { NavigationService } from '@shared/services/navigation.service';
 import { OfferService } from '@shared/services/offer.service';
-import { first } from 'rxjs/operators';
+import { VendorService } from '@shared/services/vendor.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-form',
@@ -21,7 +22,6 @@ export class OfferFormComponent implements OnInit {
     dateEnd: [null, Validators.required],
     promocode: null,
     images: null,
-    vendorName: null,
     offices: null,
     tags: null,
     isActive: false
@@ -29,25 +29,32 @@ export class OfferFormComponent implements OnInit {
 
   offers: Offer[] = [];
   offer!: Offer;
+  vendorName = '';
 
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
 
-  get vendorId() {
-    debugger;
+  get vendorId(): number {
     return +this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
     const offerId = +this.route.snapshot.params.offerId;
+    this.vendorService
+      .getVendor(this.vendorId)
+      .pipe(take(1))
+      .subscribe((vendor) => {
+        this.vendorName = vendor.name;
+      });
     if (offerId) {
       this.offerService
         .getOfferById(offerId)
-        .pipe(first())
+        .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
           this.offerForm.setValue({
@@ -58,7 +65,6 @@ export class OfferFormComponent implements OnInit {
             dateStart: offer.dateStart,
             dateEnd: offer.dateEnd,
             promocode: offer.promocode,
-            vendorName: offer.vendorName,
             images: '',
             offices: '',
             tags: '',

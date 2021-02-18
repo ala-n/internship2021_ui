@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-office-table',
@@ -39,7 +39,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
     if (vendorId) {
       this.officeService
         .getVendorOffices(vendorId)
-        .pipe(first())
+        .pipe(take(1))
         .subscribe((offices: Office[]) => {
           if (offices) this.dataSource.data = offices as Office[];
           this.isLoading = false;

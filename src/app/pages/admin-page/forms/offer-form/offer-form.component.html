@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="offerForm" novalidate (ngSubmit)="onSubmit()">
   <div class="form__header">
-    Enter information about <span>BrandName</span> offer
+    Enter information about <span>{{ vendorName }}</span> offer
   </div>
   <div class="row">
     <div class="col">
@@ -76,13 +76,6 @@
     </div>
   </div>
   <div class="row">
-    <!-- TODO we don't need to show Brand name for user in form control but we need to keep this information -->
-    <div class="col" hidden>
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Brand</mat-label>
-        <input matInput formControlName="vendorName" />
-      </mat-form-field>
-    </div>
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Select branch offices</mat-label>

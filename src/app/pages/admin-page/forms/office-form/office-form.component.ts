@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
+import { VendorService } from '@shared/services/vendor.service';
 
 @Component({
   selector: 'app-office-form',
@@ -26,10 +27,12 @@ export class OfficeFormComponent implements OnInit {
 
   office!: Office;
   offices: Office[] = [];
+  vendorName = '';
 
   constructor(
     private fb: FormBuilder,
     private officeService: OfficeService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -40,10 +43,16 @@ export class OfficeFormComponent implements OnInit {
 
   ngOnInit(): void {
     const officeId = +this.route.snapshot.params.officeId;
+    this.vendorService
+      .getVendor(this.vendorId)
+      .pipe(take(1))
+      .subscribe((vendor) => {
+        this.vendorName = vendor.name;
+      });
     if (officeId) {
       this.officeService
         .getOffice(officeId)
-        .pipe(first())
+        .pipe(take(1))
         .subscribe((office) => {
           this.office = office;
           this.officeForm.setValue({
