@@ -1,7 +1,7 @@
 <div *ngIf="offer$ | async as offer" class="item">
   <app-offer-item [offer]="offer"></app-offer-item>
 
-  <mat-tab-group mat-stretch-tabs>
+  <mat-tab-group mat-stretch-tabs class="tab">
     <mat-tab label="description">
       <div class="item__header">
         <div class="item__date-end">valid to {{ offer.dateEnd }}</div>
@@ -44,10 +44,10 @@
     <mat-tab label="addresses">
       <div
         *ngFor="let office of offer.offices"
-        class="item__address"
+        class="address"
         (click)="onClickOffice(office)"
       >
-        <mat-icon class="item__location-icon">location_on</mat-icon>
+        <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
           <div>
             <!-- I'll rewrite it later //TODO(abarmina) -->
