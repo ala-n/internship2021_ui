@@ -1,0 +1,30 @@
+.tab {
+  color: $text-primary;
+  margin-top: 1em;
+}
+
+::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {
+  color: $background-light;
+  border-radius: 10px 10px 0 0;
+  background-color: rgba($color: $background-tabs, $alpha: 0.8);
+
+  &.mat-tab-label-active {
+    background-color: rgba($color: $background-tabs, $alpha: 0.9);
+    opacity: 0.9;
+  }
+}
+
+::ng-deep .mat-tab-body-wrapper {
+  background-color: $background-light;
+  border-radius: 0 0 10px 10px;
+  padding: 1.5em 2em;
+  line-height: 24px;
+
+  @media screen and (max-width: $mobile) {
+    padding: 1em 1em;
+  }
+}
+
+::ng-deep .mat-tab-label-container {
+  text-transform: uppercase;
+}
