@@ -13,6 +13,10 @@
     padding: 1em;
     color: $text-primary;
 
+    @media screen and (max-width: $desktop) {
+      padding: 1em 0.5em;
+    }
+
     @media screen and (max-width: $mobile) {
       padding: 0.5em;
     }
@@ -28,6 +32,7 @@
     @media screen and (max-width: $desktop) {
       width: 70px;
       height: 70px;
+      margin-right: 0.5em;
     }
 
     @media screen and (max-width: $mobile) {
@@ -38,7 +43,7 @@
   }
 
   &__name {
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 500;
     margin: 0.5em 0;
 
@@ -53,12 +58,8 @@
   }
 
   &__title {
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 1.5em;
-
-    @media screen and (max-width: $mobile) {
-      font-size: 16px;
-    }
   }
 
   &__link {

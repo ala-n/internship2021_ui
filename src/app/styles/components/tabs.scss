@@ -20,8 +20,12 @@
   padding: 1.5em 2em;
   line-height: 24px;
 
+  @media screen and (max-width: $desktop) {
+    padding: 1.5em;
+  }
+
   @media screen and (max-width: $mobile) {
-    padding: 1em 1em;
+    padding: 1em;
   }
 }
 
