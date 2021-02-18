@@ -21,7 +21,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
 
   displayedColumns = [
     'edit',
-    // 'id',
+    'number',
     'country',
     'city',
     'street',

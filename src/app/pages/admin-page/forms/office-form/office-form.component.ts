@@ -36,6 +36,7 @@ export class OfficeFormComponent implements OnInit {
   ) {}
 
   get vendorId() {
+    debugger;
     return +this.route.snapshot.params.id;
   }
 

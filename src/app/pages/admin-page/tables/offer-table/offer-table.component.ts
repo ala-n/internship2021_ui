@@ -22,7 +22,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'edit',
-    'id',
+    'number',
     'vendorName',
     'title',
     'discout',

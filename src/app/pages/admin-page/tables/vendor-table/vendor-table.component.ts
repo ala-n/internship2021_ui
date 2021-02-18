@@ -20,7 +20,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'edit',
-    'id',
+    'number',
     'name',
     'branchOffices',
     'offers',
