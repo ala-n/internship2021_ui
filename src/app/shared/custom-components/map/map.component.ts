@@ -30,8 +30,8 @@ export class MapComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.mapView();
     const subscription$ = this.mapService.city$.subscribe((city) => {
-      this.onChangeOffers();
       this.city = city;
+      this.onChangeOffers();
     });
     this.subscription.push(subscription$);
 

@@ -64,6 +64,9 @@ export class MapService {
 
   clearOffer(): void {
     this._offer$.next(null);
+  }
+
+  clearVendor(): void {
     this._vendor$.next(null);
   }
 

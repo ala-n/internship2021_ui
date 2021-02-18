@@ -37,6 +37,8 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.mapService.clearOffer();
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+    this.mapService.clearVendor();
   }
 }
