@@ -55,8 +55,8 @@ const routes: Routes = [
                 children: [
                   {
                     path: '',
-                    component: OfficeTableComponent
-                    // canActivate: [FormGuard]
+                    component: OfficeTableComponent,
+                    canActivate: [FormGuard]
                   }
                 ]
               },
@@ -65,8 +65,8 @@ const routes: Routes = [
                 children: [
                   {
                     path: '',
-                    component: OfferTableComponent
-                    // canActivate: [FormGuard]
+                    component: OfferTableComponent,
+                    canActivate: [FormGuard]
                   }
                 ]
               }

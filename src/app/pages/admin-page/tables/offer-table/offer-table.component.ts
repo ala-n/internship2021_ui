@@ -40,8 +40,6 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    if (this.vendorId)
-      this.displayedColumns.splice(this.displayedColumns.indexOf('id'), 1);
     this.offerService
       .getOffers()
       .pipe(

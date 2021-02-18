@@ -14,11 +14,12 @@ export class VendorNavComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.subscriptions.push(
-      this.route.params.subscribe((params) => {
-        this.vendorId = params.id;
-      })
-    );
+    const [route] = this.route.children.splice(-1);
+    if (!route) return;
+    const observer = route.params.subscribe((params) => {
+      this.vendorId = params.id;
+    });
+    this.subscriptions.push(observer);
   }
 
   ngOnDestroy(): void {

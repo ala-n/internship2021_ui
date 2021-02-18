@@ -4,7 +4,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { NavigationService } from '@shared/services/navigation.service';
 import { OfferService } from '@shared/services/offer.service';
-import { VendorService } from '@shared/services/vendor.service';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -29,34 +28,28 @@ export class OfferFormComponent implements OnInit {
 
   offers: Offer[] = [];
   offer!: Offer;
-  vendorName = '';
+  vendorId!: number;
 
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
-    private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
 
-  get vendorId(): number {
+  get vendorNavId(): number {
     return +this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
     const offerId = +this.route.snapshot.params.offerId;
-    this.vendorService
-      .getVendor(this.vendorId)
-      .pipe(take(1))
-      .subscribe((vendor) => {
-        this.vendorName = vendor.name;
-      });
     if (offerId) {
       this.offerService
         .getOfferById(offerId)
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
+          this.vendorId = offer.vendorId;
           this.offerForm.setValue({
             id: offer.id,
             title: offer.title,
@@ -84,7 +77,6 @@ export class OfferFormComponent implements OnInit {
       this.offerService
         .addOffer(this.offerForm.value, this.vendorId)
         .subscribe((offer) => {
-          // TODO do we need this when we connect back-end?
           this.offers.push(offer);
         });
     }

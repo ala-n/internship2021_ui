@@ -1,6 +1,6 @@
 <form class="form" [formGroup]="officeForm" novalidate (ngSubmit)="onSubmit()">
   <div class="form__header">
-    Enter information about <span>BrandName</span> branch office
+    Enter information about <span>{{ office.vendorName }}</span> branch office
   </div>
   <div class="row">
     <div class="col col_group">
