@@ -1,4 +1,10 @@
+@import '/src/app/styles/variables.scss';
+
 .sort-panel {
   height: 3em;
   margin: 0.5em 1em;
+
+  @media screen and (max-width: $desktop) {
+    margin: 0.5em;
+  }
 }

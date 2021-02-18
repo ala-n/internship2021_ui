@@ -5,6 +5,10 @@
 .vendor {
   padding: 1em;
 
+  @media screen and (max-width: $desktop) {
+    padding: 0.5em;
+  }
+
   &__card {
     position: relative;
     display: flex;
@@ -12,6 +16,7 @@
     background-color: $background-blue;
     padding: 1em;
     color: $text-primary;
+    border-radius: 5px;
 
     @media screen and (max-width: $desktop) {
       padding: 1em 0.5em;
