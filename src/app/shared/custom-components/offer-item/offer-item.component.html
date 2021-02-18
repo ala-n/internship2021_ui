@@ -9,12 +9,14 @@
     <img class="offer-card__image" [src]="offer.photoUrl" alt="offer image" />
     <div class="offer-card__text">
       <div class="offer-card__title">{{ offer.title }}</div>
-      <a
-        class="offer-card__vendor link-reset"
-        [routerLink]="['vendors', offer.vendorId]"
-        queryParamsHandling="merge"
-        >{{ offer.vendorName }}</a
-      >
+      <div>
+        <a
+          class="offer-card__vendor link-reset"
+          [routerLink]="['vendors', offer.vendorId]"
+          queryParamsHandling="merge"
+          >{{ offer.vendorName }}</a
+        >
+      </div>
     </div>
   </div>
 

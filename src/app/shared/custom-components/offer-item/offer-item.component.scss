@@ -6,7 +6,6 @@ $small-card: 1500px;
 .offer-card {
   position: relative;
   display: flex;
-  align-items: center;
   color: $text-primary;
   margin-bottom: 0.5em;
 
@@ -71,11 +70,12 @@ $small-card: 1500px;
 
   &__properties {
     position: relative;
+    align-self: center;
     top: 1em;
 
     @media screen and (max-width: $small-card) {
       display: flex;
-      align-items: flex-start;
+      align-self: flex-end;
       width: auto;
       top: 0em;
     }
@@ -142,7 +142,6 @@ $small-card: 1500px;
 
   @media screen and (max-width: $small-card) {
     flex-flow: column;
-    align-items: flex-end;
     padding-bottom: 0.3em;
   }
 }
