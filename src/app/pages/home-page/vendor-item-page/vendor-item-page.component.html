@@ -19,7 +19,9 @@
   </div>
   <mat-tab-group mat-stretch-tabs class="tab">
     <mat-tab label="offers">there will be offers</mat-tab>
-    <mat-tab label="description">{{ vendor.description }}</mat-tab>
+    <mat-tab label="description">{{
+      vendor.description || "Sorry, the brand didn't provide a description"
+    }}</mat-tab>
     <mat-tab label="addresses">
       <div
         *ngFor="let office of vendor.offices"

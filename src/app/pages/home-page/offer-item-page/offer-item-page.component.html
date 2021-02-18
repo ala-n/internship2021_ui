@@ -22,7 +22,9 @@
       </div>
 
       <p>
-        {{ offer.description || 'Sorry, this offer is without description' }}
+        {{
+          offer.description || "Sorry, the brand didn't provide a description"
+        }}
       </p>
       <div class="item__footer">
         <div class="item__rate">
