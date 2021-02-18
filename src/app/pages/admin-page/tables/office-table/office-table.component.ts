@@ -16,7 +16,6 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<Office>();
-  vendorId!: number;
   isLoading = true;
 
   displayedColumns = [
@@ -36,18 +35,16 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.vendorId = Number(params['id']);
-      if (this.vendorId) {
-        this.officeService
-          .getVendorOffices(this.vendorId)
-          .pipe(first())
-          .subscribe((offices: Office[]) => {
-            if (offices) this.dataSource.data = offices as Office[];
-            this.isLoading = false;
-          });
-      }
-    });
+    const vendorId = +this.route.snapshot.params.id;
+    if (vendorId) {
+      this.officeService
+        .getVendorOffices(vendorId)
+        .pipe(first())
+        .subscribe((offices: Office[]) => {
+          if (offices) this.dataSource.data = offices as Office[];
+          this.isLoading = false;
+        });
+    }
 
     this.dataSource.filterPredicate = (data: Office, filter) => {
       const filterObj = JSON.parse(filter);

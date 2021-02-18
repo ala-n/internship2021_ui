@@ -17,7 +17,6 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<Offer>();
   isLoading = true;
-  vendorId!: number;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
@@ -36,27 +35,28 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute
   ) {}
 
+  get vendorId(): number {
+    return +this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.vendorId = Number(params['id']);
-      if (this.vendorId)
-        this.displayedColumns.splice(this.displayedColumns.indexOf('id'), 1);
-      this.offerService
-        .getOffers()
-        .pipe(
-          first(),
-          map((offers) =>
-            offers.filter((offer: Offer) => {
-              if (!this.vendorId) return true;
-              return offer.vendorId === this.vendorId;
-            })
-          )
+    if (this.vendorId)
+      this.displayedColumns.splice(this.displayedColumns.indexOf('id'), 1);
+    this.offerService
+      .getOffers()
+      .pipe(
+        first(),
+        map((offers) =>
+          offers.filter((offer: Offer) => {
+            if (!this.vendorId) return true;
+            return offer.vendorId === this.vendorId;
+          })
         )
-        .subscribe((offers: Offer[]) => {
-          if (offers) this.dataSource.data = offers as Offer[];
-          this.isLoading = false;
-        });
-    });
+      )
+      .subscribe((offers: Offer[]) => {
+        if (offers) this.dataSource.data = offers as Offer[];
+        this.isLoading = false;
+      });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);

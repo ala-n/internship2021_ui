@@ -26,7 +26,6 @@ export class OfficeFormComponent implements OnInit {
 
   office!: Office;
   offices: Office[] = [];
-  // vendorId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -35,36 +34,31 @@ export class OfficeFormComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
-  get vendorId() {
-    debugger;
+  get vendorId(): number {
     return +this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    //TODO try to make without subscribe using snapshot
-    this.route.params.subscribe((params) => {
-      const officeId = Number(params['officeId']);
-      // this.vendorId = Number(params['id']);
-      if (officeId) {
-        this.officeService
-          .getOffice(officeId)
-          .pipe(first())
-          .subscribe((office) => {
-            this.office = office;
-            this.officeForm.setValue({
-              id: this.office.id,
-              country: this.office.country,
-              city: this.office.city,
-              street: this.office.street,
-              house: this.office.house,
-              room: this.office.room,
-              phone: this.office.phone,
-              email: this.office.email,
-              isActive: this.office.isActive
-            });
+    const officeId = +this.route.snapshot.params.officeId;
+    if (officeId) {
+      this.officeService
+        .getOffice(officeId)
+        .pipe(first())
+        .subscribe((office) => {
+          this.office = office;
+          this.officeForm.setValue({
+            id: this.office.id,
+            country: this.office.country,
+            city: this.office.city,
+            street: this.office.street,
+            house: this.office.house,
+            room: this.office.room,
+            phone: this.office.phone,
+            email: this.office.email,
+            isActive: this.office.isActive
           });
-      }
-    });
+        });
+    }
   }
 
   onSubmit(): void {

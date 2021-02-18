@@ -29,7 +29,6 @@ export class OfferFormComponent implements OnInit {
 
   offers: Offer[] = [];
   offer!: Offer;
-  vendorId!: number;
 
   constructor(
     private fb: FormBuilder,
@@ -38,34 +37,35 @@ export class OfferFormComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
+  get vendorId() {
+    debugger;
+    return +this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const offerId = Number(params['offerId']);
-      this.vendorId = Number(params['id']);
-      if (offerId) {
-        this.offerService
-          .getOfferById(offerId)
-          .pipe(first())
-          .subscribe((offer: Offer) => {
-            this.offer = offer;
-            this.vendorId = offer.vendorId;
-            this.offerForm.setValue({
-              id: offer.id,
-              title: offer.title,
-              discount: offer.discount,
-              description: offer.description,
-              dateStart: offer.dateStart,
-              dateEnd: offer.dateEnd,
-              promocode: offer.promocode,
-              vendorName: offer.vendorName,
-              images: '',
-              offices: '',
-              tags: '',
-              isActive: offer.isActive
-            });
+    const offerId = +this.route.snapshot.params.offerId;
+    if (offerId) {
+      this.offerService
+        .getOfferById(offerId)
+        .pipe(first())
+        .subscribe((offer: Offer) => {
+          this.offer = offer;
+          this.offerForm.setValue({
+            id: offer.id,
+            title: offer.title,
+            discount: offer.discount,
+            description: offer.description,
+            dateStart: offer.dateStart,
+            dateEnd: offer.dateEnd,
+            promocode: offer.promocode,
+            vendorName: offer.vendorName,
+            images: '',
+            offices: '',
+            tags: '',
+            isActive: offer.isActive
           });
-      }
-    });
+        });
+    }
   }
 
   onSubmit(): void {

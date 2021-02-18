@@ -32,25 +32,23 @@ export class VendorFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const vendorId = Number(params['id']);
-      if (vendorId) {
-        this.vendorService
-          .getVendor(vendorId)
-          .pipe(first())
-          .subscribe((vendor) => {
-            this.vendor = vendor;
-            this.vendorForm.setValue({
-              id: vendor.id,
-              name: vendor.name,
-              title: vendor.title,
-              website: vendor.website,
-              description: vendor.description,
-              isActive: vendor.isActive
-            });
+    const vendorId = +this.route.snapshot.params.id;
+    if (vendorId) {
+      this.vendorService
+        .getVendor(vendorId)
+        .pipe(first())
+        .subscribe((vendor) => {
+          this.vendor = vendor;
+          this.vendorForm.setValue({
+            id: vendor.id,
+            name: vendor.name,
+            title: vendor.title,
+            website: vendor.website,
+            description: vendor.description,
+            isActive: vendor.isActive
           });
-      }
-    });
+        });
+    }
   }
 
   onSubmit(): void {
