@@ -9,7 +9,6 @@
   background-color: rgba($color: $background-tabs, $alpha: 0.8);
 
   &.mat-tab-label-active {
-    background-color: rgba($color: $background-tabs, $alpha: 0.9);
     opacity: 0.9;
   }
 }
