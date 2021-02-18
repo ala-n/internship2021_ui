@@ -1,12 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
-import { VendorService } from '@shared/services/vendor.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import { Subscription } from 'rxjs';
-import { Vendor } from '../../models/vendor';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
+import { OfferService } from '@shared/services/offer.service';
 
 @Component({
   selector: 'app-map',
@@ -24,19 +23,19 @@ export class MapComponent implements OnInit, OnDestroy {
 
   constructor(
     private mapService: MapService,
-    private vendorService: VendorService
+    private offerService: OfferService
   ) {}
 
   ngOnInit(): void {
     this.mapView();
     const subscription$ = this.mapService.city$.subscribe((city) => {
-      this.onChangeMarkerVendor();
+      this.onInitOffers();
       this.city = city;
     });
     this.subscription.push(subscription$);
 
     const offersSubscription$ = this.mapService.offer$.subscribe((offer) => {
-      if (offer == null) this.onChangeMarkerVendor();
+      if (offer == null) this.onInitOffers();
       else this.onChangeMarkerOffers(offer);
     });
     this.subscription.push(offersSubscription$);
@@ -55,11 +54,11 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map.addLayer(this.markerAll);
   }
 
-  onChangeMarkerVendor(): void {
-    this.vendorRequest$ = this.vendorService
-      .getVendors()
-      .subscribe((vendors) => {
-        const markers = this.initVendorMarkers(vendors, this.city);
+  onInitOffers(): void {
+    this.vendorRequest$ = this.offerService
+      .getOffers({ city: this.city })
+      .subscribe((offers) => {
+        const markers = this.initOffersMarkers(offers, this.city);
         this.markerAll.clearLayers();
         this.markerAll.addLayers(markers);
         this.map.addLayer(this.markerAll);
@@ -87,14 +86,14 @@ export class MapComponent implements OnInit, OnDestroy {
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
   }
 
-  private initVendorMarkers(vendors: Vendor[], city: string) {
+  private initOffersMarkers(offers: Offer[], city: string) {
     this.mapService.getCityView(city).then((data) => {
       this.map.setView([+data[0].y, +data[0].x]);
     });
     const markers = [];
-    for (const vendor of vendors) {
-      for (const office of vendor.offices) {
-        const marker = this.mapService.getMarkers(office, vendor.name);
+    for (const offer of offers) {
+      for (const office of offer.offices) {
+        const marker = this.mapService.getMarkers(office, offer.vendorName);
         markers.push(marker);
       }
     }
@@ -119,7 +118,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.mapService.getCityView(office.city).then((data) => {
       this.map.setView([+data[0].y, +data[0].x]);
     });
-    const marker = this.mapService.getMarkers(office, 'Lol');
+    const marker = this.mapService.getMarkers(office, '');
     markers.push(marker);
     return markers;
   }
