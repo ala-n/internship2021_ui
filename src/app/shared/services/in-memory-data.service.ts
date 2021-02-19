@@ -4,6 +4,7 @@ import { Vendor } from '../models/vendor';
 import vendors from '../mocks/vendors';
 import offers from '../mocks/offers';
 import cities from '../mocks/cities';
+import searchData from '../mocks/mock-search-data';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import cities from '../mocks/cities';
 export class InMemoryDataService implements InMemoryDbService {
   // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   createDb() {
-    return { vendors, offers, cities };
+    return { vendors, offers, cities, searchData };
   }
 
   // If the vendors array is empty,

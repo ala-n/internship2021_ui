@@ -23,21 +23,31 @@ export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
-    this.filteredData = this.control.valueChanges.pipe(
-      startWith(''),
-      map((value) => this._filter(value))
-    );
+  
+  this.searchService.getSearchData().subscribe((data: SearchData[]) => this.parseSearchData(data));
+  
+  }
 
-    this.getSearchData();
+  parseSearchData(data: SearchData[]): void {
+    this.data = data;
+    this.stringData = this.fromArrayToString(data);
+    this.changeValue();
+  }
 
-    this.stringData = this.data.map((object) => {
+  //This function make from objects array to strings array
+  fromArrayToString(data: Object): string[] {
+    return this.data.map((object) => {
       return object.data;
     });
   }
 
-  getSearchData(): void {
-    this.data = this.searchService.getSearchData();
-  }
+  // This function change value according to your input value
+  changeValue(): void{
+    this.filteredData = this.control.valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value))
+    );
+}
 
   // This function fiter data in search, according to your you input
   private _filter(value: string): string[] {
