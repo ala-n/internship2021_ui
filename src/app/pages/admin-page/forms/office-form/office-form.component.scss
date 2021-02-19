@@ -1,2 +1,11 @@
-@import '/src/app/styles/variables.scss';
 @import '/src/app/styles/components/form.scss';
+
+.col {
+  &_nowrap {
+    flex-flow: row nowrap;
+    .col {
+      flex: 1 0 0%;
+      width: 0;
+    }
+  }
+}

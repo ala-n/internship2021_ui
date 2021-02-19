@@ -76,6 +76,9 @@
         <mat-error *ngIf="officeForm.controls['email'].hasError('required')">
           E-mail is <strong>required</strong>
         </mat-error>
+        <mat-error *ngIf="officeForm.controls['email'].hasError('email')">
+          E-mail address is <strong>incorrect</strong>
+        </mat-error>
       </mat-form-field>
     </div>
   </div>

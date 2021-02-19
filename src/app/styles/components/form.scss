@@ -63,14 +63,6 @@
       width: 100%;
     }
   }
-
-  &_nowrap {
-    flex-flow: row nowrap;
-    .col {
-      flex: 1 0 0%;
-      width: 0;
-    }
-  }
 }
 
 .col:last-child {

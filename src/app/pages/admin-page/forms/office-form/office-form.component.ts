@@ -20,8 +20,8 @@ export class OfficeFormComponent implements OnInit {
     street: [null, Validators.required],
     house: [null, Validators.required],
     room: null,
-    phone: null,
-    email: [null, Validators.required, Validators.email],
+    phone: [null, Validators.pattern('[- +()0-9]+')],
+    email: [null, [Validators.required, Validators.email]],
     isActive: false
   });
 

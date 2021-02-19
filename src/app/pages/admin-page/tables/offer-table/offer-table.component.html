@@ -2,7 +2,11 @@
 
 <div class="table mat-elevation-z8" [hidden]="isLoading">
   <div class="table__header">
-    <mat-form-field class="table__search" appearance="outline">
+    <mat-form-field
+      class="table__search"
+      [class.table__search_hidden]="vendorId"
+      appearance="outline"
+    >
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter(input.value, 'title')" #input />
     </mat-form-field>
