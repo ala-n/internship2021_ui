@@ -27,10 +27,6 @@
     }
   }
 
-  &__info {
-    margin-bottom: 1.5em;
-  }
-
   &__name {
     font-size: 22px;
     font-weight: 500;
@@ -54,7 +50,6 @@
     display: flex;
     align-items: center;
     font-size: 16px;
-    color: $text-secondary;
   }
 
   @media screen and (max-width: $desktop) {

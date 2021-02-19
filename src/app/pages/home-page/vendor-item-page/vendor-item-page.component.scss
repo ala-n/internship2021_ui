@@ -4,20 +4,21 @@
 @import '/src/app/styles/components/card-header.scss';
 
 .vendor {
-  padding: 1em;
+  padding: 0.5em;
+
+  &__info {
+    margin-bottom: 1.5em;
+  }
 
   &__link {
     position: absolute;
     bottom: 1em;
     right: 1em;
+    color: $text-secondary;
 
     @media screen and (max-width: $desktop) {
       bottom: 0.5em;
       right: 0.5em;
     }
-  }
-
-  @media screen and (max-width: $desktop) {
-    padding: 0.5em;
   }
 }

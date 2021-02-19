@@ -1,16 +1,21 @@
 <div *ngIf="office$ | async as office" class="office">
   <div class="card" *ngIf="vendor$ | async as vendor">
+    <!-- //TODO(abarmina) remove double *ngIf="vendor$ | async as vendor" -->
     <img
       src="/assets/images/vendor_logo.jpg"
       alt="office logo"
       class="card__image"
     />
-    <div class="card__info">
+    <div class="office__info">
       <div class="card__name">
         {{ vendor.name }}
       </div>
-      <div class="card__title">{{ office.address }}</div>
-      <div class="card__title">{{ office.phone }}</div>
+      <div class="card__title office__contact">
+        <mat-icon>location_on</mat-icon>{{ office.address }}
+      </div>
+      <div class="card__title office__contact">
+        <mat-icon>call</mat-icon>{{ office.phone }}
+      </div>
       <a
         href="https://{{ vendor.website }}"
         target="_blank"

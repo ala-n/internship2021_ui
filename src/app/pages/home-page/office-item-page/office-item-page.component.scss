@@ -3,9 +3,16 @@
 @import '/src/app/styles/components/card-header.scss';
 
 .office {
-  padding: 1em;
+  padding: 0.5em;
 
-  @media screen and (max-width: $desktop) {
-    padding: 0.5em;
+  &__info {
+    .mat-icon {
+      margin-right: 0.3em;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
   }
 }
