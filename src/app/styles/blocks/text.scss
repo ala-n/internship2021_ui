@@ -1,26 +1,28 @@
 @import '/src/app/styles/variables.scss';
 
 .text {
+  // size
   &_s {
+    // large
     &_l {
       font-size: 16px;
       @media screen and (max-width: $tablet) {
         font-size: 14px;
       }
       @media screen and (max-width: $mobile) {
-        font-size: 10px;
+        font-size: 12px;
       }
     }
-
+    // medium
     &_m {
       font-size: 14px;
     }
-
+    // small
     &_s {
       font-size: 12px;
     }
   }
-
+  // color
   &_c {
     &_primary {
       color: $text-primary;
@@ -30,7 +32,7 @@
       color: $blue-primary;
     }
   }
-
+  //uppercase
   &_upper {
     text-transform: uppercase;
   }

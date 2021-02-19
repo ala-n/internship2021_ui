@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { NavigationService } from '@shared/services/navigation.service';
 import { OfferService } from '@shared/services/offer.service';
+import { VendorService } from '@shared/services/vendor.service';
 import { take } from 'rxjs/operators';
 
 @Component({
@@ -29,10 +30,12 @@ export class OfferFormComponent implements OnInit {
   offers: Offer[] = [];
   offer!: Offer;
   vendorId!: number;
+  vendorName!: string;
 
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -49,6 +52,7 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
+          this.vendorName = this.offer.vendorName;
           this.vendorId = offer.vendorId;
           this.offerForm.setValue({
             id: offer.id,
@@ -63,6 +67,13 @@ export class OfferFormComponent implements OnInit {
             tags: '',
             isActive: offer.isActive
           });
+        });
+    } else {
+      this.vendorService
+        .getVendor(this.vendorNavId)
+        .pipe(take(1))
+        .subscribe((vendor) => {
+          this.vendorName = vendor.name;
         });
     }
   }

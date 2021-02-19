@@ -1,7 +1,4 @@
-:host {
-  height: 100%;
-  width: 100%;
-}
+@import '/src/app/styles/variables.scss';
 
 .vendor-nav {
   display: flex;
@@ -13,13 +10,22 @@
 
   &__menu {
     display: flex;
-    max-width: 500px;
+    align-items: center;
+    height: $desktop-header;
+    margin-bottom: 1em;
     padding: 0;
+    text-align: center;
+    border-bottom: $border-primary;
+
+    @media screen and (max-width: $tablet) {
+      height: $mobile-header;
+    }
 
     a {
       display: flex;
       justify-content: center;
-      height: 56px;
+      height: 100%;
+      width: auto;
     }
   }
 

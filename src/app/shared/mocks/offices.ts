@@ -12,7 +12,6 @@ export default [
     street: 'ул. Шафарнянская',
     house: 'д. 3',
     room: '',
-    rate: 3,
     email: 'marsel1@gmail.com',
     isActive: true
   },
@@ -29,7 +28,6 @@ export default [
     street: 'ул. Захарова',
     house: 'д. 23',
     room: '',
-    rate: 4,
     email: 'marsel2@gmail.com',
     isActive: true
   },
@@ -46,7 +44,6 @@ export default [
     street: 'пр. Победителей',
     house: 'д. 84',
     room: '',
-    rate: 5,
     email: 'sushi2@gmail.com',
     isActive: false
   },
@@ -63,7 +60,6 @@ export default [
     street: 'ул. Слободская',
     house: 'д. 27',
     room: '',
-    rate: 4,
     email: 'sushi1@gmail.com',
     isActive: true
   },
@@ -80,7 +76,6 @@ export default [
     street: 'ул. Рафиева',
     house: 'д. 44',
     room: '',
-    rate: 3,
     email: 'pizza1@gmail.com',
     isActive: true
   },
@@ -97,7 +92,6 @@ export default [
     street: 'ул. Маяковского',
     house: 'д. 10',
     room: '',
-    rate: 4,
     email: 'pizza2@gmail.com',
     isActive: false
   },
@@ -114,7 +108,6 @@ export default [
     street: 'ул. Центральная',
     house: 'д. 9',
     room: '',
-    rate: 5,
     email: 'pizza3@gmail.com',
     isActive: true
   },
@@ -131,7 +124,6 @@ export default [
     street: 'пр. Победителей',
     house: 'д. 23к1',
     room: '',
-    rate: 5,
     email: 'pizza3@gmail.com',
     isActive: true
   },
@@ -147,8 +139,6 @@ export default [
     city: 'Минск',
     street: 'ул. Голодеда',
     house: 'д. 15',
-    room: '',
-    rate: 4,
     email: 'luxe@gmail.com',
     isActive: true
   },
@@ -165,7 +155,6 @@ export default [
     street: 'пр. Победителей',
     house: 'д. 23к1',
     room: '',
-    rate: 3,
     email: 'fok@gmail.com',
     isActive: true
   },
@@ -182,7 +171,6 @@ export default [
     street: 'пр. Янки Купалы',
     house: 'д. 87',
     room: '',
-    rate: 4,
     email: 'yetideti@gmail.com',
     isActive: true
   },
@@ -199,7 +187,6 @@ export default [
     street: 'ул.Буденного',
     house: 'д. 54/1',
     room: '',
-    rate: 5,
     email: 'rock@gmail.com',
     isActive: true
   },
@@ -216,7 +203,6 @@ export default [
     street: 'ул.Ивана Федорова',
     house: 'д. 6',
     room: '2',
-    rate: 3,
     email: 'ira.les@gmail.com',
     isActive: true
   },
@@ -233,7 +219,6 @@ export default [
     street: 'ул.Рогнеденская',
     house: 'д. 3',
     room: '4',
-    rate: 5,
     email: 'fashion-wear@gmail.com',
     isActive: true
   },
@@ -250,7 +235,6 @@ export default [
     street: 'ул. Монтёрская',
     house: 'д. 10а',
     room: '',
-    rate: 4,
     email: 'wheel1@gmail.com',
     isActive: true
   },
@@ -267,7 +251,6 @@ export default [
     street: 'ул. Малышева',
     house: 'д. 145а',
     room: '',
-    rate: 5,
     email: 'wheel2@gmail.com',
     isActive: false
   }

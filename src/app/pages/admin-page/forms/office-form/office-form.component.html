@@ -4,8 +4,8 @@
       >Enter information about<span
         class="text text_s_l text_c_accent text_upper"
       >
-        {{ office.vendorName }} </span
-      >branch office</span
+        {{ vendorName }} </span
+      >branch&nbsp;office</span
     >
   </div>
   <div class="row">
@@ -73,6 +73,9 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
+        <mat-error *ngIf="officeForm.controls['email'].hasError('required')">
+          E-mail is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
     </div>
   </div>

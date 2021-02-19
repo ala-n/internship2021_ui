@@ -5,6 +5,7 @@ import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
+import { VendorService } from '@shared/services/vendor.service';
 
 @Component({
   selector: 'app-office-form',
@@ -20,16 +21,18 @@ export class OfficeFormComponent implements OnInit {
     house: [null, Validators.required],
     room: null,
     phone: null,
-    email: [null, Validators.email],
+    email: [null, Validators.required, Validators.email],
     isActive: false
   });
 
   office!: Office;
   offices: Office[] = [];
+  vendorName!: string;
 
   constructor(
     private fb: FormBuilder,
     private officeService: OfficeService,
+    private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -46,6 +49,7 @@ export class OfficeFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((office) => {
           this.office = office;
+          this.vendorName = this.office.vendorName;
           this.officeForm.setValue({
             id: this.office.id,
             country: this.office.country,
@@ -58,13 +62,19 @@ export class OfficeFormComponent implements OnInit {
             isActive: this.office.isActive
           });
         });
+    } else {
+      this.vendorService
+        .getVendor(this.vendorId)
+        .pipe(take(1))
+        .subscribe((vendor) => {
+          this.vendorName = vendor.name;
+        });
     }
   }
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
     if (this.office) {
-      // TODO can we change manually setting of vendor Id?
       this.officeService
         .updateOffice(this.officeForm.value, this.vendorId)
         .subscribe();

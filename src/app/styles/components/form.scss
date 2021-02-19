@@ -1,4 +1,5 @@
 @import '../blocks/text.scss';
+@import '../variables.scss';
 
 .form {
   display: flex;
@@ -15,6 +16,7 @@
 
     @media screen and (max-width: $tablet) {
       height: $mobile-header;
+      padding: 0 0.5em;
     }
   }
 }
