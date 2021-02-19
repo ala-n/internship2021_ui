@@ -1,0 +1,37 @@
+@import '/src/app/styles/variables.scss';
+
+.text {
+  &_s {
+    &_l {
+      font-size: 16px;
+      @media screen and (max-width: $tablet) {
+        font-size: 14px;
+      }
+      @media screen and (max-width: $mobile) {
+        font-size: 10px;
+      }
+    }
+
+    &_m {
+      font-size: 14px;
+    }
+
+    &_s {
+      font-size: 12px;
+    }
+  }
+
+  &_c {
+    &_primary {
+      color: $text-primary;
+    }
+
+    &_accent {
+      color: $blue-primary;
+    }
+  }
+
+  &_upper {
+    text-transform: uppercase;
+  }
+}

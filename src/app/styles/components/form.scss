@@ -1,19 +1,20 @@
+@import '../blocks/text.scss';
+
 .form {
   display: flex;
   flex-flow: row wrap;
 
   &__header {
+    display: flex;
+    align-items: center;
     height: $desktop-header;
     width: 100%;
-    text-transform: uppercase;
+    margin-bottom: 1em;
+    padding: 0 1em;
     border-bottom: $border-primary;
 
     @media screen and (max-width: $tablet) {
       height: $mobile-header;
-    }
-
-    span {
-      color: $blue-primary;
     }
   }
 }
