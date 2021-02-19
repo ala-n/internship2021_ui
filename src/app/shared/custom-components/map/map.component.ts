@@ -21,6 +21,7 @@ export class MapComponent implements OnInit, OnDestroy {
   city!: string;
   markerAll = new L.MarkerClusterGroup({ animateAddingMarkers: true });
   name!: string;
+  private debouceTimeout!: number;
 
   constructor(
     private mapService: MapService,
@@ -48,6 +49,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
     const vendorSubscription$ = this.mapService.vendor$.subscribe((vendor) => {
       if (vendor !== null) this.onClickItem(vendor);
+      else this.onChangeOffers();
     });
     this.subscription.push(vendorSubscription$);
   }
@@ -55,9 +57,7 @@ export class MapComponent implements OnInit, OnDestroy {
   onChangeOffice(office: Office): void {
     this.offerRequest$.unsubscribe();
     const markers = this.initOfficeMarkers(office);
-    this.markerAll.clearLayers();
-    this.markerAll.addLayers(markers);
-    this.map.addLayer(this.markerAll);
+    this.applyMarkers(markers);
   }
 
   onChangeOffers(): void {
@@ -65,18 +65,24 @@ export class MapComponent implements OnInit, OnDestroy {
       .getOffers({ city: this.city })
       .subscribe((offers) => {
         const markers = this.initOffersMarkers(offers);
-        this.markerAll.clearLayers();
-        this.markerAll.addLayers(markers);
-        this.map.addLayer(this.markerAll);
+        this.applyMarkers(markers);
       });
   }
 
   onClickItem(data: Offer | Vendor): void {
     this.offerRequest$.unsubscribe();
     const markers = this.initMarkers(data);
-    this.markerAll.clearLayers();
-    this.markerAll.addLayers(markers);
-    this.map.addLayer(this.markerAll);
+    this.applyMarkers(markers);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  applyMarkers(markers: any[]): void {
+    if (this.debouceTimeout) clearTimeout(this.debouceTimeout);
+    this.debouceTimeout = window.setTimeout(() => {
+      this.markerAll.clearLayers();
+      this.markerAll.addLayers(markers);
+      this.map.addLayer(this.markerAll);
+    }, 100);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
