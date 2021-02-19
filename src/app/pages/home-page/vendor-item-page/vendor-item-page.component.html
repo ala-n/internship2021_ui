@@ -1,18 +1,18 @@
 <div *ngIf="vendor$ | async as vendor" class="vendor">
-  <div class="vendor__card">
+  <div class="card">
     <img
       src="/assets/images/vendor_logo.jpg"
       alt="vendor logo"
-      class="vendor__image"
+      class="card__image"
     />
-    <div>
-      <div class="vendor__name">{{ vendor.name }}</div>
-      <div class="vendor__title">{{ vendor.title }}</div>
+    <div class="card__info">
+      <div class="card__name">{{ vendor.name }}</div>
+      <div class="card__title">{{ vendor.title }}</div>
     </div>
     <a
       href="https://{{ vendor.website }}"
       target="_blank"
-      class="vendor__link link-reset"
+      class="card__link vendor__link link-reset"
     >
       <mat-icon>public</mat-icon>Website
     </a>
@@ -23,10 +23,10 @@
       vendor.description || "Sorry, the brand didn't provide a description"
     }}</mat-tab>
     <mat-tab label="addresses">
-      <div
+      <a
         *ngFor="let office of vendor.offices"
-        class="address"
-        (click)="onClickOffice(office)"
+        class="address link-reset"
+        [routerLink]="['/home/offices', office.id]"
       >
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
@@ -40,7 +40,7 @@
           </div>
           <div>{{ office.phone }}</div>
         </div>
-      </div>
+      </a>
     </mat-tab>
   </mat-tab-group>
 </div>
