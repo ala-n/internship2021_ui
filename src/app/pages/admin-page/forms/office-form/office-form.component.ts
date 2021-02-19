@@ -39,7 +39,7 @@ export class OfficeFormComponent implements OnInit {
       const officeId = Number(params['officeId']) - 1;
       if (vendorId) {
         this.vendorService
-          .getVendor(vendorId)
+          .getVendorById(vendorId)
           .pipe(first())
           .subscribe((vendor) => {
             this.offices = vendor.offices;
