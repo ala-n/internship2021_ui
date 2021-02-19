@@ -44,10 +44,10 @@
       </div>
     </mat-tab>
     <mat-tab label="addresses">
-      <div
+      <a
         *ngFor="let office of offer.offices"
-        class="address"
-        (click)="onClickOffice(office)"
+        class="address link-reset"
+        [routerLink]="['/home/offices', office.id]"
       >
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
@@ -61,7 +61,7 @@
           </div>
           <div>{{ office.phone }}</div>
         </div>
-      </div>
+      </a>
     </mat-tab>
   </mat-tab-group>
 </div>
