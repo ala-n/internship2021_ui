@@ -22,9 +22,10 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  // This function send Login Data and try to receive Token
   loginForm(data: LoginData): Observable<Token> {
     return this.http.post<Token>(this.URL, data);
-  }
+  } // TODO: create error handler
 
   // After login save token and other values(if any) in sessionStorage
   setUser(resp: Token): void {
