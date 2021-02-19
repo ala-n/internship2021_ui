@@ -15,7 +15,8 @@ export class LanguageComponent {
   }
 
   onChangeLang() {
-    if (this.translate.currentLang == 'en') this.translate.use('ru');
-    else this.translate.use('en');
+    this.translate.currentLang == 'en'
+      ? this.translate.use('ru')
+      : this.translate.use('en');
   }
 }
