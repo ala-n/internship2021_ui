@@ -9,9 +9,12 @@ import { HttpService } from '@shared/services/http.service';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
-  constructor(public navigationService: NavigationService, private httpAuth: AuthService) {}
+  constructor(
+    public navigationService: NavigationService,
+    private httpAuth: AuthService
+  ) {}
 
-  logout(){
+  logout() {
     this.httpAuth.logout();
   }
 }

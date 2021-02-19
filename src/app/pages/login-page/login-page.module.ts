@@ -11,22 +11,22 @@ import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [LogInComponent],
-  imports: [CommonModule,
-            SharedModule,
-            RouterModule,
-            BrowserModule,
-            AppRoutingModule,
-            HttpClientModule,
-            JwtModule.forRoot({
-              config: {
-                tokenGetter: function  tokenGetter() {
-                     return     sessionStorage.getItem('access_token');}, 
-                allowedDomains: ['localhost:4200'], 
-                disallowedRoutes: ['http://localhost:4200/login']
-              }
-            })]
+  imports: [
+    CommonModule,
+    SharedModule,
+    RouterModule,
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function tokenGetter() {
+          return sessionStorage.getItem('access_token');
+        },
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: ['http://localhost:4200/login']
+      }
+    })
+  ]
 })
-export class LogInPageModule {
-  
-
-}
+export class LogInPageModule {}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Token } from '../models/token';
 import { Router } from '@angular/router';
-import { LoginData} from '@shared/models/login_data';
+import { LoginData } from '@shared/models/login_data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -10,20 +10,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthService {
   // Http Options without token
-  get httpOptionsAuth (): Object {
+  get httpOptionsAuth(): Object {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
-    })
-    return {headers}
-  };
+    });
+    return { headers };
+  }
 
   // API path
   URL = 'http://localhost:3000/postuser';
 
-  constructor(
-    private router: Router,
-    private http: HttpClient
-  ) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
   loginForm(data: LoginData): Observable<Token> {
     return this.http.post<Token>(this.URL, data);
@@ -47,5 +44,4 @@ export class AuthService {
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }
-
 }
