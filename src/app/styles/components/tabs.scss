@@ -1,34 +1,40 @@
 .tab {
-  //TODO(abarmina) add styles for $tablet and $mobile
   color: $text-primary;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 ::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {
   color: $background-light;
   border-radius: 10px 10px 0 0;
   background-color: rgba($color: $background-tabs, $alpha: 0.8);
+  min-width: 100px;
 
   &.mat-tab-label-active {
     opacity: 0.9;
+  }
+
+  @media screen and (max-width: $mobile) {
+    font-size: 12px;
+    padding: 0 10px;
+    height: 3em;
   }
 }
 
 ::ng-deep .mat-tab-body-wrapper {
   background-color: $background-light;
   border-radius: 0 0 10px 10px;
-  padding: 1.5em 2em;
+  padding: 1.5em;
   line-height: 24px;
 
   @media screen and (max-width: $desktop) {
-    padding: 1.5em;
-  }
-
-  @media screen and (max-width: $mobile) {
     padding: 1em;
   }
 }
 
 ::ng-deep .mat-tab-label-container {
   text-transform: uppercase;
+}
+
+::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+  background-color: $background-tabs;
 }

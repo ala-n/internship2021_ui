@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
-import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { Observable, Subject } from 'rxjs';
@@ -36,10 +35,6 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.router.navigate(['/home']);
       });
-  }
-
-  onClickOffice(office: Office): void {
-    this.mapService.setOffice(office);
   }
 
   ngOnDestroy(): void {
