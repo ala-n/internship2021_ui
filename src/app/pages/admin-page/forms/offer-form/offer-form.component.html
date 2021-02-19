@@ -38,40 +38,34 @@
   </div>
   <div class="row">
     <div class="col col_group">
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Valid from</mat-label>
-            <input type="date" matInput formControlName="dateStart" />
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Valid to</mat-label>
-            <input type="date" matInput formControlName="dateEnd" />
-            <mat-error
-              *ngIf="offerForm.controls['dateEnd'].hasError('required')"
-            >
-              End date is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Valid from</mat-label>
+          <input type="date" matInput formControlName="dateStart" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Valid to</mat-label>
+          <input type="date" matInput formControlName="dateEnd" />
+          <mat-error *ngIf="offerForm.controls['dateEnd'].hasError('required')">
+            End date is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div class="col col_group">
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Promocode</mat-label>
-            <input matInput formControlName="promocode" />
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Images</mat-label>
-            <input matInput formControlName="images" />
-          </mat-form-field>
-        </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Promocode</mat-label>
+          <input matInput formControlName="promocode" />
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Images</mat-label>
+          <input matInput formControlName="images" />
+        </mat-form-field>
       </div>
     </div>
   </div>
