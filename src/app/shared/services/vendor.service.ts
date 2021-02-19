@@ -20,7 +20,7 @@ export class VendorService {
     return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
   }
 
-  getVendor(id: number): Observable<Vendor> {
+  getVendorById(id: number): Observable<Vendor> {
     const url = `${VendorService.VENDORS_URL}/${id}`;
     return this.http.get<Vendor>(url);
   }

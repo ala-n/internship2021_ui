@@ -7,6 +7,6 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./sort.component.scss']
 })
 export class SortByComponent {
-  readonly SORT_OPTIONS = ['distance', 'relevance', 'rating'];
+  readonly SORT_OPTIONS = ['DISTANCE', 'RELEVANCE', 'RATING'];
   readonly sortControl = new FormControl(this.SORT_OPTIONS[0]);
 }

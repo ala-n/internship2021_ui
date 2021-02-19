@@ -41,7 +41,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
       this.vendorId = Number(params['id']);
       if (this.vendorId) {
         this.vendorService
-          .getVendor(this.vendorId)
+          .getVendorById(this.vendorId)
           .pipe(first())
           .subscribe((vendor: Vendor) => {
             if (vendor.offices)
