@@ -11,8 +11,7 @@
   box-shadow: none;
 
   &__body {
-    // TODO fix table scrolling(alexbaz)
-    // overflow: auto;
+    overflow: auto;
     @media screen and (max-width: $mobile) {
       flex: 1 0 1px;
     }

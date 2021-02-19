@@ -32,7 +32,11 @@
   &__card {
     flex: 1 0 1px;
     padding: 0;
-    // overflow: auto;
+    overflow: auto;
+    //TODO class naming???
+    mat-card-content {
+      height: 100%;
+    }
   }
 }
 

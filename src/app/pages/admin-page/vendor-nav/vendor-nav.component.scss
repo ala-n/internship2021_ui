@@ -4,13 +4,15 @@
 }
 
 .vendor-nav {
-  //   flex: 1 0 1px;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
   padding: 0;
   border-radius: 4px 0 0;
+  overflow-x: hidden;
 
   &__menu {
     display: flex;
-    // flex: 1 0 100%;
     max-width: 500px;
     padding: 0;
 
@@ -23,5 +25,6 @@
 
   &__content {
     position: relative;
+    flex: 1 0 0%;
   }
 }
