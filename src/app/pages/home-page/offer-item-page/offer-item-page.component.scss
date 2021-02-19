@@ -13,12 +13,8 @@
 }
 
 .item {
-  padding: 1em;
+  padding: 0.5em;
   color: $text-primary;
-
-  @media screen and (max-width: $desktop) {
-    padding: 0.5em;
-  }
 
   &__header {
     display: flex;

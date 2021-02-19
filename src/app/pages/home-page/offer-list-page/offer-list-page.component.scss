@@ -13,11 +13,7 @@
 .offers {
   flex: 1 0 1px;
   overflow: auto;
-  padding: 0.5em 1em;
-
-  @media screen and (max-width: $desktop) {
-    padding: 0.5em;
-  }
+  padding: 0.5em;
 }
 
 .sort {
