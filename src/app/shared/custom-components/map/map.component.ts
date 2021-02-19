@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { OfferService } from '@shared/services/offer.service';
+import { Vendor } from '@shared/models/vendor';
 
 @Component({
   selector: 'app-map',
@@ -14,7 +15,7 @@ import { OfferService } from '@shared/services/offer.service';
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
-  vendorRequest$!: Subscription;
+  offerRequest$!: Subscription;
 
   map!: L.Map;
   city!: string;
@@ -29,48 +30,93 @@ export class MapComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.mapView();
     const subscription$ = this.mapService.city$.subscribe((city) => {
-      this.onInitOffers();
       this.city = city;
+      this.onChangeOffers();
     });
     this.subscription.push(subscription$);
 
     const offersSubscription$ = this.mapService.offer$.subscribe((offer) => {
-      if (offer == null) this.onInitOffers();
-      else this.onChangeMarkerOffers(offer);
+      if (offer == null) this.onChangeOffers();
+      else this.onClickItem(offer);
     });
     this.subscription.push(offersSubscription$);
 
     const officeSubscription$ = this.mapService.office$.subscribe((office) => {
-      if (office !== null) this.onChangeMarkerOffice(office);
+      if (office !== null) this.onChangeOffice(office);
     });
     this.subscription.push(officeSubscription$);
+
+    const vendorSubscription$ = this.mapService.vendor$.subscribe((vendor) => {
+      if (vendor !== null) this.onClickItem(vendor);
+    });
+    this.subscription.push(vendorSubscription$);
   }
 
-  onChangeMarkerOffice(office: Office): void {
-    this.vendorRequest$.unsubscribe();
+  onChangeOffice(office: Office): void {
+    this.offerRequest$.unsubscribe();
     const markers = this.initOfficeMarkers(office);
     this.markerAll.clearLayers();
     this.markerAll.addLayers(markers);
     this.map.addLayer(this.markerAll);
   }
 
-  onInitOffers(): void {
-    this.vendorRequest$ = this.offerService
+  onChangeOffers(): void {
+    this.offerRequest$ = this.offerService
       .getOffers({ city: this.city })
       .subscribe((offers) => {
-        const markers = this.initOffersMarkers(offers, this.city);
+        const markers = this.initOffersMarkers(offers);
         this.markerAll.clearLayers();
         this.markerAll.addLayers(markers);
         this.map.addLayer(this.markerAll);
       });
   }
 
-  onChangeMarkerOffers(offer: Offer): void {
-    this.vendorRequest$.unsubscribe();
-    const markers = this.initOfferMarkers(offer);
+  onClickItem(data: Offer | Vendor): void {
+    this.offerRequest$.unsubscribe();
+    const markers = this.initMarkers(data);
     this.markerAll.clearLayers();
     this.markerAll.addLayers(markers);
     this.map.addLayer(this.markerAll);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private initMarkers(data: any) {
+    const { name, offices, vendorName } = data;
+    if (name) this.name = name;
+    else this.name = vendorName;
+    this.mapService.getCityView(this.city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const markers = [];
+    for (const office of offices) {
+      const marker = this.mapService.getMarkers(office, this.name);
+      markers.push(marker);
+    }
+    return markers;
+  }
+
+  private initOffersMarkers(offers: Offer[]) {
+    this.mapService.getCityView(this.city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const markers = [];
+    for (const offer of offers) {
+      for (const office of offer.offices) {
+        const marker = this.mapService.getMarkers(office, offer.vendorName);
+        markers.push(marker);
+      }
+    }
+    return markers;
+  }
+
+  private initOfficeMarkers(office: Office) {
+    const markers = [];
+    this.mapService.getCityView(office.city).then((data) => {
+      this.map.setView([+data[0].y, +data[0].x]);
+    });
+    const marker = this.mapService.getMarkers(office, this.name);
+    markers.push(marker);
+    return markers;
   }
 
   private mapView() {
@@ -84,43 +130,6 @@ export class MapComponent implements OnInit, OnDestroy {
       ),
       latlng = L.latLng(0, 0);
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
-  }
-
-  private initOffersMarkers(offers: Offer[], city: string) {
-    this.mapService.getCityView(city).then((data) => {
-      this.map.setView([+data[0].y, +data[0].x]);
-    });
-    const markers = [];
-    for (const offer of offers) {
-      for (const office of offer.offices) {
-        const marker = this.mapService.getMarkers(office, offer.vendorName);
-        markers.push(marker);
-      }
-    }
-    return markers;
-  }
-
-  private initOfferMarkers(offer: Offer) {
-    const { city, offices, vendorName } = offer;
-    this.mapService.getCityView(city).then((data) => {
-      this.map.setView([+data[0].y, +data[0].x]);
-    });
-    const markers = [];
-    for (const office of offices) {
-      const marker = this.mapService.getMarkers(office, vendorName);
-      markers.push(marker);
-    }
-    return markers;
-  }
-
-  private initOfficeMarkers(office: Office) {
-    const markers = [];
-    this.mapService.getCityView(office.city).then((data) => {
-      this.map.setView([+data[0].y, +data[0].x]);
-    });
-    const marker = this.mapService.getMarkers(office, '');
-    markers.push(marker);
-    return markers;
   }
 
   ngDoCheck(): void {

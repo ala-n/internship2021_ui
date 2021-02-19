@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
@@ -12,7 +12,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './vendor-item-page.component.html',
   styleUrls: ['./vendor-item-page.component.scss']
 })
-export class VendorItemPageComponent implements OnInit {
+export class VendorItemPageComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
   vendor$!: Observable<Vendor>;
 
@@ -26,9 +26,19 @@ export class VendorItemPageComponent implements OnInit {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.vendor$ = this.vendorService.getVendorById(Number(params['id']));
     });
+
+    this.vendor$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((vendor) => this.mapService.setVendor(vendor));
   }
 
   onClickOffice(office: Office): void {
     this.mapService.setOffice(office);
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
+    this.destroy$.unsubscribe();
+    this.mapService.clearVendor();
   }
 }
