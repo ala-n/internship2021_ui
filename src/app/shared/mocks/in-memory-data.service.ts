@@ -4,6 +4,7 @@ import { Vendor } from '../models/vendor';
 import vendors from './vendors';
 import offers from './offers';
 import cities from './cities';
+import offices from './offices';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ import cities from './cities';
 export class InMemoryDataService implements InMemoryDbService {
   // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   createDb() {
-    return { vendors, offers, cities };
+    return { vendors, offers, cities, offices };
   }
 
   // If the vendors array is empty,
