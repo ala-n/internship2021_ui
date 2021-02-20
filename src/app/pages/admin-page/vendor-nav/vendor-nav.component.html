@@ -1,11 +1,26 @@
 <mat-card class="vendor-nav">
   <mat-nav-list class="vendor-nav__menu">
-    <a mat-list-item [routerLink]="[vendorId]" disableRipple>Brand</a>
-    <a mat-list-item [routerLink]="[vendorId, 'offices']" disableRipple
-      >Brand offices</a
+    <a
+      mat-list-item
+      class="vendor-nav__link"
+      [routerLink]="[vendorId]"
+      routerLinkActive="mat-list-item_active"
+      ><span class="text text_s_l text_upper"> brand</span></a
     >
-    <a mat-list-item [routerLink]="[vendorId, 'offers']" disableRipple
-      >Brand offers</a
+    <a
+      mat-list-item
+      class="vendor-nav__link"
+      [routerLink]="[vendorId, 'offices']"
+      routerLinkActive="mat-list-item_active"
+    >
+      <span class="text text_s_l text_upper">brand offices</span>
+    </a>
+    <a
+      mat-list-item
+      class="vendor-nav__link"
+      [routerLink]="[vendorId, 'offers']"
+      routerLinkActive="mat-list-item_active"
+      ><span class="text text_s_l text_upper">brand offers</span></a
     >
   </mat-nav-list>
   <mat-card-content class="vendor-nav__content">

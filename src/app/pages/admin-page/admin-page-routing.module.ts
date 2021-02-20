@@ -48,25 +48,30 @@ const routes: Routes = [
               },
               {
                 path: ':id',
-                component: VendorFormComponent
-              },
-              {
-                path: ':id/offices',
                 children: [
                   {
                     path: '',
-                    component: OfficeTableComponent,
-                    canActivate: [FormGuard]
-                  }
-                ]
-              },
-              {
-                path: ':id/offers',
-                children: [
+                    component: VendorFormComponent
+                  },
                   {
-                    path: '',
-                    component: OfferTableComponent,
-                    canActivate: [FormGuard]
+                    path: 'offices',
+                    children: [
+                      {
+                        path: '',
+                        component: OfficeTableComponent,
+                        canActivate: [FormGuard]
+                      }
+                    ]
+                  },
+                  {
+                    path: 'offers',
+                    children: [
+                      {
+                        path: '',
+                        component: OfferTableComponent,
+                        canActivate: [FormGuard]
+                      }
+                    ]
                   }
                 ]
               }
