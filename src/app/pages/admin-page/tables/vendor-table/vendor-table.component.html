@@ -18,7 +18,14 @@
     </mat-button-toggle-group>
   </div>
   <div class="table__body">
-    <table class="full-width-table" mat-table matSort [dataSource]="dataSource">
+    <table
+      class="full-width-table"
+      mat-table
+      matSort
+      matSortActive="updated"
+      matSortDirection="desc"
+      [dataSource]="dataSource"
+    >
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let vendor">
@@ -34,38 +41,58 @@
       </ng-container>
 
       <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <th mat-header-cell class="text" *matHeaderCellDef>№</th>
         <td mat-cell *matCellDef="let vendor; let i = index">
           {{ i + 1 + this.paginator.pageIndex * this.paginator.pageSize }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Vendor
+        </th>
         <td mat-cell *matCellDef="let vendor">{{ vendor.name }}</td>
       </ng-container>
 
       <ng-container matColumnDef="branchOffices">
-        <th mat-header-cell *matHeaderCellDef>Branch Offices</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          Offices
+        </th>
         <td mat-cell *matCellDef="let vendor">
           <a [routerLink]="['details', vendor.id, 'offices']">Show offices</a>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="offers">
-        <th mat-header-cell *matHeaderCellDef>Offers</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          Offers
+        </th>
         <td mat-cell *matCellDef="let vendor">
           <a [routerLink]="['details', vendor.id, 'offers']">Show offers</a>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="webSite">
-        <th mat-header-cell *matHeaderCellDef>Web-Site</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          Web-Site
+        </th>
         <td mat-cell *matCellDef="let vendor">{{ vendor.website }}</td>
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Updated
+        </th>
         <td mat-cell *matCellDef="let vendor">
           {{ vendor.updated | date: 'dd.MM.yyyy' }}
         </td>
