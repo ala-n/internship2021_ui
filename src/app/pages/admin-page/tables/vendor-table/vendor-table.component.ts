@@ -4,7 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-table',
@@ -20,7 +20,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'edit',
-    'id',
+    'number',
     'name',
     'branchOffices',
     'offers',
@@ -33,10 +33,10 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.vendorService
       .getVendors()
-      .pipe(first()) //TODO how to check if unsubscribed? .tapone() find out
-      .subscribe((vendors) => {
+      .pipe(take(1))
+      .subscribe((vendors: Vendor[]) => {
+        if (vendors) this.dataSource.data = vendors as Vendor[];
         this.isLoading = false;
-        this.dataSource.data = vendors;
       });
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Vendor, filter) => {

@@ -1,62 +1,63 @@
 <form class="form" [formGroup]="officeForm" novalidate (ngSubmit)="onSubmit()">
+  <div class="form__header">
+    <span class="text text_s_l text_c_primary text_upper"
+      >Enter information about<span
+        class="text text_s_l text_c_accent text_upper"
+      >
+        {{ vendorName }} </span
+      >branch&nbsp;office</span
+    >
+  </div>
   <div class="row">
     <div class="col col_group">
-      <div class="row">
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Country</mat-label>
-            <input matInput formControlName="country" />
-            <mat-error
-              *ngIf="officeForm.controls['country'].hasError('required')"
-            >
-              Country is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
-        <div class="col">
-          <mat-form-field class="full-width" appearance="outline">
-            <mat-label>City</mat-label>
-            <input matInput formControlName="city" />
-            <mat-error *ngIf="officeForm.controls['city'].hasError('required')">
-              City is <strong>required</strong>
-            </mat-error>
-          </mat-form-field>
-        </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Country</mat-label>
+          <input matInput formControlName="country" />
+          <mat-error
+            *ngIf="officeForm.controls['country'].hasError('required')"
+          >
+            Country is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" />
+          <mat-error *ngIf="officeForm.controls['city'].hasError('required')">
+            City is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
       </div>
     </div>
     <div class="col col_group">
-      <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Street</mat-label>
+          <input matInput formControlName="street" />
+          <mat-error *ngIf="officeForm.controls['street'].hasError('required')">
+            Street is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col col_nowrap">
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Street</mat-label>
-            <input matInput formControlName="street" />
+            <mat-label>House</mat-label>
+            <input matInput formControlName="house" />
             <mat-error
-              *ngIf="officeForm.controls['street'].hasError('required')"
+              *ngIf="officeForm.controls['house'].hasError('required')"
             >
-              Street is <strong>required</strong>
+              House is <strong>required</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
-          <div class="row row_nowrap">
-            <div class="col">
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>House</mat-label>
-                <input matInput formControlName="house" />
-                <mat-error
-                  *ngIf="officeForm.controls['house'].hasError('required')"
-                >
-                  House is <strong>required</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-            <div class="col">
-              <mat-form-field class="full-width" appearance="outline">
-                <mat-label>Room</mat-label>
-                <input matInput formControlName="room" />
-              </mat-form-field>
-            </div>
-          </div>
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Room</mat-label>
+            <input matInput formControlName="room" />
+          </mat-form-field>
         </div>
       </div>
     </div>
@@ -72,6 +73,12 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" />
+        <mat-error *ngIf="officeForm.controls['email'].hasError('required')">
+          E-mail is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="officeForm.controls['email'].hasError('email')">
+          E-mail address is <strong>incorrect</strong>
+        </mat-error>
       </mat-form-field>
     </div>
   </div>

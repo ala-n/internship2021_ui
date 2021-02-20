@@ -10,7 +10,8 @@ import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+// import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { EsriProvider } from 'leaflet-geosearch';
 import { BehaviorSubject } from 'rxjs';
 
 interface MarkerMetaData {
@@ -72,7 +73,8 @@ export class MapService {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getCityView(city: string): Promise<any> {
-    const provider = new OpenStreetMapProvider();
+    // const provider = new OpenStreetMapProvider();
+    const provider = new EsriProvider();
     const results = await provider.search({ query: city });
     return results;
   }

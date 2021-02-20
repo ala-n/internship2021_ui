@@ -3,6 +3,7 @@ export interface Office {
   x: number;
   y: number;
   vendorId: number;
+  vendorName: string;
   address: string; //must be joined to string from separate fields
   phone: string;
   country: string;

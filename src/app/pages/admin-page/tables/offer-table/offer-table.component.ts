@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
-import { first, map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-table',
@@ -21,7 +21,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
     'edit',
-    'id',
+    'number',
     'vendorName',
     'title',
     'discout',
@@ -35,25 +35,26 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute
   ) {}
 
+  get vendorId(): number {
+    return +this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const vendorId = Number(params['id']);
-      this.offerService
-        .getOffers()
-        .pipe(
-          first(),
-          map((offers) =>
-            offers.filter((offer: Offer) => {
-              if (!vendorId) return true;
-              return offer.vendorId === vendorId;
-            })
-          )
+    this.offerService
+      .getOffers()
+      .pipe(
+        take(1),
+        map((offers) =>
+          offers.filter((offer: Offer) => {
+            if (!this.vendorId) return true;
+            return offer.vendorId === this.vendorId;
+          })
         )
-        .subscribe((offers: Offer[]) => {
-          this.isLoading = false;
-          this.dataSource.data = offers as Offer[];
-        });
-    });
+      )
+      .subscribe((offers: Offer[]) => {
+        if (offers) this.dataSource.data = offers as Offer[];
+        this.isLoading = false;
+      });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
