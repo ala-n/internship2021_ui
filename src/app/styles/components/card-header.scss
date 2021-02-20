@@ -1,0 +1,62 @@
+.card {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  background-color: $background-blue;
+  padding: 1em;
+  color: $text-primary;
+  border-radius: 5px;
+
+  &__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1em;
+
+    @media screen and (max-width: $desktop) {
+      width: 70px;
+      height: 70px;
+      margin-right: 0.5em;
+    }
+
+    @media screen and (max-width: $mobile) {
+      margin-right: 0.5em;
+      width: 60px;
+      height: 60px;
+    }
+  }
+
+  &__name {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0.5em 0;
+
+    @media screen and (max-width: $desktop) {
+      font-size: 20px;
+      margin-top: 0;
+    }
+
+    @media screen and (max-width: $mobile) {
+      font-size: 18px;
+    }
+  }
+
+  &__title {
+    font-size: 16px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: $desktop) {
+    padding: 1em 0.5em;
+  }
+
+  @media screen and (max-width: $mobile) {
+    padding: 0.5em;
+  }
+}

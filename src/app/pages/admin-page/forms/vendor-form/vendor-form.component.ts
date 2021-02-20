@@ -35,7 +35,7 @@ export class VendorFormComponent implements OnInit {
     const vendorId = +this.route.snapshot.params.id;
     if (vendorId) {
       this.vendorService
-        .getVendor(vendorId)
+        .getVendorById(vendorId)
         .pipe(take(1))
         .subscribe((vendor) => {
           this.vendor = vendor;

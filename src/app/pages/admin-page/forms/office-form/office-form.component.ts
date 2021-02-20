@@ -45,7 +45,7 @@ export class OfficeFormComponent implements OnInit {
     const officeId = +this.route.snapshot.params.officeId;
     if (officeId) {
       this.officeService
-        .getOffice(officeId)
+        .getOfficeById(officeId)
         .pipe(take(1))
         .subscribe((office) => {
           this.office = office;
@@ -64,7 +64,7 @@ export class OfficeFormComponent implements OnInit {
         });
     } else {
       this.vendorService
-        .getVendor(this.vendorId)
+        .getVendorById(this.vendorId)
         .pipe(take(1))
         .subscribe((vendor) => {
           this.vendorName = vendor.name;

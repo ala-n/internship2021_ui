@@ -27,7 +27,7 @@ export default [
     city: 'Минск',
     street: 'ул. Захарова',
     house: 'д. 23',
-    room: '',
+    room: '(пл. Победы, за МГЛУ налево)',
     email: 'marsel2@gmail.com',
     isActive: true
   },
@@ -43,7 +43,7 @@ export default [
     city: 'Минск',
     street: 'пр. Победителей',
     house: 'д. 84',
-    room: '',
+    room: '(ТРЦ «Арена Сити»)',
     email: 'sushi2@gmail.com',
     isActive: false
   },
@@ -139,6 +139,7 @@ export default [
     city: 'Минск',
     street: 'ул. Голодеда',
     house: 'д. 15',
+    room: '',
     email: 'luxe@gmail.com',
     isActive: true
   },
@@ -202,7 +203,7 @@ export default [
     city: 'Киев',
     street: 'ул.Ивана Федорова',
     house: 'д. 6',
-    room: '2',
+    room: 'оф. 2, код 38, 2 этаж',
     email: 'ira.les@gmail.com',
     isActive: true
   },
@@ -218,7 +219,7 @@ export default [
     city: 'Киве',
     street: 'ул.Рогнеденская',
     house: 'д. 3',
-    room: '4',
+    room: '1 этаж, 4 офис',
     email: 'fashion-wear@gmail.com',
     isActive: true
   },

@@ -70,7 +70,7 @@ export class OfferFormComponent implements OnInit {
         });
     } else {
       this.vendorService
-        .getVendor(this.vendorNavId)
+        .getVendorById(this.vendorNavId)
         .pipe(take(1))
         .subscribe((vendor) => {
           this.vendorName = vendor.name;

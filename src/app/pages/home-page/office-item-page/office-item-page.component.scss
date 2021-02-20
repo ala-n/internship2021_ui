@@ -1,0 +1,18 @@
+@import '/src/app/styles/variables.scss';
+@import '/src/app/styles/components/tabs.scss';
+@import '/src/app/styles/components/card-header.scss';
+
+.office {
+  padding: 0.5em;
+
+  &__info {
+    .mat-icon {
+      margin-right: 0.3em;
+    }
+  }
+
+  &__contact {
+    display: flex;
+    align-items: center;
+  }
+}

@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
 
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { RouterModule } from '@angular/router';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    TranslateModule
   ],
   exports: [
     ToolbarComponent,
@@ -42,7 +44,8 @@ import { RouterModule } from '@angular/router';
     LocationComponent,
     LanguageComponent,
     FormsModule,
-    OfferItemComponent
+    OfferItemComponent,
+    TranslateModule
   ],
   entryComponents: [PopupComponent]
 })

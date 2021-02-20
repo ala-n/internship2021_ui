@@ -27,7 +27,7 @@ export class OfficeService {
       );
   }
 
-  getOffice(id: number): Observable<Office> {
+  getOfficeById(id: number): Observable<Office> {
     const url = `${OfficeService.OFFICES_URL}/${id}`;
     return this.http.get<Office>(url);
   }
