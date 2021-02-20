@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Token } from '../models/token';
+import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { LoginData } from '@shared/models/login_data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  // Http Options without token
+  // Http Options without User
   get httpOptionsAuth(): Object {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
@@ -22,22 +22,22 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
-  // This function send Login Data and try to receive Token
-  loginForm(data: LoginData): Observable<Token> {
-    return this.http.post<Token>(this.URL, data);
+  // This function send Login Data and try to receive User
+  loginForm(data: LoginData): Observable<User> {
+    return this.http.post<User>(this.URL, data);
   } // TODO: create error handler
 
-  // After login save token and other values(if any) in sessionStorage
-  setUser(resp: Token): void {
+  // After login save User and other values(if any) in sessionStorage
+  setUser(resp: User): void {
     sessionStorage.setItem('firstName', resp.firstName);
     sessionStorage.setItem('lastName', resp.lastName);
-    sessionStorage.setItem('access_token', resp.token);
+    sessionStorage.setItem('access_user', resp.token);
     this.router.navigate(['/']);
   }
 
-  // Checking if token is set
+  // Checking if User is set
   isLoggedIn(): boolean {
-    return sessionStorage.getItem('access_token') != null; // session storage
+    return sessionStorage.getItem('access_user') != null; // session storage
   }
 
   // After clearing sessionStorage redirect to login screen

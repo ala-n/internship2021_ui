@@ -22,7 +22,7 @@ export class LogInComponent {
   }
 
   login() {
-    this.model.action = 'login';
+    // this.model.action = 'login';
     this.authService.loginForm(this.model).subscribe(
       (response) => {
         if (response.token != null) {

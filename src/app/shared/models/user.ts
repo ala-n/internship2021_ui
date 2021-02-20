@@ -1,16 +1,12 @@
+import ObjectID from 'bson-objectid';
+
 export interface User {
-  _id: number;
-  name: string;
-  login: string;
-  password: string;
-  photoURl: string;
-  Phone: string;
-  isActive: boolean;
-  CreatedAt: string;
-  UpdateAt: string;
-  CreatedBy: User['_id'];
-  UpdateBy: User['_id'];
-  Location: Object;
-  Role: string;
+  _id: ObjectID;
+  firstName: string;
+  lastName: string;
+  photoUrl: null,
+  isActive: false,
+  city: null,
+  role: 0,
   token: string;
 }
