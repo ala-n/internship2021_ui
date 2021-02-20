@@ -23,8 +23,8 @@ import { JwtModule } from '@auth0/angular-jwt';
         tokenGetter: function tokenGetter() {
           return sessionStorage.getItem('access_token');
         },
-        allowedDomains: ['localhost:4200'],
-        disallowedRoutes: ['http://localhost:4200/login']
+        allowedDomains: ['localhost:5001'],
+        disallowedRoutes: ['localhost:5001']
       }
     })
   ]

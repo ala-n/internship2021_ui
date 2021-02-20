@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   // API path
-  URL = 'http://localhost:3000/postuser';
+  URL = 'api/users/login';
 
   constructor(private router: Router, private http: HttpClient) {}
 
