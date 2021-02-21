@@ -1,9 +1,8 @@
 <div class="home">
   <app-toolbar></app-toolbar>
   <button
-    class="home__button"
+    class="home__button button button_c_primary"
     mat-fab
-    color="primary"
     (click)="toggleListView()"
   >
     <mat-icon *ngIf="!isListVisible; else mapIcon">list</mat-icon>

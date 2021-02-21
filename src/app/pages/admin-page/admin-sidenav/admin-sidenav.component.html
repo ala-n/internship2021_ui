@@ -25,6 +25,7 @@
     #drawer
     class="admin-sidenav__drawer"
     fixedInViewport
+    [disableClose]="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"

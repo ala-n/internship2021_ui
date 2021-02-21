@@ -28,6 +28,9 @@
         }
       }
     }
+    .mat-header-cell {
+      background-color: $background-blue-light;
+    }
 
     .text {
       padding-right: 0.5em;
@@ -40,7 +43,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 1em;
-    background-color: #fff;
   }
 
   &__header {
@@ -48,6 +50,10 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+  }
+
+  &__footer {
+    background-color: $background-blue-light;
   }
 
   &__spinner {
@@ -80,6 +86,8 @@
 
   &__paginator {
     margin-left: auto;
+    background-color: transparent;
+
     &::ng-deep .mat-paginator-page-size-label,
     &::ng-deep .mat-paginator-range-label {
       margin: 0;
@@ -96,19 +104,6 @@
 .button {
   &_edit {
     width: max-content;
-  }
-
-  &_add_mobile {
-    display: none;
-    margin-left: 1em;
-    @media screen and (max-width: $mobile) {
-      display: block;
-    }
-  }
-  &_add_desktop {
-    @media screen and (max-width: $mobile) {
-      display: none;
-    }
   }
 }
 

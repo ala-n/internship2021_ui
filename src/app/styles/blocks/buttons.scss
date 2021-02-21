@@ -1,3 +1,5 @@
+@import '../variables.scss';
+
 .button {
   &_l {
     font-size: 1.4em;
@@ -9,6 +11,30 @@
   &_no-hover {
     &::ng-deep .mat-button-focus-overlay {
       background-color: transparent;
+    }
+  }
+
+  &_c {
+    &_blue {
+      color: $background-blue;
+    }
+
+    &_primary {
+      color: #fff;
+      background-color: $background-blue;
+    }
+  }
+
+  &_hidden {
+    &_mobile {
+      @media screen and (max-width: $mobile) {
+        display: none;
+      }
+    }
+    &_desktop {
+      @media screen and (min-width: $mobile + 1) {
+        display: none;
+      }
     }
   }
 }

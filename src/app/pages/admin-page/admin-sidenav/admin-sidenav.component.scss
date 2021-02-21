@@ -47,10 +47,10 @@
 
 .mat-list-item {
   &_active {
-    background-color: $background-blue;
+    background-color: $background-blue-light;
     &:hover,
     &:focus {
-      background-color: $background-blue;
+      background-color: $background-blue-light;
     }
   }
 }

@@ -1,5 +1,17 @@
 @import '/src/app/styles/components/form.scss';
 
+.row {
+  &_top {
+    margin-bottom: 1em;
+  }
+  .button {
+    min-width: 120px;
+  }
+  .text {
+    margin-left: 1em;
+  }
+}
+
 .col {
   &_nowrap {
     flex-flow: row nowrap;

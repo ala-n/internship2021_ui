@@ -8,6 +8,21 @@
       >branch&nbsp;office</span
     >
   </div>
+  <div class="row row_top">
+    <div class="col col_nowrap">
+      <button
+        class="button button_c_primary"
+        type="button"
+        mat-raised-button
+        (click)="openDialog()"
+      >
+        Point on map
+      </button>
+      <span class="text text_s_l"
+        >Address information will be added to the fields below</span
+      >
+    </div>
+  </div>
   <div class="row">
     <div class="col col_group">
       <div class="col">
@@ -99,9 +114,8 @@
       Cancel
     </button>
     <button
-      class="button"
+      class="button button_c_primary"
       mat-raised-button
-      color="primary"
       type="submit"
       (click)="navigationService.goBack()"
       [disabled]="officeForm.invalid"
