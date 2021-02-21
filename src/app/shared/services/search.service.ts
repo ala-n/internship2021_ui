@@ -14,8 +14,4 @@ export class SearchService {
   getSearchData(): Observable<SearchData[]> {
     return this.http.get<SearchData[]>(SearchService.SEARCH_URL);
   }
-
-  // getSearchData(): SearchData[] {
-  //   return SEARCH_DATA;
-  // }
 }
