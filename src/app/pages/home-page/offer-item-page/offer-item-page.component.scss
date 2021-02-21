@@ -1,29 +1,6 @@
 @import '/src/app/styles/variables.scss';
-
-::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {
-  color: $background-light;
-  border-radius: 10px 10px 0 0;
-  background-color: rgba($color: $background-tabs, $alpha: 0.8);
-
-  &.mat-tab-label-active {
-    background-color: rgba($color: $background-tabs, $alpha: 0.9);
-    opacity: 0.9;
-  }
-}
-
-::ng-deep .mat-tab-body-wrapper {
-  background-color: $background-light;
-  padding: 1.5em 2em;
-  line-height: 24px;
-
-  @media screen and (max-width: $mobile) {
-    padding: 1em 1em;
-  }
-}
-
-::ng-deep .mat-tab-label-container {
-  text-transform: uppercase;
-}
+@import '/src/app/styles/components/tabs.scss';
+@import '/src/app/styles/components/addresses.scss';
 
 .button {
   text-transform: uppercase;
@@ -36,14 +13,8 @@
 }
 
 .item {
-  padding: 1em 1em;
+  padding: 0.5em;
   color: $text-primary;
-
-  &__tab {
-    margin-top: 1em;
-    background-color: $background-light;
-    border-radius: 10px;
-  }
 
   &__header {
     display: flex;
@@ -95,17 +66,5 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-  }
-
-  &__address {
-    display: flex;
-    align-items: center;
-    background-color: $background-blue;
-    margin-bottom: 0.5em;
-    padding: 0.5em;
-  }
-
-  &__location-icon {
-    margin-right: 0.5em;
   }
 }

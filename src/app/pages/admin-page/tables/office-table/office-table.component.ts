@@ -4,9 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
-import { Vendor } from '@shared/models/vendor';
-import { VendorService } from '@shared/services/vendor.service';
-import { first } from 'rxjs/operators';
+import { OfficeService } from '@shared/services/office.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-office-table',
@@ -17,12 +16,11 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   dataSource = new MatTableDataSource<Office>();
-  vendorId!: number;
   isLoading = true;
 
   displayedColumns = [
     'edit',
-    'id',
+    'number',
     'country',
     'city',
     'street',
@@ -32,23 +30,21 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private vendorService: VendorService,
+    private officeService: OfficeService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.vendorId = Number(params['id']);
-      if (this.vendorId) {
-        this.vendorService
-          .getVendor(this.vendorId)
-          .pipe(first())
-          .subscribe((vendor: Vendor) => {
-            if (vendor.offices)
-              this.dataSource.data = vendor.offices as Office[];
-          });
-      }
-    });
+    const vendorId = +this.route.snapshot.params.id;
+    if (vendorId) {
+      this.officeService
+        .getVendorOffices(vendorId)
+        .pipe(take(1))
+        .subscribe((offices: Office[]) => {
+          if (offices) this.dataSource.data = offices as Office[];
+          this.isLoading = false;
+        });
+    }
 
     this.dataSource.filterPredicate = (data: Office, filter) => {
       const filterObj = JSON.parse(filter);

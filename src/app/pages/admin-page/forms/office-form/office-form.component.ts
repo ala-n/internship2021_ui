@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
+import { OfficeService } from '@shared/services/office.service';
+import { VendorService } from '@shared/services/vendor.service';
 
 @Component({
   selector: 'app-office-form',
@@ -19,56 +20,70 @@ export class OfficeFormComponent implements OnInit {
     street: [null, Validators.required],
     house: [null, Validators.required],
     room: null,
-    phone: null,
-    email: [null, Validators.email],
-    isActive: null
+    phone: [null, Validators.pattern('[- +()0-9]+')],
+    email: [null, [Validators.required, Validators.email]],
+    isActive: false
   });
 
-  offices!: Office[];
+  office!: Office;
+  offices: Office[] = [];
+  vendorName!: string;
 
   constructor(
     private fb: FormBuilder,
+    private officeService: OfficeService,
     private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
 
+  get vendorId(): number {
+    return +this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      const vendorId = Number(params['id']);
-      const officeId = Number(params['officeId']) - 1;
-      if (vendorId) {
-        this.vendorService
-          .getVendor(vendorId)
-          .pipe(first())
-          .subscribe((vendor) => {
-            this.offices = vendor.offices;
-            this.officeForm.setValue({
-              id: this.offices[officeId].id,
-              country: this.offices[officeId].country,
-              city: this.offices[officeId].city,
-              street: this.offices[officeId].street,
-              house: this.offices[officeId].house,
-              room: this.offices[officeId].room,
-              phone: this.offices[officeId].phone,
-              email: this.offices[officeId].email,
-              isActive: this.offices[officeId].isActive
-            });
+    const officeId = +this.route.snapshot.params.officeId;
+    if (officeId) {
+      this.officeService
+        .getOfficeById(officeId)
+        .pipe(take(1))
+        .subscribe((office) => {
+          this.office = office;
+          this.vendorName = this.office.vendorName;
+          this.officeForm.setValue({
+            id: this.office.id,
+            country: this.office.country,
+            city: this.office.city,
+            street: this.office.street,
+            house: this.office.house,
+            room: this.office.room,
+            phone: this.office.phone,
+            email: this.office.email,
+            isActive: this.office.isActive
           });
-      }
-    });
+        });
+    } else {
+      this.vendorService
+        .getVendorById(this.vendorId)
+        .pipe(take(1))
+        .subscribe((vendor) => {
+          this.vendorName = vendor.name;
+        });
+    }
   }
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    // if (this.offices) {
-    //   this.vendorService.updateVendor(this.officeForm.value).subscribe();
-    // } else {
-    //   this.vendorService
-    //     .addVendor(this.officeForm.value)
-    //     .subscribe((vendor) => {
-    //       this.vendors.push(vendor);
-    //     });
-    // }
+    if (this.office) {
+      this.officeService
+        .updateOffice(this.officeForm.value, this.vendorId)
+        .subscribe();
+    } else {
+      this.officeService
+        .addOffice(this.officeForm.value, this.vendorId)
+        .subscribe((office) => {
+          this.offices.push(office);
+        });
+    }
   }
 }

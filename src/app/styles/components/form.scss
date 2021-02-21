@@ -1,0 +1,77 @@
+@import '../blocks/text.scss';
+@import '../variables.scss';
+
+.form {
+  display: flex;
+  flex-flow: row wrap;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    height: $desktop-header;
+    width: 100%;
+    margin-bottom: 1em;
+    padding: 0 1em;
+    border-bottom: $border-primary;
+
+    @media screen and (max-width: $tablet) {
+      height: $mobile-header;
+      padding: 0 0.5em;
+    }
+  }
+}
+
+.full-width {
+  width: 100%;
+}
+
+.shipping-card {
+  min-width: 120px;
+  margin: 20px auto;
+}
+
+.mat-radio-button {
+  display: block;
+  margin: 5px 0;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 1em;
+  @media screen and (max-width: $mobile) {
+    margin: 0 0.5em;
+  }
+}
+
+.col {
+  display: flex;
+  flex-flow: row wrap;
+  flex: 1;
+  min-width: 0;
+  margin-right: 20px;
+
+  @media screen and (max-width: $mobile) {
+    flex: 1 0 100%;
+    width: 100%;
+  }
+
+  &_group {
+    @media screen and (max-width: $desktop) {
+      flex: 1 0 100%;
+      width: 100%;
+    }
+  }
+}
+
+.col:last-child {
+  margin-right: 0;
+}
+
+.actions {
+  margin: 0 1em 1em auto;
+  .button {
+    margin-left: 20px;
+  }
+}

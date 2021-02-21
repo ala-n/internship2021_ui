@@ -7,9 +7,11 @@ import {
 import { PopupComponent } from '@shared/custom-components/map/popup/popup.component';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
+import { Vendor } from '@shared/models/vendor';
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
-import { OpenStreetMapProvider } from 'leaflet-geosearch';
+// import { OpenStreetMapProvider } from 'leaflet-geosearch';
+import { EsriProvider } from 'leaflet-geosearch';
 import { BehaviorSubject } from 'rxjs';
 
 interface MarkerMetaData {
@@ -24,9 +26,11 @@ export class MapService {
   private _city$ = new BehaviorSubject<string>('');
   private _offer$ = new BehaviorSubject<Offer | null>(null);
   private _office$ = new BehaviorSubject<Office | null>(null);
+  private _vendor$ = new BehaviorSubject<Vendor | null>(null);
   readonly city$ = this._city$.asObservable();
   readonly offer$ = this._offer$.asObservable();
   readonly office$ = this._office$.asObservable();
+  readonly vendor$ = this._vendor$.asObservable();
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
     iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',
@@ -55,13 +59,22 @@ export class MapService {
     this._office$.next(office);
   }
 
+  setVendor(vendor: Vendor): void {
+    this._vendor$.next(vendor);
+  }
+
   clearOffer(): void {
     this._offer$.next(null);
   }
 
+  clearVendor(): void {
+    this._vendor$.next(null);
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getCityView(city: string): Promise<any> {
-    const provider = new OpenStreetMapProvider();
+    // const provider = new OpenStreetMapProvider();
+    const provider = new EsriProvider();
     const results = await provider.search({ query: city });
     return results;
   }
