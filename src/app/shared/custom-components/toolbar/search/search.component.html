@@ -9,7 +9,6 @@
   <button class="search-form__button_search">
     <mat-icon class="search-form__search-button-image">search</mat-icon>
   </button>
-  <!--Search image -->
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let value of filteredData | async" [value]="value">
       {{ value }}
