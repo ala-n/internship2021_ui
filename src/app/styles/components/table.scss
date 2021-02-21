@@ -11,10 +11,6 @@
   flex-direction: column;
   box-shadow: none;
 
-  .text {
-    padding-right: 0.5em;
-  }
-
   &__body {
     overflow: auto;
     @media screen and (max-width: $mobile) {
@@ -31,6 +27,10 @@
           padding-left: 1em;
         }
       }
+    }
+
+    .text {
+      padding-right: 0.5em;
     }
   }
 
@@ -60,10 +60,22 @@
       margin: 0;
       padding: 0;
     }
-    &_hidden {
-      margin: 0;
-      visibility: hidden;
+    &::ng-deep .mat-form-field-flex {
+      align-items: center;
+      height: 46px;
     }
+    &_hidden {
+      display: none;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+    }
+  }
+
+  &__filter {
+    align-items: center;
+    height: 42px;
+    text-align: center;
   }
 
   &__paginator {
@@ -97,5 +109,11 @@
     @media screen and (max-width: $mobile) {
       display: none;
     }
+  }
+}
+
+.spacer {
+  @media screen and (max-width: $mobile) {
+    display: none;
   }
 }

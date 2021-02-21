@@ -10,6 +10,7 @@
       <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter(input.value, 'title')" #input />
     </mat-form-field>
+    <i class="spacer"></i>
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
