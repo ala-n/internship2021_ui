@@ -7,13 +7,12 @@ import { SearchData } from '../models/search-data';
   providedIn: 'root'
 })
 export class SearchService {
-
   static SEARCH_URL = 'api/searchData';
 
-  constructor(private http: HttpClient){}
-  
+  constructor(private http: HttpClient) {}
+
   getSearchData(): Observable<SearchData[]> {
-    return this.http.get<SearchData[]>(SearchService.SEARCH_URL)
+    return this.http.get<SearchData[]>(SearchService.SEARCH_URL);
   }
 
   // getSearchData(): SearchData[] {
