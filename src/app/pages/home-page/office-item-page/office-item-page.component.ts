@@ -8,6 +8,8 @@ import { Vendor } from '@shared/models/vendor';
 import { MapService } from '@shared/services/map.service';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
+import { Offer } from '@shared/models/offer';
+import { OfferService } from '@shared/services/offer.service';
 
 @Component({
   selector: 'app-office-item-page',
@@ -18,10 +20,12 @@ export class OfficeItemPageComponent implements OnInit {
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
   office$!: Observable<Office>;
   vendor$!: Observable<Vendor>;
+  offers$!: Observable<Offer[]>;
 
   constructor(
     private route: ActivatedRoute,
     private officeService: OfficeService,
+    private offerService: OfferService,
     private mapService: MapService,
     private vendorService: VendorService
   ) {}
@@ -33,6 +37,7 @@ export class OfficeItemPageComponent implements OnInit {
     this.office$.pipe(takeUntil(this.destroy$)).subscribe((office) => {
       this.mapService.setOffice(office);
       this.vendor$ = this.vendorService.getVendorById(Number(office.vendorId));
+      this.offers$ = this.offerService.getVendorOffers(Number(office.vendorId));
     });
   }
 

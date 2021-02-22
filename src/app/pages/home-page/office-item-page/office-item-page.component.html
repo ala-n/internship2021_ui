@@ -26,7 +26,13 @@
     </div>
   </div>
   <mat-tab-group mat-stretch-tabs class="tab">
-    <mat-tab label="offers">there will be offers</mat-tab>
+    <mat-tab label="offers" *ngIf="offers$ | async as offers"
+      ><app-offer-item
+        *ngFor="let offer of offers"
+        [offer]="offer"
+        class="offer-card"
+      ></app-offer-item
+    ></mat-tab>
     <mat-tab label="description" *ngIf="vendor$ | async as vendor">{{
       vendor.description || "Sorry, the brand didn't provide a description"
     }}</mat-tab>
