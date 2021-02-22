@@ -1,6 +1,6 @@
-import { Tags } from '../models/tags';
+import { Tag } from '../models/tag';
 
-export const TAGS: Tags[] = [
+export const TAGS: Tag[] = [
   {
     _id: 1,
     name: 'Food'

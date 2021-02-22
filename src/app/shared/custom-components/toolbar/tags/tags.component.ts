@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Tags } from '@shared/models/tags';
+import { Tag } from '@shared/models/tag';
 import { TagsService } from '@shared/services/tag.service';
 //import { TAGS } from '@shared/mocks/mock-tags';
 
@@ -10,7 +10,7 @@ import { TagsService } from '@shared/services/tag.service';
   styleUrls: ['./tags.component.scss']
 })
 export class TagsComponent implements OnInit {
-  tags!: Tags[];
+  tags!: Tag[];
 
   constructor(private heroService: TagsService) {}
 
