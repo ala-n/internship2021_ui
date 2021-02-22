@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { NavigationService } from '@shared/services/navigation.service';
 import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { take } from 'rxjs/operators';
 
@@ -31,11 +33,13 @@ export class OfferFormComponent implements OnInit {
   offer!: Offer;
   vendorId!: number;
   vendorName!: string;
+  vendorOffices!: Office[];
 
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
     private vendorService: VendorService,
+    private officeService: OfficeService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -54,6 +58,8 @@ export class OfferFormComponent implements OnInit {
           this.offer = offer;
           this.vendorName = this.offer.vendorName;
           this.vendorId = offer.vendorId;
+          this.getOfficesForSelect(this.vendorId);
+          // console.log(this.vendorOffices);
           this.offerForm.setValue({
             id: offer.id,
             title: offer.title,
@@ -63,12 +69,15 @@ export class OfferFormComponent implements OnInit {
             dateEnd: offer.dateEnd,
             promocode: offer.promocode,
             images: '',
-            offices: '',
+            offices: offer.offices,
             tags: '',
             isActive: offer.isActive
           });
         });
     } else {
+      this.getOfficesForSelect(this.vendorNavId);
+      // console.log(this.vendorOffices);
+      // debugger
       this.vendorService
         .getVendorById(this.vendorNavId)
         .pipe(take(1))
@@ -78,15 +87,25 @@ export class OfferFormComponent implements OnInit {
     }
   }
 
+  getOfficesForSelect(id: number) {
+    this.officeService
+      .getVendorOffices(id)
+      .pipe(take(1))
+      .subscribe((offices: Office[]) => {
+        this.vendorOffices = offices;
+      });
+  }
+
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
+    console.log(this.offerForm.value);
     if (this.offer) {
       this.offerService
         .updateOffer(this.offerForm.value, this.vendorId)
         .subscribe();
     } else {
       this.offerService
-        .addOffer(this.offerForm.value, this.vendorId)
+        .addOffer(this.offerForm.value, this.vendorNavId)
         .subscribe((offer) => {
           this.offers.push(offer);
         });

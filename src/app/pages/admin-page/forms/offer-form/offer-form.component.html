@@ -78,8 +78,15 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Select branch offices</mat-label>
-        <input matInput formControlName="offices" />
+        <mat-label>Offices</mat-label>
+        <mat-select formControlName="offices" multiple>
+          <mat-option
+            *ngFor="let office of vendorOffices"
+            [value]="offer.offices"
+            >{{ office.city }}, {{ office.street }},
+            {{ office.house }}</mat-option
+          >
+        </mat-select>
       </mat-form-field>
     </div>
   </div>
