@@ -9,6 +9,7 @@ import { PopupComponent } from './custom-components/map/popup/popup.component';
 
 import { SearchComponent } from './custom-components/toolbar/search/search.component';
 import { TagsComponent } from './custom-components/toolbar/tags/tags.component';
+import { GoBackButtonComponent } from './custom-components/go-back-button/go-back-button.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
@@ -25,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
     LanguageComponent,
     SearchComponent,
     TagsComponent,
-    OfferItemComponent
+    OfferItemComponent,
+    GoBackButtonComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { TranslateModule } from '@ngx-translate/core';
     LanguageComponent,
     FormsModule,
     OfferItemComponent,
-    TranslateModule
+    TranslateModule,
+    GoBackButtonComponent
   ],
   entryComponents: [PopupComponent]
 })
