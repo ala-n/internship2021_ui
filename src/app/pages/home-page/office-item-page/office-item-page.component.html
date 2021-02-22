@@ -7,9 +7,12 @@
       class="card__image"
     />
     <div class="office__info">
-      <div class="card__name">
+      <a
+        class="link-reset card__name office__link"
+        [routerLink]="['/home/vendors', office.vendorId]"
+      >
         {{ vendor.name }}
-      </div>
+      </a>
       <div class="card__title office__contact">
         <mat-icon>location_on</mat-icon>{{ office.address }}
       </div>
@@ -28,6 +31,7 @@
       </a>
     </div>
   </div>
+
   <mat-tab-group mat-stretch-tabs class="tab">
     <mat-tab label="offers" *ngIf="offers$ | async as offers"
       ><app-offer-item
@@ -36,8 +40,11 @@
         class="offer-card"
       ></app-offer-item
     ></mat-tab>
+
     <mat-tab label="description" *ngIf="vendor$ | async as vendor">{{
       vendor.description || "Sorry, the brand didn't provide a description"
     }}</mat-tab>
   </mat-tab-group>
+
+  <app-go-back-button class="desktop"></app-go-back-button>
 </div>

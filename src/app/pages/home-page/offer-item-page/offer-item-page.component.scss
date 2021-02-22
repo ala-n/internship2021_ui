@@ -4,15 +4,20 @@
 
 .button {
   text-transform: uppercase;
-  color: $blue-primary;
 
-  &--review {
+  &_review {
     color: white;
     background-color: $blue-primary;
+  }
+
+  &_preorder,
+  &_promocode {
+    color: $blue-primary;
   }
 }
 
 .item {
+  position: relative;
   padding: 0.5em;
   color: $text-primary;
 

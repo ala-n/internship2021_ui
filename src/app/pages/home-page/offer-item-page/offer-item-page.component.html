@@ -9,13 +9,13 @@
           <button
             *ngIf="offer.promocode"
             mat-button
-            class="button"
+            class="button button_promocode"
             [cdkCopyToClipboard]="offer.promocode"
           >
             {{ offer.promocode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
-          <button mat-stroked-button class="button button--preorder">
+          <button mat-stroked-button class="button button_preorder">
             pre-order
           </button>
         </div>
@@ -29,7 +29,7 @@
       <div class="item__footer">
         <div class="item__rate">
           <div class="item__text">Did you use the offer? Rate it!</div>
-          <button mat-flat-button class="button button--review">review</button>
+          <button mat-flat-button class="button button_review">review</button>
         </div>
         <div class="item__favorite">
           <div>Add to bookmarks</div>
@@ -43,6 +43,7 @@
         </div>
       </div>
     </mat-tab>
+
     <mat-tab label="addresses" *ngIf="offices$ | async as offices">
       <div *ngFor="let office of offices" class="address">
         <a
@@ -66,4 +67,6 @@
       </div>
     </mat-tab>
   </mat-tab-group>
+
+  <app-go-back-button class="desktop"></app-go-back-button>
 </div>

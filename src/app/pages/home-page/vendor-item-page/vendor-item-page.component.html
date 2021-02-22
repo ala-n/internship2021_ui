@@ -17,6 +17,7 @@
       <mat-icon>public</mat-icon>Website
     </a>
   </div>
+
   <mat-tab-group mat-stretch-tabs class="tab" *ngIf="offers$ | async as offers">
     <mat-tab label="offers"
       ><app-offer-item
@@ -25,9 +26,11 @@
         class="offer-card"
       ></app-offer-item
     ></mat-tab>
+
     <mat-tab label="description">{{
       vendor.description || "Sorry, the brand didn't provide a description"
     }}</mat-tab>
+
     <mat-tab label="addresses">
       <div *ngFor="let office of vendor.offices" class="address">
         <a
@@ -51,4 +54,6 @@
       </div>
     </mat-tab>
   </mat-tab-group>
+
+  <app-go-back-button class="desktop"></app-go-back-button>
 </div>
