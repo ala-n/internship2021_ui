@@ -1,0 +1,14 @@
+@import '/src/app/styles/variables.scss';
+
+.button-back {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0.5em;
+  top: 0em;
+  width: 2em;
+  height: 2em;
+  color: white;
+  background-color: $blue-primary;
+}
