@@ -43,9 +43,9 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="addresses">
+    <mat-tab label="addresses" *ngIf="offices$ | async as offices">
       <a
-        *ngFor="let office of offer.offices"
+        *ngFor="let office of offices"
         class="address link-reset"
         [routerLink]="['/home/offices', office.id]"
       >

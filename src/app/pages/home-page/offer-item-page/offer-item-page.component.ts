@@ -2,8 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/office.service';
 import { Observable, Subject } from 'rxjs';
 import { skip, takeUntil } from 'rxjs/operators';
 
@@ -15,10 +17,12 @@ import { skip, takeUntil } from 'rxjs/operators';
 export class OfferItemPageComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
   offer$!: Observable<Offer>;
+  offices$!: Observable<Office[]>;
 
   constructor(
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
+    private readonly officeService: OfficeService,
     private readonly mapService: MapService,
     private router: Router
   ) {}
@@ -27,9 +31,12 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
       this.offer$ = this.offerService.getOfferById(Number(params['id']));
     });
-    this.offer$
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((offer) => this.mapService.setOffer(offer));
+    this.offer$.pipe(takeUntil(this.destroy$)).subscribe((offer) => {
+      this.mapService.setOffer(offer);
+      this.offices$ = this.officeService.getVendorOffices(
+        Number(offer.vendorId)
+      );
+    });
     this.mapService.city$
       .pipe(skip(1), takeUntil(this.destroy$))
       .subscribe(() => {
