@@ -10,63 +10,63 @@
   background: #0000;
 }
 
-.chip {
+.chips__value {
   border: 1px solid $text-secondary;
   background-color: $background-light;
   color: $text-secondary;
 }
 
-.chip:hover {
+.chips__value:hover {
   border: 1px solid $blue-accent;
   color: $blue-accent;
   background-color: rgb(245, 255, 255);
 }
 
-.value-ect {
-  // this button ect (...)
-  display: none;
-}
+// .value-ect {
+//   // this button ect (...)
+//   display: none;
+// }
 
-@media screen and (max-width: 1231px) {
-  .value10 {
-    display: none;
-  }
-  .value-ect {
-    display: inline-flex;
-  }
-}
+// @media screen and (max-width: 1231px) {
+//   .value10 {
+//     display: none;
+//   }
+//   .value-ect {
+//     display: inline-flex;
+//   }
+// }
 
-@media screen and (max-width: 1200px) {
-  .value9 {
-    display: none;
-  }
-}
+// @media screen and (max-width: 1200px) {
+//   .value9 {
+//     display: none;
+//   }
+// }
 
-@media screen and (max-width: 1100px) {
-  .value8 {
-    display: none;
-  }
-}
+// @media screen and (max-width: 1100px) {
+//   .value8 {
+//     display: none;
+//   }
+// }
 
-@media screen and (max-width: 1016px) {
-  .value7 {
-    display: none;
-  }
-}
-@media screen and (max-width: 939px) {
-  .value6 {
-    display: none;
-  }
-}
+// @media screen and (max-width: 1016px) {
+//   .value7 {
+//     display: none;
+//   }
+// }
+// @media screen and (max-width: 939px) {
+//   .value6 {
+//     display: none;
+//   }
+// }
 
-@media screen and (max-width: 834px) {
-  .value5 {
-    display: none;
-  }
-}
+// @media screen and (max-width: 834px) {
+//   .value5 {
+//     display: none;
+//   }
+// }
 
-@media screen and (max-width: 771px) {
-  .value4 {
-    display: none;
-  }
-}
+// @media screen and (max-width: 771px) {
+//   .value4 {
+//     display: none;
+//   }
+// }
