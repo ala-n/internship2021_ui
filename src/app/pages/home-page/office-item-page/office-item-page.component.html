@@ -13,9 +13,12 @@
       <div class="card__title office__contact">
         <mat-icon>location_on</mat-icon>{{ office.address }}
       </div>
-      <div class="card__title office__contact">
+      <a
+        href="tel:{{ office.phone }}"
+        class="card__title office__contact link-reset"
+      >
         <mat-icon>call</mat-icon>{{ office.phone }}
-      </div>
+      </a>
       <a
         href="https://{{ vendor.website }}"
         target="_blank"

@@ -44,11 +44,11 @@
       </div>
     </mat-tab>
     <mat-tab label="addresses" *ngIf="offices$ | async as offices">
-      <a
-        *ngFor="let office of offices"
-        class="address link-reset"
-        [routerLink]="['/home/offices', office.id]"
-      >
+      <div *ngFor="let office of offices" class="address">
+        <a
+          class="address__link-overlay link-reset"
+          [routerLink]="['/home/offices', office.id]"
+        ></a>
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
           <div>
@@ -59,9 +59,11 @@
                 : office.street + ', ' + office.house
             }}
           </div>
-          <div>{{ office.phone }}</div>
+          <a href="tel:{{ office.phone }}" class="address__phone link-reset">{{
+            office.phone
+          }}</a>
         </div>
-      </a>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </div>
