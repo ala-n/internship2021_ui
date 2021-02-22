@@ -71,6 +71,10 @@ export class MapService {
     this._vendor$.next(null);
   }
 
+  clearOffice(): void {
+    this._office$.next(null);
+  }
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getCityView(city: string): Promise<any> {
     // const provider = new OpenStreetMapProvider();
