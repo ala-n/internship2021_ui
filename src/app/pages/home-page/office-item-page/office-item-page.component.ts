@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { forkJoin, of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
@@ -17,10 +17,11 @@ import { OfferService } from '@shared/services/offer.service';
   styleUrls: ['./office-item-page.component.scss']
 })
 export class OfficeItemPageComponent implements OnInit {
-  private readonly destroy$: Subject<boolean> = new Subject<boolean>();
-  office$!: Observable<Office>;
-  vendor$!: Observable<Vendor>;
-  offers$!: Observable<Offer[]>;
+  isLoading$ = of(true);
+
+  office!: Office;
+  vendor!: Vendor;
+  offers!: Offer[];
 
   constructor(
     private route: ActivatedRoute,
@@ -30,19 +31,25 @@ export class OfficeItemPageComponent implements OnInit {
     private vendorService: VendorService
   ) {}
   ngOnInit(): void {
-    this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
-      this.office$ = this.officeService.getOfficeById(Number(params['id']));
-    });
-
-    this.office$.pipe(takeUntil(this.destroy$)).subscribe((office) => {
-      this.mapService.setOffice(office);
-      this.vendor$ = this.vendorService.getVendorById(Number(office.vendorId));
-      this.offers$ = this.offerService.getVendorOffers(Number(office.vendorId));
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
+    this.isLoading$ = this.route.params.pipe(
+      switchMap((params) =>
+        this.officeService.getOfficeById(Number(params['id']))
+      ),
+      tap((office) => {
+        this.office = office;
+        this.mapService.setOffice(office);
+      }),
+      switchMap((office) =>
+        forkJoin([
+          this.vendorService.getVendorById(Number(office.vendorId)),
+          this.offerService.getVendorOffers(Number(office.vendorId))
+        ])
+      ),
+      tap(([vendor, offers]) => {
+        this.vendor = vendor;
+        this.offers = offers;
+      }),
+      map(() => false)
+    );
   }
 }

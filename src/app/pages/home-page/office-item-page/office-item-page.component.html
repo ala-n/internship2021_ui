@@ -1,50 +1,56 @@
-<div *ngIf="office$ | async as office" class="office">
-  <div class="card" *ngIf="vendor$ | async as vendor">
-    <!-- //TODO(abarmina) remove double *ngIf="vendor$ | async as vendor" -->
-    <img
-      src="/assets/images/vendor_logo.jpg"
-      alt="office logo"
-      class="card__image"
-    />
-    <div class="office__info">
-      <a
-        class="link-reset card__name office__link"
-        [routerLink]="['/home/vendors', office.vendorId]"
-      >
-        {{ vendor.name }}
-      </a>
-      <div class="card__title office__contact">
-        <mat-icon>location_on</mat-icon>{{ office.address }}
+<div *ngIf="(isLoading$ | async) === false">
+  <div class="office">
+    <div class="card">
+      <!-- //TODO(abarmina) remove double *ngIf="vendor$ | async as vendor" -->
+      <img
+        src="/assets/images/vendor_logo.jpg"
+        alt="office logo"
+        class="card__image"
+      />
+      <div class="office__info">
+        <a
+          class="link-reset card__name office__link"
+          [routerLink]="['/home/vendors', office.vendorId]"
+        >
+          {{ vendor.name }}
+        </a>
+        <div class="card__title office__contact">
+          <mat-icon>location_on</mat-icon>{{ office.address }}
+        </div>
+        <a
+          href="tel:{{ office.phone }}"
+          class="card__title office__contact link-reset"
+        >
+          <mat-icon>call</mat-icon>{{ office.phone }}
+        </a>
+        <a
+          href="https://{{ vendor.website }}"
+          target="_blank"
+          class="card__link link-reset"
+        >
+          <mat-icon>public</mat-icon>Website
+        </a>
       </div>
-      <a
-        href="tel:{{ office.phone }}"
-        class="card__title office__contact link-reset"
-      >
-        <mat-icon>call</mat-icon>{{ office.phone }}
-      </a>
-      <a
-        href="https://{{ vendor.website }}"
-        target="_blank"
-        class="card__link link-reset"
-      >
-        <mat-icon>public</mat-icon>Website
-      </a>
     </div>
+
+    <mat-tab-group mat-stretch-tabs class="tab">
+      <mat-tab label="offers">
+        <a
+          class="link-reset"
+          *ngFor="let offer of offers"
+          [routerLink]="['/home/offers', offer.id]"
+        >
+          <app-offer-item
+            [offer]="offer"
+            class="offer-card"
+          ></app-offer-item></a
+      ></mat-tab>
+
+      <mat-tab label="description">{{
+        vendor.description || "Sorry, the brand didn't provide a description"
+      }}</mat-tab>
+    </mat-tab-group>
+
+    <app-go-back-button class="desktop"></app-go-back-button>
   </div>
-
-  <mat-tab-group mat-stretch-tabs class="tab">
-    <mat-tab label="offers" *ngIf="offers$ | async as offers"
-      ><app-offer-item
-        *ngFor="let offer of offers"
-        [offer]="offer"
-        class="offer-card"
-      ></app-offer-item
-    ></mat-tab>
-
-    <mat-tab label="description" *ngIf="vendor$ | async as vendor">{{
-      vendor.description || "Sorry, the brand didn't provide a description"
-    }}</mat-tab>
-  </mat-tab-group>
-
-  <app-go-back-button class="desktop"></app-go-back-button>
 </div>
