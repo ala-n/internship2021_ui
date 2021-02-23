@@ -9,6 +9,7 @@ import { LoginData } from '@shared/models/login_data';
 })
 export class LogInComponent {
   model: LoginData = {};
+
   constructor(private authService: AuthService) {}
 
   ngOnInit() {
