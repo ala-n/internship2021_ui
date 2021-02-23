@@ -1,4 +1,4 @@
-<div *ngIf="offer$ | async as offer" class="item">
+<div *ngIf="(isLoading$ | async) === false" class="item">
   <app-offer-item [offer]="offer"></app-offer-item>
 
   <mat-tab-group mat-stretch-tabs class="tab">
@@ -43,10 +43,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab
-      label="{{ 'CARD.ADDRESSES' | translate }}"
-      *ngIf="offices$ | async as offices"
-    >
+    <mat-tab label="{{ 'CARD.ADDRESSES' | translate }}">
       <div *ngFor="let office of offices" class="address">
         <a
           class="address__link-overlay link-reset"

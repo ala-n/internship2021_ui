@@ -1,59 +1,64 @@
-<div *ngIf="vendor$ | async as vendor" class="vendor">
-  <div class="card">
-    <img
-      src="/assets/images/vendor_logo.jpg"
-      alt="vendor logo"
-      class="card__image"
-    />
-    <div class="vendor__info">
-      <div class="card__name">{{ vendor.name }}</div>
-      <div class="card__title">{{ vendor.title }}</div>
-    </div>
-    <a
-      href="https://{{ vendor.website }}"
-      target="_blank"
-      class="card__link vendor__link link-reset"
-    >
-      <mat-icon>public</mat-icon>Website
-    </a>
-  </div>
-
-  <mat-tab-group mat-stretch-tabs class="tab" *ngIf="offers$ | async as offers">
-    <mat-tab label="offers"
-      ><app-offer-item
-        *ngFor="let offer of offers"
-        [offer]="offer"
-        class="offer-card"
-      ></app-offer-item
-    ></mat-tab>
-
-    <mat-tab label="description">{{
-      vendor.description || "Sorry, the brand didn't provide a description"
-    }}</mat-tab>
-
-    <mat-tab label="addresses">
-      <div *ngFor="let office of vendor.offices" class="address">
-        <a
-          class="address__link-overlay link-reset"
-          [routerLink]="['/home/offices', office.id]"
-        ></a>
-        <mat-icon class="address__location-icon">location_on</mat-icon>
-        <div>
-          <div>
-            <!-- I'll rewrite it later //TODO(abarmina) -->
-            {{
-              office.room
-                ? office.street + ', ' + office.house + ', ' + office.room
-                : office.street + ', ' + office.house
-            }}
-          </div>
-          <a href="tel:{{ office.phone }}" class="address__phone link-reset">{{
-            office.phone
-          }}</a>
-        </div>
+<div *ngIf="(isLoading$ | async) === false">
+  <div class="vendor">
+    <div class="card">
+      <img
+        src="/assets/images/vendor_logo.jpg"
+        alt="vendor logo"
+        class="card__image"
+      />
+      <div class="vendor__info">
+        <div class="card__name">{{ vendor.name }}</div>
+        <div class="card__title">{{ vendor.title }}</div>
       </div>
-    </mat-tab>
-  </mat-tab-group>
+      <a
+        href="https://{{ vendor.website }}"
+        target="_blank"
+        class="card__link vendor__link link-reset"
+      >
+        <mat-icon>public</mat-icon>Website
+      </a>
+    </div>
 
-  <app-go-back-button class="desktop"></app-go-back-button>
+    <mat-tab-group mat-stretch-tabs class="tab">
+      <mat-tab label="offers">
+        <a
+          class="link-reset"
+          *ngFor="let offer of offers"
+          [routerLink]="['/home/offers', offer.id]"
+          ><app-offer-item [offer]="offer" class="offer-card"></app-offer-item
+        ></a>
+      </mat-tab>
+
+      <mat-tab label="description">{{
+        vendor.description || "Sorry, the brand didn't provide a description"
+      }}</mat-tab>
+
+      <mat-tab label="addresses">
+        <div class="address" *ngFor="let office of vendor.offices">
+          <a
+            class="address__link-overlay link-reset"
+            [routerLink]="['/home/offices', office.id]"
+          ></a>
+          <mat-icon class="address__location-icon">location_on</mat-icon>
+          <div>
+            <div>
+              <!-- I'll rewrite it later //TODO(abarmina) -->
+              {{
+                office.room
+                  ? office.street + ', ' + office.house + ', ' + office.room
+                  : office.street + ', ' + office.house
+              }}
+            </div>
+            <a
+              href="tel:{{ office.phone }}"
+              class="address__phone link-reset"
+              >{{ office.phone }}</a
+            >
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <app-go-back-button class="desktop"></app-go-back-button>
+  </div>
 </div>

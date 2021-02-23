@@ -5,8 +5,8 @@ import { Vendor } from '@shared/models/vendor';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { VendorService } from '@shared/services/vendor.service';
-import { Observable, Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { of, Subject } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-vendor-item-page',
@@ -15,8 +15,10 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class VendorItemPageComponent implements OnInit, OnDestroy {
   private readonly destroy$: Subject<boolean> = new Subject<boolean>();
-  vendor$!: Observable<Vendor>;
-  offers$!: Observable<Offer[]>;
+  vendor!: Vendor;
+  offers!: Offer[];
+
+  isLoading$ = of(true);
 
   constructor(
     private route: ActivatedRoute,
@@ -26,14 +28,20 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.pipe(takeUntil(this.destroy$)).subscribe((params) => {
-      this.vendor$ = this.vendorService.getVendorById(Number(params['id']));
-    });
-
-    this.vendor$.pipe(takeUntil(this.destroy$)).subscribe((vendor) => {
-      this.mapService.setVendor(vendor);
-      this.offers$ = this.offerService.getVendorOffers(Number(vendor.id));
-    });
+    this.isLoading$ = this.route.params.pipe(
+      switchMap((params) =>
+        this.vendorService.getVendorById(Number(params['id']))
+      ),
+      tap((vendor) => {
+        this.vendor = vendor;
+        this.mapService.setVendor(vendor);
+      }),
+      switchMap((vendor) =>
+        this.offerService.getVendorOffers(Number(vendor.id))
+      ),
+      tap((offers) => (this.offers = offers)),
+      map(() => false)
+    );
   }
 
   ngOnDestroy(): void {
