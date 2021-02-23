@@ -20,7 +20,10 @@
     <mat-icon class="icon icon_l">perm_identity</mat-icon>
   </button>
 </mat-toolbar>
-<mat-sidenav-container class="admin-sidenav__container">
+<mat-sidenav-container
+  class="admin-sidenav__container"
+  (backdropClick)="closeSidenav()"
+>
   <mat-sidenav
     #drawer
     class="admin-sidenav__drawer"
