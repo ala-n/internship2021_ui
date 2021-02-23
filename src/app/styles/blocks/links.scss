@@ -2,9 +2,19 @@
 
 .link {
   text-decoration: none;
-  color: $blue-primary;
-  &:hover {
-    color: $blue-accent;
-    transition: color 0.1s linear;
+
+  &_c {
+    &_default {
+      color: $text-primary;
+    }
+
+    &_primary {
+      color: $blue-primary;
+
+      &:hover {
+        color: $blue-accent;
+        transition: color 0.1s linear;
+      }
+    }
   }
 }
