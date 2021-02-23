@@ -1,9 +1,7 @@
 <div class="container-of-chips">
   <mat-chip-list>
-    <div class="chips">
-      <mat-chip class="chips__value" *ngFor="let tag of tags">
-        {{ tag.name }}
-      </mat-chip>
-    </div>
+    <mat-chip tabindex="0" class="value" *ngFor="let tag of tags">
+      {{ tag.name }}
+    </mat-chip>
   </mat-chip-list>
 </div>
