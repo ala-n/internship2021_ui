@@ -39,5 +39,6 @@ export class OfficeItemPageComponent implements OnInit {
   ngOnDestroy(): void {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
+    this.mapService.clearOffice();
   }
 }
