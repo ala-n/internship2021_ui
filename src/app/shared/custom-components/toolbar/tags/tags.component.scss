@@ -24,11 +24,9 @@
 .value:hover {
   border: 1px solid $blue-accent;
   color: $blue-accent;
-  background-color: rgb(245, 255, 255);
 }
 
 .value:focus {
   border: 1px solid $blue-primary;
   color: $blue-primary;
-  background-color: rgb(220, 255, 255);
 }
