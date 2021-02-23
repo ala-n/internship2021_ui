@@ -8,7 +8,7 @@
       />
       <div class="office__info">
         <a
-          class="link-reset card__name office__link"
+          class="link-reset card__name office__vendor"
           [routerLink]="['/home/vendors', office.vendorId]"
         >
           {{ vendor.name }}
@@ -25,7 +25,7 @@
         <a
           href="https://{{ vendor.website }}"
           target="_blank"
-          class="card__link link-reset"
+          class="link-reset card__link office__website"
         >
           <mat-icon>public</mat-icon>Website
         </a>

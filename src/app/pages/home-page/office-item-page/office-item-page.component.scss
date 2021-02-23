@@ -5,7 +5,15 @@
 .office {
   padding: 0.5em;
 
+  &__vendor {
+    display: inline-block;
+  }
+
   &__info {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+
     .mat-icon {
       margin-right: 0.3em;
     }
@@ -16,7 +24,10 @@
     align-items: center;
   }
 
-  &__link {
-    display: block;
+  @media screen and (max-width: $mobile) {
+    &__website,
+    &__contact {
+      font-size: 14px;
+    }
   }
 }
