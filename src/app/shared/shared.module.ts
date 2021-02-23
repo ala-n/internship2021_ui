@@ -15,6 +15,7 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
 
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { TranslateModule } from '@ngx-translate/core';
     LanguageComponent,
     SearchComponent,
     TagsComponent,
-    OfferItemComponent
+    OfferItemComponent,
+    MapBaseComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { TranslateModule } from '@ngx-translate/core';
     LanguageComponent,
     FormsModule,
     OfferItemComponent,
-    TranslateModule
+    TranslateModule,
+    MapBaseComponent
   ],
   entryComponents: [PopupComponent]
 })
