@@ -1,7 +1,7 @@
 @import '/src/app/styles/variables.scss';
 
-::ng-deep #cdk-overlay-0 {
-  max-height: 150px;
+::ng-deep .cdk-overlay-pane {
+  max-height: 10.5em;
 }
 
 .location {
