@@ -1,10 +1,4 @@
 <mat-card class="offer-card" *ngIf="offer">
-  <a
-    class="offer-card__link-overlay link-reset"
-    [routerLink]="['offers', offer.id]"
-    queryParamsHandling="merge"
-  ></a>
-
   <div class="offer-card__content">
     <img class="offer-card__image" [src]="offer.photoUrl" alt="offer image" />
     <div class="offer-card__text">
@@ -12,8 +6,7 @@
       <div>
         <a
           class="offer-card__vendor link-reset"
-          [routerLink]="['vendors', offer.vendorId]"
-          queryParamsHandling="merge"
+          [routerLink]="['/home/vendors', offer.vendorId]"
           >{{ offer.vendorName }}</a
         >
       </div>

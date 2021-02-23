@@ -1,8 +1,11 @@
 <app-sort class="sort"></app-sort>
 <div class="offers" *ngIf="offers$ | async as offers">
-  <app-offer-item
+  <a
+    class="link-reset"
     *ngFor="let offer of offers"
-    [offer]="offer"
-    class="offer-card"
-  ></app-offer-item>
+    [routerLink]="['offers', offer.id]"
+    queryParamsHandling="merge"
+  >
+    <app-offer-item [offer]="offer" class="offer-card"></app-offer-item
+  ></a>
 </div>
