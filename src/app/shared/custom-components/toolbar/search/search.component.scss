@@ -1,25 +1,29 @@
 @import '/src/app/styles/variables.scss';
 
 .search-form {
-  max-width: 260px; 
+  max-width: 260px;
   margin-left: 1em;
-  
+
   &__field {
-  display: flex;
-  border: $border-primary;
-  border-radius: 25px;
+    display: flex;
+    border: $border-primary;
+    border-radius: 25px;
   }
-  
+
+  &__input-position {
+    padding-left: 20px;
+  }
+
   &__input {
-  width: 100%;
-  font-size: 20px;
-  border: none;
-  border-radius: 25px;
-  padding-left: 20px;
-  outline: none;
+    height: 100%;
+    width: 100%;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
   }
-  
+
   &__button {
-  color: $blue-primary; 
+    color: $blue-primary;
   }
 }
