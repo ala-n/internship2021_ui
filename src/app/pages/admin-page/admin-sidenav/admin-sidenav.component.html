@@ -8,7 +8,7 @@
     (click)="drawer.toggle()"
     *ngIf="isHandset$ | async"
   >
-    <mat-icon class="icon icon_l">menu</mat-icon>
+    <mat-icon class="icon icon_s_l">menu</mat-icon>
   </button>
   <span class="admin-toolbar__username">Name Surname</span>
   <button
@@ -17,7 +17,7 @@
     (click)="navigationService.toggleSidenav()"
     (click)="closeSidenav()"
   >
-    <mat-icon class="icon icon_l">perm_identity</mat-icon>
+    <mat-icon class="icon icon_s_l">perm_identity</mat-icon>
   </button>
 </mat-toolbar>
 <mat-sidenav-container
