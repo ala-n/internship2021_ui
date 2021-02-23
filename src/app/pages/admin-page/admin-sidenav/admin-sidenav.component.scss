@@ -30,14 +30,18 @@
     padding: 0.5em;
   }
 
+  &__list {
+    padding: 0;
+  }
+
   &__card {
     flex: 1 0 1px;
     padding: 0;
     overflow: auto;
-    //TODO class naming???
-    mat-card-content {
-      height: 100%;
-    }
+  }
+
+  &__card-content {
+    height: 100%;
   }
 }
 

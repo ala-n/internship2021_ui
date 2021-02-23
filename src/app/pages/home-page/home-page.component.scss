@@ -1,17 +1,10 @@
 @import '/src/app/styles/variables.scss';
+@import '/src/app/styles/custom-theme.scss';
 
 .home {
   display: flex;
   flex-direction: column;
   height: 100%;
-
-  &__button {
-    display: none;
-    position: fixed;
-    bottom: 2em;
-    right: 2em;
-    z-index: 1101;
-  }
 
   &__main {
     position: relative;
@@ -34,10 +27,6 @@
     &__left,
     &__right {
       flex-shrink: 0;
-    }
-
-    &__button {
-      display: block;
     }
 
     &__right {

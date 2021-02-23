@@ -132,7 +132,7 @@ export default [
     numberOfViews: 212,
     updated: '2021-01-01',
     promocode: '34BEFWWWIB',
-    tags: [''],
+    tags: [],
     isActive: true,
     photoGallery: [
       'https://pizzamania.by/admin/uploads/items/260.png',
@@ -433,7 +433,7 @@ export default [
     numberOfViews: 56,
     updated: '2021-03-01',
     promocode: '',
-    tags: [''],
+    tags: [],
     isActive: true,
     city: 'Гродно',
     offices: [

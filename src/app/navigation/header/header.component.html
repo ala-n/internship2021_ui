@@ -6,7 +6,7 @@
   ></a>
   <div class="header__toolbar">
     <a
-      class="button button_l"
+      class="button button_s_l"
       mat-button
       *ngIf="navigationService.isHomePageOpened; else adminPageButton"
       routerLink="home"
@@ -17,7 +17,7 @@
     </a>
     <ng-template #adminPageButton>
       <a
-        class="button button_l"
+        class="button button_s_l"
         mat-button
         routerLink="admin"
         (click)="navigationService.toggleHomePage()"

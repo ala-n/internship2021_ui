@@ -1,11 +1,13 @@
 @import '../variables.scss';
 
 .button {
-  &_l {
-    font-size: 1.4em;
-  }
   &_s {
-    font-size: 0.5em;
+    &_l {
+      font-size: 1.4em;
+    }
+    &_s {
+      font-size: 0.5em;
+    }
   }
 
   &_no-hover {
@@ -15,11 +17,11 @@
   }
 
   &_c {
-    &_blue {
+    &_primary {
       color: $background-blue;
     }
 
-    &_primary {
+    &_icon-primary {
       color: #fff;
       background-color: $background-blue;
     }
@@ -31,10 +33,24 @@
         display: none;
       }
     }
+
+    &_tablet {
+      @media screen and (min-width: $tablet + 1) {
+        display: none;
+      }
+    }
+
     &_desktop {
       @media screen and (min-width: $mobile + 1) {
         display: none;
       }
     }
+  }
+
+  &_mobile {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 1101;
   }
 }

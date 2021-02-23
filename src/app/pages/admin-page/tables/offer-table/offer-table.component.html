@@ -35,7 +35,7 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let offer">
           <button
-            class="button button_edit button_c_blue"
+            class="button button_edit button_c_primary"
             [routerLink]="[offer.id]"
             mat-icon-button
           >
@@ -138,7 +138,7 @@
   </div>
   <div class="table__footer">
     <button
-      class="button button_hidden_mobile button_c_primary"
+      class="button button_hidden_mobile button_c_icon-primary"
       mat-raised-button
       *ngIf="vendorId"
       [routerLink]="['form']"
@@ -155,7 +155,7 @@
     >
     </mat-paginator>
     <button
-      class="button button_hidden_desktop button_c_primary"
+      class="button button_hidden_desktop button_c_icon-primary"
       mat-fab
       *ngIf="vendorId"
       [routerLink]="['form']"
