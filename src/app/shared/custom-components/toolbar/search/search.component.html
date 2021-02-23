@@ -1,11 +1,16 @@
-<form class="example-form">
-  <input
-    type="text"
-    class="search"
-    placeholder="Search"
-    [formControl]="control"
-    [matAutocomplete]="auto"
-  />
+<form class="search-form">
+  <div class="search-form__field">
+    <input
+      type="text"
+      class="search-form__input"
+      placeholder="Search"
+      [formControl]="control"
+      [matAutocomplete]="auto"
+    />
+    <button class="search-form__button" mat-icon-button>
+      <mat-icon class="icon icon_s">search</mat-icon>
+    </button>
+  </div>
   <mat-autocomplete #auto="matAutocomplete">
     <mat-option *ngFor="let value of filteredData | async" [value]="value">
       {{ value }}
