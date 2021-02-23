@@ -66,6 +66,15 @@ $small-card: 1500px;
     &:hover {
       color: $blue-primary;
     }
+
+    &::before {
+      content: '';
+      position: absolute;
+      height: 200%;
+      width: 150%;
+      top: -0.5em;
+      left: -1em;
+    }
   }
 
   &__properties {
@@ -74,14 +83,15 @@ $small-card: 1500px;
     top: 1em;
 
     @media screen and (max-width: $small-card) {
-      display: flex;
       align-self: flex-end;
-      width: auto;
+      display: flex;
+      align-items: center;
       top: 0em;
     }
 
     @media screen and (max-width: $mobile) {
       top: 0.3em;
+      line-height: 14px;
     }
   }
 
@@ -109,17 +119,13 @@ $small-card: 1500px;
       @media screen and (max-width: $mobile) {
         width: 17px;
         font-size: 17px;
-        line-height: 19px;
+        height: 17px;
       }
     }
 
     @media screen and (max-width: $small-card) {
       margin-right: 0.5em;
       margin-top: 0;
-    }
-
-    @media screen and (max-width: $mobile) {
-      align-items: flex-start;
     }
   }
 
@@ -147,19 +153,14 @@ $small-card: 1500px;
 }
 
 .stars {
-  width: 120px;
-  height: 24px;
+  display: flex;
   color: $blue-primary;
 
   > mat-icon {
     @media screen and (max-width: $mobile) {
       width: 19px;
+      height: 19px;
       font-size: 19px;
     }
-  }
-
-  @media screen and (max-width: $mobile) {
-    width: 95px;
-    height: 19px;
   }
 }
