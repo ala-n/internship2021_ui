@@ -66,7 +66,7 @@ export class OfferFormComponent implements OnInit {
           this.offerOffices = offer.offices.map((office) => office.id);
           this.vendorName = offer.vendorName;
           this.vendorId = offer.vendorId;
-          this.tags = this.tags.concat(offer.tags);
+          this.tags = offer.tags || [];
           this.getOfficesForSelect(this.vendorId);
           this.offerForm.setValue({
             id: offer.id,
@@ -110,8 +110,6 @@ export class OfferFormComponent implements OnInit {
         .updateOffer(this.offerForm.value, this.vendorId)
         .subscribe();
     } else {
-      // TODO change manually setting of tags form control after save
-      this.offerForm.controls['tags'].setValue(this.tags);
       this.offerService
         .addOffer(this.offerForm.value, this.vendorNavId)
         .subscribe((offer) => {

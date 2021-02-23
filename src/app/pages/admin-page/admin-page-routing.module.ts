@@ -50,7 +50,7 @@ const routes: Routes = [
                 path: ':id',
                 children: [
                   {
-                    path: '',
+                    path: 'edit',
                     component: VendorFormComponent
                   },
                   {
