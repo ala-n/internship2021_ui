@@ -14,7 +14,7 @@ export class LanguageComponent {
     translate.use(browserLang.match(/en|ru/) ? browserLang : 'en');
   }
 
-  onChangeLang() {
+  onChangeLang(): void {
     this.translate.currentLang == 'en'
       ? this.translate.use('ru')
       : this.translate.use('en');
