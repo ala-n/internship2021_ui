@@ -49,7 +49,7 @@ export default [
     website: 'pizzachefarts.by',
     offices: [
       {
-        id: 1,
+        id: 3,
         x: 53.938102489505866,
         y: 27.488490327319887,
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
@@ -63,7 +63,7 @@ export default [
         isActive: false
       },
       {
-        id: 2,
+        id: 4,
         x: 53.85829633426384,
         y: 27.43278622731758,
         address: 'ул. Слободская, д. 27',
@@ -92,7 +92,7 @@ export default [
     website: 'pizzamania.by',
     offices: [
       {
-        id: 1,
+        id: 5,
         x: 53.86553289876855,
         y: 27.45302363896044,
         address: 'ул. Рафиева, д. 44',
@@ -106,7 +106,7 @@ export default [
         isActive: true
       },
       {
-        id: 2,
+        id: 6,
         x: 53.883091927066054,
         y: 27.567344627318217,
         address: 'ул. Маяковского, д. 10',
@@ -120,7 +120,7 @@ export default [
         isActive: false
       },
       {
-        id: 3,
+        id: 7,
         x: 53.86734233325647,
         y: 27.65028647149643,
         address: 'ул. Центральная, д. 9',
@@ -134,7 +134,7 @@ export default [
         isActive: true
       },
       {
-        id: 4,
+        id: 8,
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
@@ -160,7 +160,7 @@ export default [
     website: 'instagram.com/kardash.by/',
     offices: [
       {
-        id: 1,
+        id: 9,
         x: 53.83947974668578,
         y: 27.640475169645576,
         address: 'ул. Голодеда, д. 15',
@@ -185,7 +185,7 @@ export default [
     website: 'focsport.by',
     offices: [
       {
-        id: 1,
+        id: 10,
         x: 53.91137617684785,
         y: 27.542871240811902,
         address: 'пр-т Победителей, д. 23к1',
@@ -213,7 +213,7 @@ export default [
     website: 'yetideti.by',
     offices: [
       {
-        id: 1,
+        id: 11,
         x: 53.65034593967492,
         y: 23.85468398498308,
         address: 'пр-т Янки Купалы, д. 87',
@@ -238,7 +238,7 @@ export default [
     website: 'rockplay.by',
     offices: [
       {
-        id: 1,
+        id: 12,
         x: 53.684909765450755,
         y: 23.845177013681916,
         address: 'ул. Буденного, д. 54/1',
@@ -263,7 +263,7 @@ export default [
     website: 'visagist.com.ua',
     offices: [
       {
-        id: 1,
+        id: 13,
         x: 50.42837142443786,
         y: 30.517745728722034,
         address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
@@ -288,7 +288,7 @@ export default [
     website: 'fashion-wear.com.ua',
     offices: [
       {
-        id: 1,
+        id: 14,
         x: 50.44025486038732,
         y: 30.52230314847687,
         address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
@@ -315,7 +315,7 @@ export default [
     website: '', // without website
     offices: [
       {
-        id: 1,
+        id: 15,
         x: 56.781522754305485,
         y: 60.61757015808883,
         address: 'Монтёрская улица, д.10а',
@@ -329,7 +329,7 @@ export default [
         isActive: true
       },
       {
-        id: 2,
+        id: 16,
         x: 56.84222661082884,
         y: 60.66575335424758,
         address: 'ул. Малышева, 145а',

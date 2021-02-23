@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 import { MapService } from '@shared/services/map.service';
 import { VendorService } from '@shared/services/vendor.service';
@@ -30,10 +29,6 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
     this.vendor$
       .pipe(takeUntil(this.destroy$))
       .subscribe((vendor) => this.mapService.setVendor(vendor));
-  }
-
-  onClickOffice(office: Office): void {
-    this.mapService.setOffice(office);
   }
 
   ngOnDestroy(): void {

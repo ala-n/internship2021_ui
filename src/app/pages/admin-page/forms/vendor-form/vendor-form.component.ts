@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Vendor } from '@shared/models/vendor';
 import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
-import { first } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class VendorFormComponent implements OnInit {
     title: [null, Validators.required],
     description: null,
     website: [null, Validators.required],
-    isActive: null
+    isActive: false
   });
 
   vendors: Vendor[] = [];
@@ -32,24 +32,23 @@ export class VendorFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      if (params['id']) {
-        this.vendorService
-          .getVendorById(Number(params['id']))
-          .pipe(first())
-          .subscribe((vendor) => {
-            this.vendor = vendor;
-            this.vendorForm.setValue({
-              id: vendor.id,
-              name: vendor.name,
-              title: vendor.title,
-              website: vendor.website,
-              description: vendor.description,
-              isActive: vendor.isActive
-            });
+    const vendorId = +this.route.snapshot.params.id;
+    if (vendorId) {
+      this.vendorService
+        .getVendorById(vendorId)
+        .pipe(take(1))
+        .subscribe((vendor) => {
+          this.vendor = vendor;
+          this.vendorForm.setValue({
+            id: vendor.id,
+            name: vendor.name,
+            title: vendor.title,
+            website: vendor.website,
+            description: vendor.description,
+            isActive: vendor.isActive
           });
-      }
-    });
+        });
+    }
   }
 
   onSubmit(): void {

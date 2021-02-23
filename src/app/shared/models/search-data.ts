@@ -1,3 +1,3 @@
 export interface SearchData {
-  Data: string;
+  data: string;
 }

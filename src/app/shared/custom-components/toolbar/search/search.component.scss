@@ -1,10 +1,25 @@
-.example-form {
-  min-width: 150px;
-  width: 100%;
-  margin-left: 1em;
-}
+@import '/src/app/styles/variables.scss';
 
-.search {
-  padding: 0.3em;
-  font-size: 20px;
+.search-form {
+  max-width: 260px;
+  margin-left: 1em;
+
+  &__field {
+    display: flex;
+    border: $border-primary;
+    border-radius: 25px;
+  }
+
+  &__input {
+    width: 100%;
+    margin-left: 1em;
+    font-size: 20px;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+  }
+
+  &__button {
+    color: $blue-primary;
+  }
 }
