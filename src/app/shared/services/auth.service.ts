@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class AuthService {
   // Http Options without User
-  get httpOptionsAuth(): Object {
+  get httpOptionsAuth(): unknown {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
@@ -37,7 +37,7 @@ export class AuthService {
 
   // Checking if User is set
   isLoggedIn(): boolean {
-    return sessionStorage.getItem('access_user') != null; // session storage
+    return sessionStorage.getItem('access_user') != null;
   }
 
   // After clearing sessionStorage redirect to login screen
