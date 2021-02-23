@@ -1,4 +1,4 @@
-@import '../blocks/text.scss';
+@import '../custom-theme.scss';
 @import '../variables.scss';
 
 .table {
@@ -21,12 +21,22 @@
       width: 100%;
       min-width: 600px;
 
+      &::ng-deep .mat-sort-header-content {
+        text-align: left;
+      }
+
       &::ng-deep .mat-cell {
         padding-right: 0.25em;
         &:first-of-type {
           padding-left: 1em;
         }
       }
+    }
+    .mat-header-cell {
+      background-color: $background-blue-light;
+    }
+    .text {
+      padding-right: 0.5em;
     }
   }
 
@@ -36,7 +46,6 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 1em;
-    background-color: #fff;
   }
 
   &__header {
@@ -46,24 +55,49 @@
     }
   }
 
+  &__footer {
+    background-color: $background-blue-light;
+  }
+
   &__spinner {
     margin: 0 auto;
   }
 
   &__search {
-    margin: 1em 0;
     &::ng-deep .mat-form-field-wrapper {
       margin: 0;
       padding: 0;
     }
+    &::ng-deep .mat-form-field-flex {
+      align-items: center;
+      height: 46px;
+    }
     &_hidden {
-      margin: 0;
-      visibility: hidden;
+      display: none;
+    }
+    @media screen and (max-width: $mobile) {
+      width: 100%;
+    }
+  }
+
+  &__filter {
+    align-items: center;
+    height: 42px;
+    text-align: center;
+  }
+
+  &__search,
+  &__filter {
+    margin: 1em 0;
+    @media screen and (max-width: $mobile) {
+      margin: 0.5em 0;
     }
   }
 
   &__paginator {
     margin-left: auto;
+    background-color: transparent;
+
     &::ng-deep .mat-paginator-page-size-label,
     &::ng-deep .mat-paginator-range-label {
       margin: 0;
@@ -81,17 +115,10 @@
   &_edit {
     width: max-content;
   }
+}
 
-  &_add_mobile {
+.spacer {
+  @media screen and (max-width: $mobile) {
     display: none;
-    margin-left: 1em;
-    @media screen and (max-width: $mobile) {
-      display: block;
-    }
-  }
-  &_add_desktop {
-    @media screen and (max-width: $mobile) {
-      display: none;
-    }
   }
 }

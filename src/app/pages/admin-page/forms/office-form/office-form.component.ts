@@ -6,6 +6,8 @@ import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
 
 @Component({
   selector: 'app-office-form',
@@ -34,7 +36,8 @@ export class OfficeFormComponent implements OnInit {
     private officeService: OfficeService,
     private vendorService: VendorService,
     private route: ActivatedRoute,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    public dialog: MatDialog
   ) {}
 
   get vendorId(): number {
@@ -70,6 +73,14 @@ export class OfficeFormComponent implements OnInit {
           this.vendorName = vendor.name;
         });
     }
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(FormDialogComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   onSubmit(): void {

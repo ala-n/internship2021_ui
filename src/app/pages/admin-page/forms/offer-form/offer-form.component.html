@@ -5,7 +5,7 @@
         class="text text_s_l text_c_accent text_upper"
       >
         {{ vendorName }} </span
-      >branch&nbsp;offer</span
+      >offer</span
     >
   </div>
   <div class="row">
@@ -78,8 +78,13 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Select branch offices</mat-label>
-        <input matInput formControlName="offices" />
+        <mat-label>Offices</mat-label>
+        <mat-select formControlName="offices" multiple>
+          <mat-option *ngFor="let office of vendorOffices" [value]="office.id"
+            >{{ office.city }}, {{ office.street }},
+            {{ office.house }}</mat-option
+          >
+        </mat-select>
       </mat-form-field>
     </div>
   </div>
@@ -87,7 +92,18 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Tags</mat-label>
-        <input matInput formControlName="tags" />
+        <mat-chip-list #tagList aria-label="Tag adding" formControlName="tags">
+          <mat-chip *ngFor="let tag of tags">
+            {{ tag }}
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            [matChipInputAddOnBlur]="true"
+            [matChipInputFor]="tagList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addTag($event)"
+          />
+        </mat-chip-list>
       </mat-form-field>
     </div>
   </div>
@@ -108,9 +124,8 @@
       Cancel
     </button>
     <button
-      class="button"
+      class="button button_c_icon-primary"
       mat-raised-button
-      color="primary"
       type="submit"
       (click)="navigationService.goBack()"
       [disabled]="offerForm.invalid"
