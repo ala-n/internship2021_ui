@@ -16,6 +16,7 @@ import { TruncatePipe } from '@shared/pipes/truncate.pipe';
 import { OfficeFormComponent } from './forms/office-form/office-form.component';
 import { OfficeTableComponent } from './tables/office-table/office-table.component';
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
+import { VendorNavComponent } from './vendor-nav/vendor-nav.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
     OfficeTableComponent,
     VendorFormComponent,
     VendorTableComponent,
-    TruncatePipe
+    TruncatePipe,
+    VendorNavComponent
   ],
   imports: [
     CommonModule,

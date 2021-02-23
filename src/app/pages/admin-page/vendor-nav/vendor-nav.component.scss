@@ -1,0 +1,36 @@
+@import '/src/app/styles/variables.scss';
+
+.vendor-nav {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+  padding: 0;
+  border-radius: 4px 0 0;
+  overflow-x: hidden;
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    height: $desktop-header;
+    margin-bottom: 1em;
+    padding: 0;
+    text-align: center;
+    border-bottom: $border-primary;
+
+    @media screen and (max-width: $tablet) {
+      height: $mobile-header;
+    }
+
+    a {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__content {
+    position: relative;
+    flex: 1 0 0%;
+  }
+}

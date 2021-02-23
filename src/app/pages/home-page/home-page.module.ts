@@ -8,6 +8,7 @@ import { SortByComponent } from './offer-list-page/sort/sort.component';
 import { OfferItemPageComponent } from './offer-item-page/offer-item-page.component';
 import { OfferListPageComponent } from './offer-list-page/offer-list-page.component';
 import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.component';
+import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.com
     SortByComponent,
     OfferItemPageComponent,
     OfferListPageComponent,
-    VendorItemPageComponent
+    VendorItemPageComponent,
+    OfficeItemPageComponent
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule]
 })

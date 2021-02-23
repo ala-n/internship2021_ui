@@ -33,6 +33,16 @@
     flex: 1 0 1px;
     padding: 0;
     overflow: auto;
+    //TODO class naming???
+    mat-card-content {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    &_active {
+      // background-color: rgba(0, 0, 0, 0.87);
+    }
   }
 }
 

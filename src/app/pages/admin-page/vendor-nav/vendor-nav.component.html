@@ -1,0 +1,14 @@
+<mat-card class="vendor-nav">
+  <mat-nav-list class="vendor-nav__menu">
+    <a mat-list-item [routerLink]="[vendorId]" disableRipple>Brand</a>
+    <a mat-list-item [routerLink]="[vendorId, 'offices']" disableRipple
+      >Brand offices</a
+    >
+    <a mat-list-item [routerLink]="[vendorId, 'offers']" disableRipple
+      >Brand offers</a
+    >
+  </mat-nav-list>
+  <mat-card-content class="vendor-nav__content">
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>
