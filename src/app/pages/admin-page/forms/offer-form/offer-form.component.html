@@ -5,7 +5,7 @@
         class="text text_s_l text_c_accent text_upper"
       >
         {{ vendorName }} </span
-      >branch&nbsp;offer</span
+      >offer</span
     >
   </div>
   <div class="row">
@@ -80,9 +80,7 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Offices</mat-label>
         <mat-select formControlName="offices" multiple>
-          <mat-option
-            *ngFor="let office of vendorOffices"
-            [value]="offer.offices"
+          <mat-option *ngFor="let office of vendorOffices" [value]="office.id"
             >{{ office.city }}, {{ office.street }},
             {{ office.house }}</mat-option
           >
@@ -94,7 +92,18 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>Tags</mat-label>
-        <input matInput formControlName="tags" />
+        <mat-chip-list #tagList aria-label="Tag adding" formControlName="tags">
+          <mat-chip *ngFor="let tag of tags">
+            {{ tag }}
+          </mat-chip>
+          <input
+            placeholder="New tag..."
+            [matChipInputAddOnBlur]="true"
+            [matChipInputFor]="tagList"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="addTag($event)"
+          />
+        </mat-chip-list>
       </mat-form-field>
     </div>
   </div>

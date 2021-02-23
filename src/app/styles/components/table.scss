@@ -21,6 +21,10 @@
       width: 100%;
       min-width: 600px;
 
+      &::ng-deep .mat-sort-header-content {
+        text-align: left;
+      }
+
       &::ng-deep .mat-cell {
         padding-right: 0.25em;
         &:first-of-type {
@@ -31,7 +35,6 @@
     .mat-header-cell {
       background-color: $background-blue-light;
     }
-
     .text {
       padding-right: 0.5em;
     }
@@ -61,7 +64,6 @@
   }
 
   &__search {
-    margin: 1em 0;
     &::ng-deep .mat-form-field-wrapper {
       margin: 0;
       padding: 0;
@@ -82,6 +84,14 @@
     align-items: center;
     height: 42px;
     text-align: center;
+  }
+
+  &__search,
+  &__filter {
+    margin: 1em 0;
+    @media screen and (max-width: $mobile) {
+      margin: 0.5em 0;
+    }
   }
 
   &__paginator {

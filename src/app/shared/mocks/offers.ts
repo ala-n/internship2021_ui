@@ -16,6 +16,7 @@ export default [
     numberOfViews: 215,
     updated: '2021-02-01',
     promocode: '34B2J3IB',
+    tags: ['Massage', 'Beauty', 'Health'],
     isActive: true,
     photoGallery: [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
@@ -84,6 +85,7 @@ export default [
     numberOfViews: 119,
     updated: '2021-02-05',
     promocode: '34B2EFW',
+    tags: ['Food', 'Sushi'],
     isActive: true,
     city: 'Минск',
     offices: [
@@ -130,6 +132,7 @@ export default [
     numberOfViews: 212,
     updated: '2021-01-01',
     promocode: '34BEFWWWIB',
+    tags: [''],
     isActive: true,
     photoGallery: [
       'https://pizzamania.by/admin/uploads/items/260.png',
@@ -224,6 +227,7 @@ export default [
     numberOfViews: 69,
     updated: '2021-02-07',
     promocode: 'UYT783I',
+    tags: ['Food', 'Pizza'],
     isActive: true,
     city: 'Минск',
     offices: [
@@ -273,6 +277,7 @@ export default [
     numberOfViews: 90,
     updated: '2021-01-01',
     promocode: 'Luxe25',
+    tags: ['Food', 'Flowers'],
     isActive: true,
     city: 'Минск',
     offices: [
@@ -308,6 +313,7 @@ export default [
     numberOfViews: 292,
     updated: '2021-02-10',
     promocode: '',
+    tags: ['Sport', 'Health'],
     isActive: true,
     city: 'Минск',
     offices: [
@@ -350,6 +356,7 @@ export default [
     numberOfViews: 5,
     updated: '2021-01-11',
     promocode: 'kiss1703',
+    tags: ['Spa', 'Beauty'],
     isActive: true,
     city: 'Минск',
     offices: [
@@ -391,6 +398,7 @@ export default [
     updated: '2021-02-21',
     promocode: '',
     isActive: false,
+    tags: ['Spa', 'Beauty'],
     city: 'Минск',
     offices: [
       {
@@ -425,6 +433,7 @@ export default [
     numberOfViews: 56,
     updated: '2021-03-01',
     promocode: '',
+    tags: [''],
     isActive: true,
     city: 'Гродно',
     offices: [
@@ -460,6 +469,7 @@ export default [
     numberOfViews: 103,
     updated: '2021-02-04',
     promocode: 'VWEVWE888',
+    tags: ['Entartainment', 'Music'],
     isActive: true,
     city: 'Гродно',
     offices: [
@@ -495,6 +505,7 @@ export default [
     numberOfViews: 300,
     updated: '2021-02-11',
     promocode: '',
+    tags: ['Beauty'],
     isActive: true,
     city: 'Киев',
     offices: [
@@ -530,6 +541,7 @@ export default [
     numberOfViews: 56,
     updated: '2021-02-22',
     promocode: 'WEAR32',
+    tags: ['Clothes', 'Fashion'],
     isActive: false,
     city: 'Киев',
     offices: [
@@ -564,6 +576,7 @@ export default [
     numberOfViews: 62,
     updated: '2021-02-05',
     promocode: '',
+    tags: ['Auto', 'Wheels'],
     isActive: true,
     city: 'Екатеринбург',
     offices: [

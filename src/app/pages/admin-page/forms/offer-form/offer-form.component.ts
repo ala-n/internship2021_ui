@@ -9,6 +9,9 @@ import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { take } from 'rxjs/operators';
 
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+
 @Component({
   selector: 'app-offer-form',
   templateUrl: './offer-form.component.html',
@@ -29,11 +32,15 @@ export class OfferFormComponent implements OnInit {
     isActive: false
   });
 
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  tags: string[] = [];
+
   offers: Offer[] = [];
   offer!: Offer;
   vendorId!: number;
   vendorName!: string;
-  vendorOffices!: Office[];
+  vendorOffices: Office[] = [];
+  offerOffices: number[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -56,10 +63,11 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
-          this.vendorName = this.offer.vendorName;
+          this.offerOffices = offer.offices.map((office) => office.id);
+          this.vendorName = offer.vendorName;
           this.vendorId = offer.vendorId;
+          this.tags = this.tags.concat(offer.tags);
           this.getOfficesForSelect(this.vendorId);
-          // console.log(this.vendorOffices);
           this.offerForm.setValue({
             id: offer.id,
             title: offer.title,
@@ -69,15 +77,13 @@ export class OfferFormComponent implements OnInit {
             dateEnd: offer.dateEnd,
             promocode: offer.promocode,
             images: '',
-            offices: offer.offices,
-            tags: '',
+            offices: this.offerOffices,
+            tags: this.tags,
             isActive: offer.isActive
           });
         });
     } else {
       this.getOfficesForSelect(this.vendorNavId);
-      // console.log(this.vendorOffices);
-      // debugger
       this.vendorService
         .getVendorById(this.vendorNavId)
         .pipe(take(1))
@@ -104,11 +110,26 @@ export class OfferFormComponent implements OnInit {
         .updateOffer(this.offerForm.value, this.vendorId)
         .subscribe();
     } else {
+      // TODO change manually setting of tags form control after save
+      this.offerForm.controls['tags'].setValue(this.tags);
       this.offerService
         .addOffer(this.offerForm.value, this.vendorNavId)
         .subscribe((offer) => {
           this.offers.push(offer);
         });
+    }
+  }
+
+  addTag(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+
+    if (input) {
+      input.value = '';
     }
   }
 }

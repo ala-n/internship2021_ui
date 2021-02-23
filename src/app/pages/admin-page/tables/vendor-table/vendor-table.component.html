@@ -63,7 +63,9 @@
           Offices
         </th>
         <td mat-cell *matCellDef="let vendor">
-          <a [routerLink]="['details', vendor.id, 'offices']">Show offices</a>
+          <a class="link" [routerLink]="['details', vendor.id, 'offices']"
+            >Show offices</a
+          >
         </td>
       </ng-container>
 
@@ -72,7 +74,9 @@
           Offers
         </th>
         <td mat-cell *matCellDef="let vendor">
-          <a [routerLink]="['details', vendor.id, 'offers']">Show offers</a>
+          <a class="link" [routerLink]="['details', vendor.id, 'offers']"
+            >Show offers</a
+          >
         </td>
       </ng-container>
 
