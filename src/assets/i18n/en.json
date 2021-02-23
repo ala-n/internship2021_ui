@@ -1,12 +1,19 @@
 {
-  "HOME": {
-    "TEXT": "Home",
-    "LANG": "EN",
-    "SORT": {
-      "BY": "Sort By",
-      "DISTANCE": "distance",
-      "RELEVANCE": "relevance",
-      "RATING": "rating"
-    }
+  "TEXT": "Home",
+  "LANG": "EN",
+  "SORT": {
+    "BY": "Sort By",
+    "DISTANCE": "distance",
+    "RELEVANCE": "relevance",
+    "RATING": "rating"
+  },
+  "CARD": {
+    "VALID_TO": "valid to",
+    "PRE-ORDER": "pre-order",
+    "DESCRIPTION": "description",
+    "ADDRESSES": "addresses",
+    "DESCRIPTION_TEXT": "Sorry, the brand didn't provide a description",
+    "BOOKMARKS": "Add to bookmarks",
+    "RATE": "Did you use the offer? Rate it!"
   }
 }
