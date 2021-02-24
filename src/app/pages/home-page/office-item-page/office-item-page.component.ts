@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { forkJoin, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -16,7 +16,7 @@ import { OfferService } from '@shared/services/offer.service';
   templateUrl: './office-item-page.component.html',
   styleUrls: ['./office-item-page.component.scss']
 })
-export class OfficeItemPageComponent implements OnInit {
+export class OfficeItemPageComponent implements OnInit, OnDestroy {
   isLoading$ = of(true);
 
   office!: Office;
@@ -30,6 +30,7 @@ export class OfficeItemPageComponent implements OnInit {
     private mapService: MapService,
     private vendorService: VendorService
   ) {}
+
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
       switchMap((params) =>
@@ -51,5 +52,9 @@ export class OfficeItemPageComponent implements OnInit {
       }),
       map(() => false)
     );
+  }
+
+  ngOnDestroy(): void {
+    this.mapService.clearOffice();
   }
 }

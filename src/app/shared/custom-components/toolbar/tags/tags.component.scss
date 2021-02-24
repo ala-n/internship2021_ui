@@ -3,6 +3,10 @@
 .container-of-chips {
   margin-left: 3em;
   display: flex;
+  height: 36px;
+  line-height: 36px;
+  padding-top: 4px;
+  overflow: hidden;
 }
 
 .mat-chip.mat-standard-chip::after {
@@ -10,63 +14,19 @@
   background: #0000;
 }
 
-.chip {
+.value {
   border: 1px solid $text-secondary;
   background-color: $background-light;
   color: $text-secondary;
+  cursor: pointer;
 }
 
-.chip:hover {
+.value:hover {
   border: 1px solid $blue-accent;
   color: $blue-accent;
-  background-color: rgb(245, 255, 255);
 }
 
-.value-ect {
-  // this button ect (...)
-  display: none;
-}
-
-@media screen and (max-width: 1231px) {
-  .value10 {
-    display: none;
-  }
-  .value-ect {
-    display: inline-flex;
-  }
-}
-
-@media screen and (max-width: 1200px) {
-  .value9 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1100px) {
-  .value8 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 1016px) {
-  .value7 {
-    display: none;
-  }
-}
-@media screen and (max-width: 939px) {
-  .value6 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 834px) {
-  .value5 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 771px) {
-  .value4 {
-    display: none;
-  }
+.value:focus {
+  border: 1px solid $blue-primary;
+  color: $blue-primary;
 }

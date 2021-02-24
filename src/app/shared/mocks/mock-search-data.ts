@@ -1,16 +1,14 @@
-import { SearchData } from '../models/search-data';
-
-export const SEARCH_DATA: SearchData[] = [
+export default [
   {
-    Data: 'McDonalds'
+    data: 'McDonalds'
   },
   {
-    Data: 'Food'
+    data: 'Food'
   },
   {
-    Data: 'Clothes'
+    data: 'Clothes'
   },
   {
-    Data: 'Computer'
+    data: 'Computer'
   }
 ];

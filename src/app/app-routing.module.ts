@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from '@shared/services/auth.guard';
 import { LogInComponent } from './pages/login-page/login-page.component';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./navigation/sidenav/sidenav.module').then((m) => m.SidenavModule)
   }

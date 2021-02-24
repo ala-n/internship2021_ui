@@ -16,6 +16,7 @@ import { OfferItemComponent } from './custom-components/offer-item/offer-item.co
 
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TranslateModule } from '@ngx-translate/core';
     SearchComponent,
     TagsComponent,
     OfferItemComponent,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    MapBaseComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     OfferItemComponent,
     TranslateModule,
-    GoBackButtonComponent
+    GoBackButtonComponent,
+    MapBaseComponent
   ],
   entryComponents: [PopupComponent]
 })

@@ -44,7 +44,6 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       tap((offices) => (this.offices = offices)),
       map(() => false)
     );
-
     this.mapService.city$
       .pipe(skip(1), takeUntil(this.destroy$))
       .subscribe(() => {

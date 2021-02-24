@@ -15,15 +15,21 @@
     </mat-button-toggle-group>
   </div>
   <div class="table__body">
-    <table class="full-width-table" mat-table matSort [dataSource]="dataSource">
+    <table
+      class="full-width-table"
+      mat-table
+      matSort
+      matSortActive="updated"
+      matSortDirection="desc"
+      [dataSource]="dataSource"
+    >
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let office">
           <button
-            class="button_edit"
+            class="button button_edit button_c_primary"
             [routerLink]="[office.id]"
             mat-icon-button
-            color="primary"
           >
             <mat-icon>edit</mat-icon>
           </button>
@@ -31,44 +37,65 @@
       </ng-container>
 
       <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <th mat-header-cell class="text" *matHeaderCellDef>№</th>
         <td mat-cell *matCellDef="let office; let i = index">
           {{ i + 1 + this.paginator.pageIndex * this.paginator.pageSize }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="country">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Country
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.country }}</td>
       </ng-container>
 
       <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          City
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.city }}</td>
       </ng-container>
 
       <ng-container matColumnDef="street">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Street</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          Street
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.street }}</td>
       </ng-container>
 
       <ng-container matColumnDef="house">
-        <th mat-header-cell *matHeaderCellDef>House</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>House</th>
         <td mat-cell *matCellDef="let office">{{ office.house }}</td>
       </ng-container>
 
       <ng-container matColumnDef="room">
-        <th mat-header-cell *matHeaderCellDef>Room</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Room</th>
         <td mat-cell *matCellDef="let office">{{ office.room }}</td>
       </ng-container>
 
       <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef>Phone</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Phone</th>
         <td mat-cell *matCellDef="let office">{{ office.phone }}</td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Email</th>
         <td mat-cell *matCellDef="let office">{{ office.email }}</td>
       </ng-container>
 
@@ -82,10 +109,9 @@
   </div>
   <div class="table__footer">
     <button
-      class="button button_add_desktop"
+      class="button button_hidden_mobile button_c_icon-primary"
       mat-raised-button
       [routerLink]="['form']"
-      color="primary"
     >
       Add Office
     </button>
@@ -99,10 +125,9 @@
     >
     </mat-paginator>
     <button
-      class="button button_add_mobile"
+      class="button button_hidden_desktop button_c_icon-primary"
       mat-fab
       [routerLink]="['form']"
-      color="primary"
     >
       <mat-icon>add</mat-icon>
     </button>

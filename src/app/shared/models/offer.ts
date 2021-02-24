@@ -21,6 +21,7 @@ export interface Offer extends OfferBase {
   numberOfUses: number;
   numberOfViews: number;
   photoGallery?: string[];
+  tags: string[];
   isActive: boolean;
   updated: string;
 }
