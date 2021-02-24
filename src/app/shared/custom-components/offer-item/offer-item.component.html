@@ -3,13 +3,11 @@
     <img class="offer-card__image" [src]="offer.photoUrl" alt="offer image" />
     <div class="offer-card__text">
       <div class="offer-card__title">{{ offer.title }}</div>
-      <div>
-        <a
-          class="offer-card__vendor link-reset"
-          [routerLink]="['/home/vendors', offer.vendorId]"
-          >{{ offer.vendorName }}</a
-        >
-      </div>
+      <a
+        class="offer-card__vendor link"
+        [routerLink]="['/home/vendors', offer.vendorId]"
+        >{{ offer.vendorName }}</a
+      >
     </div>
   </div>
 

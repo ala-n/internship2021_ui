@@ -1,6 +1,6 @@
 <div class="offer-popup" *ngIf="office">
   <a
-    class="offer-popup__link-overlay link-reset"
+    class="offer-popup__link-overlay link"
     [routerLink]="['/home/offices', office.id]"
   ></a>
   <img
@@ -13,7 +13,7 @@
     <div class="offer-popup__address">{{ address }}</div>
     <a
       href="tel:{{ office.phone }}"
-      class="link-reset address__phone offer-popup__phone"
+      class="link address__phone offer-popup__phone"
       >{{ phoneNumber }}</a
     >
   </div>
