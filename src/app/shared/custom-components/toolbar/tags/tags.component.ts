@@ -14,7 +14,7 @@ export class TagsComponent implements OnInit {
 
   constructor(private heroService: TagsService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getTagsValue();
   }
 

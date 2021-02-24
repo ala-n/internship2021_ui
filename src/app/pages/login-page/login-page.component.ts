@@ -12,11 +12,11 @@ export class LogInComponent {
 
   constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.authService.logout();
   }
 
-  login() {
+  login(): void {
     this.authService.loginForm(this.model).subscribe(
       (response) => {
         if (response.token != null) {

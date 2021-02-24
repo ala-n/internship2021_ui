@@ -13,7 +13,7 @@ export class SidenavComponent {
     private httpAuth: AuthService
   ) {}
 
-  logout() {
+  logout(): void {
     this.httpAuth.logout();
   }
 }
