@@ -1,4 +1,4 @@
-@import '../blocks/text.scss';
+@import '../custom-theme.scss';
 @import '../variables.scss';
 
 .form {
@@ -26,8 +26,8 @@
 }
 
 .shipping-card {
-  min-width: 120px;
   margin: 20px auto;
+  min-width: 120px;
 }
 
 .mat-radio-button {
@@ -36,9 +36,9 @@
 }
 
 .row {
-  width: 100%;
   display: flex;
   flex-flow: row wrap;
+  width: 100%;
   margin: 0 1em;
   @media screen and (max-width: $mobile) {
     margin: 0 0.5em;
@@ -48,6 +48,7 @@
 .col {
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
   flex: 1;
   min-width: 0;
   margin-right: 20px;

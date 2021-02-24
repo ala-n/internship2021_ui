@@ -9,6 +9,7 @@ import { PopupComponent } from './custom-components/map/popup/popup.component';
 
 import { SearchComponent } from './custom-components/toolbar/search/search.component';
 import { TagsComponent } from './custom-components/toolbar/tags/tags.component';
+import { GoBackButtonComponent } from './custom-components/go-back-button/go-back-button.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OfferItemComponent } from './custom-components/offer-item/offer-item.component';
@@ -27,6 +28,7 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
     SearchComponent,
     TagsComponent,
     OfferItemComponent,
+    GoBackButtonComponent,
     MapBaseComponent
   ],
   imports: [
@@ -48,6 +50,7 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
     FormsModule,
     OfferItemComponent,
     TranslateModule,
+    GoBackButtonComponent,
     MapBaseComponent
   ],
   entryComponents: [PopupComponent]

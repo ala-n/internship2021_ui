@@ -1,18 +1,7 @@
 <div class="container-of-chips">
   <mat-chip-list>
-    <div class="chips">
-      <mat-chip class="chip value0">Food</mat-chip>
-      <mat-chip class="chip value1">Sport</mat-chip>
-      <mat-chip class="chip value2">Clothes</mat-chip>
-      <mat-chip class="chip value3">Entertaiment</mat-chip>
-      <mat-chip class="chip value4">Beauty</mat-chip>
-      <mat-chip class="chip value5">Home</mat-chip>
-      <mat-chip class="chip value6">Electronics</mat-chip>
-      <mat-chip class="chip value7">Hotels</mat-chip>
-      <mat-chip class="chip value8">Markets</mat-chip>
-      <mat-chip class="chip value9">Pharmacy</mat-chip>
-      <mat-chip class="chip value10">Tourism</mat-chip>
-      <mat-chip class="chip value-ect">...</mat-chip>
-    </div>
+    <mat-chip tabindex="0" class="value" *ngFor="let tag of tags">
+      {{ tag.name }}
+    </mat-chip>
   </mat-chip-list>
 </div>

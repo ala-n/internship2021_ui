@@ -1,10 +1,20 @@
 @import '/src/app/styles/variables.scss';
+@import '/src/app/styles/blocks/links.scss';
 
 .offer-popup {
   display: flex;
   align-items: center;
   padding: 1em 0.7em;
   cursor: pointer;
+
+  &__link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
 
   &__image {
     border-radius: 50%;
@@ -24,13 +34,15 @@
   }
 
   &__phone {
-    color: $text-secondary;
+    position: relative;
+    z-index: 2;
   }
 }
 
 .leaflet-popup-content {
   width: 240px;
   margin: 0;
+
   @media screen and (max-width: $tablet) {
     width: 200px;
   }
@@ -38,4 +50,9 @@
 
 .leaflet-popup-content-wrapper {
   padding: 0;
+}
+
+// overriding class styles
+.leaflet-container a {
+  color: $text-secondary;
 }

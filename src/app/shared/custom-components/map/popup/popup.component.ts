@@ -12,7 +12,4 @@ export class PopupComponent {
   @Input() vendorName!: string;
   @Input() address!: string;
   @Input() phoneNumber!: string;
-  onPopup(office: Office): void {
-    console.log(office);
-  }
 }

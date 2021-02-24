@@ -10,12 +10,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LogInPageModule } from './pages/login-page/login-page.module';
 import { SharedModule } from './shared/shared.module';
 import { SidenavModule } from './navigation/sidenav/sidenav.module';
-import { InMemoryDataService } from '@shared/mocks/in-memory-data.service';
+import { InMemoryDataService } from '@shared/services/in-memory-data.service';
 import { environment } from 'src/environments/environment';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-export function HttpLoaderFactory(httpClient: HttpClient) {
+export function HttpLoaderFactory(httpClient: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
 

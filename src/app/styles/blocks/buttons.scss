@@ -1,0 +1,64 @@
+@import '../variables.scss';
+
+.button {
+  &_s {
+    &_l {
+      font-size: 1.4em;
+    }
+    &_m {
+      font-size: 1em;
+    }
+    &_s {
+      font-size: 0.8em;
+    }
+  }
+
+  //uppercase
+  &_upper {
+    text-transform: uppercase;
+  }
+
+  &_no-hover {
+    &::ng-deep .mat-button-focus-overlay {
+      background-color: transparent;
+    }
+  }
+
+  &_c {
+    &_primary {
+      color: $background-blue;
+    }
+
+    &_icon-primary {
+      color: #fff;
+      background-color: $background-blue;
+    }
+  }
+
+  &_hidden {
+    &_mobile {
+      @media screen and (max-width: $mobile) {
+        display: none;
+      }
+    }
+
+    &_tablet {
+      @media screen and (min-width: $tablet + 1) {
+        display: none;
+      }
+    }
+
+    &_desktop {
+      @media screen and (min-width: $mobile + 1) {
+        display: none;
+      }
+    }
+  }
+
+  &_mobile {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 1101;
+  }
+}

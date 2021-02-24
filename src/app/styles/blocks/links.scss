@@ -1,0 +1,20 @@
+@import '/src/app/styles/variables.scss';
+
+.link {
+  text-decoration: none;
+
+  &_c {
+    &_default {
+      color: $text-primary;
+    }
+
+    &_primary {
+      color: $blue-primary;
+
+      &:hover {
+        color: $blue-accent;
+        transition: color 0.1s linear;
+      }
+    }
+  }
+}
