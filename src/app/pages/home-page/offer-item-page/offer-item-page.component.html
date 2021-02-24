@@ -11,13 +11,13 @@
           <button
             *ngIf="offer.promocode"
             mat-button
-            class="button button_promocode"
+            class="button_upper button_c_primary"
             [cdkCopyToClipboard]="offer.promocode"
           >
             {{ offer.promocode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
-          <button mat-stroked-button class="button button_preorder">
+          <button mat-stroked-button class="button_upper button_c_primary">
             {{ 'CARD.PRE-ORDER' | translate }}
           </button>
         </div>
@@ -28,7 +28,9 @@
       <div class="item__footer">
         <div class="item__rate">
           <div class="item__text">{{ 'CARD.RATE' | translate }}</div>
-          <button mat-flat-button class="button button_review">review</button>
+          <button mat-flat-button class="button_upper button_c_icon-primary">
+            review
+          </button>
         </div>
         <div class="item__favorite">
           <div>{{ 'CARD.BOOKMARKS_TEXT' | translate }}</div>

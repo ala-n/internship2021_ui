@@ -13,6 +13,11 @@
     }
   }
 
+  //uppercase
+  &_upper {
+    text-transform: uppercase;
+  }
+
   &_no-hover {
     &::ng-deep .mat-button-focus-overlay {
       background-color: transparent;
