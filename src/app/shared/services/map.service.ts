@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import {
   ComponentFactoryResolver,
   ComponentRef,
@@ -12,7 +13,7 @@ import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 // import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { EsriProvider } from 'leaflet-geosearch';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 interface MarkerMetaData {
   markerInstance: Marker;
@@ -44,7 +45,8 @@ export class MapService {
 
   constructor(
     private resolver: ComponentFactoryResolver,
-    private injector: Injector
+    private injector: Injector,
+    private http: HttpClient
   ) {}
 
   setCity(city: string): void {
@@ -73,6 +75,12 @@ export class MapService {
 
   clearOffice(): void {
     this._office$.next(null);
+  }
+
+  getNameCity(lat: number, lon: number): Observable<any> {
+    return this.http.get(
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+    );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

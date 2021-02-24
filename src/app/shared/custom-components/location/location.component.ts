@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 
 import { MapService } from '@shared/services/map.service';
@@ -11,11 +11,12 @@ import { LocationService } from '@shared/services/location.service';
   templateUrl: './location.component.html',
   styleUrls: ['./location.component.scss']
 })
-export class LocationComponent implements OnInit {
+export class LocationComponent implements OnInit, OnDestroy {
   filteredOptions$!: Observable<string[]>;
   currentCity = 'Минск';
   myControl = new FormControl(this.currentCity);
   selectedOption!: string;
+  subscription: Subscription[] = [];
 
   constructor(
     private mapService: MapService,
@@ -32,6 +33,11 @@ export class LocationComponent implements OnInit {
         );
       })
     );
+    const subscription$ = this.mapService.city$.subscribe((city) => {
+      this.myControl.setValue(city);
+      console.log(city);
+    });
+    this.subscription.push(subscription$);
     this.mapService.setCity(this.currentCity);
   }
 
@@ -52,5 +58,9 @@ export class LocationComponent implements OnInit {
     if (!relatedTarget || relatedTarget.tagName !== 'MAT-OPTION') {
       this.myControl.setValue(this.currentCity);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 }
