@@ -12,8 +12,6 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
-import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css';
-import 'esri-leaflet-geocoder/dist/esri-leaflet-geocoder';
 import { takeLast } from 'rxjs/operators';
 
 @Component({
