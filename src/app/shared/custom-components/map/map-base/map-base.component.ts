@@ -21,6 +21,7 @@ import { takeLast } from 'rxjs/operators';
 })
 export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   map!: L.Map;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -28,6 +29,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   markerAll = new L.MarkerClusterGroup({ animateAddingMarkers: true });
   private debouceTimeout!: number;
   carValue!: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   marker!: any;
 
   constructor(private mapService: MapService) {}
@@ -116,7 +118,5 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.map.stopLocate();
-    this.map.remove();
-    this.map.off();
   }
 }
