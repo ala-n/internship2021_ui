@@ -1,5 +1,6 @@
 @import '/src/app/styles/variables.scss';
 
+// all autocompletes will show only 3 dropdown items
 ::ng-deep .cdk-overlay-pane {
   max-height: 10.5em;
 }

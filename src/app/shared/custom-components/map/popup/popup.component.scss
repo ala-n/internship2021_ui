@@ -42,6 +42,7 @@
 .leaflet-popup-content {
   width: 240px;
   margin: 0;
+
   @media screen and (max-width: $tablet) {
     width: 200px;
   }
@@ -51,6 +52,7 @@
   padding: 0;
 }
 
+// overriding class styles
 .leaflet-container a {
   color: $text-secondary;
 }
