@@ -58,3 +58,19 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   font-size: 16px;
 }
+
+.mobile {
+  display: none;
+
+  @media screen and (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
+}

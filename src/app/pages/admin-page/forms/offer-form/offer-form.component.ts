@@ -93,7 +93,7 @@ export class OfferFormComponent implements OnInit {
     }
   }
 
-  getOfficesForSelect(id: number) {
+  getOfficesForSelect(id: number): void {
     this.officeService
       .getVendorOffices(id)
       .pipe(take(1))

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationService } from '@shared/services/navigation.service';
 import { AuthService } from '@shared/services/auth.service';
-import { HttpService } from '@shared/services/http.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,7 +13,7 @@ export class SidenavComponent {
     private httpAuth: AuthService
   ) {}
 
-  logout() {
+  logout(): void {
     this.httpAuth.logout();
   }
 }
