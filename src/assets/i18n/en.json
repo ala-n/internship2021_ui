@@ -13,7 +13,7 @@
     "DESCRIPTION": "description",
     "ADDRESSES": "addresses",
     "DESCRIPTION_TEXT": "Sorry, the brand didn't provide a description",
-    "BOOKMARKS": "Add to bookmarks",
+    "BOOKMARKS_TEXT": "Add to bookmarks",
     "RATE": "Did you use the offer? Rate it!"
   }
 }
