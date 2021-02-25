@@ -10,6 +10,11 @@
     border-radius: 25px;
   }
 
+  @media screen and (max-width: $tablet) {
+    max-width: 100%;
+    margin: 10px 10px 0px 10px;
+  }
+
   &__input {
     width: 100%;
     margin-left: 1em;

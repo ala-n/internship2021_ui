@@ -8,5 +8,11 @@
 
   @media screen and (max-width: $tablet) {
     display: none;
+
+    &_opened {
+      display: block;
+      height: 95px;
+      // TODO:  modile styles
+    }
   }
 }

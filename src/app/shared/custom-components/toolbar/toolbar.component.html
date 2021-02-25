@@ -1,4 +1,4 @@
-<div class="toolbar">
-  <app-search></app-search>
+<div class="toolbar" [class.toolbar_opened]="navigationService.isToolbarOpened">
+  <app-search class="search"></app-search>
   <app-tags></app-tags>
 </div>
