@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,4 +12,6 @@ export class HomePageComponent {
   toggleListView(): void {
     this.isListVisible = !this.isListVisible;
   }
+
+  constructor(public navigationService: NavigationService) {}
 }

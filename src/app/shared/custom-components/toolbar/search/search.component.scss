@@ -8,11 +8,13 @@
     display: flex;
     border: $border-primary;
     border-radius: 25px;
+    background-color: #fff;
   }
 
   @media screen and (max-width: $tablet) {
     max-width: 100%;
     margin: 10px 10px 0px 10px;
+    opacity: 1;
   }
 
   &__input {

@@ -5,6 +5,13 @@
   flex-direction: column;
   height: 100%;
 
+  &_toolbar_opened {
+    opacity: 0.5;
+    height: 100%;
+    position: fixed;
+    width: 100%;
+  }
+
   &__button {
     display: none;
     position: fixed;

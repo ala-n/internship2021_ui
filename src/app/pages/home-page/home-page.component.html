@@ -1,4 +1,7 @@
-<div class="home">
+<div
+  class="home"
+  [class.home_toolbar_opened]="navigationService.isToolbarOpened"
+>
   <app-toolbar></app-toolbar>
   <button
     class="home__button"
