@@ -609,41 +609,5 @@ export default [
         isActive: false
       }
     ]
-  },
-
-  {
-    id: 14,
-    title: 'Шиномонтаж от автокомплекса «Матерый шиномонтаж»',
-    description: `Шиномонтаж и балансировка колес радиусом от R12 до R18, ремонт бокового пореза или дошиповка колес от автокомплекса «Матерый шиномонтаж»`,
-    photoUrl:
-      'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg',
-    discount: '-50%',
-    dateStart: '2021-04-01',
-    dateEnd: '2021-05-01',
-    vendorName: 'Матерый шиномонтаж',
-    vendorId: 10,
-    numberOfUses: 49,
-    numberOfViews: 62,
-    updated: '2021-02-05',
-    promocode: '',
-    tags: ['Auto', 'Wheels'],
-    isActive: true,
-    city: 'Krakow',
-    offices: [
-      {
-        id: 17,
-        x: 50.063571405558775,
-        y: 19.93705649645972,
-        address: 'ул. Малышева, 145а',
-        phone: '+7 343 383-42-43',
-        country: 'Россия',
-        city: 'Krakow',
-        street: 'ул. Малышева',
-        house: 'д. 145а',
-        room: '',
-        email: 'wheel2@gmail.com',
-        isActive: false
-      }
-    ]
   }
 ];
