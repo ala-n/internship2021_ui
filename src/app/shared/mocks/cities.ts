@@ -1,1 +1,1 @@
-export default ['Минск', 'Гродно', 'Киев', 'Екатеринбург'];
+export default ['Minsk', 'Hrodna', 'Kyiv', 'Yekaterinburg', 'Krakow'];

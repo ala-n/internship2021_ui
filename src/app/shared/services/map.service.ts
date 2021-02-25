@@ -77,6 +77,7 @@ export class MapService {
     this._office$.next(null);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getNameCity(lat: number, lon: number): Observable<any> {
     return this.http.get(
       `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`

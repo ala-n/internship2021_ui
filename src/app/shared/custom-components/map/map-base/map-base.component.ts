@@ -12,7 +12,6 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
-import { takeLast } from 'rxjs/operators';
 
 @Component({
   selector: 'app-map-base',
@@ -87,8 +86,6 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         flyTo: true,
         locateOptions: {
           enableHighAccuracy: true,
-          setView: true, //no effect
-          watch: false, //no effect
           timeout: 1000, //no effect
           maximumAge: 1000
         }
@@ -98,23 +95,15 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       .on('locationfound', (e) => {
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng)
-          .pipe(takeLast(1))
           .subscribe((data) => {
-            console.log(data, e); //TODO: i will remove dont touch
-
-            this.mapService.setCity('Гродно');
+            this.mapService.setCity(data.address.city);
           }); //TODO: i will change all logic here, dont worry guys)
+        this.map.stopLocate();
       })
       .on('locationerror', (e) => {
-        this.mapService
-          .getNameCity(53.684909765450755, 23.845177013681916)
-          .pipe(takeLast(1))
-          .subscribe((data) => {
-            console.log(data, e); //TODO: i will remove dont touch
-            this.mapService.setCity('Гродно');
-          });
+        console.log(e);
       });
-  } //TODO: i will change all logic here, dont worry guys)
+  }
 
   ngOnDestroy(): void {
     this.map.stopLocate();

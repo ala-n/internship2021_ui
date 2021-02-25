@@ -1,9 +1,24 @@
+@import '/src/app/styles/variables.scss';
+
 #mapAdmin {
-  height: 600px;
+  height: 100%;
   width: 60vw;
+  @media screen and (max-width: $tablet) {
+    width: 100vw;
+    max-height: 75vh;
+  }
+  overflow: hidden;
 }
 
-.mat-dialog-container,
+.mat-dialog-container {
+  height: 85vh;
+  @media screen and (max-width: $tablet) {
+    max-height: 100vh;
+    height: 100vh;
+  }
+}
+
 .cdk-overlay-pane {
   max-height: none;
+  max-width: none !important;
 }
