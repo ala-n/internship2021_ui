@@ -1,5 +1,6 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/blocks/links.scss';
+@import '/src/app/styles/blocks/text.scss';
 
 :host {
   position: absolute;
@@ -15,6 +16,16 @@
   flex: 1 0 1px;
   overflow: auto;
   padding: 0.5em;
+
+  &__text {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: 500;
+  }
 }
 
 .sort {
