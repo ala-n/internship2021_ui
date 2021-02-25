@@ -9,6 +9,6 @@
     <app-offer-item [offer]="offer" class="offer-card"></app-offer-item
   ></a>
   <div class="offers__text text_s_xl text_c_secondary" *ngIf="!offers?.length">
-    Sorry, there are no offers in {{ city }} =(
+    {{ 'no_offers_in_city' | translate }} {{ city }} =(
   </div>
 </div>

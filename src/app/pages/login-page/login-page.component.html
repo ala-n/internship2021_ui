@@ -1,7 +1,7 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header class="box__title">
-      <mat-card-title>{{ 'login' | translate }}</mat-card-title>
+      <mat-card-title>{{ 'log_in' | translate }}</mat-card-title>
     </mat-card-header>
 
     <form class="example-form" (ngSubmit)="login()" #form="ngForm">
@@ -33,7 +33,7 @@
         routerLink=""
         [disabled]="!form.valid"
       >
-        {{ 'login' | translate }}
+        {{ 'log_in' | translate }}
       </button>
     </form>
   </mat-card>
