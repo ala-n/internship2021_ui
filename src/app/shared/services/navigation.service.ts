@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 export class NavigationService {
   isSidenavOpened!: boolean;
   isHomePageOpened!: boolean;
+  isToolbarOpened!: boolean;
 
   constructor(private location: Location) {}
 
@@ -30,5 +31,9 @@ export class NavigationService {
 
   goBack(): void {
     this.location.back();
+  }
+
+  toggleToolbar(): void {
+    this.isToolbarOpened = !this.isToolbarOpened;
   }
 }
