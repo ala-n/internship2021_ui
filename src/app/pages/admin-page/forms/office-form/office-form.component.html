@@ -1,11 +1,10 @@
 <form class="form" [formGroup]="officeForm" novalidate (ngSubmit)="onSubmit()">
   <div class="form__header">
     <span class="text text_s_l text_c_primary text_upper"
-      >Enter information about<span
-        class="text text_s_l text_c_accent text_upper"
-      >
-        {{ vendorName }} </span
-      >office</span
+      >{{ 'enter_information_about_office_of' | translate }}
+      <span class="text text_s_l text_c_accent text_upper">
+        {{ vendorName }}
+      </span></span
     >
   </div>
   <div class="row row_top">
@@ -16,32 +15,34 @@
         mat-raised-button
         (click)="openDialog()"
       >
-        Point on map
+        {{ 'point_on_map' | translate }}
       </button>
-      <span class="text text_s_l"
-        >Address information will be added to the fields below</span
-      >
+      <span class="text text_s_l">{{
+        'address_information_will_be_added_to_the_fields_below' | translate
+      }}</span>
     </div>
   </div>
   <div class="row">
     <div class="col col_group">
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Country</mat-label>
+          <mat-label>{{ 'country' | translate }}</mat-label>
           <input matInput formControlName="country" />
           <mat-error
             *ngIf="officeForm.controls['country'].hasError('required')"
           >
-            Country is <strong>required</strong>
+            {{ 'country' | translate }} {{ 'is' | translate }}
+            <strong>{{ 'required' | translate }}</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>City</mat-label>
+          <mat-label>{{ 'city' | translate }}</mat-label>
           <input matInput formControlName="city" />
           <mat-error *ngIf="officeForm.controls['city'].hasError('required')">
-            City is <strong>required</strong>
+            {{ 'city' | translate }} {{ 'is' | translate }}
+            <strong>{{ 'required' | translate }}</strong>
           </mat-error>
         </mat-form-field>
       </div>
@@ -49,29 +50,31 @@
     <div class="col col_group">
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Street</mat-label>
+          <mat-label>{{ 'street' | translate }}</mat-label>
           <input matInput formControlName="street" />
           <mat-error *ngIf="officeForm.controls['street'].hasError('required')">
-            Street is <strong>required</strong>
+            {{ 'street' | translate }} {{ 'is' | translate }}
+            <strong>{{ 'required' | translate }}</strong>
           </mat-error>
         </mat-form-field>
       </div>
       <div class="col col_nowrap">
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>House</mat-label>
+            <mat-label>{{ 'house' | translate }}</mat-label>
             <input matInput formControlName="house" />
             <mat-error
               *ngIf="officeForm.controls['house'].hasError('required')"
             >
-              House is <strong>required</strong>
+              {{ 'house' | translate }} {{ 'is' | translate }}
+              <strong>{{ 'required' | translate }}</strong>
             </mat-error>
           </mat-form-field>
         </div>
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Room</mat-label>
-            <input matInput formControlName="room" />
+            <mat-label>{{ 'room' | translate }}</mat-label>
+            <input matInput formControlName="{{ 'room' | translate }}" />
           </mat-form-field>
         </div>
       </div>
@@ -80,28 +83,30 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Phone</mat-label>
+        <mat-label>{{ 'phone' | translate }}</mat-label>
         <input matInput formControlName="phone" />
       </mat-form-field>
     </div>
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Email</mat-label>
+        <mat-label>E-mail</mat-label>
         <input matInput formControlName="email" />
         <mat-error *ngIf="officeForm.controls['email'].hasError('required')">
-          E-mail is <strong>required</strong>
+          E-mail {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
         <mat-error *ngIf="officeForm.controls['email'].hasError('email')">
-          E-mail address is <strong>incorrect</strong>
+          E-mail {{ 'is' | translate }}
+          <strong>{{ 'incorrect' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <mat-slide-toggle formControlName="isActive" color="primary"
-        >Activate</mat-slide-toggle
-      >
+      <mat-slide-toggle formControlName="isActive" color="primary">{{
+        'activate' | translate
+      }}</mat-slide-toggle>
     </div>
   </div>
   <div class="actions">
@@ -111,7 +116,7 @@
       mat-raised-button
       (click)="navigationService.goBack()"
     >
-      Cancel
+      {{ 'cancel' | translate }}
     </button>
     <button
       class="button button_c_icon-primary"
@@ -120,7 +125,7 @@
       (click)="navigationService.goBack()"
       [disabled]="officeForm.invalid"
     >
-      Save
+      {{ 'save' | translate }}
     </button>
   </div>
 </form>
