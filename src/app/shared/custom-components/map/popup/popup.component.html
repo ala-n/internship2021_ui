@@ -1,4 +1,8 @@
-<div class="offer-popup" (click)="onPopup(office)" *ngIf="office">
+<div class="offer-popup" *ngIf="office">
+  <a
+    class="offer-popup__link-overlay link"
+    [routerLink]="['/home/offices', office.id]"
+  ></a>
   <img
     class="offer-popup__image"
     src="/assets/images/vendor_logo.jpg"
@@ -7,6 +11,8 @@
   <div>
     <div class="offer-popup__name">{{ vendorName }}</div>
     <div class="offer-popup__address">{{ address }}</div>
-    <div class="offer-popup__phone">{{ phoneNumber }}</div>
+    <a href="tel:{{ office.phone }}" class="link offer-popup__phone">{{
+      phoneNumber
+    }}</a>
   </div>
 </div>

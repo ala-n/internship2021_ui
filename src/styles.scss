@@ -59,7 +59,18 @@ body {
   font-size: 16px;
 }
 
-.link-reset {
-  text-decoration: none;
-  color: $text-primary;
+.mobile {
+  display: none;
+
+  @media screen and (max-width: $tablet) {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+
+  @media screen and (max-width: $tablet) {
+    display: none;
+  }
 }

@@ -8,7 +8,7 @@
     (click)="drawer.toggle()"
     *ngIf="isHandset$ | async"
   >
-    <mat-icon class="icon icon_l">menu</mat-icon>
+    <mat-icon class="icon icon_s_l">menu</mat-icon>
   </button>
   <span class="admin-toolbar__username">Name Surname</span>
   <button
@@ -17,30 +17,44 @@
     (click)="navigationService.toggleSidenav()"
     (click)="closeSidenav()"
   >
-    <mat-icon class="icon icon_l">perm_identity</mat-icon>
+    <mat-icon class="icon icon_s_l">perm_identity</mat-icon>
   </button>
 </mat-toolbar>
-<mat-sidenav-container class="admin-sidenav__container">
+<mat-sidenav-container
+  class="admin-sidenav__container"
+  (backdropClick)="closeSidenav()"
+>
   <mat-sidenav
     #drawer
     class="admin-sidenav__drawer"
     fixedInViewport
+    [disableClose]="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
     [(opened)]="isOpened"
   >
-    <mat-toolbar>Moderator panel</mat-toolbar>
+    <mat-toolbar>{{ 'moderator_panel' | translate }}</mat-toolbar>
     <mat-divider></mat-divider>
-    <mat-nav-list (click)="closeSidenav()">
-      <a mat-list-item routerLink="vendors">Vendors</a>
-      <a mat-list-item routerLink="offers">Offers</a>
-      <a mat-list-item routerLink=".">Statistics</a>
+    <mat-nav-list class="admin-sidenav__list" (click)="closeSidenav()">
+      <a
+        mat-list-item
+        routerLink="vendors"
+        routerLinkActive="mat-list-item_active"
+        >{{ 'brands' | translate }}</a
+      >
+      <a
+        mat-list-item
+        routerLink="offers"
+        routerLinkActive="mat-list-item_active"
+        >{{ 'offers' | translate }}</a
+      >
+      <a mat-list-item routerLink=".">{{ 'statistics' | translate }}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="admin-sidenav__content">
     <mat-card class="admin-sidenav__card">
-      <mat-card-content>
+      <mat-card-content class="admin-sidenav__card-content">
         <router-outlet></router-outlet>
       </mat-card-content>
     </mat-card>

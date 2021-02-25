@@ -8,28 +8,30 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { AdminPageRoutingModule } from './admin-page-routing.module';
 import { AdminPageComponent } from './admin-page.component';
 import { AdminSidenavComponent } from './admin-sidenav/admin-sidenav.component';
+import { FormDialogComponent } from './form-dialog/form-dialog.component';
 import { OfferFormComponent } from './forms/offer-form/offer-form.component';
 import { OfferTableComponent } from './tables/offer-table/offer-table.component';
-import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
-
-import { TruncatePipe } from '@shared/pipes/truncate.pipe';
 import { OfficeFormComponent } from './forms/office-form/office-form.component';
 import { OfficeTableComponent } from './tables/office-table/office-table.component';
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';
 import { VendorNavComponent } from './vendor-nav/vendor-nav.component';
+import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
+
+import { TruncatePipe } from '@shared/pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
     AdminPageComponent,
     AdminSidenavComponent,
+    FormDialogComponent,
     OfferFormComponent,
     OfferTableComponent,
     OfficeFormComponent,
     OfficeTableComponent,
     VendorFormComponent,
+    VendorNavComponent,
     VendorTableComponent,
-    TruncatePipe,
-    VendorNavComponent
+    TruncatePipe
   ],
   imports: [
     CommonModule,

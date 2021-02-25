@@ -1,38 +1,39 @@
-<div *ngIf="offer$ | async as offer" class="item">
+<div *ngIf="(isLoading$ | async) === false" class="item">
   <app-offer-item [offer]="offer"></app-offer-item>
 
   <mat-tab-group mat-stretch-tabs class="tab">
-    <mat-tab label="description">
+    <mat-tab label="{{ 'description' | translate }}">
       <div class="item__header">
-        <div class="item__date-end">valid to {{ offer.dateEnd }}</div>
+        <div class="item__date-end">
+          {{ 'valid_to' | translate }} {{ offer.dateEnd }}
+        </div>
         <div class="item__actions">
           <button
             *ngIf="offer.promocode"
             mat-button
-            class="button"
+            class="button_upper button_c_primary"
             [cdkCopyToClipboard]="offer.promocode"
           >
             {{ offer.promocode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
-          <button mat-stroked-button class="button button--preorder">
-            pre-order
+          <button mat-stroked-button class="button_upper button_c_primary">
+            {{ 'pre-order' | translate }}
           </button>
         </div>
       </div>
-
       <p>
-        {{
-          offer.description || "Sorry, the brand didn't provide a description"
-        }}
+        {{ offer.description || 'description_text' | translate }}
       </p>
       <div class="item__footer">
         <div class="item__rate">
-          <div class="item__text">Did you use the offer? Rate it!</div>
-          <button mat-flat-button class="button button--review">review</button>
+          <div class="item__text">{{ 'rate_text' | translate }}</div>
+          <button mat-flat-button class="button_upper button_c_icon-primary">
+            {{ 'rate' | translate }}
+          </button>
         </div>
         <div class="item__favorite">
-          <div>Add to bookmarks</div>
+          <div>{{ 'bookmark_text' | translate }}</div>
           <button
             mat-icon-button
             color="warn"
@@ -43,12 +44,13 @@
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="addresses">
-      <a
-        *ngFor="let office of offer.offices"
-        class="address link-reset"
-        [routerLink]="['/home/offices', office.id]"
-      >
+
+    <mat-tab label="{{ 'addresses' | translate }}">
+      <div *ngFor="let office of offices" class="address">
+        <a
+          class="address__link-overlay link"
+          [routerLink]="['/home/offices', office.id]"
+        ></a>
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
           <div>
@@ -59,9 +61,15 @@
                 : office.street + ', ' + office.house
             }}
           </div>
-          <div>{{ office.phone }}</div>
+          <a
+            href="tel:{{ office.phone }}"
+            class="address__phone link link_c_default"
+            >{{ office.phone }}</a
+          >
         </div>
-      </a>
+      </div>
     </mat-tab>
   </mat-tab-group>
+
+  <app-go-back-button class="desktop"></app-go-back-button>
 </div>

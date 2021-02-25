@@ -1,7 +1,7 @@
 .address {
   display: flex;
   align-items: center;
-  background-color: $background-blue;
+  background-color: $background-blue-light;
   margin-bottom: 0.5em;
   padding: 0.5em;
 
@@ -16,5 +16,19 @@
     @media screen and (max-width: $mobile) {
       margin-right: 0.3em;
     }
+  }
+
+  &__link-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  &__phone {
+    position: relative;
+    z-index: 2;
   }
 }

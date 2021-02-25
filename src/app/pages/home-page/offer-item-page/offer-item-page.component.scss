@@ -1,18 +1,10 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/components/tabs.scss';
 @import '/src/app/styles/components/addresses.scss';
-
-.button {
-  text-transform: uppercase;
-  color: $blue-primary;
-
-  &--review {
-    color: white;
-    background-color: $blue-primary;
-  }
-}
+@import '/src/app/styles/custom-theme.scss';
 
 .item {
+  position: relative;
   padding: 0.5em;
   color: $text-primary;
 

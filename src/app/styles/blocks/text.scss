@@ -32,6 +32,18 @@
       color: $blue-primary;
     }
   }
+
+  &_align {
+    &_l {
+      text-align: left;
+    }
+    &_c {
+      text-align: center;
+    }
+    &_r {
+      text-align: right;
+    }
+  }
   //uppercase
   &_upper {
     text-transform: uppercase;

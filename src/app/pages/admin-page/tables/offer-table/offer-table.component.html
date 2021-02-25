@@ -7,30 +7,41 @@
       [class.table__search_hidden]="vendorId"
       appearance="outline"
     >
-      <mat-label>Search</mat-label>
+      <mat-label>{{ 'search' | translate }}</mat-label>
       <input matInput (keyup)="applyFilter(input.value, 'title')" #input />
     </mat-form-field>
+    <i class="spacer"></i>
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
       aria-label="Filter Vendors"
       (click)="applyFilter(group.value, 'isActive')"
     >
-      <mat-button-toggle value="">All</mat-button-toggle>
-      <mat-button-toggle value="true">Active</mat-button-toggle>
-      <mat-button-toggle value="false">Inactive</mat-button-toggle>
+      <mat-button-toggle value="">{{ 'all' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="true">{{
+        'active' | translate
+      }}</mat-button-toggle>
+      <mat-button-toggle value="false">{{
+        'inactive' | translate
+      }}</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="table__body">
-    <table class="full-width-table" mat-table matSort [dataSource]="dataSource">
+    <table
+      class="full-width-table"
+      mat-table
+      matSort
+      matSortActive="updated"
+      matSortDirection="desc"
+      [dataSource]="dataSource"
+    >
       <ng-container matColumnDef="edit">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let offer">
           <button
-            class="button_edit"
+            class="button button_edit button_c_primary"
             [routerLink]="[offer.id]"
             mat-icon-button
-            color="primary"
           >
             <mat-icon>edit</mat-icon>
           </button>
@@ -38,45 +49,82 @@
       </ng-container>
 
       <ng-container matColumnDef="number">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <th mat-header-cell class="text" *matHeaderCellDef>№</th>
         <td mat-cell *matCellDef="let offer; let i = index">
           {{ i + 1 + this.paginator.pageIndex * this.paginator.pageSize }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="vendorName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Brand</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'brand' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">{{ offer.vendorName }}</td>
       </ng-container>
 
       <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'title' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">
           {{ offer.title | truncate: 20 }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="discout">
-        <th mat-header-cell *matHeaderCellDef>Discount</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          {{ 'discount' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">{{ offer.discount }}</td>
       </ng-container>
 
       <ng-container matColumnDef="validFrom">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid From</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'valid_from' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">
           {{ offer.dateStart | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="validTo">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Valid To</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'valid_to' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">
           {{ offer.dateEnd | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="updated">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Updated</th>
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'updated' | translate }}
+        </th>
         <td mat-cell *matCellDef="let offer">
           {{ offer.updated | date: 'dd.MM.yyyy' }}
         </td>
@@ -87,20 +135,19 @@
 
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">
-          No results matching "{{ input.value }}"
+          {{ 'no_results_matching' | translate }} "{{ input.value }}"
         </td>
       </tr>
     </table>
   </div>
   <div class="table__footer">
     <button
-      class="button button_add_desktop"
+      class="button button_hidden_mobile button_c_icon-primary"
       mat-raised-button
       *ngIf="vendorId"
       [routerLink]="['form']"
-      color="primary"
     >
-      Add Offer
+      {{ 'add_offer' | translate }}
     </button>
     <mat-paginator
       class="table__paginator"
@@ -112,11 +159,10 @@
     >
     </mat-paginator>
     <button
-      class="button button_add_mobile"
+      class="button button_hidden_desktop button_c_icon-primary"
       mat-fab
       *ngIf="vendorId"
       [routerLink]="['form']"
-      color="primary"
     >
       <mat-icon>add</mat-icon>
     </button>

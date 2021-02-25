@@ -1,4 +1,5 @@
 @import '/src/app/styles/variables.scss';
+@import '/src/app/styles/custom-theme.scss';
 
 .home {
   display: flex;
@@ -41,10 +42,6 @@
     &__left,
     &__right {
       flex-shrink: 0;
-    }
-
-    &__button {
-      display: block;
     }
 
     &__right {

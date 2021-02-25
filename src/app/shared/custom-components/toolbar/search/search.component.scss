@@ -1,4 +1,5 @@
 @import '/src/app/styles/variables.scss';
+@import '/src/app/styles/custom-theme.scss';
 
 .search-form {
   max-width: 260px;
@@ -24,9 +25,5 @@
     border: none;
     border-radius: 25px;
     outline: none;
-  }
-
-  &__button {
-    color: $blue-primary;
   }
 }
