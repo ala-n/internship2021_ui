@@ -12,6 +12,9 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
+import { fromEvent, from } from 'rxjs';
+import { debounceTime, mergeMap } from 'rxjs/operators';
+import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
 
 @Component({
   selector: 'app-map-base',
@@ -35,14 +38,27 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.mapView();
+    fromEvent(this.map as FromEventTarget<L.LeafletEvent>, 'moveend')
+      .pipe(
+        debounceTime(500),
+        mergeMap(() => {
+          const { lat, lng } = this.map.getCenter();
+          return from(this.mapService.getNameCity(lat, lng));
+        })
+      )
+      .subscribe((data) => {
+        if (!data.address.city) return;
+        this.mapService.setCity(data.address.city);
+      });
+
     this.map.on('moveend', () => {
+      //TODO: i will change all logic here, dont worry guys)
       if (this.markers) {
         for (const marker of this.markers) {
           if (
             marker._icon &&
             !this.map.getBounds().contains(marker.getLatLng())
           ) {
-            // this.detectChanges.emit(marker);
             console.log(marker);
 
             this.map.removeLayer(marker);
@@ -93,11 +109,10 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       .addTo(this.map);
     this.map
       .on('locationfound', (e) => {
-        this.mapService
-          .getNameCity(e.latlng.lat, e.latlng.lng)
-          .subscribe((data) => {
-            this.mapService.setCity(data.address.city);
-          }); //TODO: i will change all logic here, dont worry guys)
+        this.mapService.getNameCity(e.latlng.lat, e.latlng.lng).then((data) => {
+          this.mapService.setCity(data.address.city);
+        });
+        //TODO: i will change all logic here, dont worry guys)
         this.map.stopLocate();
       })
       .on('locationerror', (e) => {
@@ -106,6 +121,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.map.off();
     this.map.stopLocate();
   }
 }

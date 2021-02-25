@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import * as L from 'leaflet';
 import { GeoSearchControl } from 'leaflet-geosearch';
-import * as GeoSearch from 'leaflet-geosearch';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AlgoliaProvider } from 'leaflet-geosearch';
 
 @Component({
   selector: 'app-form-dialog',
@@ -28,11 +30,11 @@ export class FormDialogComponent implements OnInit {
       latlng = L.latLng(53.684909765450755, 23.845177013681916);
     this.map = L.map('mapAdmin', { center: latlng, zoom: 11, layers: [tiles] });
     // you want to get it of the window global
-    const provider = new GeoSearch.OpenStreetMapProvider();
-    this.map.addControl(
-      new GeoSearchControl({
-        provider
-      })
-    );
+
+    const provider = new AlgoliaProvider();
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    const control = new (GeoSearchControl as any)({ provider }) as L.Control;
+    this.map.addControl(control);
+    console.log(control);
   }
 }

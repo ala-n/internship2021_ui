@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import {
   ComponentFactoryResolver,
   ComponentRef,
@@ -13,7 +12,7 @@ import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 // import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { EsriProvider } from 'leaflet-geosearch';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 interface MarkerMetaData {
   markerInstance: Marker;
@@ -45,12 +44,13 @@ export class MapService {
 
   constructor(
     private resolver: ComponentFactoryResolver,
-    private injector: Injector,
-    private http: HttpClient
+    private injector: Injector
   ) {}
 
   setCity(city: string): void {
-    this._city$.next(city);
+    if (this._city$.getValue() !== city) {
+      this._city$.next(city);
+    }
   }
 
   setOffer(offer: Offer): void {
@@ -78,10 +78,11 @@ export class MapService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getNameCity(lat: number, lon: number): Observable<any> {
-    return this.http.get(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`
+  async getNameCity(lat: number, lon: number): Promise<any> {
+    const locate = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&accept-language=en-US,en`
     );
+    return await locate.json();
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
