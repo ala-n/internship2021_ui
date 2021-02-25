@@ -15,12 +15,12 @@
         target="_blank"
         class="link card__link vendor__link"
       >
-        <mat-icon>public</mat-icon>Website
+        <mat-icon>public</mat-icon>{{ 'website' | translate }}
       </a>
     </div>
 
     <mat-tab-group mat-stretch-tabs class="tab">
-      <mat-tab label="offers">
+      <mat-tab label="{{ 'offers' | translate }}">
         <a
           class="link"
           *ngFor="let offer of offers"
@@ -29,11 +29,11 @@
         ></a>
       </mat-tab>
 
-      <mat-tab label="description">{{
+      <mat-tab label="{{ 'description' | translate }}">{{
         vendor.description || "Sorry, the brand didn't provide a description"
       }}</mat-tab>
 
-      <mat-tab label="addresses">
+      <mat-tab label="{{ 'addresses' | translate }}">
         <div class="address" *ngFor="let office of vendor.offices">
           <a
             class="link address__link-overlay"

@@ -2,10 +2,10 @@
   <app-offer-item [offer]="offer"></app-offer-item>
 
   <mat-tab-group mat-stretch-tabs class="tab">
-    <mat-tab label="{{ 'CARD.DESCRIPTION' | translate }}">
+    <mat-tab label="{{ 'description' | translate }}">
       <div class="item__header">
         <div class="item__date-end">
-          {{ 'CARD.VALID_TO' | translate }} {{ offer.dateEnd }}
+          {{ 'valid_to' | translate }} {{ offer.dateEnd }}
         </div>
         <div class="item__actions">
           <button
@@ -18,22 +18,22 @@
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
           <button mat-stroked-button class="button_upper button_c_primary">
-            {{ 'CARD.PRE-ORDER' | translate }}
+            {{ 'pre-order' | translate }}
           </button>
         </div>
       </div>
       <p>
-        {{ offer.description || 'CARD.DESCRIPTION_TEXT' | translate }}
+        {{ offer.description || 'description_text' | translate }}
       </p>
       <div class="item__footer">
         <div class="item__rate">
-          <div class="item__text">{{ 'CARD.RATE' | translate }}</div>
+          <div class="item__text">{{ 'rate_text' | translate }}</div>
           <button mat-flat-button class="button_upper button_c_icon-primary">
-            review
+            {{ 'rate' | translate }}
           </button>
         </div>
         <div class="item__favorite">
-          <div>{{ 'CARD.BOOKMARKS_TEXT' | translate }}</div>
+          <div>{{ 'bookmark_text' | translate }}</div>
           <button
             mat-icon-button
             color="warn"
@@ -45,7 +45,7 @@
       </div>
     </mat-tab>
 
-    <mat-tab label="{{ 'CARD.ADDRESSES' | translate }}">
+    <mat-tab label="{{ 'addresses' | translate }}">
       <div *ngFor="let office of offices" class="address">
         <a
           class="address__link-overlay link"

@@ -1,6 +1,10 @@
-<h2 mat-dialog-title>Point on map</h2>
+<h2 mat-dialog-title>{{ 'point_on_map' | translate }}</h2>
 <mat-dialog-content> </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="false">Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+  <button mat-button [mat-dialog-close]="false">
+    {{ 'cancel' | translate }}
+  </button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    {{ 'save' | translate }}
+  </button>
 </mat-dialog-actions>

@@ -27,7 +27,7 @@ export class OfferFormComponent implements OnInit {
     dateEnd: [null, Validators.required],
     promocode: null,
     images: null,
-    offices: null,
+    offices: [null, Validators.required],
     tags: null,
     isActive: false
   });

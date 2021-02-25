@@ -12,7 +12,7 @@
       routerLink="home"
       (click)="navigationService.toggleHomePage()"
     >
-      Home
+      {{ 'home' | translate }}
       <mat-icon>home</mat-icon>
     </a>
     <ng-template #adminPageButton>
@@ -22,7 +22,7 @@
         routerLink="admin"
         (click)="navigationService.toggleHomePage()"
       >
-        Manage
+        {{ 'manage' | translate }}
         <mat-icon>build</mat-icon>
       </a>
     </ng-template>

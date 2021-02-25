@@ -2,19 +2,21 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Vendor</mat-label>
+        <mat-label>{{ 'brand' | translate }}</mat-label>
         <input matInput formControlName="name" />
         <mat-error *ngIf="vendorForm.controls['name'].hasError('required')">
-          Vendor name is <strong>required</strong>
+          {{ 'brand_name' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Web-Site</mat-label>
+        <mat-label>{{ 'website' | translate }}</mat-label>
         <input matInput formControlName="website" />
         <mat-error *ngIf="vendorForm.controls['website'].hasError('required')">
-          Web-Site is <strong>required</strong>
+          {{ 'website' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -22,10 +24,11 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ 'title' | translate }}</mat-label>
         <input matInput formControlName="title" />
         <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
-          Title is <strong>required</strong>
+          {{ 'title' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -33,7 +36,7 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ 'description' | translate }}</mat-label>
         <textarea
           matInput
           formControlName="description"
@@ -46,9 +49,9 @@
   </div>
   <div class="row">
     <div class="col">
-      <mat-slide-toggle formControlName="isActive" color="primary"
-        >Activate</mat-slide-toggle
-      >
+      <mat-slide-toggle formControlName="isActive" color="primary">{{
+        'activate' | translate
+      }}</mat-slide-toggle>
     </div>
   </div>
   <div class="actions">
@@ -58,7 +61,7 @@
       mat-raised-button
       (click)="navigationService.goBack()"
     >
-      Cancel
+      {{ 'cancel' | translate }}
     </button>
     <button
       class="button button_c_icon-primary"
@@ -67,7 +70,7 @@
       (click)="navigationService.goBack()"
       [disabled]="vendorForm.invalid"
     >
-      Save
+      {{ 'save' | translate }}
     </button>
   </div>
 </form>
