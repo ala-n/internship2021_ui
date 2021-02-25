@@ -15,7 +15,7 @@
         mat-raised-button
         (click)="openDialog()"
       >
-        {{ 'point_on_map' | translate }}
+        {{ 'on_map' | translate }}
       </button>
       <span class="text text_s_l">{{
         'address_information_will_be_added_to_the_fields_below' | translate
@@ -74,7 +74,7 @@
         <div class="col">
           <mat-form-field class="full-width" appearance="outline">
             <mat-label>{{ 'room' | translate }}</mat-label>
-            <input matInput formControlName="{{ 'room' | translate }}" />
+            <input matInput formControlName="room" />
           </mat-form-field>
         </div>
       </div>

@@ -57,6 +57,7 @@
         class="button button_no-hover"
         mat-icon-button
         (click)="logout()"
+        (click)="navigationService.toggleSidenav()"
         routerLink="login"
       >
         <mat-icon class="icon icon_s_l">logout</mat-icon>

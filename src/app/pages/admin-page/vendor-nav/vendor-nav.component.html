@@ -15,18 +15,18 @@
       [routerLink]="[vendorId, 'offices']"
       routerLinkActive="mat-list-item_active"
     >
-      <span class="text text_s_l text_upper"
-        >{{ 'brand' | translate }} {{ 'offices' | translate }}</span
-      >
+      <span class="text text_s_l text_upper">{{
+        'brand_offices' | translate
+      }}</span>
     </a>
     <a
       mat-list-item
       class="vendor-nav__link"
       [routerLink]="[vendorId, 'offers']"
       routerLinkActive="mat-list-item_active"
-      ><span class="text text_s_l text_upper"
-        >{{ 'brand' | translate }} {{ 'offers' | translate }}</span
-      ></a
+      ><span class="text text_s_l text_upper">{{
+        'brand_offers' | translate
+      }}</span></a
     >
   </mat-nav-list>
   <mat-card-content class="vendor-nav__content">
