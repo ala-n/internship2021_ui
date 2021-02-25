@@ -2,3 +2,8 @@
   <app-search class="search"></app-search>
   <app-tags></app-tags>
 </div>
+<div
+  class="overlay"
+  [class.overlay_visible]="navigationService.isToolbarOpened"
+  (click)="navigationService.toggleToolbar()"
+></div>

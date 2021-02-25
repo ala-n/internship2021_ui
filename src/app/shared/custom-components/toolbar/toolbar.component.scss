@@ -10,14 +10,32 @@
     display: none;
 
     &_opened {
-      display: block;
-      height: 95px;
-      background: rgba(255, 255, 255, 0);
+      position: absolute;
+      display: flex;
+      flex-flow: row wrap;
+      z-index: 2001;
+      // height: 95px;
+      background-color: rgba(255, 255, 255, 0);
 
-      @media screen and (max-width: $tablet) {
-        position: absolute;
-        z-index: 9999;
-      }
+      // @media screen and (max-width: $tablet) {
+      //   position: absolute;
+      //   z-index: 9999;
+      // }
+    }
+  }
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 2000;
+  &_visible {
+    display: none;
+    @media screen and (max-width: $tablet) {
+      display: block;
     }
   }
 }
