@@ -1,29 +1,30 @@
 <form class="form" [formGroup]="offerForm" novalidate (ngSubmit)="onSubmit()">
   <div class="form__header">
     <span class="text text_s_l text_c_primary text_upper"
-      >Enter information about<span
-        class="text text_s_l text_c_accent text_upper"
-      >
-        {{ vendorName }} </span
-      >offer</span
+      >{{ 'enter_information_about_offer_of' | translate }}
+      <span class="text text_s_l text_c_accent text_upper">
+        {{ vendorName }}
+      </span></span
     >
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Title</mat-label>
+        <mat-label>{{ 'title' | translate }}</mat-label>
         <input matInput formControlName="title" />
         <mat-error *ngIf="offerForm.controls['title'].hasError('required')">
-          Country is <strong>required</strong>
+          {{ 'title' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Discount</mat-label>
+        <mat-label>{{ 'discount' | translate }}</mat-label>
         <input matInput formControlName="discount" />
         <mat-error *ngIf="offerForm.controls['discount'].hasError('required')">
-          Country is <strong>required</strong>
+          {{ 'discount' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -31,7 +32,7 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Description</mat-label>
+        <mat-label>{{ 'description' | translate }}</mat-label>
         <textarea
           matInput
           formControlName="description"
@@ -46,16 +47,17 @@
     <div class="col col_group">
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Valid from</mat-label>
+          <mat-label>{{ 'valid_from' | translate }}</mat-label>
           <input type="date" matInput formControlName="dateStart" />
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Valid to</mat-label>
+          <mat-label>{{ 'valid_to' | translate }}</mat-label>
           <input type="date" matInput formControlName="dateEnd" />
           <mat-error *ngIf="offerForm.controls['dateEnd'].hasError('required')">
-            End date is <strong>required</strong>
+            {{ 'end_date' | translate }} {{ 'is' | translate }}
+            <strong>{{ 'required' | translate }}</strong>
           </mat-error>
         </mat-form-field>
       </div>
@@ -63,13 +65,13 @@
     <div class="col col_group">
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Promocode</mat-label>
+          <mat-label>{{ 'promocode' | translate }}</mat-label>
           <input matInput formControlName="promocode" />
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Images</mat-label>
+          <mat-label>{{ 'images' | translate }}</mat-label>
           <input matInput formControlName="images" />
         </mat-form-field>
       </div>
@@ -78,26 +80,30 @@
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Offices</mat-label>
+        <mat-label>{{ 'offices' | translate }}</mat-label>
         <mat-select formControlName="offices" multiple>
           <mat-option *ngFor="let office of vendorOffices" [value]="office.id"
             >{{ office.city }}, {{ office.street }},
             {{ office.house }}</mat-option
           >
         </mat-select>
+        <mat-error *ngIf="offerForm.controls['offices'].hasError('required')">
+          {{ 'offices' | translate }} {{ 'is' | translate }}
+          <strong>{{ 'required' | translate }}</strong>
+        </mat-error>
       </mat-form-field>
     </div>
   </div>
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
-        <mat-label>Tags</mat-label>
+        <mat-label>{{ 'tags' | translate }}</mat-label>
         <mat-chip-list #tagList aria-label="Tag adding" formControlName="tags">
           <mat-chip *ngFor="let tag of tags">
             {{ tag }}
           </mat-chip>
           <input
-            placeholder="New tag..."
+            placeholder="{{ 'new_tag' | translate }}"
             [matChipInputAddOnBlur]="true"
             [matChipInputFor]="tagList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
@@ -109,9 +115,9 @@
   </div>
   <div class="row">
     <div class="col">
-      <mat-slide-toggle formControlName="isActive" color="primary"
-        >Activate</mat-slide-toggle
-      >
+      <mat-slide-toggle formControlName="isActive" color="primary">{{
+        'activate' | translate
+      }}</mat-slide-toggle>
     </div>
   </div>
   <div class="actions">
@@ -121,7 +127,7 @@
       mat-raised-button
       (click)="navigationService.goBack()"
     >
-      Cancel
+      {{ 'cancel' | translate }}
     </button>
     <button
       class="button button_c_icon-primary"
@@ -130,7 +136,7 @@
       (click)="navigationService.goBack()"
       [disabled]="offerForm.invalid"
     >
-      Save
+      {{ 'save' | translate }}
     </button>
   </div>
 </form>

@@ -34,22 +34,22 @@
     [opened]="(isHandset$ | async) === false"
     [(opened)]="isOpened"
   >
-    <mat-toolbar>Moderator panel</mat-toolbar>
+    <mat-toolbar>{{ 'moderator_panel' | translate }}</mat-toolbar>
     <mat-divider></mat-divider>
     <mat-nav-list class="admin-sidenav__list" (click)="closeSidenav()">
       <a
         mat-list-item
         routerLink="vendors"
         routerLinkActive="mat-list-item_active"
-        >Brands</a
+        >{{ 'brands' | translate }}</a
       >
       <a
         mat-list-item
         routerLink="offers"
         routerLinkActive="mat-list-item_active"
-        >Offers</a
+        >{{ 'offers' | translate }}</a
       >
-      <a mat-list-item routerLink=".">Statistics</a>
+      <a mat-list-item routerLink=".">{{ 'statistics' | translate }}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="admin-sidenav__content">

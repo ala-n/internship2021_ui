@@ -9,9 +9,13 @@
       aria-label="Filter Vendors"
       (click)="applyFilter(group.value, 'isActive')"
     >
-      <mat-button-toggle value="">All</mat-button-toggle>
-      <mat-button-toggle value="true">Active</mat-button-toggle>
-      <mat-button-toggle value="false">Inactive</mat-button-toggle>
+      <mat-button-toggle value="">{{ 'all' | translate }}</mat-button-toggle>
+      <mat-button-toggle value="true">{{
+        'active' | translate
+      }}</mat-button-toggle>
+      <mat-button-toggle value="false">{{
+        'inactive' | translate
+      }}</mat-button-toggle>
     </mat-button-toggle-group>
   </div>
   <div class="table__body">
@@ -50,7 +54,7 @@
           *matHeaderCellDef
           mat-sort-header
         >
-          Country
+          {{ 'country' | translate }}
         </th>
         <td mat-cell *matCellDef="let office">{{ office.country }}</td>
       </ng-container>
@@ -62,7 +66,7 @@
           *matHeaderCellDef
           mat-sort-header
         >
-          City
+          {{ 'city' | translate }}
         </th>
         <td mat-cell *matCellDef="let office">{{ office.city }}</td>
       </ng-container>
@@ -74,28 +78,36 @@
           *matHeaderCellDef
           mat-sort-header
         >
-          Street
+          {{ 'street' | translate }}
         </th>
         <td mat-cell *matCellDef="let office">{{ office.street }}</td>
       </ng-container>
 
       <ng-container matColumnDef="house">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>House</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          {{ 'house' | translate }}
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.house }}</td>
       </ng-container>
 
       <ng-container matColumnDef="room">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Room</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          {{ 'room' | translate }}
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.room }}</td>
       </ng-container>
 
       <ng-container matColumnDef="phone">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Phone</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          {{ 'phone' | translate }}
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.phone }}</td>
       </ng-container>
 
       <ng-container matColumnDef="email">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>Email</th>
+        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
+          E-mail
+        </th>
         <td mat-cell *matCellDef="let office">{{ office.email }}</td>
       </ng-container>
 
@@ -103,7 +115,9 @@
       <tr mat-row *matRowDef="let office; columns: displayedColumns"></tr>
 
       <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No availible offices</td>
+        <td class="mat-cell" colspan="4">
+          {{ 'no_availible_offices' | translate }}
+        </td>
       </tr>
     </table>
   </div>
@@ -113,7 +127,7 @@
       mat-raised-button
       [routerLink]="['form']"
     >
-      Add Office
+      {{ 'add_office' | translate }}
     </button>
     <mat-paginator
       class="table__paginator"

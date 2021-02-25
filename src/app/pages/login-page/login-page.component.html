@@ -1,7 +1,7 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header class="box__title">
-      <mat-card-title>Sing In</mat-card-title>
+      <mat-card-title>{{ 'login' | translate }}</mat-card-title>
     </mat-card-header>
 
     <form class="example-form" (ngSubmit)="login()" #form="ngForm">
@@ -9,7 +9,7 @@
         <mat-form-field class="example-full-width">
           <input
             matInput
-            placeholder="Username"
+            placeholder="{{ 'login' | translate }}"
             [(ngModel)]="model.login"
             name="login"
             required
@@ -19,7 +19,7 @@
         <mat-form-field class="example-full-width">
           <input
             matInput
-            placeholder="Password"
+            placeholder="{{ 'password' | translate }}"
             [(ngModel)]="model.password"
             name="password"
             required
@@ -33,7 +33,7 @@
         routerLink=""
         [disabled]="!form.valid"
       >
-        Sign-in
+        {{ 'login' | translate }}
       </button>
     </form>
   </mat-card>

@@ -16,11 +16,11 @@
       <mat-nav-list>
         <a mat-list-item (click)="navigationService.toggleSidenav()">
           <mat-icon>history</mat-icon>
-          <span>History</span>
+          <span>{{ 'history' | translate }}</span>
         </a>
         <a mat-list-item (click)="navigationService.toggleSidenav()">
           <mat-icon>star_border</mat-icon>
-          <span>Bookmarks</span>
+          <span>{{ 'bookmarks' | translate }}</span>
         </a>
         <a
           mat-list-item
@@ -30,7 +30,7 @@
           (click)="navigationService.toggleHomePage()"
         >
           <mat-icon>home</mat-icon>
-          <span>Home</span>
+          <span>{{ 'home' | translate }}</span>
         </a>
         <ng-template #adminPageButton>
           <a
@@ -40,7 +40,7 @@
             (click)="navigationService.toggleHomePage()"
           >
             <mat-icon>build</mat-icon>
-            <span>Manage</span>
+            <span>{{ 'manage' | translate }}</span>
           </a>
         </ng-template>
       </mat-nav-list>
@@ -52,11 +52,12 @@
     </div>
     <mat-divider></mat-divider>
     <div class="sidenav__footer">
-      <span class="sidenav__logout">Logout</span>
+      <span class="sidenav__logout">{{ 'logout' | translate }}</span>
       <button
         class="button button_no-hover"
         mat-icon-button
         (click)="logout()"
+        (click)="navigationService.toggleSidenav()"
         routerLink="login"
       >
         <mat-icon class="icon icon_s_l">logout</mat-icon>

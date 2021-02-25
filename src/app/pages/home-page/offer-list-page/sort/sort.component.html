@@ -1,9 +1,9 @@
 <div class="sort-panel">
   <mat-form-field appearance="fill">
-    <mat-label>{{ 'SORT.BY' | translate }}</mat-label>
+    <mat-label>{{ 'sort_by' | translate }}</mat-label>
     <mat-select [formControl]="sortControl" disableOptionCentering>
       <mat-option *ngFor="let value of SORT_OPTIONS" [value]="value">
-        {{ 'SORT.' + value | translate }}</mat-option
+        {{ value | translate }}</mat-option
       >
     </mat-select>
   </mat-form-field>
