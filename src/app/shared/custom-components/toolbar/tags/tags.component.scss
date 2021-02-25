@@ -7,6 +7,13 @@
   line-height: 36px;
   padding-top: 4px;
   overflow: hidden;
+
+  @media screen and (max-width: $tablet) {
+    height: 45px;
+    line-height: 45px;
+    padding-top: 10px;
+    margin-left: 1.2em;
+  }
 }
 
 .mat-chip.mat-standard-chip::after {

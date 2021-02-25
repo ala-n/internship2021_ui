@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Tag } from '@shared/models/tag';
 import { TagsService } from '@shared/services/tag.service';
-//import { TAGS } from '@shared/mocks/mock-tags';
 
 @Component({
   selector: 'app-tags',

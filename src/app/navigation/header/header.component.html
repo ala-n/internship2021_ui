@@ -29,7 +29,11 @@
     <app-location class="header__location"></app-location>
     <app-language></app-language>
   </div>
-  <button class="button button_search" mat-icon-button>
+  <button
+    class="button button_search"
+    mat-icon-button
+    (click)="navigationService.toggleToolbar()"
+  >
     <mat-icon class="icon icon_s_l">search</mat-icon>
   </button>
   <div class="header__profile" (click)="navigationService.toggleSidenav()">

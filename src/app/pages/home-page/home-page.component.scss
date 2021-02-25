@@ -2,9 +2,25 @@
 @import '/src/app/styles/custom-theme.scss';
 
 .home {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  // &_toolbar_opened {
+  //   opacity: 0.5;
+  //   height: 100%;
+  //   position: fixed;
+  //   width: 100%;
+  // }
+
+  &__button {
+    display: none;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 1101;
+  }
 
   &__main {
     position: relative;
