@@ -14,7 +14,8 @@
           {{ vendor.name }}
         </a>
         <div class="card__title office__contact">
-          <mat-icon>location_on</mat-icon>{{ office.address }}
+          <mat-icon>location_on</mat-icon
+          >{{ [office.street, office.house, office.room] | concat }}
         </div>
         <a
           href="tel:{{ office.phone }}"

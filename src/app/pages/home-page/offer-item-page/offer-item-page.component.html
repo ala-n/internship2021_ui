@@ -54,12 +54,7 @@
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
           <div>
-            <!-- I'll rewrite it later //TODO(abarmina) -->
-            {{
-              office.room
-                ? office.street + ', ' + office.house + ', ' + office.room
-                : office.street + ', ' + office.house
-            }}
+            {{ [office.street, office.house, office.room] | concat }}
           </div>
           <a
             href="tel:{{ office.phone }}"
