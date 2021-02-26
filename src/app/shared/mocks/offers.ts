@@ -25,7 +25,7 @@ export default [
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
     ],
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 1,
@@ -34,7 +34,7 @@ export default [
         address: 'ул. Шафарнянская, д. 3',
         phone: '+ 375 29 668 16 97',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Шафарнянская',
         house: 'д. 3',
         room: '',
@@ -48,7 +48,7 @@ export default [
         address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
         phone: '+ 375 29 634 67 74',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Захарова',
         house: 'д. 23',
         room: '(пл. Победы, за МГЛУ налево)',
@@ -87,7 +87,7 @@ export default [
     promocode: '34B2EFW',
     tags: ['Food', 'Sushi'],
     isActive: true,
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 3,
@@ -96,7 +96,7 @@ export default [
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 84',
         room: '(ТРЦ «Арена Сити»)',
@@ -143,7 +143,7 @@ export default [
       'https://pizzamania.by/admin/uploads/items/17.png',
       'https://pizzamania.by/admin/uploads/items/16.png'
     ],
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 5,
@@ -152,7 +152,7 @@ export default [
         address: 'ул. Рафиева, д. 44',
         phone: '+375 17 375-58-58',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Рафиева',
         house: 'д. 44',
         room: '',
@@ -166,7 +166,7 @@ export default [
         address: 'ул. Маяковского, д. 10',
         phone: '+375 17 375-58-58',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Маяковского',
         house: 'д. 10',
         room: '',
@@ -180,7 +180,7 @@ export default [
         address: 'ул. Центральная, д. 9',
         phone: '+375 44 553-40-00',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Центральная',
         house: 'д. 9',
         room: '',
@@ -194,7 +194,7 @@ export default [
         address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр-т Победителей',
         house: 'д. 23к1',
         room: '',
@@ -229,7 +229,7 @@ export default [
     promocode: 'UYT783I',
     tags: ['Food', 'Pizza'],
     isActive: true,
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 3,
@@ -238,7 +238,7 @@ export default [
         address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 84',
         room: '(ТРЦ «Арена Сити»)',
@@ -252,7 +252,7 @@ export default [
         address: 'ул. Слободская, д. 27',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Слободская',
         house: 'д. 27',
         room: '',
@@ -279,7 +279,7 @@ export default [
     promocode: 'Luxe25',
     tags: ['Food', 'Flowers'],
     isActive: true,
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 9,
@@ -288,7 +288,7 @@ export default [
         address: 'ул. Голодеда, д. 15',
         phone: '+ 375 25 788 41 32',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'ул. Голодеда',
         house: 'д. 15',
         room: '',
@@ -315,7 +315,7 @@ export default [
     promocode: '',
     tags: ['Sport', 'Health'],
     isActive: true,
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 10,
@@ -324,7 +324,7 @@ export default [
         address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 23к1',
         room: '',
@@ -358,7 +358,7 @@ export default [
     promocode: 'kiss1703',
     tags: ['Spa', 'Beauty'],
     isActive: true,
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 10,
@@ -367,7 +367,7 @@ export default [
         address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 23к1',
         room: '',
@@ -399,7 +399,7 @@ export default [
     promocode: '',
     isActive: false,
     tags: ['Spa', 'Beauty'],
-    city: 'Минск',
+    city: 'Minsk',
     offices: [
       {
         id: 10,
@@ -408,7 +408,7 @@ export default [
         address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
-        city: 'Минск',
+        city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 23к1',
         room: '',
@@ -435,7 +435,7 @@ export default [
     promocode: '',
     tags: [],
     isActive: true,
-    city: 'Гродно',
+    city: 'Hrodna',
     offices: [
       {
         id: 11,
@@ -444,7 +444,7 @@ export default [
         address: 'пр-т Янки Купалы, д. 87',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
-        city: 'Гродно',
+        city: 'Hrodna',
         street: 'пр. Янки Купалы',
         house: 'д. 87',
         room: '',
@@ -471,7 +471,7 @@ export default [
     promocode: 'VWEVWE888',
     tags: ['Entartainment', 'Music'],
     isActive: true,
-    city: 'Гродно',
+    city: 'Hrodna',
     offices: [
       {
         id: 12,
@@ -480,7 +480,7 @@ export default [
         address: 'ул. Буденного, д. 54/1',
         phone: '+ 375 29 232 99 23',
         country: 'Беларусь',
-        city: 'Гродно',
+        city: 'Hrodna',
         street: 'ул.Буденного',
         house: 'д. 54/1',
         room: '',
@@ -507,7 +507,7 @@ export default [
     promocode: '',
     tags: ['Beauty'],
     isActive: true,
-    city: 'Киев',
+    city: 'Kyiv',
     offices: [
       {
         id: 13,
@@ -516,7 +516,7 @@ export default [
         address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
         phone: '+38 044 223-77-60',
         country: 'Украина',
-        city: 'Киев',
+        city: 'Kyiv',
         street: 'ул.Ивана Федорова',
         house: 'д. 6',
         room: 'оф. 2, код 38, 2 этаж',
@@ -543,7 +543,7 @@ export default [
     promocode: 'WEAR32',
     tags: ['Clothes', 'Fashion'],
     isActive: false,
-    city: 'Киев',
+    city: 'Kyiv',
     offices: [
       {
         id: 14,
@@ -578,7 +578,7 @@ export default [
     promocode: '',
     tags: ['Auto', 'Wheels'],
     isActive: true,
-    city: 'Екатеринбург',
+    city: 'Yekaterinburg',
     offices: [
       {
         id: 15,
@@ -587,7 +587,7 @@ export default [
         address: 'Монтёрская улица, д.10а',
         phone: '+7 343 385-07-00',
         country: 'Россия',
-        city: 'Екатеринбург',
+        city: 'Yekaterinburg',
         street: 'ул. Монтёрская',
         house: 'д. 10а',
         room: '',
@@ -601,7 +601,7 @@ export default [
         address: 'ул. Малышева, 145а',
         phone: '+7 343 383-42-43',
         country: 'Россия',
-        city: 'Екатеринбург',
+        city: 'Yekaterinburg',
         street: 'ул. Малышева',
         house: 'д. 145а',
         room: '',

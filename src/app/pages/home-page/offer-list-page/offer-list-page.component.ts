@@ -12,6 +12,8 @@ import { OfferService } from '@shared/services/offer.service';
 })
 export class OfferListPageComponent {
   offers$!: Observable<Offer[]>;
+  city!: string;
+
   constructor(
     private offerService: OfferService,
     private mapService: MapService
@@ -20,6 +22,7 @@ export class OfferListPageComponent {
   ngOnInit(): void {
     this.mapService.city$.subscribe((city) => {
       this.offers$ = this.offerService.getOffers({ city });
+      this.city = city;
     });
   }
 }

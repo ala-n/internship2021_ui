@@ -77,10 +77,26 @@ export class OfficeFormComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FormDialogComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    const sub = dialogRef.componentInstance.addressData.subscribe(
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+      (result: any) => {
+        const address = result.address;
+        dialogRef.afterClosed().subscribe(() => {
+          this.officeForm.setValue({
+            id: 101,
+            country: address.country,
+            city: address.city,
+            street: address.road,
+            house: address.house_number,
+            room: '',
+            phone: 123,
+            email: 'lol@gmail.com',
+            isActive: true
+          });
+        });
+        sub.unsubscribe();
+      }
+    );
   }
 
   onSubmit(): void {

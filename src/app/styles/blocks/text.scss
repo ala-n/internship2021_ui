@@ -3,9 +3,21 @@
 .text {
   // size
   &_s {
+    // xlarge
+    &_xl {
+      font-size: 20px;
+
+      @media screen and (max-width: $desktop) {
+        font-size: 16px;
+      }
+      @media screen and (max-width: $mobile) {
+        font-size: 14px;
+      }
+    }
     // large
     &_l {
       font-size: 16px;
+
       @media screen and (max-width: $tablet) {
         font-size: 14px;
       }
@@ -26,6 +38,10 @@
   &_c {
     &_primary {
       color: $text-primary;
+    }
+
+    &_secondary {
+      color: $text-secondary;
     }
 
     &_accent {

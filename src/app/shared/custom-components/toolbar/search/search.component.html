@@ -11,7 +11,7 @@
       <mat-icon class="icon icon_s_s">search</mat-icon>
     </button>
   </div>
-  <mat-autocomplete #auto="matAutocomplete">
+  <mat-autocomplete #auto="matAutocomplete" class="search-form__autocomplete">
     <mat-option *ngFor="let value of filteredData | async" [value]="value">
       {{ value }}
     </mat-option>
