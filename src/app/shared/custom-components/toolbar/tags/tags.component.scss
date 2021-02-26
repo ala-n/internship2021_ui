@@ -1,39 +1,50 @@
 @import '/src/app/styles/variables.scss';
 
-.container-of-chips {
-  margin-left: 3em;
+:host {
+  width: 100%;
+}
+
+.tags {
+  margin-left: 1em;
   display: flex;
   height: 36px;
-  line-height: 36px;
-  padding-top: 4px;
+  padding-top: 2px;
   overflow: hidden;
 
   @media screen and (max-width: $tablet) {
-    height: 45px;
-    line-height: 45px;
-    padding-top: 10px;
-    margin-left: 1.2em;
+    overflow-x: auto;
+
+    // hide scrollbar in chrome
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__item {
+    border: 1px solid $text-secondary;
+    background-color: $background-light;
+    color: $text-secondary;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $blue-accent;
+      color: $blue-accent;
+    }
+
+    &:focus {
+      border: 1px solid $blue-primary;
+      color: $blue-primary;
+    }
+  }
+
+  &::ng-deep .mat-chip-list-wrapper {
+    @media screen and (max-width: $tablet) {
+      flex-wrap: nowrap;
+    }
   }
 }
 
 .mat-chip.mat-standard-chip::after {
   // this style turn off :hover effect from mat-button
-  background: #0000;
-}
-
-.value {
-  border: 1px solid $text-secondary;
-  background-color: $background-light;
-  color: $text-secondary;
-  cursor: pointer;
-}
-
-.value:hover {
-  border: 1px solid $blue-accent;
-  color: $blue-accent;
-}
-
-.value:focus {
-  border: 1px solid $blue-primary;
-  color: $blue-primary;
+  background-color: transparent;
 }
