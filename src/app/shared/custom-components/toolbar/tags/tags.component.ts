@@ -11,13 +11,15 @@ import { TagsService } from '@shared/services/tag.service';
 export class TagsComponent implements OnInit {
   tags!: Tag[];
 
-  constructor(private heroService: TagsService) {}
+  constructor(private tagsService: TagsService) {}
 
   ngOnInit(): void {
-    this.getTagsValue();
+    this.tagsService
+      .getTagsValue()
+      .subscribe((tags: Tag[]) => this.receiveData(tags));
   }
 
-  getTagsValue(): void {
-    this.tags = this.heroService.getTagsValue();
+  receiveData(data: Tag[]): void {
+    this.tags = data;
   }
 }
