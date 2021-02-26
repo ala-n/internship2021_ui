@@ -5,10 +5,9 @@
 }
 
 .tags {
-  margin-left: 1em;
+  padding: 2px 1em 0 1em;
   display: flex;
   height: 36px;
-  padding-top: 2px;
   overflow: hidden;
 
   @media screen and (max-width: $tablet) {

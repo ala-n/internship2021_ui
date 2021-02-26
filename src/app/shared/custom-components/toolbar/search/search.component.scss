@@ -1,7 +1,7 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/custom-theme.scss';
 
-:host {
+app-search {
   min-width: 300px;
   @media screen and (max-width: $tablet) {
     width: 100%;
