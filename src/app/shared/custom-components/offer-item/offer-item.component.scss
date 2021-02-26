@@ -17,6 +17,7 @@ $small-card: 1500px;
   &__image {
     object-fit: cover;
     width: 20%;
+    height: 100%;
     margin-right: 1em;
 
     @media screen and (max-width: $small-card) {
