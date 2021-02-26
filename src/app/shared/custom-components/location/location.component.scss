@@ -5,4 +5,9 @@
   bottom: 1em;
   max-width: 140px;
   font-weight: 500;
+
+  // inline style override
+  &__autocomplete {
+    max-height: 10.5em !important;
+  }
 }

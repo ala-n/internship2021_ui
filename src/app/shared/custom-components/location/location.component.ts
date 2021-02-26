@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
@@ -9,7 +9,8 @@ import { LocationService } from '@shared/services/location.service';
 @Component({
   selector: 'app-location',
   templateUrl: './location.component.html',
-  styleUrls: ['./location.component.scss']
+  styleUrls: ['./location.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LocationComponent implements OnInit, OnDestroy {
   filteredOptions$!: Observable<string[]>;
