@@ -81,7 +81,7 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'offices' | translate }}</mat-label>
-        <mat-select formControlName="offices" multiple>
+        <mat-select formControlName="offices" disableOptionCentering multiple>
           <mat-option *ngFor="let office of vendorOffices" [value]="office.id"
             >{{ office.city }}, {{ office.street }},
             {{ office.house }}</mat-option

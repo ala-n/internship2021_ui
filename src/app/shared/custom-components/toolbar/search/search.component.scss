@@ -1,21 +1,24 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/custom-theme.scss';
 
-.search-form {
-  max-width: 260px;
-  margin-left: 1em;
+:host {
+  min-width: 300px;
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+  }
+}
 
+.search-form {
   &__field {
     display: flex;
+    margin: 0 1em;
     border: $border-primary;
     border-radius: 25px;
     background-color: #fff;
-  }
 
-  @media screen and (max-width: $tablet) {
-    max-width: 100%;
-    margin: 10px 10px 0px 10px;
-    opacity: 1;
+    @media screen and (max-width: $tablet) {
+      margin: 1em;
+    }
   }
 
   &__input {
