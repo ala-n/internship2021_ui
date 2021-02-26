@@ -33,7 +33,10 @@ export class FormDialogComponent implements OnInit {
 
     const provider = new AlgoliaProvider();
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-    const control = new (GeoSearchControl as any)({ provider }) as L.Control;
+    const control = new (GeoSearchControl as any)({
+      provider,
+      style: 'bar'
+    }) as L.Control;
     this.map.addControl(control);
     console.log(control);
   }
