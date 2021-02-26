@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import { GeoSearchControl } from 'leaflet-geosearch';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -13,6 +19,10 @@ import { AlgoliaProvider } from 'leaflet-geosearch';
 })
 export class FormDialogComponent implements OnInit {
   map!: L.Map;
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  addressData = new EventEmitter<any>();
+
+  constructor(private mapService: MapService) {}
 
   ngOnInit(): void {
     this.mapView();
@@ -30,7 +40,6 @@ export class FormDialogComponent implements OnInit {
       latlng = L.latLng(53.684909765450755, 23.845177013681916);
     this.map = L.map('mapAdmin', { center: latlng, zoom: 11, layers: [tiles] });
     // you want to get it of the window global
-
     const provider = new AlgoliaProvider();
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     const control = new (GeoSearchControl as any)({
@@ -38,6 +47,10 @@ export class FormDialogComponent implements OnInit {
       style: 'bar'
     }) as L.Control;
     this.map.addControl(control);
-    console.log(control);
+    this.mapService
+      .getNameCity(53.915967770963206, 27.563689401954942, 'ru')
+      .then((data) => {
+        this.addressData.emit(data);
+      });
   }
 }

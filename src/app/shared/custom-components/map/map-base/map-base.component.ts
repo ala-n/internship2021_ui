@@ -43,7 +43,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         debounceTime(500),
         mergeMap(() => {
           const { lat, lng } = this.map.getCenter();
-          return from(this.mapService.getNameCity(lat, lng));
+          return from(this.mapService.getNameCity(lat, lng, 'en-US,en'));
         })
       )
       .subscribe((data) => {
@@ -109,9 +109,11 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       .addTo(this.map);
     this.map
       .on('locationfound', (e) => {
-        this.mapService.getNameCity(e.latlng.lat, e.latlng.lng).then((data) => {
-          this.mapService.setCity(data.address.city);
-        });
+        this.mapService
+          .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
+          .then((data) => {
+            this.mapService.setCity(data.address.city);
+          });
         //TODO: i will change all logic here, dont worry guys)
         this.map.stopLocate();
       })

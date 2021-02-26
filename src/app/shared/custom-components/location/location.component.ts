@@ -35,7 +35,6 @@ export class LocationComponent implements OnInit, OnDestroy {
     );
     const subscription$ = this.mapService.city$.subscribe((city) => {
       this.myControl.setValue(city);
-      console.log(city);
     });
     this.subscription.push(subscription$);
     this.mapService.setCity(this.currentCity);

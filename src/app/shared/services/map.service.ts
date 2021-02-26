@@ -78,9 +78,9 @@ export class MapService {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async getNameCity(lat: number, lon: number): Promise<any> {
+  async getNameCity(lat: number, lon: number, lang: string): Promise<any> {
     const locate = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&accept-language=en-US,en`
+      `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&accept-language=${lang}}`
     );
     return await locate.json();
   }
