@@ -29,31 +29,38 @@
         ></a>
       </mat-tab>
 
-      <mat-tab label="{{ 'description' | translate }}">{{
-        vendor.description || "Sorry, the brand didn't provide a description"
-      }}</mat-tab>
+      <mat-tab label="{{ 'description' | translate }}">
+        <div class="tab__item_indent">
+          {{
+            vendor.description ||
+              "Sorry, the brand didn't provide a description"
+          }}
+        </div>
+      </mat-tab>
 
       <mat-tab label="{{ 'addresses' | translate }}">
-        <div class="address" *ngFor="let office of vendor.offices">
-          <a
-            class="link address__link-overlay"
-            [routerLink]="['/home/offices', office.id]"
-          ></a>
-          <mat-icon class="address__location-icon">location_on</mat-icon>
-          <div>
-            <div>
-              <!-- I'll rewrite it later //TODO(abarmina) -->
-              {{
-                office.room
-                  ? office.street + ', ' + office.house + ', ' + office.room
-                  : office.street + ', ' + office.house
-              }}
-            </div>
+        <div class="tab__item_indent">
+          <div class="address" *ngFor="let office of vendor.offices">
             <a
-              href="tel:{{ office.phone }}"
-              class="link link_c_default address__phone"
-              >{{ office.phone }}</a
-            >
+              class="link address__link-overlay"
+              [routerLink]="['/home/offices', office.id]"
+            ></a>
+            <mat-icon class="address__location-icon">location_on</mat-icon>
+            <div>
+              <div>
+                <!-- I'll rewrite it later //TODO(abarmina) -->
+                {{
+                  office.room
+                    ? office.street + ', ' + office.house + ', ' + office.room
+                    : office.street + ', ' + office.house
+                }}
+              </div>
+              <a
+                href="tel:{{ office.phone }}"
+                class="link link_c_default address__phone"
+                >{{ office.phone }}</a
+              >
+            </div>
           </div>
         </div>
       </mat-tab>
