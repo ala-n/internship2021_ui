@@ -8,7 +8,10 @@
   >
     <app-offer-item [offer]="offer" class="offer-card"></app-offer-item
   ></a>
-  <div class="offers__text text_s_xl text_c_secondary" *ngIf="!offers?.length">
+  <div
+    class="offers__text text text_s_xl text_c_secondary"
+    *ngIf="!offers?.length"
+  >
     {{ 'no_offers_in_city' | translate }} {{ city }} =(
   </div>
 </div>

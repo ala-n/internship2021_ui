@@ -47,10 +47,7 @@
 
       <mat-tab label="{{ 'description' | translate }}">
         <div class="tab__item_indent">
-          {{
-            vendor.description ||
-              "Sorry, the brand didn't provide a description"
-          }}
+          {{ vendor.description || 'description_text' | translate }}
         </div>
       </mat-tab>
     </mat-tab-group>
