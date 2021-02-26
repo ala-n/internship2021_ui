@@ -98,9 +98,10 @@ mat-sidenav-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  // overflow-x: hidden;
+  overflow: hidden;
 }
 
 main {
-  flex: 1;
+  flex: 1 1 0;
+  overflow: hidden;
 }
