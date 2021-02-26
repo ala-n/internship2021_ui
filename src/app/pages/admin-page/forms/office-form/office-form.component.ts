@@ -77,8 +77,8 @@ export class OfficeFormComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(FormDialogComponent);
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     const sub = dialogRef.componentInstance.addressData.subscribe(
+      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
       (result: any) => {
         const address = result.address;
         dialogRef.afterClosed().subscribe(() => {
