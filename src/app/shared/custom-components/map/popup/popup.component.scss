@@ -56,3 +56,7 @@
 .leaflet-container a {
   color: $text-secondary;
 }
+
+.leaflet-popup-close-button {
+  z-index: 2;
+}
