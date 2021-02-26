@@ -59,8 +59,6 @@ export class MapComponent implements OnInit, OnDestroy {
     this.offerRequest$ = this.offerService
       .getOffers({ city: this.city })
       .subscribe((offers) => {
-        console.log(offers);
-
         this.markers = this.initOffersMarkers(offers);
       });
   }

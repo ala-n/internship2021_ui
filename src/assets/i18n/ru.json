@@ -6,7 +6,8 @@
   "manage": "Управление",
   "history": "История",
   "bookmarks": "Закладки",
-  "login": "Войти",
+  "log_in": "Войти",
+  "login": "Логин",
   "password": "Пароль",
   "logout": "Выйти",
 
@@ -34,6 +35,7 @@
   "valid_from": "Действует с",
   "valid_to": "Действует до",
   "website": "Веб-сайт",
+  "no_offers_in_city": "Извините, нет акций в городе",
 
   "administrator_panel": "Панель администратора",
   "moderator_panel": "Панель модератора",

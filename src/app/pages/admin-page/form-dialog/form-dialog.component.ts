@@ -1,8 +1,56 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+import { MapService } from '@shared/services/map.service';
+import * as L from 'leaflet';
+import { GeoSearchControl } from 'leaflet-geosearch';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import { AlgoliaProvider } from 'leaflet-geosearch';
 
 @Component({
   selector: 'app-form-dialog',
   templateUrl: './form-dialog.component.html',
-  styleUrls: ['./form-dialog.component.scss']
+  styleUrls: ['./form-dialog.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class FormDialogComponent {}
+export class FormDialogComponent implements OnInit {
+  map!: L.Map;
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  addressData = new EventEmitter<any>();
+
+  constructor(private mapService: MapService) {}
+
+  ngOnInit(): void {
+    this.mapView();
+  }
+
+  private mapView() {
+    const tiles = L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+          maxZoom: 18,
+          attribution:
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
+        }
+      ),
+      latlng = L.latLng(53.684909765450755, 23.845177013681916);
+    this.map = L.map('mapAdmin', { center: latlng, zoom: 11, layers: [tiles] });
+    // you want to get it of the window global
+    const provider = new AlgoliaProvider();
+    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    const control = new (GeoSearchControl as any)({
+      provider,
+      style: 'bar'
+    }) as L.Control;
+    this.map.addControl(control);
+    this.mapService
+      .getNameCity(53.915967770963206, 27.563689401954942, 'ru')
+      .then((data) => {
+        this.addressData.emit(data);
+      });
+  }
+}

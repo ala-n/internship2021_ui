@@ -1,6 +1,16 @@
 .tab {
   color: $text-primary;
   margin-top: 0.5em;
+
+  &__item {
+    &_indent {
+      margin: 1.5em;
+
+      @media screen and (max-width: $desktop) {
+        margin: 1em;
+      }
+    }
+  }
 }
 
 ::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {

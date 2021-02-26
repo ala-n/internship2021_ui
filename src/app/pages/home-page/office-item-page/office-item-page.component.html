@@ -33,7 +33,7 @@
     </div>
 
     <mat-tab-group mat-stretch-tabs class="tab">
-      <mat-tab label="{{ 'offers' | translate }}">
+      <mat-tab label="{{ 'offers' | translate }}" class="office__offers">
         <a
           class="link"
           *ngFor="let offer of offers"
@@ -45,9 +45,11 @@
           ></app-offer-item></a
       ></mat-tab>
 
-      <mat-tab label="{{ 'description' | translate }}">{{
-        vendor.description || "Sorry, the brand didn't provide a description"
-      }}</mat-tab>
+      <mat-tab label="{{ 'description' | translate }}">
+        <div class="tab__item_indent">
+          {{ vendor.description || 'description_text' | translate }}
+        </div>
+      </mat-tab>
     </mat-tab-group>
 
     <app-go-back-button class="desktop"></app-go-back-button>
