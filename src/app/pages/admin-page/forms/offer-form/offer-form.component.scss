@@ -1,1 +1,7 @@
 @import '/src/app/styles/components/form.scss';
+
+:host {
+  .mat-select-panel {
+    min-width: 100%;
+  }
+}

@@ -47,5 +47,10 @@
     &:focus {
       background-color: $background-blue-light;
     }
+    &:not(.mat-list-item-disabled) {
+      &:hover {
+        background-color: $background-blue-light;
+      }
+    }
   }
 }
