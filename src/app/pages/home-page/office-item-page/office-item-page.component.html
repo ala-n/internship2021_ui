@@ -24,7 +24,8 @@
           <mat-icon>call</mat-icon>{{ office.phone }}
         </a>
         <a
-          href="https://{{ vendor.website }}"
+          *ngIf="vendor.website"
+          [href]="vendor.website"
           target="_blank"
           class="link link_c_default card__link office__website"
         >
