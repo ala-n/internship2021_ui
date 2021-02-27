@@ -5,12 +5,14 @@
 
   &__field {
     max-width: 140px;
-    margin-top: 15px;
+    margin-top: 20px;
     font-size: 1.4em;
     bottom: 1em;
     font-weight: 500;
 
     > .mat-form-field-wrapper > .mat-form-field-flex {
+      padding-top: 0.5em;
+
       > .mat-form-field-infix {
         border-top: 0;
       }
