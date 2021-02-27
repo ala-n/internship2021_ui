@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { mergeMap, take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
+import { from } from 'rxjs';
+import { MapService } from '@shared/services/map.service';
 
 @Component({
   selector: 'app-office-form',
@@ -16,7 +18,6 @@ import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
 })
 export class OfficeFormComponent implements OnInit {
   officeForm = this.fb.group({
-    id: null,
     country: [null, Validators.required],
     city: [null, Validators.required],
     street: [null, Validators.required],
@@ -37,15 +38,16 @@ export class OfficeFormComponent implements OnInit {
     private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private mapService: MapService
   ) {}
 
-  get vendorId(): number {
-    return +this.route.snapshot.params.id;
+  get vendorId(): string {
+    return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    const officeId = +this.route.snapshot.params.officeId;
+    const officeId = this.route.snapshot.params.officeId;
     if (officeId) {
       this.officeService
         .getOfficeById(officeId)
@@ -54,7 +56,6 @@ export class OfficeFormComponent implements OnInit {
           this.office = office;
           this.vendorName = this.office.vendorName;
           this.officeForm.setValue({
-            id: this.office.id,
             country: this.office.country,
             city: this.office.city,
             street: this.office.street,
@@ -76,41 +77,45 @@ export class OfficeFormComponent implements OnInit {
   }
 
   openDialog(): void {
+    let coordinate: L.LatLng;
     const dialogRef = this.dialog.open(FormDialogComponent);
-    const sub = dialogRef.componentInstance.addressData.subscribe(
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      (result: any) => {
-        const address = result.address;
-        dialogRef.afterClosed().subscribe(() => {
-          this.officeForm.setValue({
-            id: 101,
-            country: address.country,
-            city: address.city,
-            street: address.road,
-            house: address.house_number,
-            room: '',
-            phone: 123,
-            email: 'lol@gmail.com',
-            isActive: true
-          });
-        });
-        sub.unsubscribe();
+    const sub = dialogRef.componentInstance.addressCordinates.subscribe(
+      (result: L.LatLng) => {
+        coordinate = result;
       }
     );
+    dialogRef
+      .afterClosed()
+      .pipe(
+        mergeMap(() =>
+          from(
+            this.mapService.getNameCity(coordinate.lat, coordinate.lng, 'ru')
+          )
+        )
+      )
+      .subscribe((data) => {
+        const address = data.address;
+        this.officeForm.setValue({
+          id: 99,
+          country: address.country,
+          city: address.city,
+          street: address.road,
+          house: address.house_number,
+          room: '',
+          phone: 123,
+          email: 'lol@gmail.com',
+          isActive: true
+        });
+        sub.unsubscribe();
+      });
   }
 
   onSubmit(): void {
-    // TODO question about this solution to check if it update or add
+    console.log(this.officeForm.value);
     if (this.office) {
-      this.officeService
-        .updateOffice(this.officeForm.value, this.vendorId)
-        .subscribe();
+      this.officeService.updateOffice(this.officeForm.value, this.vendorId);
     } else {
-      this.officeService
-        .addOffice(this.officeForm.value, this.vendorId)
-        .subscribe((office) => {
-          this.offices.push(office);
-        });
+      this.officeService.addOffice(this.officeForm.value, this.vendorId);
     }
   }
 }

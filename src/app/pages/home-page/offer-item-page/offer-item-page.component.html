@@ -48,7 +48,7 @@
     <mat-tab label="{{ 'addresses' | translate }}">
       <div *ngFor="let office of offices" class="address">
         <a
-          class="address__link-overlay link"
+          class="link link_overlay"
           [routerLink]="['/home/offices', office.id]"
         ></a>
         <mat-icon class="address__location-icon">location_on</mat-icon>

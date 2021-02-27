@@ -19,12 +19,14 @@
     position: relative;
     display: flex;
     height: 100%;
+    overflow: hidden;
   }
 
   &__left {
     max-width: calc(#{$large-desktop} / 2);
     background-color: $background-normal;
     position: relative;
+    overflow: auto;
   }
 
   &__right,

@@ -1,46 +1,46 @@
 export default [
   {
-    _id: 1,
+    id: '1',
     name: 'Food'
   },
   {
-    _id: 2,
+    id: '2',
     name: 'Sport'
   },
   {
-    _id: 3,
+    id: '3',
     name: 'Clothes'
   },
   {
-    _id: 4,
+    id: '4',
     name: 'Entertaiment'
   },
   {
-    _id: 5,
+    id: '5',
     name: 'Beauty'
   },
   {
-    _id: 6,
+    id: '6',
     name: 'Home'
   },
   {
-    _id: 7,
+    id: '7',
     name: 'Electronics'
   },
   {
-    _id: 8,
+    id: '8',
     name: 'Hotels'
   },
   {
-    _id: 9,
+    id: '9',
     name: 'Markets'
   },
   {
-    _id: 10,
+    id: '10',
     name: 'Pharmacy'
   },
   {
-    _id: 11,
+    id: '11',
     name: 'Clothes'
   }
 ];

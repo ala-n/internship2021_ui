@@ -1,9 +1,9 @@
 export default [
   {
-    id: 1,
+    id: '1',
     x: 53.950248766494305,
     y: 27.678503384991703,
-    vendorId: 1,
+    vendorId: '1',
     vendorName: 'Марсель',
     phone: '+ 375 29 668 16 97',
     country: 'Беларусь',
@@ -15,10 +15,10 @@ export default [
     isActive: true
   },
   {
-    id: 2,
+    id: '2',
     x: 53.90630545040514,
     y: 27.579132898483202,
-    vendorId: 1,
+    vendorId: '1',
     vendorName: 'Марсель',
     phone: '+ 375 29 634 67 74',
     country: 'Беларусь',
@@ -30,10 +30,10 @@ export default [
     isActive: true
   },
   {
-    id: 3,
+    id: '3',
     x: 53.938102489505866,
     y: 27.488490327319887,
-    vendorId: 2,
+    vendorId: '2',
     vendorName: 'SushiChefArts',
     phone: '+375 44 771-51-51',
     country: 'Беларусь',
@@ -45,10 +45,10 @@ export default [
     isActive: false
   },
   {
-    id: 4,
+    id: '4',
     x: 53.85829633426384,
     y: 27.43278622731758,
-    vendorId: 2,
+    vendorId: '2',
     vendorName: 'SushiChefArts',
     phone: '+375 44 771-51-51',
     country: 'Беларусь',
@@ -60,10 +60,10 @@ export default [
     isActive: true
   },
   {
-    id: 5,
+    id: '5',
     x: 53.86553289876855,
     y: 27.45302363896044,
-    vendorId: 3,
+    vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 17 375-58-58',
     country: 'Беларусь',
@@ -75,10 +75,10 @@ export default [
     isActive: true
   },
   {
-    id: 6,
+    id: '6',
     x: 53.883091927066054,
     y: 27.567344627318217,
-    vendorId: 3,
+    vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 17 375-58-58',
     country: 'Беларусь',
@@ -90,10 +90,10 @@ export default [
     isActive: false
   },
   {
-    id: 7,
+    id: '7',
     x: 53.86734233325647,
     y: 27.65028647149643,
-    vendorId: 3,
+    vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 44 553-40-00',
     country: 'Беларусь',
@@ -105,10 +105,10 @@ export default [
     isActive: true
   },
   {
-    id: 8,
+    id: '8',
     x: 53.91137617684785,
     y: 27.542871240811902,
-    vendorId: 3,
+    vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+ 375 29 120 68 66',
     country: 'Беларусь',
@@ -120,10 +120,10 @@ export default [
     isActive: true
   },
   {
-    id: 9,
+    id: '9',
     x: 53.83947974668578,
     y: 27.640475169645576,
-    vendorId: 4,
+    vendorId: '4',
     vendorName: 'Luxe',
     phone: '+ 375 25 788 41 32',
     country: 'Беларусь',
@@ -135,10 +135,10 @@ export default [
     isActive: true
   },
   {
-    id: 10,
+    id: '10',
     x: 53.91137617684785,
     y: 27.542871240811902,
-    vendorId: 5,
+    vendorId: '5',
     vendorName: 'ФОЦ им. Машерова',
     phone: '+ 375 29 120 68 66',
     country: 'Беларусь',
@@ -150,10 +150,10 @@ export default [
     isActive: true
   },
   {
-    id: 11,
+    id: '11',
     x: 53.65034593967492,
     y: 23.85468398498308,
-    vendorId: 6,
+    vendorId: '6',
     vendorName: '«Йети и дети»',
     phone: '+ 375 29 120 68 66',
     country: 'Беларусь',
@@ -165,10 +165,10 @@ export default [
     isActive: true
   },
   {
-    id: 12,
+    id: '12',
     x: 53.684909765450755,
     y: 23.845177013681916,
-    vendorId: 7,
+    vendorId: '7',
     vendorName: 'Rockplay',
     phone: '+ 375 29 232 99 23',
     country: 'Беларусь',
@@ -180,10 +180,10 @@ export default [
     isActive: true
   },
   {
-    id: 13,
+    id: '13',
     x: 50.42837142443786,
     y: 30.517745728722034,
-    vendorId: 8,
+    vendorId: '8',
     vendorName: 'Студия Ирины Лесовой',
     phone: '+38 044 223-77-60',
     country: 'Украина',
@@ -195,10 +195,10 @@ export default [
     isActive: true
   },
   {
-    id: 14,
+    id: '14',
     x: 50.44025486038732,
     y: 30.52230314847687,
-    vendorId: 9,
+    vendorId: '9',
     vendorName: 'Fashion Wear Milano',
     phone: '+38 098 983-07-77',
     country: 'Украина',
@@ -210,10 +210,10 @@ export default [
     isActive: true
   },
   {
-    id: 15,
+    id: '15',
     x: 56.781522754305485,
     y: 60.61757015808883,
-    vendorId: 10,
+    vendorId: '10',
     vendorName: 'Матерый шиномонтаж',
     phone: '+7 343 385-07-00',
     country: 'Россия',
@@ -225,10 +225,10 @@ export default [
     isActive: true
   },
   {
-    id: 16,
+    id: '16',
     x: 56.84222661082884,
     y: 60.66575335424758,
-    vendorId: 10,
+    vendorId: '10',
     vendorName: 'Матерый шиномонтаж',
     phone: '+7 343 383-42-43',
     country: 'Россия',

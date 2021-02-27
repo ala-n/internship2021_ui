@@ -83,7 +83,7 @@ export class MapComponent implements OnInit, OnDestroy {
 
   private initOffersMarkers(offers: Offer[]) {
     const markers = [];
-    const uniqId: number[] = [];
+    const uniqId: string[] = [];
     for (const offer of offers) {
       for (const office of offer.offices) {
         if (uniqId.indexOf(office.id) === -1) {
