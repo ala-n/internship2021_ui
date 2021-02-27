@@ -7,15 +7,6 @@
   padding: 1em 0.7em;
   cursor: pointer;
 
-  &__link-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-  }
-
   &__image {
     border-radius: 50%;
     width: 50px;
@@ -55,4 +46,8 @@
 // overriding class styles
 .leaflet-container a {
   color: $text-secondary;
+}
+
+.leaflet-popup-close-button {
+  z-index: 2;
 }

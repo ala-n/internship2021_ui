@@ -11,9 +11,10 @@ import { NavigationService } from '@shared/services/navigation.service';
 })
 export class AdminSidenavComponent {
   isOpened = true;
+  maxWidth = 767;
 
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe('(max-width: 768px)')
+    .observe(`(max-width: ${this.maxWidth}px)`)
     .pipe(
       map((result) => result.matches),
       shareReplay()
@@ -25,7 +26,7 @@ export class AdminSidenavComponent {
   ) {}
 
   closeSidenav(): void {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= this.maxWidth) {
       this.isOpened = false;
     }
   }
