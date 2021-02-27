@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { take } from 'rxjs/operators';
+import { mergeMap, take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
+import { from } from 'rxjs';
+import { MapService } from '@shared/services/map.service';
 
 @Component({
   selector: 'app-office-form',
@@ -36,7 +38,8 @@ export class OfficeFormComponent implements OnInit {
     private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private mapService: MapService
   ) {}
 
   get vendorId(): string {
@@ -74,26 +77,37 @@ export class OfficeFormComponent implements OnInit {
   }
 
   openDialog(): void {
+    let coordinate: L.LatLng;
     const dialogRef = this.dialog.open(FormDialogComponent);
-    const sub = dialogRef.componentInstance.addressData.subscribe(
-      // eslint-disable-next-line  @typescript-eslint/no-explicit-any
-      (result: any) => {
-        const address = result.address;
-        dialogRef.afterClosed().subscribe(() => {
-          this.officeForm.setValue({
-            country: address.country,
-            city: address.city,
-            street: address.road,
-            house: address.house_number,
-            room: '',
-            phone: 123,
-            email: 'lol@gmail.com',
-            isActive: true
-          });
-        });
-        sub.unsubscribe();
+    const sub = dialogRef.componentInstance.addressCordinates.subscribe(
+      (result: L.LatLng) => {
+        coordinate = result;
       }
     );
+    dialogRef
+      .afterClosed()
+      .pipe(
+        mergeMap(() =>
+          from(
+            this.mapService.getNameCity(coordinate.lat, coordinate.lng, 'ru')
+          )
+        )
+      )
+      .subscribe((data) => {
+        const address = data.address;
+        this.officeForm.setValue({
+          id: 99,
+          country: address.country,
+          city: address.city,
+          street: address.road,
+          house: address.house_number,
+          room: '',
+          phone: 123,
+          email: 'lol@gmail.com',
+          isActive: true
+        });
+        sub.unsubscribe();
+      });
   }
 
   onSubmit(): void {
