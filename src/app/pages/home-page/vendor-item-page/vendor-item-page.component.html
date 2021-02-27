@@ -14,9 +14,10 @@
         *ngIf="vendor.website"
         [href]="vendor.website"
         target="_blank"
-        class="link card__link vendor__link"
+        class="link card__website vendor__website"
       >
-        <mat-icon>public</mat-icon>{{ 'website' | translate }}
+        <mat-icon class="card__icon">public</mat-icon
+        >{{ vendor.website | hostname }}
       </a>
     </div>
 
