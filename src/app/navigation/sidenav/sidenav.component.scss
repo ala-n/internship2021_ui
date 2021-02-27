@@ -5,6 +5,19 @@ mat-sidenav-container {
   height: 100%;
 }
 
+mat-sidenav-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  flex: 1 0 1px;
+  overflow: hidden;
+}
+
 .sidenav {
   width: 280px;
   color: $text-primary;
@@ -20,9 +33,7 @@ mat-sidenav-container {
   }
 
   &__toolbar {
-    display: flex;
-    justify-content: center;
-    height: 64px;
+    display: none;
   }
 
   &__header,
@@ -30,7 +41,7 @@ mat-sidenav-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48px;
+    height: $large-height;
     padding: 0 1em;
   }
 
@@ -49,59 +60,48 @@ mat-sidenav-container {
   }
 
   mat-nav-list {
-    padding: 0;
-
-    a {
-      height: 48px;
+    a:last-child {
+      display: none;
     }
 
+    padding: 0;
+
     mat-icon {
+      padding-bottom: 10px;
+      font-size: 2em;
       margin-right: 1em;
-      padding-bottom: 5px;
-      font-size: 1.5em;
     }
 
     span {
-      font-size: 1.2em;
+      font-size: 1.4em;
     }
   }
 
-  @media screen and (min-width: $tablet + 1) {
+  @media screen and (max-width: $tablet) {
     &__header,
     &__footer {
-      height: 64px;
+      height: $medium-height;
     }
 
     &__toolbar {
-      display: none;
+      display: flex;
+      justify-content: center;
+      height: $large-height;
     }
+
     mat-nav-list {
-      a {
-        height: 64px;
-        &:last-child {
-          display: none;
-        }
+      a:last-child {
+        display: block;
       }
+
       span {
-        font-size: 1.4em;
+        font-size: 1.2em;
       }
+
       mat-icon {
-        padding-bottom: 10px;
-        font-size: 2em;
+        padding-bottom: 5px;
+        font-size: 1.5em;
       }
     }
   }
-}
-
-mat-sidenav-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  overflow: hidden;
-}
-
-main {
-  flex: 1 1 0;
-  overflow: hidden;
 }

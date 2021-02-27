@@ -3,7 +3,7 @@
 .toolbar {
   display: flex;
   align-items: center;
-  height: $desktop-header;
+  height: $large-height;
   border-bottom: $border-primary;
 
   @media screen and (max-width: $tablet) {

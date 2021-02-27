@@ -23,12 +23,12 @@ $background-icon: rgba(
 // border styling
 $border-primary: 1px solid rgba(61, 61, 61, 0.4);
 
-//headers heights
-$desktop-header: 64px;
-$mobile-header: 48px;
-
 // @media points
 $large-desktop: 1919px;
 $desktop: 1023px;
 $tablet: 767px;
 $mobile: 424px;
+
+// element height
+$large-height: 64px;
+$medium-height: 48px;
