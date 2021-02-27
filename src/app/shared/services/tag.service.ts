@@ -1,13 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { TAGS } from '../mocks/mock-tags';
 import { Tag } from '../models/tag';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TagsService {
-  getTagsValue(): Tag[] {
-    return TAGS;
+  static TAGS_URL = 'api/tags';
+
+  constructor(private http: HttpClient) {}
+
+  getTagsValue(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(TagsService.TAGS_URL);
   }
 }

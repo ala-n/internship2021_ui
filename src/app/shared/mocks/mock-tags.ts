@@ -1,6 +1,4 @@
-import { Tag } from '../models/tag';
-
-export const TAGS: Tag[] = [
+export default [
   {
     _id: 1,
     name: 'Food'
