@@ -83,4 +83,8 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       this.dataSource.paginator.firstPage();
     }
   }
+
+  getVendorWebsitePath(site: string): string {
+    return site.split('://')[1];
+  }
 }
