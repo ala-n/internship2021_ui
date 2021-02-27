@@ -29,16 +29,12 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
-      switchMap((params) =>
-        this.vendorService.getVendorById(Number(params['id']))
-      ),
+      switchMap((params) => this.vendorService.getVendorById(params['id'])),
       tap((vendor) => {
         this.vendor = vendor;
         this.mapService.setVendor(vendor);
       }),
-      switchMap((vendor) =>
-        this.offerService.getVendorOffers(Number(vendor.id))
-      ),
+      switchMap((vendor) => this.offerService.getVendorOffers(vendor.id)),
       tap((offers) => (this.offers = offers)),
       map(() => false)
     );

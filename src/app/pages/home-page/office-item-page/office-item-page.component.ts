@@ -33,17 +33,15 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
-      switchMap((params) =>
-        this.officeService.getOfficeById(Number(params['id']))
-      ),
+      switchMap((params) => this.officeService.getOfficeById(params['id'])),
       tap((office) => {
         this.office = office;
         this.mapService.setOffice(office);
       }),
       switchMap((office) =>
         forkJoin([
-          this.vendorService.getVendorById(Number(office.vendorId)),
-          this.offerService.getVendorOffers(Number(office.vendorId))
+          this.vendorService.getVendorById(office.vendorId),
+          this.offerService.getVendorOffers(office.vendorId)
         ])
       ),
       tap(([vendor, offers]) => {

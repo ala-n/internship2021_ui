@@ -18,7 +18,6 @@ import { MapService } from '@shared/services/map.service';
 })
 export class OfficeFormComponent implements OnInit {
   officeForm = this.fb.group({
-    id: null,
     country: [null, Validators.required],
     city: [null, Validators.required],
     street: [null, Validators.required],
@@ -43,12 +42,12 @@ export class OfficeFormComponent implements OnInit {
     private mapService: MapService
   ) {}
 
-  get vendorId(): number {
-    return +this.route.snapshot.params.id;
+  get vendorId(): string {
+    return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    const officeId = +this.route.snapshot.params.officeId;
+    const officeId = this.route.snapshot.params.officeId;
     if (officeId) {
       this.officeService
         .getOfficeById(officeId)
@@ -57,7 +56,6 @@ export class OfficeFormComponent implements OnInit {
           this.office = office;
           this.vendorName = this.office.vendorName;
           this.officeForm.setValue({
-            id: this.office.id,
             country: this.office.country,
             city: this.office.city,
             street: this.office.street,
@@ -113,17 +111,11 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // TODO question about this solution to check if it update or add
+    console.log(this.officeForm.value);
     if (this.office) {
-      this.officeService
-        .updateOffice(this.officeForm.value, this.vendorId)
-        .subscribe();
+      this.officeService.updateOffice(this.officeForm.value, this.vendorId);
     } else {
-      this.officeService
-        .addOffice(this.officeForm.value, this.vendorId)
-        .subscribe((office) => {
-          this.offices.push(office);
-        });
+      this.officeService.addOffice(this.officeForm.value, this.vendorId);
     }
   }
 }
