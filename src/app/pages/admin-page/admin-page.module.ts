@@ -18,6 +18,7 @@ import { VendorNavComponent } from './vendor-nav/vendor-nav.component';
 import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
 
 import { TruncatePipe } from '@shared/pipes/truncate.pipe';
+import { HostnamePipe } from '@shared/pipes/hostname.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TruncatePipe } from '@shared/pipes/truncate.pipe';
     VendorFormComponent,
     VendorNavComponent,
     VendorTableComponent,
-    TruncatePipe
+    TruncatePipe,
+    HostnamePipe
   ],
   imports: [
     CommonModule,
