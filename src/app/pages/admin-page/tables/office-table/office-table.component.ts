@@ -35,7 +35,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    const vendorId = +this.route.snapshot.params.id;
+    const vendorId = this.route.snapshot.params.id;
     if (vendorId) {
       this.officeService
         .getVendorOffices(vendorId)

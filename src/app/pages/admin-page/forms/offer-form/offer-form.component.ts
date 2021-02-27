@@ -19,7 +19,6 @@ import { MatChipInputEvent } from '@angular/material/chips';
 })
 export class OfferFormComponent implements OnInit {
   offerForm = this.fb.group({
-    id: null,
     title: [null, Validators.required],
     discount: [null, Validators.required],
     description: null,
@@ -37,10 +36,10 @@ export class OfferFormComponent implements OnInit {
 
   offers: Offer[] = [];
   offer!: Offer;
-  vendorId!: number;
+  vendorId!: string;
   vendorName!: string;
   vendorOffices: Office[] = [];
-  offerOffices: number[] = [];
+  offerOffices: string[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -51,12 +50,12 @@ export class OfferFormComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
-  get vendorNavId(): number {
-    return +this.route.snapshot.params.id;
+  get vendorNavId(): string {
+    return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
-    const offerId = +this.route.snapshot.params.offerId;
+    const offerId = this.route.snapshot.params.offerId;
     if (offerId) {
       this.offerService
         .getOfferById(offerId)
@@ -69,7 +68,6 @@ export class OfferFormComponent implements OnInit {
           this.tags = offer.tags || [];
           this.getOfficesForSelect(this.vendorId);
           this.offerForm.setValue({
-            id: offer.id,
             title: offer.title,
             discount: offer.discount,
             description: offer.description,
@@ -93,7 +91,7 @@ export class OfferFormComponent implements OnInit {
     }
   }
 
-  getOfficesForSelect(id: number): void {
+  getOfficesForSelect(id: string): void {
     this.officeService
       .getVendorOffices(id)
       .pipe(take(1))
@@ -103,18 +101,12 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // TODO question about this solution to check if it update or add
     console.log(this.offerForm.value);
+
     if (this.offer) {
-      this.offerService
-        .updateOffer(this.offerForm.value, this.vendorId)
-        .subscribe();
+      this.offerService.updateOffer(this.offerForm.value, this.vendorId);
     } else {
-      this.offerService
-        .addOffer(this.offerForm.value, this.vendorNavId)
-        .subscribe((offer) => {
-          this.offers.push(offer);
-        });
+      this.offerService.addOffer(this.offerForm.value, this.vendorNavId);
     }
   }
 
