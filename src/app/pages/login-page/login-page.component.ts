@@ -17,11 +17,9 @@ export class LogInComponent {
   }
 
   login(): void {
-    this.authService.loginForm(this.model).subscribe(
+    this.authService.login(this.model).subscribe(
       (response) => {
-        if (response.token != null) {
-          this.authService.setUser(response);
-        }
+        console.log(response);
       },
       (error) => {
         console.error(error);
