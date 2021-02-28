@@ -8,6 +8,7 @@ import { PopupComponent } from '@shared/custom-components/map/popup/popup.compon
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
+import { ConcatPipe } from '@shared/pipes/concat.pipe';
 import * as L from 'leaflet';
 import { Marker } from 'leaflet';
 // import { OpenStreetMapProvider } from 'leaflet-geosearch';
@@ -23,6 +24,8 @@ interface MarkerMetaData {
   providedIn: 'root'
 })
 export class MapService {
+  private readonly concat = new ConcatPipe().transform;
+
   private _city$ = new BehaviorSubject<string>('');
   private _offer$ = new BehaviorSubject<Offer | null>(null);
   private _office$ = new BehaviorSubject<Office | null>(null);
@@ -97,9 +100,14 @@ export class MapService {
     const factory = this.resolver.resolveComponentFactory(PopupComponent);
     const component = factory.create(this.injector);
     const popupContent = component.location.nativeElement;
+
     component.instance.office = office;
     component.instance.vendorName = name;
-    component.instance.address = office.address;
+    component.instance.address = this.concat([
+      office.street,
+      office.house,
+      office.room
+    ]);
     component.instance.phoneNumber = office.phone;
     const marker = L.marker(new L.LatLng(office.x, office.y), {
       icon: this.myIcon
