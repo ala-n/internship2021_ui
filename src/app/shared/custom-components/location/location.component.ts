@@ -3,8 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map, withLatestFrom } from 'rxjs/operators';
 
-import { MapService } from '@shared/services/map.service';
+import { CityService } from '@shared/services/city.service';
 import { LocationService } from '@shared/services/location.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-location',
@@ -14,36 +15,40 @@ import { LocationService } from '@shared/services/location.service';
 })
 export class LocationComponent implements OnInit, OnDestroy {
   filteredOptions$!: Observable<string[]>;
-  currentCity = 'Minsk';
+  currentCity!: string;
+
   myControl = new FormControl(this.currentCity);
   selectedOption!: string;
   subscription: Subscription[] = [];
 
   constructor(
-    private mapService: MapService,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private citiesService: CityService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.filteredOptions$ = this.myControl.valueChanges.pipe(
-      withLatestFrom(this.locationService.getCities()),
-      map(([value, cities]) => {
+      withLatestFrom(this.citiesService.getCities()),
+      map(([value, city]) => {
         const filterValue = (value || '').toLowerCase();
-        return cities.filter((option) =>
+        return city.filter((option) =>
           option.toLowerCase().startsWith(filterValue)
         );
       })
     );
-    const subscription$ = this.mapService.city$.subscribe((city) => {
+
+    const subscription$ = this.locationService.city$.subscribe((city) => {
+      this.currentCity = city;
       this.myControl.setValue(city);
     });
+
     this.subscription.push(subscription$);
-    this.mapService.setCity(this.currentCity);
   }
 
-  onSelectionChanged(option: string): void {
-    this.currentCity = option;
-    this.mapService.setCity(option);
+  onSelectionChanged(city: string): void {
+    this.router.navigate(['/home'], { queryParams: { city } });
+    this.locationService.setCity(city);
   }
 
   focusIn(e: FocusEvent): void {
