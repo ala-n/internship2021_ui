@@ -5,6 +5,7 @@ import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { OfferService } from '@shared/services/offer.service';
 import { Vendor } from '@shared/models/vendor';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-map',
@@ -20,12 +21,13 @@ export class MapComponent implements OnInit, OnDestroy {
   markers!: any; //TODO I will change the type
 
   constructor(
+    private locationService: LocationService,
     private mapService: MapService,
     private offerService: OfferService
   ) {}
 
   ngOnInit(): void {
-    const subscription$ = this.mapService.city$.subscribe((city) => {
+    const subscription$ = this.locationService.city$.subscribe((city) => {
       this.city = city;
       this.onChangeOffers();
     });

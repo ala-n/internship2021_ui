@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Offer } from '@shared/models/offer';
-import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-offer-list-page',
@@ -16,11 +16,11 @@ export class OfferListPageComponent {
 
   constructor(
     private offerService: OfferService,
-    private mapService: MapService
+    private locationService: LocationService
   ) {}
 
   ngOnInit(): void {
-    this.mapService.city$.subscribe((city) => {
+    this.locationService.city$.subscribe((city) => {
       this.offers$ = this.offerService.getOffers({ city });
       this.city = city;
     });

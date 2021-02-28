@@ -15,6 +15,7 @@ import 'leaflet.locatecontrol';
 import { fromEvent, from } from 'rxjs';
 import { debounceTime, mergeMap } from 'rxjs/operators';
 import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-map-base',
@@ -34,7 +35,10 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   marker!: any;
 
-  constructor(private mapService: MapService) {}
+  constructor(
+    private locationService: LocationService,
+    private mapService: MapService
+  ) {}
 
   ngOnInit(): void {
     this.mapView();
@@ -48,7 +52,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       )
       .subscribe((data) => {
         if (!data.address.city) return;
-        this.mapService.setCity(data.address.city);
+        this.locationService.setCity(data.address.city);
       });
 
     this.map.on('moveend', () => {
@@ -112,7 +116,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {
-            this.mapService.setCity(data.address.city);
+            this.locationService.setCity(data.address.city);
           });
         //TODO: i will change all logic here, dont worry guys)
         this.map.stopLocate();

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { Vendor } from '@shared/models/vendor';
+import { LocationService } from '@shared/services/location.service';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { VendorService } from '@shared/services/vendor.service';
@@ -24,7 +25,8 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private vendorService: VendorService,
     private offerService: OfferService,
-    private readonly mapService: MapService
+    private readonly mapService: MapService,
+    private readonly locationService: LocationService
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +34,8 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => this.vendorService.getVendorById(params['id'])),
       tap((vendor) => {
         this.vendor = vendor;
+
+        this.locationService.setCity(vendor.offices[0].city);
         this.mapService.setVendor(vendor);
       }),
       switchMap((vendor) => this.offerService.getVendorOffers(vendor.id)),
