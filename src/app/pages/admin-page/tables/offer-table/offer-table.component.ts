@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
+import { VendorService } from '@shared/services/vendor.service';
 import { map, take } from 'rxjs/operators';
 
 @Component({
@@ -32,6 +33,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private offerService: OfferService,
+    private vendorService: VendorService,
     private route: ActivatedRoute
   ) {}
 
@@ -53,6 +55,14 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
       )
       .subscribe((offers: Offer[]) => {
         if (offers) this.dataSource.data = offers as Offer[];
+        // add vendorName to offers
+        // TODO syncronize data rendering
+        this.dataSource.data.map((offer) => {
+          this.vendorService
+            .getVendorById(offer.vendorId)
+            .pipe(take(1))
+            .subscribe((vendor) => (offer.vendorName = vendor.name));
+        });
         this.isLoading = false;
       });
 

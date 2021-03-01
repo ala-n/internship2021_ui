@@ -54,7 +54,6 @@ export class OfficeFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((office) => {
           this.office = office;
-          this.vendorName = this.office.vendorName;
           this.officeForm.setValue({
             country: this.office.country,
             city: this.office.city,
@@ -66,14 +65,13 @@ export class OfficeFormComponent implements OnInit {
             isActive: this.office.isActive
           });
         });
-    } else {
-      this.vendorService
-        .getVendorById(this.vendorId)
-        .pipe(take(1))
-        .subscribe((vendor) => {
-          this.vendorName = vendor.name;
-        });
     }
+    this.vendorService
+      .getVendorById(this.vendorId)
+      .pipe(take(1))
+      .subscribe((vendor) => {
+        this.vendorName = vendor.name;
+      });
   }
 
   openDialog(): void {
@@ -96,7 +94,6 @@ export class OfficeFormComponent implements OnInit {
       .subscribe((data) => {
         const address = data.address;
         this.officeForm.setValue({
-          id: 99,
           country: address.country,
           city: address.city,
           street: address.road,

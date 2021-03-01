@@ -11,6 +11,10 @@
   flex-direction: column;
   box-shadow: none;
 
+  &_hidden {
+    display: none;
+  }
+
   &__body {
     overflow: auto;
     @media screen and (max-width: $mobile) {
