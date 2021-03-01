@@ -13,7 +13,6 @@ import { NavigationService } from '@shared/services/navigation.service';
 })
 export class VendorFormComponent implements OnInit {
   vendorForm = this.fb.group({
-    id: null,
     name: [null, Validators.required],
     title: [null, Validators.required],
     description: null,
@@ -32,7 +31,7 @@ export class VendorFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const vendorId = +this.route.snapshot.params.id;
+    const vendorId = this.route.snapshot.params.id;
     if (vendorId) {
       this.vendorService
         .getVendorById(vendorId)
@@ -40,7 +39,6 @@ export class VendorFormComponent implements OnInit {
         .subscribe((vendor) => {
           this.vendor = vendor;
           this.vendorForm.setValue({
-            id: vendor.id,
             name: vendor.name,
             title: vendor.title,
             website: vendor.website,
@@ -53,14 +51,11 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
+    console.log(this.vendorForm.value);
     if (this.vendor) {
-      this.vendorService.updateVendor(this.vendorForm.value).subscribe();
+      this.vendorService.updateVendor(this.vendorForm.value);
     } else {
-      this.vendorService
-        .addVendor(this.vendorForm.value)
-        .subscribe((vendor) => {
-          this.vendors.push(vendor);
-        });
+      this.vendorService.addVendor(this.vendorForm.value);
     }
   }
 }

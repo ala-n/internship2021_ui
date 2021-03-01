@@ -35,8 +35,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute
   ) {}
 
-  get vendorId(): number {
-    return +this.route.snapshot.params.id;
+  get vendorId(): string {
+    return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {

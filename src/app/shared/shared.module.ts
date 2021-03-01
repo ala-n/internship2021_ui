@@ -18,6 +18,8 @@ import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
+import { HostnamePipe } from '@shared/pipes/hostname.pipe';
+
 @NgModule({
   declarations: [
     ToolbarComponent,
@@ -29,7 +31,8 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
     TagsComponent,
     OfferItemComponent,
     GoBackButtonComponent,
-    MapBaseComponent
+    MapBaseComponent,
+    HostnamePipe
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,8 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
     OfferItemComponent,
     TranslateModule,
     GoBackButtonComponent,
-    MapBaseComponent
+    MapBaseComponent,
+    HostnamePipe
   ],
   entryComponents: [PopupComponent]
 })
