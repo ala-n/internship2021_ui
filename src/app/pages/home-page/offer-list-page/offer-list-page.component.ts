@@ -6,7 +6,7 @@ import { OfferService } from '@shared/services/offer.service';
 import { LocationService } from '@shared/services/location.service';
 import { UserService } from '@shared/services/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { withLatestFrom } from 'rxjs/operators';
+import { switchMap, tap, withLatestFrom } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-list-page',
@@ -25,11 +25,12 @@ export class OfferListPageComponent {
   ) {}
 
   ngOnInit(): void {
-    this.locationService.city$.subscribe((city) => {
-      this.offers$ = this.offerService.getOffers({ city });
-      this.city = city;
-    });
-
+    this.offers$ = this.locationService.city$.pipe(
+      tap((city) => {
+        this.city = city;
+      }),
+      switchMap((city) => this.offerService.getOffers({ city }))
+    );
     this.route.queryParams
       .pipe(withLatestFrom(this.userService.user$))
       .subscribe(([{ city }, user]) => {
