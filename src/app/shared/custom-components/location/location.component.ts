@@ -23,13 +23,13 @@ export class LocationComponent implements OnInit, OnDestroy {
 
   constructor(
     private locationService: LocationService,
-    private citiesService: CityService,
+    private cityService: CityService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.filteredOptions$ = this.myControl.valueChanges.pipe(
-      withLatestFrom(this.citiesService.getCities()),
+      withLatestFrom(this.cityService.getCities()),
       map(([value, city]) => {
         const filterValue = (value || '').toLowerCase();
         return city.filter((option) =>
