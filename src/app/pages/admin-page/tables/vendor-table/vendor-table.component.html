@@ -92,7 +92,9 @@
         <th mat-header-cell class="text text_upper" *matHeaderCellDef>
           {{ 'website' | translate }}
         </th>
-        <td mat-cell *matCellDef="let vendor">{{ vendor.website }}</td>
+        <td mat-cell *matCellDef="let vendor">
+          {{ vendor.website | hostname }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="updated">

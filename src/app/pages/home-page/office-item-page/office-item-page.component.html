@@ -14,20 +14,23 @@
           {{ vendor.name }}
         </a>
         <div class="card__title office__contact">
-          <mat-icon>location_on</mat-icon>{{ office.address }}
+          <mat-icon class="card__icon">location_on</mat-icon
+          >{{ [office.street, office.house, office.room] | concat }}
         </div>
         <a
           href="tel:{{ office.phone }}"
           class="link link_c_default card__title office__contact"
         >
-          <mat-icon>call</mat-icon>{{ office.phone }}
+          <mat-icon class="card__icon">call</mat-icon>{{ office.phone }}
         </a>
         <a
-          href="https://{{ vendor.website }}"
+          *ngIf="vendor.website"
+          [href]="vendor.website"
           target="_blank"
-          class="link link_c_default card__link office__website"
+          class="link link_c_default card__website office__website"
         >
-          <mat-icon>public</mat-icon>{{ 'website' | translate }}
+          <mat-icon class="card__icon">public</mat-icon
+          >{{ vendor.website | hostname }}
         </a>
       </div>
     </div>

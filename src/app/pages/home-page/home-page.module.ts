@@ -10,6 +10,8 @@ import { OfferListPageComponent } from './offer-list-page/offer-list-page.compon
 import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.component';
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
 
+import { ConcatPipe } from '@shared/pipes/concat.pipe';
+
 @NgModule({
   declarations: [
     HomePageComponent,
@@ -17,7 +19,8 @@ import { OfficeItemPageComponent } from './office-item-page/office-item-page.com
     OfferItemPageComponent,
     OfferListPageComponent,
     VendorItemPageComponent,
-    OfficeItemPageComponent
+    OfficeItemPageComponent,
+    ConcatPipe
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule]
 })
