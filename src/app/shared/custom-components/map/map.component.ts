@@ -3,8 +3,8 @@ import { MapService } from '@shared/services/map.service';
 import { Subscription } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
-import { OfferService } from '@shared/services/offer.service';
 import { Vendor } from '@shared/models/vendor';
+import { VendorService } from '@shared/services/vendor.service';
 
 @Component({
   selector: 'app-map',
@@ -16,12 +16,11 @@ export class MapComponent implements OnInit, OnDestroy {
   offerRequest$!: Subscription;
   city!: string;
   name!: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  markers!: any; //TODO I will change the type
+  markers!: L.Marker[];
 
   constructor(
     private mapService: MapService,
-    private offerService: OfferService
+    private vendorService: VendorService
   ) {}
 
   ngOnInit(): void {
@@ -56,8 +55,8 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   onChangeOffers(): void {
-    this.offerRequest$ = this.offerService
-      .getOffers({ city: this.city })
+    this.offerRequest$ = this.vendorService
+      .getVendors({ city: this.city })
       .subscribe((offers) => {
         this.markers = this.initOffersMarkers(offers);
       });
@@ -81,16 +80,12 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
-  private initOffersMarkers(offers: Offer[]) {
+  private initOffersMarkers(vendors: Vendor[]) {
     const markers = [];
-    const uniqId: string[] = [];
-    for (const offer of offers) {
-      for (const office of offer.offices) {
-        if (uniqId.indexOf(office.id) === -1) {
-          const marker = this.mapService.getMarkers(office, offer.vendorName);
-          markers.push(marker);
-          uniqId.push(office.id);
-        }
+    for (const vendor of vendors) {
+      for (const office of vendor.offices) {
+        const marker = this.mapService.getMarkers(office, vendor.name);
+        markers.push(marker);
       }
     }
     return markers;
