@@ -96,14 +96,13 @@ export class OfficeFormComponent implements OnInit {
       .subscribe((data) => {
         const address = data.address;
         this.officeForm.setValue({
-          id: 99,
           country: address.country,
           city: address.city,
           street: address.road,
           house: address.house_number,
           room: '',
-          phone: 123,
-          email: 'lol@gmail.com',
+          phone: null,
+          email: '',
           isActive: true
         });
         sub.unsubscribe();

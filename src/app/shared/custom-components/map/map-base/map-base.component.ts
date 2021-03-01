@@ -12,9 +12,6 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
-import { fromEvent, from } from 'rxjs';
-import { debounceTime, mergeMap } from 'rxjs/operators';
-import { FromEventTarget } from 'rxjs/internal/observable/fromEvent';
 import { LocationService } from '@shared/services/location.service';
 
 @Component({
@@ -27,13 +24,14 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Input() markers!: any; //TODO I will change the type
-  markerAll = new L.MarkerClusterGroup({ animateAddingMarkers: true });
+  @Input() markers!: L.Marker[];
+  markerAll = new L.MarkerClusterGroup({
+    chunkedLoading: true,
+    animateAddingMarkers: true
+  });
   private debouceTimeout!: number;
   carValue!: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  marker!: any;
+  marker!: L.Marker;
 
   constructor(
     private locationService: LocationService,
@@ -42,32 +40,15 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.mapView();
-    fromEvent(this.map as FromEventTarget<L.LeafletEvent>, 'moveend')
-      .pipe(
-        debounceTime(500),
-        mergeMap(() => {
-          const { lat, lng } = this.map.getCenter();
-          return from(this.mapService.getNameCity(lat, lng, 'en-US,en'));
-        })
-      )
-      .subscribe((data) => {
-        if (!data.address.city) return;
-        this.locationService.setCity(data.address.city);
-      });
-
     this.map.on('moveend', () => {
-      //TODO: i will change all logic here, dont worry guys)
+      const officeId = [];
       if (this.markers) {
         for (const marker of this.markers) {
-          if (
-            marker._icon &&
-            !this.map.getBounds().contains(marker.getLatLng())
-          ) {
-            console.log(marker);
-
-            this.map.removeLayer(marker);
+          if (this.map.getBounds().contains(marker.getLatLng())) {
+            officeId.push(marker.options.title);
           }
         }
+        console.log(officeId); //TODO: this task not completed yet. skip
       }
     });
   }
@@ -99,18 +80,6 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       ),
       latlng = L.latLng(0, 0);
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
-    L.control
-      .locate({
-        keepCurrentZoomLevel: true,
-        showPopup: false,
-        flyTo: true,
-        locateOptions: {
-          enableHighAccuracy: true,
-          timeout: 1000, //no effect
-          maximumAge: 1000
-        }
-      })
-      .addTo(this.map);
     this.map
       .on('locationfound', (e) => {
         this.mapService
@@ -118,12 +87,15 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
           .then((data) => {
             this.locationService.setCity(data.address.city);
           });
-        //TODO: i will change all logic here, dont worry guys)
         this.map.stopLocate();
       })
       .on('locationerror', (e) => {
         console.log(e);
       });
+  }
+
+  locateMe(): void {
+    this.map.locate({ setView: true, maxZoom: 11 });
   }
 
   ngOnDestroy(): void {

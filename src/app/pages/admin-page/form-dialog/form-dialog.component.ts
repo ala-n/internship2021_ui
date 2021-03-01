@@ -1,15 +1,18 @@
 import {
   Component,
   EventEmitter,
+  OnDestroy,
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import { Layer } from 'leaflet';
 import { GeoSearchControl } from 'leaflet-geosearch';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { AlgoliaProvider } from 'leaflet-geosearch';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-dialog',
@@ -17,11 +20,12 @@ import { AlgoliaProvider } from 'leaflet-geosearch';
   styleUrls: ['./form-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class FormDialogComponent implements OnInit {
+export class FormDialogComponent implements OnInit, OnDestroy {
   map!: L.Map;
   coordinate!: L.LatLng;
   theMarker!: Layer;
   saveButton = false;
+  subscription: Subscription[] = [];
   // eslint-disable-next-line  @typescript-eslint/no-explicit-any
   addressCordinates = new EventEmitter<L.LatLng>();
   myIcon = L.icon({
@@ -30,8 +34,16 @@ export class FormDialogComponent implements OnInit {
     iconAnchor: [5 * 0.75, 30 * 0.75]
   });
 
+  constructor(private mapService: MapService) {}
+
   ngOnInit(): void {
     this.mapView();
+    const subscription$ = this.mapService.city$.subscribe((city) => {
+      this.mapService.getCityView(city).then((data) => {
+        this.map.setView([+data[0].y, +data[0].x], 11);
+      });
+    });
+    this.subscription.push(subscription$);
   }
 
   private mapView() {
@@ -43,9 +55,8 @@ export class FormDialogComponent implements OnInit {
             '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Points &copy 2012 LINZ'
         }
       ),
-      latlng = L.latLng(53.684909765450755, 23.845177013681916);
+      latlng = L.latLng(0, 0);
     this.map = L.map('mapAdmin', { center: latlng, zoom: 15, layers: [tiles] });
-    // you want to get it of the window global
     const provider = new AlgoliaProvider();
     // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     const control = new (GeoSearchControl as any)({
@@ -70,5 +81,9 @@ export class FormDialogComponent implements OnInit {
     if (this.coordinate) {
       this.addressCordinates.emit(this.coordinate);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.forEach((s: Subscription) => s.unsubscribe());
   }
 }
