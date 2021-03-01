@@ -2,9 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { LocationService } from '@shared/services/location.service';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/office.service';
 import { of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
@@ -15,12 +17,14 @@ import { map, switchMap, tap } from 'rxjs/operators';
 })
 export class OfferItemPageComponent implements OnInit, OnDestroy {
   offer!: Offer;
+  offices!: Office[];
 
   isLoading$ = of(true);
 
   constructor(
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
+    private readonly officeService: OfficeService,
     private readonly mapService: MapService,
     private readonly locationService: LocationService
   ) {}
@@ -34,6 +38,13 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         this.offer = offer;
         this.mapService.setOffer(offer);
       }),
+      switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
+
+      // for backend
+      // switchMap((offer: Offer) =>
+      //   this.officeService.getOfficesById(offer.offices)
+      // ),
+      tap((offices) => (this.offices = offices)),
       map(() => false)
     );
   }
