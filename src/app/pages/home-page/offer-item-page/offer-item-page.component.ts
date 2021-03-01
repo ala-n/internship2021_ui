@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
-import { LocationService } from '@shared/services/location.service';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { OfficeService } from '@shared/services/office.service';
@@ -25,16 +24,13 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
     private readonly officeService: OfficeService,
-    private readonly mapService: MapService,
-    private readonly locationService: LocationService
+    private readonly mapService: MapService
   ) {}
 
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
       switchMap((params) => this.offerService.getOfferById(params['id'])),
       tap((offer: Offer) => {
-        this.locationService.setCity(offer.city);
-
         this.offer = offer;
         this.mapService.setOffer(offer);
       }),
