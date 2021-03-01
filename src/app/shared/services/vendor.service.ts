@@ -37,11 +37,9 @@ export class VendorService {
     );
   }
 
-  updateVendor(vendor: Vendor): Observable<Vendor> {
-    return this.http.put<Vendor>(
-      VendorService.VENDORS_URL,
-      vendor,
-      this.httpOptions
-    );
+  updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
+    console.log(vendor, vendorId);
+    const url = `${VendorService.VENDORS_URL}/${vendorId}`;
+    return this.http.put<Vendor>(url, vendor, this.httpOptions);
   }
 }
