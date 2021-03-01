@@ -8,7 +8,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HttpService {
+export class HttpService<U = unknown> {
   constructor(private http: HttpClient, private httpAuth: AuthService) {}
 
   // Http Options with token
@@ -24,25 +24,25 @@ export class HttpService {
     return sessionStorage.getItem('access_token');
   }
 
-  get<T>(baseURL: string): Observable<T> {
+  get<T = U>(baseURL: string): Observable<T> {
     return this.http
       .get<T>(baseURL, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  post<T>(baseURL: string, data: unknown): Observable<T> {
+  post<T = U>(baseURL: string, data: unknown): Observable<T> {
     return this.http
       .post<T>(baseURL, data, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  put<T>(baseURL: string, data: unknown): Observable<T> {
+  put<T = U>(baseURL: string, data: unknown): Observable<T> {
     return this.http
       .put<T>(baseURL, data, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  delete<T>(baseURL: string): Observable<T> {
+  delete<T = U>(baseURL: string): Observable<T> {
     return this.http
       .delete<T>(baseURL, this.httpOptions)
       .pipe(catchError(this.errorHandler));
