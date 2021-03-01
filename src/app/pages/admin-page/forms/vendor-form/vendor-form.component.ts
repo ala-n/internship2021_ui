@@ -30,11 +30,14 @@ export class VendorFormComponent implements OnInit {
     public navigationService: NavigationService
   ) {}
 
+  get vendorId(): string {
+    return this.route.snapshot.params.id;
+  }
+
   ngOnInit(): void {
-    const vendorId = this.route.snapshot.params.id;
-    if (vendorId) {
+    if (this.vendorId) {
       this.vendorService
-        .getVendorById(vendorId)
+        .getVendorById(this.vendorId)
         .pipe(take(1))
         .subscribe((vendor) => {
           this.vendor = vendor;
@@ -51,9 +54,8 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    console.log(this.vendorForm.value);
     if (this.vendor) {
-      this.vendorService.updateVendor(this.vendorForm.value);
+      this.vendorService.updateVendor(this.vendorForm.value, this.vendorId);
     } else {
       this.vendorService.addVendor(this.vendorForm.value);
     }
