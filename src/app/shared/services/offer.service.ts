@@ -22,18 +22,19 @@ export class OfferService {
       );
   }
 
-  getOfferById(id: number): Observable<Offer> {
+  getOfferById(id: string): Observable<Offer> {
     return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
   }
 
-  getVendorOffers(vendorId: number): Observable<Offer[]> {
-    return this.http.get(`${OfferService.OFFERS_URL}`)
+  getVendorOffers(vendorId: string): Observable<Offer[]> {
+    return this.http
+      .get(`${OfferService.OFFERS_URL}`)
       .pipe(
-        map((offers) => offers.filter((offer: { vendorId: number; }) => offer.vendorId === vendorId))
+        map((offers) => offers.filter((offer: { vendorId: string; }) => offer.vendorId === vendorId))
       );
   }
 
-  addOffer(offer: Offer, vendorId: number): Observable<Offer> {
+  addOffer(offer: Offer, vendorId: string): Observable<Offer> {
     offer.vendorId = vendorId;
     return this.http.post(
       OfferService.OFFERS_URL,
@@ -41,7 +42,7 @@ export class OfferService {
     );
   }
 
-  updateOffer(offer: Offer, vendorId: number): Observable<Offer> {
+  updateOffer(offer: Offer, vendorId: string): Observable<Offer> {
     offer.vendorId = vendorId;
     return this.http.put(
       OfferService.OFFERS_URL,

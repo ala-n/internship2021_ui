@@ -1,6 +1,6 @@
 export default [
   {
-    id: 1,
+    id: '1',
     title:
       '78 видов массажей: классические, экзотические, SPA-ритуалы от 18 руб.',
     description: `Уважаемые клиенты, с 12 ноября ношение масок стало обязательным. Пожалуйста, надевайте маску в салоне, даже если вы здоровы. С заботой о вас, салон красоты "Марсель". Предварительная запись обязательна.
@@ -11,7 +11,7 @@ export default [
     dateEnd: '2021-04-01',
     discount: 'до 55%',
     vendorName: 'Марсель',
-    vendorId: 1,
+    vendorId: '1',
     numberOfUses: 21,
     numberOfViews: 215,
     updated: '2021-02-01',
@@ -28,37 +28,35 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 1,
+        id: '1',
         x: 53.950248766494305,
         y: 27.678503384991703,
-        address: 'ул. Шафарнянская, д. 3',
         phone: '+ 375 29 668 16 97',
         country: 'Беларусь',
         city: 'Minsk',
         street: 'ул. Шафарнянская',
         house: 'д. 3',
-        room: '',
+        room: '303',
         email: 'marsel1@gmail.com',
         isActive: true
       },
       {
-        id: 2,
+        id: '2',
         x: 53.90630545040514,
         y: 27.579132898483202,
-        address: 'ул. Захарова, д. 23 (пл. Победы, за МГЛУ налево)',
         phone: '+ 375 29 634 67 74',
         country: 'Беларусь',
         city: 'Minsk',
         street: 'ул. Захарова',
         house: 'д. 23',
-        room: '(пл. Победы, за МГЛУ налево)',
+        room: '',
         email: 'marsel2@gmail.com',
         isActive: true
       }
     ]
   },
   {
-    id: 2,
+    id: '2',
     title:
       '10 новых сетов! Круглосуточно все меню со скидкой до 70% навынос + доставка',
     description: `Купон действует на одного человека.
@@ -80,7 +78,7 @@ export default [
     dateEnd: '2021-05-05',
     discount: 'до 70%',
     vendorName: 'SushiChefArts',
-    vendorId: 2,
+    vendorId: '2',
     numberOfUses: 100,
     numberOfViews: 119,
     updated: '2021-02-05',
@@ -90,23 +88,22 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 3,
+        id: '3',
         x: 53.938102489505866,
         y: 27.488490327319887,
-        address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
         city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 84',
-        room: '(ТРЦ «Арена Сити»)',
+        room: '',
         email: 'sushi2@gmail.com',
         isActive: true
       }
     ]
   },
   {
-    id: 3,
+    id: '3',
     title:
       'Метровые пиццы за 21,95 руб/до 2100 г, пицца-сеты от 23,05 руб/до 1950 г',
     description: `- Получить промокод можно до 28.02, воспользоваться до 28.02.21
@@ -127,7 +124,7 @@ export default [
     dateEnd: '2021-03-31',
     discount: '40%',
     vendorName: 'PizzaMania',
-    vendorId: 3,
+    vendorId: '3',
     numberOfUses: 139,
     numberOfViews: 212,
     updated: '2021-01-01',
@@ -146,10 +143,9 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 5,
+        id: '5',
         x: 53.86553289876855,
         y: 27.45302363896044,
-        address: 'ул. Рафиева, д. 44',
         phone: '+375 17 375-58-58',
         country: 'Беларусь',
         city: 'Minsk',
@@ -160,10 +156,9 @@ export default [
         isActive: true
       },
       {
-        id: 6,
+        id: '6',
         x: 53.883091927066054,
         y: 27.567344627318217,
-        address: 'ул. Маяковского, д. 10',
         phone: '+375 17 375-58-58',
         country: 'Беларусь',
         city: 'Minsk',
@@ -174,10 +169,9 @@ export default [
         isActive: true
       },
       {
-        id: 7,
+        id: '7',
         x: 53.86734233325647,
         y: 27.65028647149643,
-        address: 'ул. Центральная, д. 9',
         phone: '+375 44 553-40-00',
         country: 'Беларусь',
         city: 'Minsk',
@@ -188,10 +182,9 @@ export default [
         isActive: true
       },
       {
-        id: 8,
+        id: '8',
         x: 53.91137617684785,
         y: 27.542871240811902,
-        address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Minsk',
@@ -204,7 +197,7 @@ export default [
     ]
   },
   {
-    id: 4,
+    id: '4',
     title:
       'Пицца до 36 см с доставкой и навынос, прямиком из печи, приготовлена из свежих ингридиентов',
     description: `- Статус самовывоза можно изменить только по предварительной договоренности с администратором
@@ -222,7 +215,7 @@ export default [
     dateStart: '2021-01-01',
     dateEnd: '2021-06-09',
     vendorName: 'SushiChefArts',
-    vendorId: 2,
+    vendorId: '2',
     numberOfUses: 68,
     numberOfViews: 69,
     updated: '2021-02-07',
@@ -232,24 +225,22 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 3,
+        id: '3',
         x: 53.938102489505866,
         y: 27.488490327319887,
-        address: 'пр. Победителей, д. 84 (ТРЦ «Арена Сити»)',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
         city: 'Minsk',
         street: 'пр. Победителей',
         house: 'д. 84',
-        room: '(ТРЦ «Арена Сити»)',
+        room: '',
         email: 'sushi1@gmail.com',
         isActive: true
       },
       {
-        id: 4,
+        id: '4',
         x: 53.85829633426384,
         y: 27.43278622731758,
-        address: 'ул. Слободская, д. 27',
         phone: '+375 44 771-51-51',
         country: 'Беларусь',
         city: 'Minsk',
@@ -262,7 +253,7 @@ export default [
     ]
   },
   {
-    id: 5,
+    id: '5',
     title:
       'Съедобные шоколадные розы в букете, коробке от 13 руб. Шоколадки из Бельгии и Италии',
     description: `Внимание! Индивидуальные заказы принимаются минимум за день. В наличии есть готовые изделия, их доставка осуществляется после 14:30 в течение 2-4 часов. Промокод дает право на скидку от 10 до 25% на шоколадные розы в букетах из бельгийского шоколада «Standart» и «luxe», шоколад в коробке, шоколадную подписку. Iоколад «Luxe» (100-110 г) из бельгийского, либо итальянского шоколада c добавлением орехов, ягод и различных бонусов.`,
@@ -272,7 +263,7 @@ export default [
     dateStart: '2021-03-01',
     dateEnd: '2021-04-28',
     vendorName: 'Luxe',
-    vendorId: 4,
+    vendorId: '4',
     numberOfUses: 3,
     numberOfViews: 90,
     updated: '2021-01-01',
@@ -282,10 +273,9 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 9,
+        id: '9',
         x: 53.83947974668578,
         y: 27.640475169645576,
-        address: 'ул. Голодеда, д. 15',
         phone: '+ 375 25 788 41 32',
         country: 'Беларусь',
         city: 'Minsk',
@@ -298,7 +288,7 @@ export default [
     ]
   },
   {
-    id: 6,
+    id: '6',
     title:
       'Хит продаж! Плавание, бассейн + сауна + водные процедуры + аквадискотека - и все это в одном месте!',
     description: `Право на скидку 35% на разовое посещение бассейна: плавание (45 мин), плавание с сауной и водными процедурами (75 мин) или тренажерный зал + бассейн + сауна + гидропроцедуры (90 мин + 75 мин).`,
@@ -308,7 +298,7 @@ export default [
     dateStart: '2020-10-01',
     dateEnd: '2021-09-30',
     vendorName: 'ФОЦ им. Машерова',
-    vendorId: 5,
+    vendorId: '5',
     numberOfUses: 78,
     numberOfViews: 292,
     updated: '2021-02-10',
@@ -318,10 +308,9 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 10,
+        id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
-        address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Minsk',
@@ -334,7 +323,7 @@ export default [
     ]
   },
   {
-    id: 7,
+    id: '7',
     title:
       'Романтчическое спа-свидание в спа-студии: кедровая бочка, медово-солевой пилинг, тонизирующий массаж и не только!',
     description: `«Фруктовый поцелуй» (150 минут). Купон за 1500р. и доплата на месте: 2000р. вместо 10000р. Скидка 65%. В стоимость входит:
@@ -361,10 +350,9 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 10,
+        id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
-        address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Minsk',
@@ -377,7 +365,7 @@ export default [
     ]
   },
   {
-    id: 8,
+    id: '8',
     title:
       'Романтчическое спа-свидание в спа-студии: кедровая бочка, медово-солевой пилинг, тонизирующий массаж и не только!',
     description: `Стоимость абонемента:
@@ -392,7 +380,7 @@ export default [
     dateStart: '2020-12-15',
     dateEnd: '2021-03-17',
     vendorName: 'ФОЦ им. Машерова',
-    vendorId: 5,
+    vendorId: '5',
     numberOfUses: 431,
     numberOfViews: 990,
     updated: '2021-02-21',
@@ -402,10 +390,9 @@ export default [
     city: 'Minsk',
     offices: [
       {
-        id: 10,
+        id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
-        address: 'пр-т Победителей, д. 23к1',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Minsk',
@@ -418,7 +405,7 @@ export default [
     ]
   },
   {
-    id: 9,
+    id: '9',
     title:
       'Посещение детского развлекательного центра «Йети и дети» на целый день',
     description: `Воспользоваться можно до 01.04.21. Промокод дает право на скидку й00 рублей на посещение игровой зоны на целый день в детском развлекательном центре "Йети и Дети". Скидка действительна на неограниченное количество посещений.`,
@@ -428,7 +415,7 @@ export default [
     dateStart: '2021-02-05',
     dateEnd: '2021-04-01',
     vendorName: '«Йети и дети»',
-    vendorId: 6,
+    vendorId: '6',
     numberOfUses: 40,
     numberOfViews: 56,
     updated: '2021-03-01',
@@ -438,10 +425,9 @@ export default [
     city: 'Hrodna',
     offices: [
       {
-        id: 11,
+        id: '11',
         x: 53.65034593967492,
         y: 23.85468398498308,
-        address: 'пр-т Янки Купалы, д. 87',
         phone: '+ 375 29 120 68 66',
         country: 'Беларусь',
         city: 'Hrodna',
@@ -454,7 +440,7 @@ export default [
     ]
   },
   {
-    id: 10,
+    id: '10',
     title:
       'Аренда комнаты в центре музыкальных развлечений «Rockplay» для компании до 6 человек',
     description: `Предварительная запись с упоминанием акции по телефону обязательна. Акция действует только с понедельника по четверг при аренде комнаты продолжительностью не менее 2 часов`,
@@ -464,7 +450,7 @@ export default [
     dateStart: '2021-03-01',
     dateEnd: '2022-03-31',
     vendorName: 'Rockplay',
-    vendorId: 7,
+    vendorId: '7',
     numberOfUses: 88,
     numberOfViews: 103,
     updated: '2021-02-04',
@@ -474,10 +460,9 @@ export default [
     city: 'Hrodna',
     offices: [
       {
-        id: 12,
+        id: '12',
         x: 53.684909765450755,
         y: 23.845177013681916,
-        address: 'ул. Буденного, д. 54/1',
         phone: '+ 375 29 232 99 23',
         country: 'Беларусь',
         city: 'Hrodna',
@@ -490,7 +475,7 @@ export default [
     ]
   },
   {
-    id: 11,
+    id: '11',
     title:
       'Мастер-класс, экспресс или полный курс по визажу от «Студии Ирины Лесовой»!',
     description: `Внимание! Купон является первоначальным взносом от общей стоимости. Оставшуюся стоимость необходимо доплатить на месте. Преподаватель Ирина Лесовая - визажист-стилист, гример кино и телевидения. Общий стаж работы более 20 лет.`,
@@ -500,7 +485,7 @@ export default [
     dateStart: '2021-01-02',
     dateEnd: '2021-04-30',
     vendorName: 'Студия Ирины Лесовой',
-    vendorId: 8,
+    vendorId: '8',
     numberOfUses: 2,
     numberOfViews: 300,
     updated: '2021-02-11',
@@ -510,33 +495,32 @@ export default [
     city: 'Kyiv',
     offices: [
       {
-        id: 13,
+        id: '13',
         x: 50.42837142443786,
         y: 30.517745728722034,
-        address: 'ул. Ивана Федорова, д. 6, оф. 2, код 38, 2 этаж',
         phone: '+38 044 223-77-60',
         country: 'Украина',
         city: 'Kyiv',
         street: 'ул.Ивана Федорова',
         house: 'д. 6',
-        room: 'оф. 2, код 38, 2 этаж',
+        room: '2',
         email: 'ira.les@gmail.com',
         isActive: true
       }
     ]
   },
   {
-    id: 12,
+    id: '12',
     title:
       'Третья вещь в подарок при покупке любых костюмов, пальто, рубашек или галстуков в бутике Fashion Wear Milano',
-    description: ``, //TODO(abarmina) if there is no description, the text "vendor did not provide a description" is needed
+    description: ``,
     photoUrl:
       'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464',
     discount: '3 по цене 2',
     dateStart: '2021-02-01',
     dateEnd: '2021-05-01',
     vendorName: 'Fashion Wear Milano',
-    vendorId: 9,
+    vendorId: '9',
     numberOfUses: 32,
     numberOfViews: 56,
     updated: '2021-02-22',
@@ -546,23 +530,22 @@ export default [
     city: 'Kyiv',
     offices: [
       {
-        id: 14,
+        id: '14',
         x: 50.44025486038732,
         y: 30.52230314847687,
-        address: 'Ул. Рогнеденская, 3, 1 этаж, 4 офис',
         phone: '+38 098 983-07-77',
         country: 'Украина',
         city: 'Киве',
         street: 'ул.Рогнеденская',
         house: 'д. 3',
-        room: '1 этаж, 4 офис',
+        room: '4',
         email: 'fashion-wear@gmail.com',
         isActive: true
       }
     ]
   },
   {
-    id: 13,
+    id: '13',
     title: 'Шиномонтаж от автокомплекса «Матерый шиномонтаж»',
     description: `Шиномонтаж и балансировка колес радиусом от R12 до R18, ремонт бокового пореза или дошиповка колес от автокомплекса «Матерый шиномонтаж»`,
     photoUrl:
@@ -571,7 +554,7 @@ export default [
     dateStart: '2021-04-01',
     dateEnd: '2021-05-01',
     vendorName: 'Матерый шиномонтаж',
-    vendorId: 10,
+    vendorId: '10',
     numberOfUses: 49,
     numberOfViews: 62,
     updated: '2021-02-05',
@@ -581,10 +564,9 @@ export default [
     city: 'Yekaterinburg',
     offices: [
       {
-        id: 15,
+        id: '15',
         x: 56.781522754305485,
         y: 60.61757015808883,
-        address: 'Монтёрская улица, д.10а',
         phone: '+7 343 385-07-00',
         country: 'Россия',
         city: 'Yekaterinburg',
@@ -595,10 +577,9 @@ export default [
         isActive: true
       },
       {
-        id: 16,
+        id: '16',
         x: 56.84222661082884,
         y: 60.66575335424758,
-        address: 'ул. Малышева, 145а',
         phone: '+7 343 383-42-43',
         country: 'Россия',
         city: 'Yekaterinburg',

@@ -1,8 +1,5 @@
 <div class="offer-popup" *ngIf="office">
-  <a
-    class="offer-popup__link-overlay link"
-    [routerLink]="['/home/offices', office.id]"
-  ></a>
+  <a class="link link_overlay" [routerLink]="['/home/offices', office.id]"></a>
   <img
     class="offer-popup__image"
     src="/assets/images/vendor_logo.jpg"

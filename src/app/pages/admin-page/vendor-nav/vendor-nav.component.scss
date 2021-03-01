@@ -12,14 +12,14 @@
   &__menu {
     display: flex;
     align-items: center;
-    height: $desktop-header;
+    height: $large-height;
     margin-bottom: 1em;
     padding: 0;
     text-align: center;
     border-bottom: $border-primary;
 
     @media screen and (max-width: $tablet) {
-      height: $mobile-header;
+      height: $medium-height;
     }
   }
 

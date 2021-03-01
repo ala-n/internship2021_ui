@@ -31,16 +31,12 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
-      switchMap((params) =>
-        this.offerService.getOfferById(Number(params['id']))
-      ),
+      switchMap((params) => this.offerService.getOfferById(params['id'])),
       tap((offer: Offer) => {
         this.offer = offer;
         this.mapService.setOffer(offer);
       }),
-      switchMap((offer) =>
-        this.officeService.getVendorOffices(Number(offer.vendorId))
-      ),
+      switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
       tap((offices) => (this.offices = offices)),
       map(() => false)
     );

@@ -8,14 +8,14 @@
   &__header {
     display: flex;
     align-items: center;
-    height: $desktop-header;
+    height: $large-height;
     width: 100%;
     margin-bottom: 1em;
     padding: 0 1em;
     border-bottom: $border-primary;
 
     @media screen and (max-width: $tablet) {
-      height: $mobile-header;
+      height: $medium-height;
       padding: 0 0.5em;
     }
   }

@@ -13,22 +13,22 @@ export class OfficeService {
 
   constructor(private http: HttpService) {}
 
-  getVendorOffices(vendorId: number): Observable<Office[]> {
+  getVendorOffices(vendorId: string): Observable<Office[]> {
     return this.http
       .get(OfficeService.OFFICES_URL)
       .pipe(
         map((offices) =>
-          offices.filter((office: { vendorId: number; }) => office.vendorId === vendorId)
+          offices.filter((office: { vendorId: string; }) => office.vendorId === vendorId)
         )
       );
   }
 
-  getOfficeById(id: number): Observable<Office> {
+  getOfficeById(id: string): Observable<Office> {
     const url = `${OfficeService.OFFICES_URL}/${id}`;
     return this.http.get(url);
   }
 
-  addOffice(office: Office, vendorId: number): Observable<Office> {
+  addOffice(office: Office, vendorId: string): Observable<Office> {
     office.vendorId = vendorId;
     return this.http.post(
       OfficeService.OFFICES_URL,
@@ -36,7 +36,7 @@ export class OfficeService {
     );
   }
 
-  updateOffice(office: Office, vendorId: number): Observable<Office> {
+  updateOffice(office: Office, vendorId: string): Observable<Office> {
     office.vendorId = vendorId;
     return this.http.put(
       OfficeService.OFFICES_URL,

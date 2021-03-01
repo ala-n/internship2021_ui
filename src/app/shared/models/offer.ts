@@ -1,12 +1,12 @@
 import { Office } from './office';
 
 export interface OfferBase {
-  id: number;
+  id: string;
   title: string;
   photoUrl: string;
   discount: string;
   vendorName: string;
-  vendorId: number;
+  vendorId: string;
   numberOfUses: number;
   numberOfViews: number;
   city: string;

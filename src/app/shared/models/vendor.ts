@@ -1,7 +1,7 @@
 import { Office } from './office';
 
 export interface Vendor {
-  id: number;
+  id: string;
   name: string;
   title: string;
   description: string;
