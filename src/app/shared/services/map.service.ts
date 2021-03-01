@@ -9,7 +9,7 @@ import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 import * as L from 'leaflet';
-import { Marker } from 'leaflet';
+import { Layer, Marker } from 'leaflet';
 // import { OpenStreetMapProvider } from 'leaflet-geosearch';
 import { EsriProvider } from 'leaflet-geosearch';
 import { BehaviorSubject } from 'rxjs';
@@ -93,7 +93,7 @@ export class MapService {
     return results;
   }
 
-  getMarkers(office: Office, name: string): L.Marker {
+  getMarkers(office: Office, name: string): L.Marker<Layer> {
     const factory = this.resolver.resolveComponentFactory(PopupComponent);
     const component = factory.create(this.injector);
     const popupContent = component.location.nativeElement;
@@ -102,7 +102,8 @@ export class MapService {
     component.instance.address = office.address;
     component.instance.phoneNumber = office.phone;
     const marker = L.marker(new L.LatLng(office.x, office.y), {
-      icon: this.myIcon
+      icon: this.myIcon,
+      title: office.id
     });
     marker.bindPopup(popupContent);
     this.markerPopup.push({
