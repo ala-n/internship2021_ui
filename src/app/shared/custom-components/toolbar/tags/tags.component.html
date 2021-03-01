@@ -1,6 +1,12 @@
 <div class="tags">
   <mat-chip-list>
-    <mat-chip tabindex="0" class="tags__item" *ngFor="let tag of tags">
+    <mat-chip
+      tabindex="0"
+      class="tags__item"
+      *ngFor="let tag of tags"
+      [value]="tag.name"
+      (click)="onClick($event)"
+    >
       {{ tag.name }}
     </mat-chip>
   </mat-chip-list>
