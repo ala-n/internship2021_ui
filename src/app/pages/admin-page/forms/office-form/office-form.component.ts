@@ -99,8 +99,8 @@ export class OfficeFormComponent implements OnInit {
           street: address.road,
           house: address.house_number,
           room: '',
-          phone: 123,
-          email: 'lol@gmail.com',
+          phone: null,
+          email: '',
           isActive: true
         });
         sub.unsubscribe();
