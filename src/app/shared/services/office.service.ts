@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Office } from '@shared/models/office';
 import { map } from 'rxjs/operators';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,42 +11,36 @@ import { map } from 'rxjs/operators';
 export class OfficeService {
   static OFFICES_URL = 'api/offices';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
   getVendorOffices(vendorId: number): Observable<Office[]> {
     return this.http
-      .get<Office[]>(OfficeService.OFFICES_URL)
+      .get(OfficeService.OFFICES_URL)
       .pipe(
         map((offices) =>
-          offices.filter((office) => office.vendorId === vendorId)
+          offices.filter((office: { vendorId: number; }) => office.vendorId === vendorId)
         )
       );
   }
 
   getOfficeById(id: number): Observable<Office> {
     const url = `${OfficeService.OFFICES_URL}/${id}`;
-    return this.http.get<Office>(url);
+    return this.http.get(url);
   }
 
   addOffice(office: Office, vendorId: number): Observable<Office> {
     office.vendorId = vendorId;
-    return this.http.post<Office>(
+    return this.http.post(
       OfficeService.OFFICES_URL,
-      office,
-      this.httpOptions
+      office
     );
   }
 
   updateOffice(office: Office, vendorId: number): Observable<Office> {
     office.vendorId = vendorId;
-    return this.http.put<Office>(
+    return this.http.put(
       OfficeService.OFFICES_URL,
-      office,
-      this.httpOptions
+      office
     );
   }
 }

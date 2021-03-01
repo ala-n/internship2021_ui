@@ -24,27 +24,27 @@ export class HttpService {
     return sessionStorage.getItem('access_token');
   }
 
-  get(baseURL: string): Observable<unknown> {
+  get(baseURL: string): Observable<any> {
     return this.http
-      .get(baseURL, this.httpOptions)
+      .get<any>(baseURL, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  post(baseURL: string, data: unknown): Observable<unknown> {
+  post(baseURL: string, data: unknown): Observable<any> {
     return this.http
-      .post(baseURL, data, this.httpOptions)
+      .post<any>(baseURL, data, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  put(baseURL: string, data: unknown): Observable<unknown> {
+  put(baseURL: string, data: unknown): Observable<any> {
     return this.http
-      .put(baseURL, data, this.httpOptions)
+      .put<any>(baseURL, data, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
-  delete(baseURL: string): Observable<unknown> {
+  delete(baseURL: string): Observable<any> {
     return this.http
-      .delete(baseURL, this.httpOptions)
+      .delete<any>(baseURL, this.httpOptions)
       .pipe(catchError(this.errorHandler));
   }
 
