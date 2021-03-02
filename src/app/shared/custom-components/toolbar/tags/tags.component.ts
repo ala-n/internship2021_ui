@@ -23,7 +23,9 @@ export class TagsComponent implements OnInit {
     this.tags = data;
   }
 
-  onClick(tag: string): void {
-    this.tagsService.setTag(tag);
+  onClick(e: Event): void {
+    const target = e.target as HTMLElement;
+    const text = target.textContent || '';
+    this.tagsService.setTag(text.trim());
   }
 }

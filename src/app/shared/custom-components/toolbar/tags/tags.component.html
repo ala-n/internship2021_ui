@@ -5,7 +5,7 @@
       class="tags__item"
       *ngFor="let tag of tags"
       [value]="tag.name"
-      (click)="onClick($any($event.target).innerText)"
+      (click)="onClick($event)"
     >
       {{ tag.name }}
     </mat-chip>
