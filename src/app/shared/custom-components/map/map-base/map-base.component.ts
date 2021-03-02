@@ -13,6 +13,7 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
 import { LocationService } from '@shared/services/location.service';
+export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
   selector: 'app-map-base',
@@ -24,7 +25,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
-  @Input() markers!: L.Marker[];
+  @Input() markers!: MarkerExtended[];
   markerAll = new L.MarkerClusterGroup({
     chunkedLoading: true,
     animateAddingMarkers: true
@@ -45,7 +46,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       if (this.markers) {
         for (const marker of this.markers) {
           if (this.map.getBounds().contains(marker.getLatLng())) {
-            officeId.push(marker.options.title);
+            officeId.push(marker.officeId);
           }
         }
         console.log(officeId); //TODO: this task not completed yet. skip

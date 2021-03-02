@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,16 @@ import { Offer } from '../models/offer';
 export class OfferService {
   static OFFERS_URL = 'api/offers';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
-    if (!params) return this.http.get<Offer[]>(`${OfferService.OFFERS_URL}`);
+    if (!params) return this.http.get(`${OfferService.OFFERS_URL}`);
     else
-      return this.http.get<Offer[]>(
-        `${OfferService.OFFERS_URL}/?city=${params.city}`
-        // api/offers/city/${city.id}
-      );
+      return this.http.get(`${OfferService.OFFERS_URL}/?city=${params.city}`);
   }
 
   getOfferById(id: string): Observable<Offer> {
-    return this.http.get<Offer>(`${OfferService.OFFERS_URL}/${id}`);
+    return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
     // api/offers/${id}
   }
 
@@ -35,25 +28,21 @@ export class OfferService {
     return this.http
       .get<Offer[]>(`${OfferService.OFFERS_URL}`)
       .pipe(
-        map((offers) => offers.filter((offer) => offer.vendorId === vendorId))
+        map((offers) =>
+          offers.filter(
+            (offer: { vendorId: string }) => offer.vendorId === vendorId
+          )
+        )
       );
   }
 
   addOffer(offer: Offer, vendorId: string): Observable<Offer> {
     offer.vendorId = vendorId;
-    return this.http.post<Offer>(
-      OfferService.OFFERS_URL,
-      offer,
-      this.httpOptions
-    );
+    return this.http.post(OfferService.OFFERS_URL, offer);
   }
 
   updateOffer(offer: Offer, vendorId: string): Observable<Offer> {
     offer.vendorId = vendorId;
-    return this.http.put<Offer>(
-      OfferService.OFFERS_URL,
-      offer,
-      this.httpOptions
-    );
+    return this.http.put(OfferService.OFFERS_URL, offer);
   }
 }

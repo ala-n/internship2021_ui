@@ -6,6 +6,7 @@ import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 import { LocationService } from '@shared/services/location.service';
 import { VendorService } from '@shared/services/vendor.service';
+import type { MarkerExtended } from './map-base/map-base.component';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,7 @@ export class MapComponent implements OnInit, OnDestroy {
   offerRequest$!: Subscription;
   city!: string;
   name!: string;
-  markers!: L.Marker[];
+  markers!: MarkerExtended[];
 
   constructor(
     private locationService: LocationService,

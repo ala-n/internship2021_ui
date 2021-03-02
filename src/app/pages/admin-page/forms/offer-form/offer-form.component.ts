@@ -63,10 +63,10 @@ export class OfferFormComponent implements OnInit {
         .subscribe((offer: Offer) => {
           this.offer = offer;
           this.offerOffices = offer.offices.map((office) => office.id);
-          this.vendorName = offer.vendorName;
           this.vendorId = offer.vendorId;
           this.tags = offer.tags || [];
           this.getOfficesForSelect(this.vendorId);
+          this.getVendorName(this.vendorId);
           this.offerForm.setValue({
             title: offer.title,
             discount: offer.discount,
@@ -82,13 +82,17 @@ export class OfferFormComponent implements OnInit {
         });
     } else {
       this.getOfficesForSelect(this.vendorNavId);
-      this.vendorService
-        .getVendorById(this.vendorNavId)
-        .pipe(take(1))
-        .subscribe((vendor) => {
-          this.vendorName = vendor.name;
-        });
+      this.getVendorName(this.vendorNavId);
     }
+  }
+
+  getVendorName(id: string): void {
+    this.vendorService
+      .getVendorById(id)
+      .pipe(take(1))
+      .subscribe((vendor) => {
+        this.vendorName = vendor.name;
+      });
   }
 
   getOfficesForSelect(id: string): void {
@@ -101,8 +105,6 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.offerForm.value);
-
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.vendorId);
     } else {

@@ -1,6 +1,6 @@
 <mat-spinner class="table__spinner" *ngIf="isLoading"></mat-spinner>
 
-<div class="table mat-elevation-z8" [hidden]="isLoading">
+<div class="table mat-elevation-z8" [class.table_hidden]="isLoading">
   <div class="table__header">
     <i class="spacer"></i>
     <mat-button-toggle-group

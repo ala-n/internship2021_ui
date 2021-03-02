@@ -54,7 +54,6 @@ export class OfficeFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((office) => {
           this.office = office;
-          this.vendorName = this.office.vendorName;
           this.officeForm.setValue({
             country: this.office.country,
             city: this.office.city,
@@ -66,14 +65,13 @@ export class OfficeFormComponent implements OnInit {
             isActive: this.office.isActive
           });
         });
-    } else {
-      this.vendorService
-        .getVendorById(this.vendorId)
-        .pipe(take(1))
-        .subscribe((vendor) => {
-          this.vendorName = vendor.name;
-        });
     }
+    this.vendorService
+      .getVendorById(this.vendorId)
+      .pipe(take(1))
+      .subscribe((vendor) => {
+        this.vendorName = vendor.name;
+      });
   }
 
   openDialog(): void {
@@ -110,7 +108,6 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.officeForm.value);
     if (this.office) {
       this.officeService.updateOffice(this.officeForm.value, this.vendorId);
     } else {
