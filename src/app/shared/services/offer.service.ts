@@ -15,16 +15,22 @@ export class OfferService {
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
     if (!params) return this.http.get(`${OfferService.OFFERS_URL}`);
-    else
+    else {
+      // for backend
+      // return this.http.get(`${OfferService.OFFERS_URL}/city/{id}`);
+
+      // for mocks
       return this.http.get(`${OfferService.OFFERS_URL}/?city=${params.city}`);
+    }
   }
 
   getOfferById(id: string): Observable<Offer> {
+    // for backend and for mocks
     return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
-    // api/offers/${id}
   }
 
   getVendorOffers(vendorId: string): Observable<Offer[]> {
+    // for mocks
     return this.http
       .get<Offer[]>(`${OfferService.OFFERS_URL}`)
       .pipe(
@@ -34,6 +40,18 @@ export class OfferService {
           )
         )
       );
+
+    // for backend
+    // return this.http.get<Offer[]>(
+    //   `${OfferService.OFFERS_URL}/vendor/${vendorId}`
+    // );
+  }
+
+  getOfficeOffers(officeId: string): Observable<Offer[]> {
+    // for backend
+    return this.http.get<Offer[]>(
+      `${OfferService.OFFERS_URL}/vendorEntitiy/${officeId}`
+    );
   }
 
   addOffer(offer: Offer, vendorId: string): Observable<Offer> {
