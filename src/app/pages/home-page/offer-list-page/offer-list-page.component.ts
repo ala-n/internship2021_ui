@@ -28,11 +28,10 @@ export class OfferListPageComponent {
       this.offerListService.baseOfferList$ = this.offers$;
       this.city = city;
     });
-    // this.offerListService.filterOfferList(["1", "2", "10", "14"])
     this.offerListService.filteredOfferList$
       .pipe(skip(1))
       .subscribe((offers) => {
-        this.offers$ = of(offers);
+        if (offers.length !== 0) this.offers$ = of(offers);
       });
   }
 }
