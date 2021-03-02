@@ -13,6 +13,7 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
 import { OfferListPageService } from 'src/app/pages/home-page/offer-list-page/offer-list-page.service';
+export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
   selector: 'app-map-base',
@@ -24,7 +25,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
-  @Input() markers!: L.Marker[];
+  @Input() markers!: MarkerExtended[];
   markerAll = new L.MarkerClusterGroup({
     chunkedLoading: true,
     animateAddingMarkers: true
@@ -45,7 +46,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       if (this.markers) {
         for (const marker of this.markers) {
           if (this.map.getBounds().contains(marker.getLatLng())) {
-            if (marker.options.title) officeId.push(marker.options.title);
+            if (marker.officeId) officeId.push(marker.officeId);
           }
         }
         this.offerListService.filterOfferList(officeId); //TODO: this task not completed yet. skip
