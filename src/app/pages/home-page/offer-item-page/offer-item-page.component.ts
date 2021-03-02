@@ -1,13 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { OfficeService } from '@shared/services/office.service';
-import { of, Subject } from 'rxjs';
-import { map, skip, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -15,7 +15,6 @@ import { map, skip, switchMap, takeUntil, tap } from 'rxjs/operators';
   styleUrls: ['./offer-item-page.component.scss']
 })
 export class OfferItemPageComponent implements OnInit, OnDestroy {
-  private readonly destroy$: Subject<boolean> = new Subject<boolean>();
   offer!: Offer;
   offices!: Office[];
 
@@ -25,8 +24,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
     private readonly officeService: OfficeService,
-    private readonly mapService: MapService,
-    private router: Router
+    private readonly mapService: MapService
   ) {}
 
   ngOnInit(): void {
@@ -36,20 +34,19 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         this.offer = offer;
         this.mapService.setOffer(offer);
       }),
+      // for mocks
       switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
+
+      // for backend
+      // switchMap((offer: Offer) =>
+      //   this.officeService.getOfficesByOffer(offer.offices)
+      // ),
       tap((offices) => (this.offices = offices)),
       map(() => false)
     );
-    this.mapService.city$
-      .pipe(skip(1), takeUntil(this.destroy$))
-      .subscribe(() => {
-        this.router.navigate(['/home']);
-      });
   }
 
   ngOnDestroy(): void {
-    this.destroy$.next(true);
-    this.destroy$.unsubscribe();
     this.mapService.clearOffer();
   }
 }
