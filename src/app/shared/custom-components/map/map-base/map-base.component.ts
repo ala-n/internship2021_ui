@@ -12,6 +12,7 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
+import { LocationService } from '@shared/services/location.service';
 import { OfferListPageService } from '@shared/services/offer-list-page.service';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
@@ -35,6 +36,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   marker!: L.Marker;
 
   constructor(
+    private locationService: LocationService,
     private mapService: MapService,
     private offerListService: OfferListPageService
   ) {}
@@ -86,7 +88,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {
-            this.mapService.setCity(data.address.city);
+            this.locationService.setCity(data.address.city);
           });
         this.map.stopLocate();
       })

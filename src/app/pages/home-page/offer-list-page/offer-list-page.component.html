@@ -3,8 +3,7 @@
   <a
     class="link"
     *ngFor="let offer of offers"
-    [routerLink]="['offers', offer.id]"
-    queryParamsHandling="merge"
+    [routerLink]="['/home/offers', offer.id]"
   >
     <app-offer-item [offer]="offer" class="offer-card"></app-offer-item
   ></a>

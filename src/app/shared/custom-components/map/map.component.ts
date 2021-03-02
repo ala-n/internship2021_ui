@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
+import { LocationService } from '@shared/services/location.service';
 import { VendorService } from '@shared/services/vendor.service';
 import type { MarkerExtended } from './map-base/map-base.component';
 
@@ -20,12 +21,13 @@ export class MapComponent implements OnInit, OnDestroy {
   markers!: MarkerExtended[];
 
   constructor(
+    private locationService: LocationService,
     private mapService: MapService,
     private vendorService: VendorService
   ) {}
 
   ngOnInit(): void {
-    const subscription$ = this.mapService.city$.subscribe((city) => {
+    const subscription$ = this.locationService.city$.subscribe((city) => {
       this.city = city;
       this.onChangeOffers();
     });

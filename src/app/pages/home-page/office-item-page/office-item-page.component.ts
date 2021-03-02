@@ -10,6 +10,7 @@ import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-office-item-page',
@@ -28,6 +29,7 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
     private officeService: OfficeService,
     private offerService: OfferService,
     private mapService: MapService,
+    private locationService: LocationService,
     private vendorService: VendorService
   ) {}
 
@@ -36,12 +38,16 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => this.officeService.getOfficeById(params['id'])),
       tap((office) => {
         this.office = office;
+        this.locationService.setCity(office.city);
         this.mapService.setOffice(office);
       }),
       switchMap((office) =>
         forkJoin([
           this.vendorService.getVendorById(office.vendorId),
+          // for mocks
           this.offerService.getVendorOffers(office.vendorId)
+          // for backend
+          // this.offerService.getOfficeOffers(office.id)
         ])
       ),
       tap(([vendor, offers]) => {
