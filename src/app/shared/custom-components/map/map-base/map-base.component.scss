@@ -1,3 +1,38 @@
+:host {
+  position: relative;
+}
+
 #map {
   height: 100%;
+}
+
+.locateMe {
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  position: absolute;
+  left: 10px;
+  top: 85px;
+  z-index: 1000;
+  border-radius: 2px;
+  &__button {
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+    color: #787d7e;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border: none;
+    border-radius: 2px;
+  }
+}
+
+mat-icon {
+  vertical-align: middle;
+  font-size: 22px;
 }
