@@ -12,6 +12,7 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
+import { OfferListPageService } from '@shared/services/offer-list-page.service';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
@@ -33,19 +34,22 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   carValue!: string;
   marker!: L.Marker;
 
-  constructor(private mapService: MapService) {}
+  constructor(
+    private mapService: MapService,
+    private offerListService: OfferListPageService
+  ) {}
 
   ngOnInit(): void {
     this.mapView();
     this.map.on('moveend', () => {
-      const officeId = [];
+      const officeId: string[] = [];
       if (this.markers) {
         for (const marker of this.markers) {
           if (this.map.getBounds().contains(marker.getLatLng())) {
-            officeId.push(marker.officeId);
+            if (marker.officeId) officeId.push(marker.officeId);
           }
         }
-        console.log(officeId); //TODO: this task not completed yet. skip
+        this.offerListService.filterOfferList(officeId); //TODO: this task not completed yet. skip
       }
     });
   }

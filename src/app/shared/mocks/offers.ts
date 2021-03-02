@@ -26,6 +26,7 @@ export default [
       'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
     ],
     city: 'Minsk',
+    officesId: ['1', '2'],
     offices: [
       {
         id: '1',
@@ -86,6 +87,7 @@ export default [
     tags: ['Food', 'Sushi'],
     isActive: true,
     city: 'Minsk',
+    officesId: ['3'],
     offices: [
       {
         id: '3',
@@ -141,6 +143,7 @@ export default [
       'https://pizzamania.by/admin/uploads/items/16.png'
     ],
     city: 'Minsk',
+    officesId: ['5', '6', '7', '8'],
     offices: [
       {
         id: '5',
@@ -223,6 +226,7 @@ export default [
     tags: ['Food', 'Pizza'],
     isActive: true,
     city: 'Minsk',
+    officesId: ['3', '4'],
     offices: [
       {
         id: '3',
@@ -271,6 +275,7 @@ export default [
     tags: ['Food', 'Flowers'],
     isActive: true,
     city: 'Minsk',
+    officesId: ['9'],
     offices: [
       {
         id: '9',
@@ -306,6 +311,7 @@ export default [
     tags: ['Sport', 'Health'],
     isActive: true,
     city: 'Minsk',
+    officesId: ['10'],
     offices: [
       {
         id: '10',
@@ -348,6 +354,7 @@ export default [
     tags: ['Spa', 'Beauty'],
     isActive: true,
     city: 'Minsk',
+    officesId: ['10'],
     offices: [
       {
         id: '10',
@@ -388,6 +395,7 @@ export default [
     isActive: false,
     tags: ['Spa', 'Beauty'],
     city: 'Minsk',
+    officesId: ['10'],
     offices: [
       {
         id: '10',
@@ -423,6 +431,7 @@ export default [
     tags: [],
     isActive: true,
     city: 'Hrodna',
+    officesId: ['11'],
     offices: [
       {
         id: '11',
@@ -458,6 +467,7 @@ export default [
     tags: ['Entartainment', 'Music'],
     isActive: true,
     city: 'Hrodna',
+    officesId: ['12'],
     offices: [
       {
         id: '12',
@@ -493,6 +503,7 @@ export default [
     tags: ['Beauty'],
     isActive: true,
     city: 'Kyiv',
+    officesId: ['13'],
     offices: [
       {
         id: '13',
@@ -528,6 +539,7 @@ export default [
     tags: ['Clothes', 'Fashion'],
     isActive: false,
     city: 'Kyiv',
+    officesId: ['14'],
     offices: [
       {
         id: '14',
@@ -562,6 +574,7 @@ export default [
     tags: ['Auto', 'Wheels'],
     isActive: true,
     city: 'Yekaterinburg',
+    officesId: ['15', '16'],
     offices: [
       {
         id: '15',
