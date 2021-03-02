@@ -16,8 +16,12 @@ export class VendorService {
 
   constructor(private http: HttpClient) {}
 
-  getVendors(): Observable<Vendor[]> {
-    return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
+  getVendors(params?: { city: string }): Observable<Vendor[]> {
+    if (!params) return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
+    else
+      return this.http.get<Vendor[]>(
+        `${VendorService.VENDORS_URL}/?city=${params.city}`
+      );
   }
 
   getVendorById(id: string): Observable<Vendor> {
@@ -33,11 +37,9 @@ export class VendorService {
     );
   }
 
-  updateVendor(vendor: Vendor): Observable<Vendor> {
-    return this.http.put<Vendor>(
-      VendorService.VENDORS_URL,
-      vendor,
-      this.httpOptions
-    );
+  updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
+    console.log(vendor, vendorId);
+    const url = `${VendorService.VENDORS_URL}/${vendorId}`;
+    return this.http.put<Vendor>(url, vendor, this.httpOptions);
   }
 }
