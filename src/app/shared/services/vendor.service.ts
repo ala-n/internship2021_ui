@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
 import { Vendor } from '@shared/models/vendor';
 
 @Injectable({
@@ -42,6 +41,7 @@ export class VendorService {
   }
 
   updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
+    console.log(vendor, vendorId);
     const url = `${VendorService.VENDORS_URL}/${vendorId}`;
     return this.http.put<Vendor>(url, vendor, this.httpOptions);
   }
