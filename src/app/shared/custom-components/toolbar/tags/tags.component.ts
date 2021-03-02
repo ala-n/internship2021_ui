@@ -10,7 +10,6 @@ import { TagsService } from '@shared/services/tag.service';
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];
-  countUpdate: any;
 
   constructor(private tagsService: TagsService) {}
 
@@ -24,8 +23,7 @@ export class TagsComponent implements OnInit {
     this.tags = data;
   }
 
-  onClick(event: Event) {
-    const elementValue: any = (event.target as Element).textContent;
-    console.log(elementValue);
+  onClick(tag: string): void {
+    this.tagsService.setTag(tag);
   }
 }
