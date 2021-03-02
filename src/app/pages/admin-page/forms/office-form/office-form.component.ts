@@ -18,6 +18,8 @@ import { MapService } from '@shared/services/map.service';
 })
 export class OfficeFormComponent implements OnInit {
   officeForm = this.fb.group({
+    x: null,
+    y: null,
     country: [null, Validators.required],
     city: [null, Validators.required],
     street: [null, Validators.required],
@@ -55,6 +57,8 @@ export class OfficeFormComponent implements OnInit {
         .subscribe((office) => {
           this.office = office;
           this.officeForm.setValue({
+            x: this.office.x,
+            y: this.office.y,
             country: this.office.country,
             city: this.office.city,
             street: this.office.street,
@@ -94,6 +98,8 @@ export class OfficeFormComponent implements OnInit {
       .subscribe((data) => {
         const address = data.address;
         this.officeForm.setValue({
+          x: coordinate.lat,
+          y: coordinate.lng,
           country: address.country,
           city: address.city,
           street: address.road,

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, of } from 'rxjs';
+import { withLatestFrom, skip } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
 import { LocationService } from '@shared/services/location.service';
 import { UserService } from '@shared/services/user.service';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { OfferListPageService } from '@shared/services/offer-list-page.service';
 
 @Component({
   selector: 'app-offer-list-page',
@@ -21,16 +22,17 @@ export class OfferListPageComponent {
     private offerService: OfferService,
     public locationService: LocationService,
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private offerListService: OfferListPageService
   ) {}
 
   ngOnInit(): void {
-    this.offers$ = this.locationService.city$.pipe(
-      tap((city) => {
-        this.city = city;
-      }),
-      switchMap((city) => this.offerService.getOffers({ city }))
-    );
+    this.locationService.city$.subscribe((city) => {
+      this.offers$ = this.offerService.getOffers({ city });
+      this.offerListService.baseOfferList$ = this.offers$;
+      this.city = city;
+    });
+
     this.route.queryParams
       .pipe(withLatestFrom(this.userService.user$))
       .subscribe(([{ city }, user]) => {
@@ -45,6 +47,12 @@ export class OfferListPageComponent {
         }
 
         this.locationService.setCity('Minsk');
+      });
+
+    this.offerListService.filteredOfferList$
+      .pipe(skip(1))
+      .subscribe((offers) => {
+        if (offers.length !== 0) this.offers$ = of(offers);
       });
   }
 }
