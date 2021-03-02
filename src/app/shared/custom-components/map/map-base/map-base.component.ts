@@ -12,7 +12,7 @@ import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
-import { OfferListPageService } from 'src/app/pages/home-page/offer-list-page/offer-list-page.service';
+import { OfferListPageService } from '@shared/services/offer-list-page.service';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({

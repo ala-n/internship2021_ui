@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
-import { OfferListPageService } from './offer-list-page.service';
 import { skip } from 'rxjs/operators';
+import { OfferListPageService } from '@shared/services/offer-list-page.service';
 
 @Component({
   selector: 'app-offer-list-page',
