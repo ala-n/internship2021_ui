@@ -5,8 +5,14 @@ export default [
       '78 видов массажей: классические, экзотические, SPA-ритуалы от 18 руб.',
     description: `Уважаемые клиенты, с 12 ноября ношение масок стало обязательным. Пожалуйста, надевайте маску в салоне, даже если вы здоровы. С заботой о вас, салон красоты "Марсель". Предварительная запись обязательна.
     Стоимость массажей: от 18 руб. от 30 руб. Стоимость и виды массажа смотрите ниже. Услуги расположены по возрастанию цены (от дешевых к дорогим)`,
-    photoUrl:
+    photoUrl: [
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-minsk-skidka-marsel-1.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
+    ],
     dateStart: '2021-02-01',
     dateEnd: '2021-04-01',
     discount: 'до 55%',
@@ -18,13 +24,6 @@ export default [
     promocode: '34B2J3IB',
     tags: ['Massage', 'Beauty', 'Health'],
     isActive: true,
-    photoGallery: [
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
-    ],
     city: 'Minsk',
     offices: [
       {
@@ -72,8 +71,9 @@ export default [
       Посещение в выходные дни:
       — Скидка 70% на целый день посещения аквапарка и банного комплекса для детей в выходные дни (175 руб. + доплата 925 руб. вместо 2200 руб.)
       — Скидка 70% на целый день посещения аквапарка и банного комплекса для взрослых в выходные дни (225 руб. + доплата 1570 руб. вместо 3590 руб.)`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609413591_ChefArts_No_Logo_1528x972.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609413591_ChefArts_No_Logo_1528x972.jpg'
+    ],
     dateStart: '2021-01-01',
     dateEnd: '2021-05-05',
     discount: 'до 70%',
@@ -118,8 +118,16 @@ export default [
     - пицца "Мясо по-французски" 1 метр: 21,95 руб. 43,90 руб.
     - пицца "Деревенская" 1 метр: 21,95 руб. 43,90 руб.
     - Возможен заказ пицц из 2-х половинок`,
-    photoUrl:
+    photoUrl: [
       'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-minsk-pizzamania-kar-9.jpg',
+      'https://pizzamania.by/admin/uploads/items/260.png',
+      'https://pizzamania.by/admin/uploads/items/236.png',
+      'https://pizzamania.by/admin/uploads/items/191.png',
+      'https://pizzamania.by/admin/uploads/items/189.png',
+      'https://pizzamania.by/admin/uploads/items/19.png',
+      'https://pizzamania.by/admin/uploads/items/17.png',
+      'https://pizzamania.by/admin/uploads/items/16.png'
+    ],
     dateStart: '2020-02-01',
     dateEnd: '2021-03-31',
     discount: '40%',
@@ -131,15 +139,6 @@ export default [
     promocode: '34BEFWWWIB',
     tags: [],
     isActive: true,
-    photoGallery: [
-      'https://pizzamania.by/admin/uploads/items/260.png',
-      'https://pizzamania.by/admin/uploads/items/236.png',
-      'https://pizzamania.by/admin/uploads/items/191.png',
-      'https://pizzamania.by/admin/uploads/items/189.png',
-      'https://pizzamania.by/admin/uploads/items/19.png',
-      'https://pizzamania.by/admin/uploads/items/17.png',
-      'https://pizzamania.by/admin/uploads/items/16.png'
-    ],
     city: 'Minsk',
     offices: [
       {
@@ -209,8 +208,9 @@ export default [
     - Внимание! Стоимость доставки не включена в стоимость пицц
     - Доставка: в пределах МКАД весь город + Ждановичи, Уручье, Копище, Шабаны 3 руб.
     - Один промокод - до 2-х пицц или один сет со скидкой.`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/glav2.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/glav2.jpg'
+    ],
     discount: '60%',
     dateStart: '2021-01-01',
     dateEnd: '2021-06-09',
@@ -257,8 +257,9 @@ export default [
     title:
       'Съедобные шоколадные розы в букете, коробке от 13 руб. Шоколадки из Бельгии и Италии',
     description: `Внимание! Индивидуальные заказы принимаются минимум за день. В наличии есть готовые изделия, их доставка осуществляется после 14:30 в течение 2-4 часов. Промокод дает право на скидку от 10 до 25% на шоколадные розы в букетах из бельгийского шоколада «Standart» и «luxe», шоколад в коробке, шоколадную подписку. Iоколад «Luxe» (100-110 г) из бельгийского, либо итальянского шоколада c добавлением орехов, ягод и различных бонусов.`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg'
+    ],
     discount: 'от 10 до 25%',
     dateStart: '2021-03-01',
     dateEnd: '2021-04-28',
@@ -292,8 +293,9 @@ export default [
     title:
       'Хит продаж! Плавание, бассейн + сауна + водные процедуры + аквадискотека - и все это в одном месте!',
     description: `Право на скидку 35% на разовое посещение бассейна: плавание (45 мин), плавание с сауной и водными процедурами (75 мин) или тренажерный зал + бассейн + сауна + гидропроцедуры (90 мин + 75 мин).`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg'
+    ],
     discount: '35%',
     dateStart: '2020-10-01',
     dateEnd: '2021-09-30',
@@ -334,8 +336,9 @@ export default [
     - релакс-аромамассаж всего тела с манговым крем-маслом, 50 минут;
     - отдых в релакс-зоне (паровой коктейль, восточные сладости к чаю и оформление чайными свечами и лепестками роз в подарок), 30 минут;
     - спа-музыка, ароматерапия, консультация массажиста`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/otzyvy-banya-bochka.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/otzyvy-banya-bochka.jpg'
+    ],
     discount: '65%',
     dateStart: '2021-11-01',
     dateEnd: '2021-03-17',
@@ -374,8 +377,9 @@ export default [
     -  60 мин: 19,54  руб. 39,08 руб.
 
     Один промокод - один абонемент со скидкой.`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w500_324/default/1009921/1588077039_7929355.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w500_324/default/1009921/1588077039_7929355.jpg'
+    ],
     discount: '65%',
     dateStart: '2020-12-15',
     dateEnd: '2021-03-17',
@@ -409,8 +413,9 @@ export default [
     title:
       'Посещение детского развлекательного центра «Йети и дети» на целый день',
     description: `Воспользоваться можно до 01.04.21. Промокод дает право на скидку й00 рублей на посещение игровой зоны на целый день в детском развлекательном центре "Йети и Дети". Скидка действительна на неограниченное количество посещений.`,
-    photoUrl:
-      'https://www.slivki.by/znijki-media/w250_162/default/1009921/1600269916_1600269911_Screenshot_18.jpg',
+    photoUrl: [
+      'https://www.slivki.by/znijki-media/w250_162/default/1009921/1600269916_1600269911_Screenshot_18.jpg'
+    ],
     discount: 'до 1000 рублей',
     dateStart: '2021-02-05',
     dateEnd: '2021-04-01',
@@ -444,8 +449,9 @@ export default [
     title:
       'Аренда комнаты в центре музыкальных развлечений «Rockplay» для компании до 6 человек',
     description: `Предварительная запись с упоминанием акции по телефону обязательна. Акция действует только с понедельника по четверг при аренде комнаты продолжительностью не менее 2 часов`,
-    photoUrl:
-      'https://grodno.slivki.by/znijki-media/w522_322/default/1009921/rocktz11.jpg',
+    photoUrl: [
+      'https://grodno.slivki.by/znijki-media/w522_322/default/1009921/rocktz11.jpg'
+    ],
     discount: '1 час бесплатно',
     dateStart: '2021-03-01',
     dateEnd: '2022-03-31',
@@ -479,8 +485,9 @@ export default [
     title:
       'Мастер-класс, экспресс или полный курс по визажу от «Студии Ирины Лесовой»!',
     description: `Внимание! Купон является первоначальным взносом от общей стоимости. Оставшуюся стоимость необходимо доплатить на месте. Преподаватель Ирина Лесовая - визажист-стилист, гример кино и телевидения. Общий стаж работы более 20 лет.`,
-    photoUrl:
-      'https://kupikupon.com.ua/system/deals/logos/152269/deal_615x301/8484_01.jpg?1600357423',
+    photoUrl: [
+      'https://kupikupon.com.ua/system/deals/logos/152269/deal_615x301/8484_01.jpg?1600357423'
+    ],
     discount: 'до 70%',
     dateStart: '2021-01-02',
     dateEnd: '2021-04-30',
@@ -514,8 +521,9 @@ export default [
     title:
       'Третья вещь в подарок при покупке любых костюмов, пальто, рубашек или галстуков в бутике Fashion Wear Milano',
     description: ``,
-    photoUrl:
-      'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464',
+    photoUrl: [
+      'https://kupikupon.com.ua/system/deals/logos/147238/deal_615x301/33933_01.jpg?1575038464'
+    ],
     discount: '3 по цене 2',
     dateStart: '2021-02-01',
     dateEnd: '2021-05-01',
@@ -548,8 +556,9 @@ export default [
     id: '13',
     title: 'Шиномонтаж от автокомплекса «Матерый шиномонтаж»',
     description: `Шиномонтаж и балансировка колес радиусом от R12 до R18, ремонт бокового пореза или дошиповка колес от автокомплекса «Матерый шиномонтаж»`,
-    photoUrl:
-      'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg',
+    photoUrl: [
+      'https://st.biglion.ru/c/w/316/h/178/cfs15/deal_offer/db/92/db922e430994114a6f905d54867724af.jpg'
+    ],
     discount: '-50%',
     dateStart: '2021-04-01',
     dateEnd: '2021-05-01',

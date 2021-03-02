@@ -22,11 +22,13 @@ export class OfferService {
     else
       return this.http.get<Offer[]>(
         `${OfferService.OFFERS_URL}/?city=${params.city}`
+        // api/offers/city/${city.id}
       );
   }
 
   getOfferById(id: string): Observable<Offer> {
     return this.http.get<Offer>(`${OfferService.OFFERS_URL}/${id}`);
+    // api/offers/${id}
   }
 
   getVendorOffers(vendorId: string): Observable<Offer[]> {
