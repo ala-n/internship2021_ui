@@ -18,9 +18,8 @@ export class HeaderComponent {
     // hotfix of problem: after page refresh "home/manage: navigation buttons return to default state
     // like we are on home-page;
     // TODO find better solution
-    this.city = this.router.url.split('/home/')[1];
 
-    this.homePageVisibility = this.router.url !== `/home/${this.city}`;
+    this.homePageVisibility = !/home/.test(this.router.url);
     this.navigationService.setHomePageVisibility(this.homePageVisibility);
   }
 }
