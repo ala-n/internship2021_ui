@@ -3,7 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-import { SearchData } from 'src/app/shared/models/search-data';
+import { Tag } from '@shared/models/tag';
 import { SearchService } from 'src/app/shared/services/search.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { SearchService } from 'src/app/shared/services/search.service';
 export class SearchComponent implements OnInit {
   control = new FormControl();
 
-  data!: SearchData[]; // Array of object, that contains a string data
+  data!: Tag[]; // Array of object, that contains a string data
 
   stringData!: string[]; // Array of string, that was made from data
 
@@ -24,21 +24,21 @@ export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
-    this.searchService
-      .getSearchData()
-      .subscribe((data: SearchData[]) => this.parseSearchData(data));
+    this.searchService.getSearchData().subscribe((data: Tag[]) => {
+      this.parseSearchData(data);
+    });
   }
 
-  parseSearchData(data: SearchData[]): void {
+  parseSearchData(data: Tag[]): void {
     this.data = data;
     this.stringData = this.fromArrayToString();
     this.changeValue();
   }
 
-  //This function make from objects array to strings array
+  // This function make from objects array to strings array
   fromArrayToString(): string[] {
     return this.data.map((object) => {
-      return object.data;
+      return object.name;
     });
   }
 

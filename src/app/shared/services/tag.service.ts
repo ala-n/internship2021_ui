@@ -8,7 +8,7 @@ import { Tag } from '../models/tag';
   providedIn: 'root'
 })
 export class TagsService {
-  static TAGS_URL = 'api/tags';
+  static TAGS_URL = 'api/topTags';
 
   constructor(private http: HttpClient) {}
 
