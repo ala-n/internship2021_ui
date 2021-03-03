@@ -12,9 +12,4 @@ export class OfferItemComponent {
   constructor(public locationService: LocationService) {}
 
   @Input() offer!: Offer;
-  city!: string;
-
-  ngOnInit(): void {
-    // this.city = this.route.snapshot.params.city;
-  }
 }
