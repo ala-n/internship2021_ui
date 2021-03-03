@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, mergeMap } from 'rxjs/operators';
 import { OfferService } from './offer.service';
 
 interface FilterConfig {
@@ -16,6 +17,10 @@ export class FilterService {
   private _filteredOfferList$ = new BehaviorSubject<Offer[]>([]);
   readonly filteredOfferList$ = this._filteredOfferList$.asObservable();
   public list$: BehaviorSubject<Offer[]> = new BehaviorSubject<Offer[]>([]);
+  public listMap$: BehaviorSubject<Offer[]> = new BehaviorSubject<Offer[]>([]);
+  public filterOffice$: BehaviorSubject<string[]> = new BehaviorSubject<
+    string[]
+  >([]);
   public filterCfg: FilterConfig = {};
   private listUpdateTimeout = 0;
 
@@ -25,14 +30,24 @@ export class FilterService {
     this.filterCfg = { ...this.filterCfg, ...cfg };
     this.updateList();
   }
+
+  filterMap(officeId: string[]) {
+    this.filterOffice$.next(officeId);
+  }
+  private applyFilterMap(offer: Offer[], office: string[]) {
+    return offer.filter((offer) => {
+      if (office?.length) {
+        const officesId = offer.offices.map((o) => o.id);
+        if (!this.isIntersects(office, officesId)) return false;
+      }
+      return true;
+    });
+  }
+
   private applyFilter(offers: Offer[]) {
     return offers.filter((offer) => {
       if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
         return false;
-      if (this.filterCfg.office?.length) {
-        const officesId = offer.offices.map((o) => o.id);
-        if (!this.isIntersects(this.filterCfg.office, officesId)) return false;
-      }
       return true;
     });
   }
@@ -46,6 +61,16 @@ export class FilterService {
           this.list$.next(this.applyFilter(offers))
         );
     }, 50);
+  }
+
+  get resultList$(): Observable<Offer[]> {
+    return this.filterOffice$.pipe(
+      mergeMap((office: string[]) =>
+        this.list$.pipe(
+          map((offer: Offer[]) => this.applyFilterMap(offer, office))
+        )
+      )
+    );
   }
   isIntersects<T>(list: T[], list2: T[]) {
     return list.some((item) => list2.includes(item));

@@ -54,10 +54,9 @@ export class OfferListPageComponent {
     this.tagsService.tag$.pipe(skip(1)).subscribe((tag) => {
       this.filterService.filter({ tag });
     });
-    this.offers$ = this.filterService.list$;
+    this.offers$ = this.filterService.resultList$;
     this.offers$.subscribe(
       () => (this.city = this.filterService.filterCfg.city || '')
     );
-    this.offers$.subscribe((data) => console.log(data));
   }
 }

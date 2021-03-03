@@ -40,16 +40,20 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit(): void {
     this.mapView();
     this.map.on('moveend', () => {
-      const officeId: string[] = [];
-      if (this.markers) {
-        for (const marker of this.markers) {
-          if (this.map.getBounds().contains(marker.getLatLng())) {
-            marker.officeId && officeId.push(marker.officeId);
-          }
-        }
-        this.filterService.filter({ office: officeId });
-      }
+      this.rebuildFilter();
     });
+  }
+
+  rebuildFilter() {
+    const officeId: string[] = [];
+    if (this.markers) {
+      for (const marker of this.markers) {
+        if (this.map.getBounds().contains(marker.getLatLng())) {
+          marker.officeId && officeId.push(marker.officeId);
+        }
+      }
+      this.filterService.filterMap(officeId);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -64,6 +68,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         this.markerAll.clearLayers();
         this.markerAll.addLayers(changes.markers.currentValue);
         this.map.addLayer(this.markerAll);
+        this.rebuildFilter();
       }, 100);
     }
   }
