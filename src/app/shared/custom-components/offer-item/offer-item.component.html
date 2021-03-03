@@ -1,6 +1,10 @@
 <mat-card class="offer-card" *ngIf="offer">
   <div class="offer-card__content">
-    <img class="offer-card__image" [src]="offer.photoUrl" alt="offer image" />
+    <img
+      class="offer-card__image"
+      [src]="offer.photoUrl[0]"
+      alt="offer image"
+    />
     <div class="offer-card__text">
       <div class="offer-card__title">{{ offer.title }}</div>
       <a

@@ -1,16 +1,16 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService {
-  static LOCATION_URL = 'api/cities';
+  private _city$ = new BehaviorSubject<string>('');
+  readonly city$ = this._city$.asObservable();
 
-  constructor(private http: HttpClient) {}
-
-  getCities(): Observable<string[]> {
-    return this.http.get<string[]>(LocationService.LOCATION_URL);
+  setCity(city: string): void {
+    if (this._city$.getValue() !== city) {
+      this._city$.next(city);
+    }
   }
 }

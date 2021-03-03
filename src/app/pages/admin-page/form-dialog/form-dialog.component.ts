@@ -5,6 +5,7 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+import { LocationService } from '@shared/services/location.service';
 import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import { Layer } from 'leaflet';
@@ -34,11 +35,14 @@ export class FormDialogComponent implements OnInit, OnDestroy {
     iconAnchor: [5 * 0.75, 30 * 0.75]
   });
 
-  constructor(private mapService: MapService) {}
+  constructor(
+    private mapService: MapService,
+    private locationService: LocationService
+  ) {}
 
   ngOnInit(): void {
     this.mapView();
-    const subscription$ = this.mapService.city$.subscribe((city) => {
+    const subscription$ = this.locationService.city$.subscribe((city) => {
       this.mapService.getCityView(city).then((data) => {
         this.map.setView([+data[0].y, +data[0].x], 11);
       });
