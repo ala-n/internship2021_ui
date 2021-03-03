@@ -26,14 +26,14 @@ interface MarkerMetaData {
 export class MapService {
   private readonly concat = new ConcatPipe().transform;
 
-  private _city$ = new BehaviorSubject<string>('');
   private _offer$ = new BehaviorSubject<Offer | null>(null);
   private _office$ = new BehaviorSubject<Office | null>(null);
   private _vendor$ = new BehaviorSubject<Vendor | null>(null);
-  readonly city$ = this._city$.asObservable();
+
   readonly offer$ = this._offer$.asObservable();
   readonly office$ = this._office$.asObservable();
   readonly vendor$ = this._vendor$.asObservable();
+
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
     iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',
@@ -49,12 +49,6 @@ export class MapService {
     private resolver: ComponentFactoryResolver,
     private injector: Injector
   ) {}
-
-  setCity(city: string): void {
-    if (this._city$.getValue() !== city) {
-      this._city$.next(city);
-    }
-  }
 
   setOffer(offer: Offer): void {
     this._offer$.next(offer);
@@ -110,9 +104,9 @@ export class MapService {
     ]);
     component.instance.phoneNumber = office.phone;
     const marker = L.marker(new L.LatLng(office.x, office.y), {
-      icon: this.myIcon,
-      title: office.id
+      icon: this.myIcon
     });
+    Object.assign(marker, { officeId: office.id });
     marker.bindPopup(popupContent);
     this.markerPopup.push({
       markerInstance: marker,

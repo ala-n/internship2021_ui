@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
 import { Router } from '@angular/router';
 import { LoginData } from '@shared/models/login_data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,17 +23,13 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient) {}
 
   // This function send Login Data and try to receive User
-  loginForm(data: LoginData): Observable<User> {
-    return this.http.post<User>(this.URL, data);
+  login(data: LoginData): Observable<string> {
+    return this.http.post<string>(this.URL, data).pipe(
+      tap((token) => {
+        sessionStorage.setItem('access_user', token);
+      })
+    );
   } // TODO: create error handler
-
-  // After login save User and other values(if any) in sessionStorage
-  setUser(resp: User): void {
-    sessionStorage.setItem('firstName', resp.firstName);
-    sessionStorage.setItem('lastName', resp.lastName);
-    sessionStorage.setItem('access_user', resp.token);
-    this.router.navigate(['/']);
-  }
 
   // Checking if User is set
   isLoggedIn(): boolean {

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SearchData } from '../models/search-data';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -9,9 +9,9 @@ import { SearchData } from '../models/search-data';
 export class SearchService {
   static SEARCH_URL = 'api/searchData';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
   getSearchData(): Observable<SearchData[]> {
-    return this.http.get<SearchData[]>(SearchService.SEARCH_URL);
+    return this.http.get(SearchService.SEARCH_URL);
   }
 }
