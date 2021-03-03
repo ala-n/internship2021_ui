@@ -9,7 +9,7 @@
       <div class="offer-card__title">{{ offer.title }}</div>
       <a
         class="offer-card__vendor link"
-        [routerLink]="['/home/vendors', offer.vendorId]"
+        [routerLink]="['/home', city, 'vendors', offer.vendorId]"
         >{{ offer.vendorName }}</a
       >
     </div>
