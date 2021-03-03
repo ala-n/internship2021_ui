@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-
-import { Tag } from '../models/tag';
+import { Tag } from '@shared/models/tag';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -10,9 +9,16 @@ import { HttpService } from './http.service';
 export class TagsService {
   static TAGS_URL = 'api/tags';
 
+  private _tag$ = new BehaviorSubject<string>('');
+  public tag$ = this._tag$.asObservable();
+
   constructor(private http: HttpService) {}
 
   getTagsValue(): Observable<Tag[]> {
     return this.http.get(TagsService.TAGS_URL);
+  }
+
+  setTag(tag: string): void {
+    this._tag$.next(tag);
   }
 }

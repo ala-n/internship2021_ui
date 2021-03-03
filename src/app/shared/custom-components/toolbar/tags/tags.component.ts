@@ -22,4 +22,10 @@ export class TagsComponent implements OnInit {
   receiveData(data: Tag[]): void {
     this.tags = data;
   }
+
+  onClick(e: Event): void {
+    const target = e.target as HTMLElement;
+    const text = target.textContent || '';
+    this.tagsService.setTag(text.trim());
+  }
 }

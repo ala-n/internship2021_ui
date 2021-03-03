@@ -8,6 +8,7 @@ import { OfferService } from '@shared/services/offer.service';
 import { LocationService } from '@shared/services/location.service';
 import { UserService } from '@shared/services/user.service';
 import { OfferListPageService } from '@shared/services/offer-list-page.service';
+import { TagsService } from '@shared/services/tag.service';
 
 @Component({
   selector: 'app-offer-list-page',
@@ -23,7 +24,8 @@ export class OfferListPageComponent {
     public locationService: LocationService,
     private userService: UserService,
     private route: ActivatedRoute,
-    private offerListService: OfferListPageService
+    private offerListService: OfferListPageService,
+    private tagsService: TagsService
   ) {}
 
   ngOnInit(): void {
@@ -54,5 +56,8 @@ export class OfferListPageComponent {
       .subscribe((offers) => {
         if (offers.length !== 0) this.offers$ = of(offers);
       });
+    this.tagsService.tag$.pipe(skip(1)).subscribe((tag) => {
+      this.offers$ = this.offerService.getOffersbyTag(tag);
+    });
   }
 }
