@@ -4,8 +4,6 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  Output,
-  EventEmitter,
   OnDestroy
 } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
@@ -13,7 +11,7 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
 import { LocationService } from '@shared/services/location.service';
-import { OfferListPageService } from '@shared/services/offer-list-page.service';
+import { FilterService } from '@shared/services/filter.service';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
@@ -23,8 +21,6 @@ export type MarkerExtended = L.Marker & { officeId?: string };
 })
 export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   map!: L.Map;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
   @Input() markers!: MarkerExtended[];
   markerAll = new L.MarkerClusterGroup({
@@ -38,7 +34,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private locationService: LocationService,
     private mapService: MapService,
-    private offerListService: OfferListPageService
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
@@ -48,10 +44,10 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
       if (this.markers) {
         for (const marker of this.markers) {
           if (this.map.getBounds().contains(marker.getLatLng())) {
-            if (marker.officeId) officeId.push(marker.officeId);
+            marker.officeId && officeId.push(marker.officeId);
           }
         }
-        this.offerListService.filterOfferList(officeId); //TODO: this task not completed yet. skip
+        this.filterService.filter({ office: officeId });
       }
     });
   }
