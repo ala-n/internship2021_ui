@@ -17,9 +17,9 @@ export default [
     usesByVendor: 22,
     isDeleted: false,
     createdAt: '2021-01-27',
-    createdBy: 'Taras Lazarchuk',
+    createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-21',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '3',
@@ -39,9 +39,9 @@ export default [
     usesByVendor: 5,
     isDeleted: false,
     createdAt: '2021-01-01',
-    createdBy: 'Taras Lazarchuk',
+    createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-07',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '5',
@@ -52,7 +52,7 @@ export default [
     createdAt: '2021-01-29',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-02-15',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Alexander Bazukevich'
   },
   {
     id: '6',
@@ -72,7 +72,7 @@ export default [
     usesByVendor: 8,
     isDeleted: false,
     createdAt: '2021-01-01',
-    createdBy: 'Taras Lazarchuk',
+    createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-22',
     updatedBy: 'Ann Burmina'
   },
@@ -85,7 +85,7 @@ export default [
     createdAt: '2021-01-11',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-02-02',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Alexander Bazukevich'
   },
   {
     id: '9',
@@ -96,7 +96,7 @@ export default [
     createdAt: '2021-02-01',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-02-22',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '10',
@@ -105,7 +105,7 @@ export default [
     usesByVendor: 4,
     isDeleted: false,
     createdAt: '2021-02-01',
-    createdBy: 'Taras Lazarchuk',
+    createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-28',
     updatedBy: 'Ann Burmina'
   },
@@ -116,8 +116,8 @@ export default [
     usesByVendor: 1,
     isDeleted: false,
     createdAt: '2021-02-01',
-    createdBy: 'Taras Lazarchuk',
+    createdBy: 'Ularbek Zairbekov',
     updatedAt: '2021-02-15',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Alexander Bazukevich'
   }
 ];

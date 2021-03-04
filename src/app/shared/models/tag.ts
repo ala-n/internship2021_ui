@@ -4,8 +4,8 @@ export interface Tag {
   usesByUsers: number;
   usesByVendor: number;
   isDeleted: boolean;
-  createdAt: Date;
+  createdAt: string;
   createdBy: string;
-  updatedAt: Date;
+  updatedAt: string;
   updatedBy: string;
 }
