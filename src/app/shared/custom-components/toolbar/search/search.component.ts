@@ -16,8 +16,6 @@ import { FilterService } from '@shared/services/filter.service';
 export class SearchComponent implements OnInit {
   control = new FormControl();
 
-  tag!: string;
-
   data!: Tag[]; // Array of object, that contains a string data
 
   stringData!: string[]; // Array of string, that was made from data
