@@ -82,7 +82,6 @@ export class FilterService {
       )
     );
   }
-
   isIntersects<T>(list: T[], list2: T[]): boolean {
     return list.some((item) => list2.includes(item));
   }

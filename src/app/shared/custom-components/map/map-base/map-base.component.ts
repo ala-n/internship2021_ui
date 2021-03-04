@@ -39,6 +39,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     this.mapView();
+
     this.map.on('moveend', () => {
       this.rebuildFilter();
     });
