@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
 import { LocationService } from '@shared/services/location.service';
-import { VendorService } from '@shared/services/vendor.service';
 import type { MarkerExtended } from './map-base/map-base.component';
+import { FilterService } from '@shared/services/filter.service';
 
 @Component({
   selector: 'app-map',
@@ -15,20 +15,21 @@ import type { MarkerExtended } from './map-base/map-base.component';
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
-  offerRequest$!: Subscription;
   city!: string;
   name!: string;
   markers!: MarkerExtended[];
+  offers$!: Observable<Offer[]>;
 
   constructor(
     private locationService: LocationService,
     private mapService: MapService,
-    private vendorService: VendorService
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
     const subscription$ = this.locationService.city$.subscribe((city) => {
       this.city = city;
+      this.filterService.filter({ city });
       this.onChangeOffers();
     });
     this.subscription.push(subscription$);
@@ -53,20 +54,17 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   onChangeOffice(office: Office): void {
-    this.offerRequest$.unsubscribe();
     this.markers = this.initOfficeMarkers(office);
   }
 
   onChangeOffers(): void {
-    this.offerRequest$ = this.vendorService
-      .getVendors({ city: this.city })
-      .subscribe((offers) => {
-        this.markers = this.initOffersMarkers(offers);
-      });
+    this.offers$ = this.filterService.list$;
+    this.offers$.subscribe((offers) => {
+      this.markers = this.initOffersMarkers(offers);
+    });
   }
 
   onClickItem(data: Offer | Vendor): void {
-    this.offerRequest$.unsubscribe();
     this.markers = this.initMarkers(data);
   }
 
@@ -83,18 +81,22 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
-  private initOffersMarkers(vendors: Vendor[]) {
+  private initOffersMarkers(offers: Offer[]): L.Marker[] {
+    const uniqs: string | string[] = [];
     const markers = [];
-    for (const vendor of vendors) {
-      for (const office of vendor.offices) {
-        const marker = this.mapService.getMarkers(office, vendor.name);
-        markers.push(marker);
+    for (const offer of offers) {
+      for (const office of offer.offices) {
+        if (uniqs.indexOf(office.id) === -1) {
+          const marker = this.mapService.getMarkers(office, offer.vendorName);
+          markers.push(marker);
+          uniqs.push(office.id);
+        }
       }
     }
     return markers;
   }
 
-  private initOfficeMarkers(office: Office) {
+  private initOfficeMarkers(office: Office): L.Marker[] {
     const markers = [];
     const marker = this.mapService.getMarkers(office, this.name);
     markers.push(marker);
