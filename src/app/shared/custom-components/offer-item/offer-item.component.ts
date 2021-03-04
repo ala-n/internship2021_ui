@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+
 import { Offer } from '@shared/models/offer';
+import { LocationService } from '@shared/services/location.service';
 
 @Component({
   selector: 'app-offer-item',
@@ -7,5 +9,7 @@ import { Offer } from '@shared/models/offer';
   styleUrls: ['./offer-item.component.scss']
 })
 export class OfferItemComponent {
+  constructor(public locationService: LocationService) {}
+
   @Input() offer!: Offer;
 }
