@@ -27,13 +27,9 @@ export class TagsComponent implements OnInit {
     this.tags = data;
   }
 
-  onClick(e: Event): void {
+  searchByTag(e: Event): void {
     const target = e.target as HTMLElement;
-    const tag = (target.textContent || '').trim();
-    if (tag === this.filterService.filterCfg.tag) {
-      this.filterService.filter({ tag: '' });
-    } else {
-      this.filterService.filter({ tag });
-    }
+    const tag = (target.textContent || '').trim(); //receive tag
+    this.filterService.filterByTags(tag); // filter by tags
   }
 }
