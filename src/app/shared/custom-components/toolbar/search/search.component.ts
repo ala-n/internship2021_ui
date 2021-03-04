@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
 import { Tag } from '@shared/models/tag';
-import { SearchService } from 'src/app/shared/services/search.service';
+import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-search',
@@ -21,10 +21,10 @@ export class SearchComponent implements OnInit {
 
   filteredData!: Observable<string[]>; // Array of filtred data, that application
   // show user when he enter data
-  constructor(private searchService: SearchService) {}
+  constructor(private tagService: TagsService) {}
 
   ngOnInit(): void {
-    this.searchService.getSearchData().subscribe((data: Tag[]) => {
+    this.tagService.getAllTags().subscribe((data: Tag[]) => {
       this.parseSearchData(data);
     });
   }

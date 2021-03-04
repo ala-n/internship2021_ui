@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Tag } from '@shared/models/tag';
 import { FilterService } from '@shared/services/filter.service';
-import { TagsService } from '@shared/services/tag.service';
+import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-tags',
