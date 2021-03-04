@@ -55,12 +55,14 @@ export class OfferService {
   }
 
   addOffer(offer: Offer, vendorId: string): Observable<Offer> {
+    const url = OfferService.OFFERS_URL;
     offer.vendorId = vendorId;
-    return this.http.post(OfferService.OFFERS_URL, offer);
+    return this.http.post(url, offer);
   }
 
   updateOffer(offer: Offer, vendorId: string): Observable<Offer> {
+    const url = `${OfferService.OFFERS_URL}/${offer.id}`;
     offer.vendorId = vendorId;
-    return this.http.put(OfferService.OFFERS_URL, offer);
+    return this.http.put(url, offer);
   }
 }

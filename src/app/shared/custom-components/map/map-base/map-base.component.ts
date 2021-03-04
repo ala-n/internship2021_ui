@@ -45,13 +45,22 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
     this.mapView();
     this.map.on('moveend', () => {
       const officeId: string[] = [];
+      this.mapService.distanceToMarkers = new Map();
       if (this.markers) {
         for (const marker of this.markers) {
           if (this.map.getBounds().contains(marker.getLatLng())) {
-            if (marker.officeId) officeId.push(marker.officeId);
+            if (marker.officeId) {
+              officeId.push(marker.officeId);
+              if (this.mapService.userCoord) {
+                this.mapService.distanceToMarkers.set(
+                  marker.officeId,
+                  this.mapService.userCoord.distanceTo(marker.getLatLng())
+                );
+              }
+            }
           }
         }
-        this.offerListService.filterOfferList(officeId); //TODO: this task not completed yet. skip
+        this.offerListService.filterOfferList(officeId);
       }
     });
   }
@@ -85,6 +94,8 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
     this.map
       .on('locationfound', (e) => {
+        // save user position in coordinates
+        this.mapService.userCoord = e.latlng;
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {
