@@ -20,6 +20,7 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
 import { RatingComponent } from './custom-components/rating/rating.component';
+import { RatingTwoComponent } from './custom-components/rating-two/rating-two.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { RatingComponent } from './custom-components/rating/rating.component';
     GoBackButtonComponent,
     MapBaseComponent,
     HostnamePipe,
-    RatingComponent
+    RatingComponent,
+    RatingTwoComponent
   ],
   imports: [
     CommonModule,
@@ -58,7 +60,8 @@ import { RatingComponent } from './custom-components/rating/rating.component';
     GoBackButtonComponent,
     MapBaseComponent,
     HostnamePipe,
-    RatingComponent
+    RatingComponent,
+    RatingTwoComponent
   ],
   entryComponents: [PopupComponent]
 })
