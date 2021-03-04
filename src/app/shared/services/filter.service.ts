@@ -34,7 +34,7 @@ export class FilterService {
   filterMap(officeId: string[]) {
     this.filterOffice$.next(officeId);
   }
-  private applyFilterMap(offer: Offer[], office: string[]) {
+  private applyFilterMap(offer: Offer[], office: string[]): Offer[] {
     return offer.filter((offer) => {
       if (office?.length) {
         const officesId = offer.offices.map((o) => o.id);
@@ -72,7 +72,7 @@ export class FilterService {
       )
     );
   }
-  isIntersects<T>(list: T[], list2: T[]) {
+  isIntersects<T>(list: T[], list2: T[]): boolean {
     return list.some((item) => list2.includes(item));
   }
 }

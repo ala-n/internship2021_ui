@@ -15,7 +15,6 @@ import { FilterService } from '@shared/services/filter.service';
 })
 export class MapComponent implements OnInit, OnDestroy {
   subscription: Subscription[] = [];
-  offerRequest$!: Subscription;
   city!: string;
   name!: string;
   markers!: MarkerExtended[];
@@ -55,7 +54,6 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   onChangeOffice(office: Office): void {
-    this.offerRequest$.unsubscribe();
     this.markers = this.initOfficeMarkers(office);
   }
 
@@ -67,7 +65,6 @@ export class MapComponent implements OnInit, OnDestroy {
   }
 
   onClickItem(data: Offer | Vendor): void {
-    this.offerRequest$.unsubscribe();
     this.markers = this.initMarkers(data);
   }
 
@@ -84,7 +81,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
-  private initOffersMarkers(offers: Offer[]) {
+  private initOffersMarkers(offers: Offer[]): L.Marker[] {
     const uniqs: string | string[] = [];
     const markers = [];
     for (const offer of offers) {
@@ -99,7 +96,7 @@ export class MapComponent implements OnInit, OnDestroy {
     return markers;
   }
 
-  private initOfficeMarkers(office: Office) {
+  private initOfficeMarkers(office: Office): L.Marker[] {
     const markers = [];
     const marker = this.mapService.getMarkers(office, this.name);
     markers.push(marker);
