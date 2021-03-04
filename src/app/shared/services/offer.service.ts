@@ -65,4 +65,12 @@ export class OfferService {
     offer.vendorId = vendorId;
     return this.http.put(url, offer);
   }
+
+  getOffersbyTag(tag: string): Observable<Offer[]> {
+    return this.http.get<Offer[]>(`${OfferService.OFFERS_URL}`).pipe(
+      map((offers) => {
+        return offers.filter((offer) => offer.tags.includes(tag));
+      })
+    );
+  }
 }
