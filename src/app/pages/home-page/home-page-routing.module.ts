@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CityGuard } from '@shared/guards/city.guard';
 
 import { HomePageComponent } from './home-page.component';
 import { OfferItemPageComponent } from './offer-item-page/offer-item-page.component';
@@ -9,7 +10,13 @@ import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.com
 
 const routes: Routes = [
   {
+    canActivate: [CityGuard],
     path: '',
+    component: HomePageComponent
+  },
+  {
+    canActivate: [CityGuard],
+    path: ':city',
     component: HomePageComponent,
     children: [
       { path: '', component: OfferListPageComponent },
@@ -18,7 +25,7 @@ const routes: Routes = [
       { path: 'offices/:id', component: OfficeItemPageComponent }
     ]
   },
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: '**', redirectTo: 'error', pathMatch: 'full' }
 ];
 
 @NgModule({

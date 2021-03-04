@@ -555,7 +555,7 @@ export default [
         y: 30.52230314847687,
         phone: '+38 098 983-07-77',
         country: 'Украина',
-        city: 'Киве',
+        city: 'Kyiv',
         street: 'ул.Рогнеденская',
         house: 'д. 3',
         room: '4',
