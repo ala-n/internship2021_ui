@@ -12,6 +12,7 @@ export interface OfferBase {
   city: string;
   officesId: string[];
   offices: Office[];
+  rating: number;
 }
 
 export interface Offer extends OfferBase {

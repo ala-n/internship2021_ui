@@ -26,6 +26,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['1', '2'],
+    rating: 4,
     offices: [
       {
         id: '1',
@@ -88,6 +89,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['3'],
+    rating: 3,
     offices: [
       {
         id: '3',
@@ -143,6 +145,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['5', '6', '7', '8'],
+    rating: 5,
     offices: [
       {
         id: '5',
@@ -227,6 +230,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['3', '4'],
+    rating: 5,
     offices: [
       {
         id: '3',
@@ -277,6 +281,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['9'],
+    rating: 1,
     offices: [
       {
         id: '9',
@@ -314,6 +319,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['10'],
+    rating: 2,
     offices: [
       {
         id: '10',
@@ -358,6 +364,7 @@ export default [
     isActive: true,
     city: 'Minsk',
     officesId: ['10'],
+    rating: 5,
     offices: [
       {
         id: '10',
@@ -400,6 +407,7 @@ export default [
     tags: ['Spa', 'Beauty'],
     city: 'Minsk',
     officesId: ['10'],
+    rating: 4,
     offices: [
       {
         id: '10',
@@ -437,6 +445,7 @@ export default [
     isActive: true,
     city: 'Hrodna',
     officesId: ['11'],
+    rating: 4,
     offices: [
       {
         id: '11',
@@ -474,6 +483,7 @@ export default [
     isActive: true,
     city: 'Hrodna',
     officesId: ['12'],
+    rating: 3,
     offices: [
       {
         id: '12',
@@ -511,6 +521,7 @@ export default [
     isActive: true,
     city: 'Kyiv',
     officesId: ['13'],
+    rating: 5,
     offices: [
       {
         id: '13',
@@ -548,6 +559,7 @@ export default [
     isActive: false,
     city: 'Kyiv',
     officesId: ['14'],
+    rating: 5,
     offices: [
       {
         id: '14',
@@ -584,6 +596,7 @@ export default [
     isActive: true,
     city: 'Yekaterinburg',
     officesId: ['15', '16'],
+    rating: 3,
     offices: [
       {
         id: '15',
