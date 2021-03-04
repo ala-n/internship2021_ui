@@ -3,8 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-import { SearchData } from 'src/app/shared/models/search-data';
-import { SearchService } from 'src/app/shared/services/search.service';
+import { Tag } from '@shared/models/tag';
+import { TagsService } from '@shared/services/tags.service';
+import { FilterService } from '@shared/services/filter.service';
 
 @Component({
   selector: 'app-search',
@@ -15,30 +16,40 @@ import { SearchService } from 'src/app/shared/services/search.service';
 export class SearchComponent implements OnInit {
   control = new FormControl();
 
-  data!: SearchData[]; // Array of object, that contains a string data
+  data!: Tag[]; // Array of object, that contains a string data
 
   stringData!: string[]; // Array of string, that was made from data
 
   filteredData!: Observable<string[]>; // Array of filtred data, that application
-  // show user when he enter data
-  constructor(private searchService: SearchService) {}
 
-  ngOnInit(): void {
-    this.searchService
-      .getSearchData()
-      .subscribe((data: SearchData[]) => this.parseSearchData(data));
+  // show user when he enter data
+  constructor(
+    private tagService: TagsService,
+    private filterService: FilterService
+  ) {}
+
+  searchBy(): void {
+    const tag = this.control.value.trim();
+    this.control.setValue(tag);
+    this.filterService.filterByTags(tag);
   }
 
-  parseSearchData(data: SearchData[]): void {
+  ngOnInit(): void {
+    this.tagService.getAllTags().subscribe((data: Tag[]) => {
+      this.parseSearchData(data);
+    });
+  }
+
+  parseSearchData(data: Tag[]): void {
     this.data = data;
     this.stringData = this.fromArrayToString();
     this.changeValue();
   }
 
-  //This function make from objects array to strings array
+  // This function make from objects array to strings array
   fromArrayToString(): string[] {
     return this.data.map((object) => {
-      return object.data;
+      return object.name;
     });
   }
 

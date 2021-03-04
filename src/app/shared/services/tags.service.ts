@@ -7,6 +7,7 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class TagsService {
+  static TOP_TAGS_URL = 'api/topTags';
   static TAGS_URL = 'api/tags';
 
   private _tag$ = new BehaviorSubject<string>('');
@@ -14,8 +15,12 @@ export class TagsService {
 
   constructor(private http: HttpService) {}
 
+  getAllTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(TagsService.TAGS_URL);
+  }
+
   getTagsValue(): Observable<Tag[]> {
-    return this.http.get(TagsService.TAGS_URL);
+    return this.http.get(TagsService.TOP_TAGS_URL);
   }
 
   setTag(tag: string): void {

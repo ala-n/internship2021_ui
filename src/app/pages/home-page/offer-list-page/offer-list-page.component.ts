@@ -4,7 +4,7 @@ import { skip } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { LocationService } from '@shared/services/location.service';
-import { TagsService } from '@shared/services/tag.service';
+import { TagsService } from '@shared/services/tags.service';
 import { FilterService } from '@shared/services/filter.service';
 
 @Component({
