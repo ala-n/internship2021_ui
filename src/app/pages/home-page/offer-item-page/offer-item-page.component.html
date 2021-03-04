@@ -31,7 +31,7 @@
           <!-- <button mat-flat-button class="button button_upper button_c_icon-primary">
             {{ 'rate' | translate }}
           </button> -->
-          <app-rating class="stars"></app-rating>
+          <app-rating class="stars" [rating]="offer.rating"></app-rating>
         </div>
         <div class="item__favorite">
           <div>{{ 'bookmark_text' | translate }}</div>
