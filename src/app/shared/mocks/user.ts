@@ -1,6 +1,4 @@
-import { User } from '@shared/models/user';
-
-export const user: User = {
+export default {
   firstName: 'Ivan',
   lastName: 'Ivanov',
   role: 0,
