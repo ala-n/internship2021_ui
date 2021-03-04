@@ -8,6 +8,10 @@
   padding: 0.5em;
   color: $text-primary;
 
+  &__address {
+    position: relative;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;

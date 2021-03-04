@@ -9,6 +9,7 @@ import { NavigationService } from '@shared/services/navigation.service';
 })
 export class HeaderComponent {
   homePageVisibility!: boolean;
+  city!: string;
 
   constructor(
     public navigationService: NavigationService,
@@ -17,7 +18,8 @@ export class HeaderComponent {
     // hotfix of problem: after page refresh "home/manage: navigation buttons return to default state
     // like we are on home-page;
     // TODO find better solution
-    this.homePageVisibility = this.router.url !== '/home';
+
+    this.homePageVisibility = !/home/.test(this.router.url);
     this.navigationService.setHomePageVisibility(this.homePageVisibility);
   }
 }

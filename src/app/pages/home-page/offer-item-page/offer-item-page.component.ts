@@ -38,9 +38,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
 
       // for backend
-      // switchMap((offer: Offer) =>
-      //   this.officeService.getOfficesByOffer(offer.offices)
-      // ),
+      // switchMap((offer) => this.officeService.getOfficesById(offer.officesId)),
       tap((offices) => (this.offices = offices)),
       map(() => false)
     );
