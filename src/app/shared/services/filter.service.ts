@@ -31,7 +31,7 @@ export class FilterService {
     this.updateList();
   }
 
-  filterMap(officeId: string[]) {
+  filterMap(officeId: string[]): void {
     this.filterOffice$.next(officeId);
   }
   private applyFilterMap(offer: Offer[], office: string[]): Offer[] {
