@@ -26,7 +26,7 @@ export class OfferFormComponent implements OnInit {
     dateEnd: [null, Validators.required],
     promocode: null,
     images: null,
-    offices: [null, Validators.required],
+    vendorEntities: [null, Validators.required],
     tags: null,
     isActive: false
   });
@@ -75,7 +75,7 @@ export class OfferFormComponent implements OnInit {
             dateEnd: offer.dateEnd,
             promocode: offer.promocode,
             images: '',
-            offices: this.offerOffices,
+            vendorEntities: this.offerOffices,
             tags: this.tags,
             isActive: offer.isActive
           });
@@ -105,8 +105,8 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.offerForm.value);
     if (this.offer) {
-      console.log(this.offerForm.value);
       this.offerService.updateOffer(this.offerForm.value, this.vendorId);
     } else {
       this.offerService.addOffer(this.offerForm.value, this.vendorNavId);
