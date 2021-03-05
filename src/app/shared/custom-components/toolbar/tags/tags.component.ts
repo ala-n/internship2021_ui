@@ -12,6 +12,8 @@ import { TagsService } from '@shared/services/tags.service';
 export class TagsComponent implements OnInit {
   tags!: Tag[];
 
+  status = false;
+
   constructor(
     private tagsService: TagsService,
     private filterService: FilterService
@@ -31,5 +33,11 @@ export class TagsComponent implements OnInit {
     const target = e.target as HTMLElement;
     const tag = (target.textContent || '').trim(); //receive tag
     this.filterService.filterByTags(tag); // filter by tags
+  }
+
+  toggle() {
+    this.status = false;
+    this.status = !this.status;
+    console.log(this.status);
   }
 }

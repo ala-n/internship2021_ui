@@ -34,6 +34,10 @@
       border: 1px solid $blue-primary;
       color: $blue-primary;
     }
+
+    &__active {
+      color: red;
+    }
   }
 
   &::ng-deep .mat-chip-list-wrapper {
@@ -46,4 +50,8 @@
 .mat-chip.mat-standard-chip::after {
   // this style turn off :hover effect from mat-button
   background-color: transparent;
+}
+
+.success {
+  color: red;
 }

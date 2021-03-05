@@ -7,7 +7,9 @@
       [value]="tag.name"
       (click)="searchByTag($event)"
     >
-      {{ tag.name }}
+      <div (click)="toggle()" [ngClass]="status ? 'success' : 'danger'">
+        {{ tag.name }}
+      </div>
     </mat-chip>
   </mat-chip-list>
 </div>
