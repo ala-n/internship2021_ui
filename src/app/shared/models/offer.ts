@@ -19,6 +19,7 @@ export interface Offer extends OfferBase {
   promocode?: string;
   dateStart: string;
   dateEnd: string;
+  rating: number;
   tags: string[];
   created: string;
   createdBy: string;

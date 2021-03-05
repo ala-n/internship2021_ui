@@ -20,6 +20,11 @@ interface MarkerMetaData {
   componentInstance: ComponentRef<PopupComponent>;
 }
 
+export interface OfficeMarker {
+  officeId: string;
+  distanceTo: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,6 +39,8 @@ export class MapService {
   readonly office$ = this._office$.asObservable();
   readonly vendor$ = this._vendor$.asObservable();
 
+  userCoord!: L.LatLng;
+  distanceToMarkers: Map<string, number> = new Map();
   markerPopup: MarkerMetaData[] = [];
   myIcon = L.icon({
     iconUrl: '../../../assets/leaflet/images/marker-icon-2x.png',

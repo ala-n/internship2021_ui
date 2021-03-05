@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
@@ -28,9 +28,6 @@ export class OfferListPageComponent {
       this.city = city;
     });
 
-    this.filterService.filteredOfferList$.pipe(skip(1)).subscribe((offers) => {
-      if (offers.length !== 0) this.offers$ = of(offers);
-    });
     this.tagsService.tag$.pipe(skip(1)).subscribe((tag) => {
       this.filterService.filter({ tag });
     });

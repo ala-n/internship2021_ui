@@ -1,5 +1,6 @@
 export interface Office {
   id: string;
+  location: [x: number, y: number];
   x: number;
   y: number;
   vendorId: string;
