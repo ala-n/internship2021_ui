@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { map, withLatestFrom } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { CityService } from '@shared/services/city.service';
 import { LocationService } from '@shared/services/location.service';
@@ -30,11 +30,10 @@ export class LocationComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.filteredOptions$ = this.myControl.valueChanges.pipe(
-      withLatestFrom(this.cityService.getCities()),
-      map(([value, city]) => {
+      map((value) => {
         const filterValue = (value || '').toLowerCase();
-        return city.filter((option) => {
-          return option.name.toLowerCase().startsWith(filterValue);
+        return this.cityService.cities.filter((city) => {
+          return city.name.toLowerCase().startsWith(filterValue);
         });
       })
     );

@@ -7,11 +7,13 @@ export default [
     vendorId: '1',
     vendorName: 'Марсель',
     phone: '+ 375 29 668 16 97',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Шафарнянская',
-    house: 'д. 3',
-    room: '303',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Шафарнянская',
+      house: 'д. 3',
+      room: '303'
+    },
     email: 'marsel1@gmail.com',
     isActive: true
   },
@@ -23,11 +25,13 @@ export default [
     vendorId: '1',
     vendorName: 'Марсель',
     phone: '+ 375 29 634 67 74',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Захарова',
-    house: 'д. 23',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Захарова',
+      house: 'д. 23',
+      room: ''
+    },
     email: 'marsel2@gmail.com',
     isActive: true
   },
@@ -39,11 +43,13 @@ export default [
     vendorId: '2',
     vendorName: 'SushiChefArts',
     phone: '+375 44 771-51-51',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'пр. Победителей',
-    house: 'д. 84',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'пр. Победителей',
+      house: 'д. 84',
+      room: ''
+    },
     email: 'sushi2@gmail.com',
     isActive: false
   },
@@ -55,11 +61,13 @@ export default [
     vendorId: '2',
     vendorName: 'SushiChefArts',
     phone: '+375 44 771-51-51',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Слободская',
-    house: 'д. 27',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Слободская',
+      house: 'д. 27',
+      room: ''
+    },
     email: 'sushi1@gmail.com',
     isActive: true
   },
@@ -71,11 +79,13 @@ export default [
     vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 17 375-58-58',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Рафиева',
-    house: 'д. 44',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Рафиева',
+      house: 'д. 44',
+      room: ''
+    },
     email: 'pizza1@gmail.com',
     isActive: true
   },
@@ -87,11 +97,13 @@ export default [
     vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 17 375-58-58',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Маяковского',
-    house: 'д. 10',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Маяковского',
+      house: 'д. 10',
+      room: ''
+    },
     email: 'pizza2@gmail.com',
     isActive: false
   },
@@ -103,11 +115,13 @@ export default [
     vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+375 44 553-40-00',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Центральная',
-    house: 'д. 9',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Центральная',
+      house: 'д. 9',
+      room: ''
+    },
     email: 'pizza3@gmail.com',
     isActive: true
   },
@@ -119,11 +133,13 @@ export default [
     vendorId: '3',
     vendorName: 'PizzaMania',
     phone: '+ 375 29 120 68 66',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'пр. Победителей',
-    house: 'д. 23к1',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'пр. Победителей',
+      house: 'д. 23к1',
+      room: ''
+    },
     email: 'pizza3@gmail.com',
     isActive: true
   },
@@ -135,11 +151,13 @@ export default [
     vendorId: '4',
     vendorName: 'Luxe',
     phone: '+ 375 25 788 41 32',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'ул. Голодеда',
-    house: 'д. 15',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'ул. Голодеда',
+      house: 'д. 15',
+      room: ''
+    },
     email: 'luxe@gmail.com',
     isActive: true
   },
@@ -151,11 +169,13 @@ export default [
     vendorId: '5',
     vendorName: 'ФОЦ им. Машерова',
     phone: '+ 375 29 120 68 66',
-    country: 'Беларусь',
-    city: 'Minsk',
-    street: 'пр. Победителей',
-    house: 'д. 23к1',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Minsk',
+      street: 'пр. Победителей',
+      house: 'д. 23к1',
+      room: ''
+    },
     email: 'fok@gmail.com',
     isActive: true
   },
@@ -167,11 +187,13 @@ export default [
     vendorId: '6',
     vendorName: '«Йети и дети»',
     phone: '+ 375 29 120 68 66',
-    country: 'Беларусь',
-    city: 'Hrodna',
-    street: 'пр. Янки Купалы',
-    house: 'д. 87',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Hrodna',
+      street: 'пр. Янки Купалы',
+      house: 'д. 87',
+      room: ''
+    },
     email: 'yetideti@gmail.com',
     isActive: true
   },
@@ -183,11 +205,13 @@ export default [
     vendorId: '7',
     vendorName: 'Rockplay',
     phone: '+ 375 29 232 99 23',
-    country: 'Беларусь',
-    city: 'Hrodna',
-    street: 'ул.Буденного',
-    house: 'д. 54/1',
-    room: '',
+    address: {
+      country: 'Беларусь',
+      city: 'Hrodna',
+      street: 'ул.Буденного',
+      house: 'д. 54/1',
+      room: ''
+    },
     email: 'rock@gmail.com',
     isActive: true
   },
@@ -199,11 +223,13 @@ export default [
     vendorId: '8',
     vendorName: 'Студия Ирины Лесовой',
     phone: '+38 044 223-77-60',
-    country: 'Украина',
-    city: 'Kyiv',
-    street: 'ул.Ивана Федорова',
-    house: 'д. 6',
-    room: '2',
+    address: {
+      country: 'Украина',
+      city: 'Kyiv',
+      street: 'ул.Ивана Федорова',
+      house: 'д. 6',
+      room: '2'
+    },
     email: 'ira.les@gmail.com',
     isActive: true
   },
@@ -215,11 +241,13 @@ export default [
     vendorId: '9',
     vendorName: 'Fashion Wear Milano',
     phone: '+38 098 983-07-77',
-    country: 'Украина',
-    city: 'Kyiv',
-    street: 'ул.Рогнеденская',
-    house: 'д. 3',
-    room: '4',
+    address: {
+      country: 'Украина',
+      city: 'Kyiv',
+      street: 'ул.Рогнеденская',
+      house: 'д. 3',
+      room: '4'
+    },
     email: 'fashion-wear@gmail.com',
     isActive: true
   },
@@ -231,11 +259,13 @@ export default [
     vendorId: '10',
     vendorName: 'Матерый шиномонтаж',
     phone: '+7 343 385-07-00',
-    country: 'Россия',
-    city: 'Yekaterinburg',
-    street: 'ул. Монтёрская',
-    house: 'д. 10а',
-    room: '',
+    address: {
+      country: 'Россия',
+      city: 'Yekaterinburg',
+      street: 'ул. Монтёрская',
+      house: 'д. 10а',
+      room: ''
+    },
     email: 'wheel1@gmail.com',
     isActive: true
   },
@@ -247,11 +277,13 @@ export default [
     vendorId: '10',
     vendorName: 'Матерый шиномонтаж',
     phone: '+7 343 383-42-43',
-    country: 'Россия',
-    city: 'Yekaterinburg',
-    street: 'ул. Малышева',
-    house: 'д. 145а',
-    room: '',
+    address: {
+      country: 'Россия',
+      city: 'Yekaterinburg',
+      street: 'ул. Малышева',
+      house: 'д. 145а',
+      room: ''
+    },
     email: 'wheel2@gmail.com',
     isActive: false
   }

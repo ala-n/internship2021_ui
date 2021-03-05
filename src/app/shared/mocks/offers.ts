@@ -26,18 +26,20 @@ export default [
     tags: ['Massage', 'Beauty', 'Health'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['1', '2'],
+    vendorEntitiesId: ['1', '2'],
     offices: [
       {
         id: '1',
         x: 53.950248766494305,
         y: 27.678503384991703,
         phone: '+ 375 29 668 16 97',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Шафарнянская',
-        house: 'д. 3',
-        room: '303',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Шафарнянская',
+          house: 'д. 3',
+          room: '303'
+        },
         email: 'marsel1@gmail.com',
         isActive: true
       },
@@ -46,11 +48,13 @@ export default [
         x: 53.90630545040514,
         y: 27.579132898483202,
         phone: '+ 375 29 634 67 74',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Захарова',
-        house: 'д. 23',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Захарова',
+          house: 'д. 23',
+          room: ''
+        },
         email: 'marsel2@gmail.com',
         isActive: true
       }
@@ -89,18 +93,20 @@ export default [
     tags: ['Food', 'Sushi'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['3'],
+    vendorEntitiesId: ['3'],
     offices: [
       {
         id: '3',
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 84',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр. Победителей',
+          house: 'д. 84',
+          room: ''
+        },
         email: 'sushi2@gmail.com',
         isActive: true
       }
@@ -145,18 +151,20 @@ export default [
     tags: [],
     isActive: true,
     city: 'Minsk',
-    officesId: ['5', '6', '7', '8'],
+    vendorEntitiesId: ['5', '6', '7', '8'],
     offices: [
       {
         id: '5',
         x: 53.86553289876855,
         y: 27.45302363896044,
         phone: '+375 17 375-58-58',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Рафиева',
-        house: 'д. 44',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Рафиева',
+          house: 'д. 44',
+          room: ''
+        },
         email: 'pizza1@gmail.com',
         isActive: true
       },
@@ -165,11 +173,13 @@ export default [
         x: 53.883091927066054,
         y: 27.567344627318217,
         phone: '+375 17 375-58-58',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Маяковского',
-        house: 'д. 10',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Маяковского',
+          house: 'д. 10',
+          room: ''
+        },
         email: 'pizza2@gmail.com',
         isActive: true
       },
@@ -178,11 +188,13 @@ export default [
         x: 53.86734233325647,
         y: 27.65028647149643,
         phone: '+375 44 553-40-00',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Центральная',
-        house: 'д. 9',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Центральная',
+          house: 'д. 9',
+          room: ''
+        },
         email: 'pizza3@gmail.com',
         isActive: true
       },
@@ -191,11 +203,13 @@ export default [
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр-т Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр-т Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       }
@@ -230,18 +244,20 @@ export default [
     tags: ['Food', 'Pizza'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['3', '4'],
+    vendorEntitiesId: ['3', '4'],
     offices: [
       {
         id: '3',
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 84',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр. Победителей',
+          house: 'д. 84',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       },
@@ -250,11 +266,13 @@ export default [
         x: 53.85829633426384,
         y: 27.43278622731758,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Слободская',
-        house: 'д. 27',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Слободская',
+          house: 'д. 27',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       }
@@ -281,18 +299,20 @@ export default [
     tags: ['Food', 'Flowers'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['9'],
+    vendorEntitiesId: ['9'],
     offices: [
       {
         id: '9',
         x: 53.83947974668578,
         y: 27.640475169645576,
         phone: '+ 375 25 788 41 32',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Голодеда',
-        house: 'д. 15',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'ул. Голодеда',
+          house: 'д. 15',
+          room: ''
+        },
         email: 'luxe@gmail.com',
         isActive: true
       }
@@ -319,18 +339,20 @@ export default [
     tags: ['Sport', 'Health'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['10'],
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -364,18 +386,20 @@ export default [
     tags: ['Spa', 'Beauty'],
     isActive: true,
     city: 'Minsk',
-    officesId: ['10'],
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -407,18 +431,20 @@ export default [
     isActive: false,
     tags: ['Spa', 'Beauty'],
     city: 'Minsk',
-    officesId: ['10'],
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Minsk',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -445,18 +471,20 @@ export default [
     tags: [],
     isActive: true,
     city: 'Hrodna',
-    officesId: ['11'],
+    vendorEntitiesId: ['11'],
     offices: [
       {
         id: '11',
         x: 53.65034593967492,
         y: 23.85468398498308,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Hrodna',
-        street: 'пр. Янки Купалы',
-        house: 'д. 87',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Hrodna',
+          street: 'пр. Янки Купалы',
+          house: 'д. 87',
+          room: ''
+        },
         email: 'yetideti@gmail.com',
         isActive: true
       }
@@ -483,18 +511,20 @@ export default [
     tags: ['Entartainment', 'Music'],
     isActive: true,
     city: 'Hrodna',
-    officesId: ['12'],
+    vendorEntitiesId: ['12'],
     offices: [
       {
         id: '12',
         x: 53.684909765450755,
         y: 23.845177013681916,
         phone: '+ 375 29 232 99 23',
-        country: 'Беларусь',
-        city: 'Hrodna',
-        street: 'ул.Буденного',
-        house: 'д. 54/1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          city: 'Hrodna',
+          street: 'ул.Буденного',
+          house: 'д. 54/1',
+          room: ''
+        },
         email: 'rock@gmail.com',
         isActive: true
       }
@@ -521,18 +551,20 @@ export default [
     tags: ['Beauty'],
     isActive: true,
     city: 'Kyiv',
-    officesId: ['13'],
+    vendorEntitiesId: ['13'],
     offices: [
       {
         id: '13',
         x: 50.42837142443786,
         y: 30.517745728722034,
         phone: '+38 044 223-77-60',
-        country: 'Украина',
-        city: 'Kyiv',
-        street: 'ул.Ивана Федорова',
-        house: 'д. 6',
-        room: '2',
+        address: {
+          country: 'Украина',
+          city: 'Kyiv',
+          street: 'ул.Ивана Федорова',
+          house: 'д. 6',
+          room: '2'
+        },
         email: 'ira.les@gmail.com',
         isActive: true
       }
@@ -559,18 +591,20 @@ export default [
     tags: ['Clothes', 'Fashion'],
     isActive: false,
     city: 'Kyiv',
-    officesId: ['14'],
+    vendorEntitiesId: ['14'],
     offices: [
       {
         id: '14',
         x: 50.44025486038732,
         y: 30.52230314847687,
         phone: '+38 098 983-07-77',
-        country: 'Украина',
-        city: 'Kyiv',
-        street: 'ул.Рогнеденская',
-        house: 'д. 3',
-        room: '4',
+        address: {
+          country: 'Украина',
+          city: 'Kyiv',
+          street: 'ул.Рогнеденская',
+          house: 'д. 3',
+          room: '4'
+        },
         email: 'fashion-wear@gmail.com',
         isActive: true
       }
@@ -596,18 +630,20 @@ export default [
     tags: ['Auto', 'Wheels'],
     isActive: true,
     city: 'Yekaterinburg',
-    officesId: ['15', '16'],
+    vendorEntitiesId: ['15', '16'],
     offices: [
       {
         id: '15',
         x: 56.781522754305485,
         y: 60.61757015808883,
         phone: '+7 343 385-07-00',
-        country: 'Россия',
-        city: 'Yekaterinburg',
-        street: 'ул. Монтёрская',
-        house: 'д. 10а',
-        room: '',
+        address: {
+          country: 'Россия',
+          city: 'Yekaterinburg',
+          street: 'ул. Монтёрская',
+          house: 'д. 10а',
+          room: ''
+        },
         email: 'wheel1@gmail.com',
         isActive: true
       },
@@ -616,11 +652,13 @@ export default [
         x: 56.84222661082884,
         y: 60.66575335424758,
         phone: '+7 343 383-42-43',
-        country: 'Россия',
-        city: 'Yekaterinburg',
-        street: 'ул. Малышева',
-        house: 'д. 145а',
-        room: '',
+        address: {
+          country: 'Россия',
+          city: 'Yekaterinburg',
+          street: 'ул. Малышева',
+          house: 'д. 145а',
+          room: ''
+        },
         email: 'wheel2@gmail.com',
         isActive: false
       }
