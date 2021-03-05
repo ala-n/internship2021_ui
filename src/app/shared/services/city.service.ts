@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { City } from '@shared/models/city';
 import { map } from 'rxjs/operators';
@@ -9,39 +8,33 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CityService {
-  cities$!: Observable<City[]>;
-  cityName!: string;
+  private _cities: City[] = [];
 
   static LOCATION_URL = 'api/cities';
 
   constructor(private http: HttpClient) {}
 
-  getCities(): Observable<City[]> {
-    this.cities$ = this.http.get<City[]>(CityService.LOCATION_URL);
-    return (this.cities$ = this.http.get<City[]>(CityService.LOCATION_URL));
+  get cities(): City[] {
+    return this._cities;
   }
 
-  getCityId(cityName: string): Observable<string> {
-    return this.cities$.pipe(
+  getCityId(cityName: string): string {
+    const city = this.cities.find((city) => city.name === cityName);
+    return city ? city.id : '';
+  }
+
+  getCityName(cityId: string): string {
+    const city = this.cities.find((city) => city.id === cityId);
+    return city ? city.name : '';
+  }
+
+  preload(): Promise<City[]> {
+    const req$ = this.http.get<City[]>(CityService.LOCATION_URL).pipe(
       map((cities) => {
-        const city = cities.filter((city) => city.name === cityName);
-        return city[0].id;
+        this._cities = cities;
+        return cities;
       })
     );
-  }
-
-  getCityName(cityId: string): Observable<string> {
-    return this.cities$.pipe(
-      map((cities) => {
-        const city = cities.filter((city) => city.id === cityId);
-        return city[0].name;
-      })
-    );
-  }
-
-  getCityById(cityId: string): Observable<string> {
-    return this.http
-      .get<City>(`${CityService.LOCATION_URL}/${cityId}`)
-      .pipe(map((city) => city.name));
+    return req$.toPromise();
   }
 }
