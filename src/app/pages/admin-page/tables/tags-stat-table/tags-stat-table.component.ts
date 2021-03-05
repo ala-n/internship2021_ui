@@ -21,11 +21,11 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     'delete',
     'number',
     'name',
-    'userUses',
-    'brandUses',
-    'created',
+    'usesByUsers',
+    'usesByVendor',
+    'createdAt',
     'createdBy',
-    'updated',
+    'updatedAt',
     'updatedBy'
   ];
 
@@ -58,8 +58,13 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
       switch (property) {
-        case 'updated': {
-          return new Date(item.updated);
+        case 'updatedAt':
+        case 'createdAt': {
+          return new Date(item[property]);
+        }
+        case 'usesByUsers':
+        case 'usesByVendor': {
+          return +item[property];
         }
         default:
           return item[property];

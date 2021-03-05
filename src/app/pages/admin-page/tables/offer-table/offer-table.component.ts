@@ -25,8 +25,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     'vendorName',
     'title',
     'discout',
-    'validFrom',
-    'validTo',
+    'dateStart',
+    'dateEnd',
     'updated'
   ];
 
@@ -72,12 +72,10 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
       property: string
     ) => {
       switch (property) {
-        case 'validTo':
-          return new Date(item.dateEnd);
-        case 'validFrom':
-          return new Date(item.dateStart);
+        case 'dateEnd':
+        case 'dateStart':
         case 'updated':
-          return new Date(item.updated);
+          return new Date(item[property]);
         default:
           return item[property];
       }

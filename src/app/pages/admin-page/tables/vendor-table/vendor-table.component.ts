@@ -59,7 +59,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       //TODO question about types
       switch (property) {
         case 'updated': {
-          return new Date(item.updated);
+          return new Date(item[property]);
         }
         default:
           return item[property];

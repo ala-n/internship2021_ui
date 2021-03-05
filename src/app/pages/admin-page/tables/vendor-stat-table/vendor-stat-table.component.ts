@@ -56,8 +56,12 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
       switch (property) {
-        case 'updated': {
-          return new Date(item.updated);
+        case 'updated':
+        case 'created': {
+          return new Date(item[property]);
+        }
+        case 'rating': {
+          return +item[property];
         }
         default:
           return item[property];
