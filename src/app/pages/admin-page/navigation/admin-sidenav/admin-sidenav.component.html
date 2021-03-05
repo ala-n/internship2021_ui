@@ -49,7 +49,12 @@
         routerLinkActive="mat-list-item_active"
         >{{ 'offers' | translate }}</a
       >
-      <a mat-list-item routerLink=".">{{ 'statistics' | translate }}</a>
+      <a
+        mat-list-item
+        routerLink="statistics/vendors"
+        routerLinkActive="mat-list-item_active"
+        >{{ 'statistics' | translate }}</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="admin-sidenav__content">
