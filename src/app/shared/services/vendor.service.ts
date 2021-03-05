@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Vendor } from '@shared/models/vendor';
+import { Office } from '@shared/models/office';
 
 @Injectable({
   providedIn: 'root'
@@ -28,25 +29,28 @@ export class VendorService {
   }
 
   getVendorsAllAdmin(): Observable<Vendor> {
-    const url = `${VendorService.VENDORS_URL}/allAdmin`;
+    const url = VendorService.VENDORS_URL;
     return this.http.get<Vendor>(url);
   }
 
   getVendorById(id: string): Observable<Vendor> {
-    // const url = `${VendorService.VENDORS_URL}/get/${id}`;
     const url = `${VendorService.VENDORS_URL}/${id}`;
     return this.http.get<Vendor>(url);
   }
 
   addVendor(vendor: Vendor): Observable<Vendor> {
-    // const url = `${VendorService.VENDORS_URL}/add`;
     const url = VendorService.VENDORS_URL;
     return this.http.post<Vendor>(url, vendor, this.httpOptions);
   }
 
   updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
-    console.log(vendor, vendorId);
     const url = `${VendorService.VENDORS_URL}/${vendorId}`;
     return this.http.put<Vendor>(url, vendor, this.httpOptions);
+  }
+
+  addOffice(office: Office, vendorId: string): Observable<Office> {
+    const url = `${VendorService.VENDORS_URL}/${vendorId}/vendorEntities`;
+    office.vendorId = vendorId;
+    return this.http.post<Office>(url, office);
   }
 }
