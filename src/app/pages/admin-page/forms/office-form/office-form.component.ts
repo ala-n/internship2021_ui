@@ -61,7 +61,7 @@ export class OfficeFormComponent implements OnInit {
             location: this.office.location,
             country: this.office.address.country,
             cityId: '',
-            city: this.cityName,
+            city: this.office.address.city,
             street: this.office.address.street,
             house: this.office.address.house,
             room: this.office.address.room,
