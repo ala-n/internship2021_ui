@@ -6,10 +6,9 @@
       *ngFor="let tag of tags"
       [value]="tag.name"
       (click)="searchByTag($event)"
+      [class.tags__item__active]="tag.name === currentTag"
     >
-      <div (click)="toggle()" [ngClass]="status ? 'success' : 'danger'">
-        {{ tag.name }}
-      </div>
+      {{ tag.name }}
     </mat-chip>
   </mat-chip-list>
 </div>

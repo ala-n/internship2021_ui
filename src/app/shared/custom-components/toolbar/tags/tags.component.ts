@@ -19,6 +19,10 @@ export class TagsComponent implements OnInit {
     private filterService: FilterService
   ) {}
 
+  get currentTag(): string {
+    return this.filterService.filterCfg?.tag || '';
+  }
+
   ngOnInit(): void {
     this.tagsService
       .getTagsValue()

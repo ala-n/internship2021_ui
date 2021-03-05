@@ -36,7 +36,8 @@
     }
 
     &__active {
-      color: red;
+      border: 1px solid $blue-primary;
+      color: $blue-primary;
     }
   }
 
@@ -50,8 +51,4 @@
 .mat-chip.mat-standard-chip::after {
   // this style turn off :hover effect from mat-button
   background-color: transparent;
-}
-
-.success {
-  color: red;
 }
