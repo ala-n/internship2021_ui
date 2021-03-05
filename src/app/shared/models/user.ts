@@ -1,7 +1,8 @@
+import { City } from './city';
 export interface User {
   firstName: string;
   lastName: string;
-  city: string;
-  role: 0;
+  city: City;
+  role: string;
   phone: string;
 }
