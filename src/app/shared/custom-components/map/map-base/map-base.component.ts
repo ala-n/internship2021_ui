@@ -47,14 +47,25 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
 
   rebuildFilter(): void {
     const officeId: string[] = [];
-    if (this.markers) {
-      for (const marker of this.markers) {
-        if (this.map.getBounds().contains(marker.getLatLng())) {
-          marker.officeId && officeId.push(marker.officeId);
-        }
+    this.mapService.distanceToMarkers = new Map();
+
+    if (!this.markers) return;
+
+    const visibleMarkers = this.markers.filter((marker) => {
+      return this.map.getBounds().contains(marker.getLatLng());
+    });
+
+    for (const marker of visibleMarkers) {
+      marker.officeId && officeId.push(marker.officeId);
+      if (marker.officeId && this.mapService.userCoord) {
+        this.mapService.distanceToMarkers.set(
+          marker.officeId,
+          this.mapService.userCoord.distanceTo(marker.getLatLng())
+        );
       }
-      this.filterService.filterMap(officeId);
     }
+
+    this.filterService.filterMap(officeId);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -87,6 +98,8 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
     this.map
       .on('locationfound', (e) => {
+        // save user position in coordinates
+        this.mapService.userCoord = e.latlng;
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {

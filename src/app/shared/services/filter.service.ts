@@ -3,6 +3,7 @@ import { Offer } from '@shared/models/offer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { OfferService } from './offer.service';
+import { SortService } from './sort.service';
 
 interface FilterConfig {
   city?: string;
@@ -14,8 +15,6 @@ interface FilterConfig {
   providedIn: 'root'
 })
 export class FilterService {
-  private _filteredOfferList$ = new BehaviorSubject<Offer[]>([]);
-  readonly filteredOfferList$ = this._filteredOfferList$.asObservable();
   public list$: BehaviorSubject<Offer[]> = new BehaviorSubject<Offer[]>([]);
   public listMap$: BehaviorSubject<Offer[]> = new BehaviorSubject<Offer[]>([]);
   public filterOffice$: BehaviorSubject<string[]> = new BehaviorSubject<
@@ -24,7 +23,10 @@ export class FilterService {
   public filterCfg: FilterConfig = {};
   private listUpdateTimeout = 0;
 
-  constructor(private offerService: OfferService) {}
+  constructor(
+    private offerService: OfferService,
+    private sortService: SortService
+  ) {}
 
   filter(cfg: Partial<FilterConfig>): void {
     this.filterCfg = { ...this.filterCfg, ...cfg };
@@ -34,20 +36,21 @@ export class FilterService {
   filterMap(officeId: string[]): void {
     this.filterOffice$.next(officeId);
   }
-  private applyFilterMap(offer: Offer[], office: string[]): Offer[] {
-    return offer.filter((offer) => {
-      if (office?.length) {
-        const officesId = offer.offices.map((o) => o.id);
-        if (!this.isIntersects(office, officesId)) return false;
-      }
-      return true;
-    });
-  }
 
   private applyFilter(offers: Offer[]) {
     return offers.filter((offer) => {
       if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
         return false;
+      return true;
+    });
+  }
+
+  private applyFilterMap(offer: Offer[], office: string[]) {
+    return offer.filter((offer) => {
+      if (office?.length) {
+        const officesId = offer.offices.map((o) => o.id);
+        if (!this.isIntersects(office, officesId)) return false;
+      }
       return true;
     });
   }
@@ -64,10 +67,17 @@ export class FilterService {
   }
 
   get resultList$(): Observable<Offer[]> {
-    return this.filterOffice$.pipe(
-      mergeMap((office: string[]) =>
-        this.list$.pipe(
-          map((offer: Offer[]) => this.applyFilterMap(offer, office))
+    return this.list$.pipe(
+      mergeMap((offers: Offer[]) =>
+        this.filterOffice$.pipe(
+          map((offices: string[]) => this.applyFilterMap(offers, offices))
+        )
+      ),
+      mergeMap((offers: Offer[]) =>
+        this.sortService.parameter$.pipe(
+          map((parameter: string) =>
+            this.sortService.sortOfferList(parameter, offers)
+          )
         )
       )
     );
