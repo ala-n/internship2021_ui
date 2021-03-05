@@ -6,6 +6,7 @@ import { map, withLatestFrom } from 'rxjs/operators';
 import { CityService } from '@shared/services/city.service';
 import { LocationService } from '@shared/services/location.service';
 import { Router } from '@angular/router';
+import { City } from '@shared/models/city';
 
 @Component({
   selector: 'app-location',
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None
 })
 export class LocationComponent implements OnInit, OnDestroy {
-  filteredOptions$!: Observable<string[]>;
+  filteredOptions$!: Observable<City[]>;
   currentCity!: string;
 
   myControl = new FormControl(this.currentCity);
@@ -32,9 +33,9 @@ export class LocationComponent implements OnInit, OnDestroy {
       withLatestFrom(this.cityService.getCities()),
       map(([value, city]) => {
         const filterValue = (value || '').toLowerCase();
-        return city.filter((option) =>
-          option.toLowerCase().startsWith(filterValue)
-        );
+        return city.filter((option) => {
+          return option.name.toLowerCase().startsWith(filterValue);
+        });
       })
     );
 
@@ -47,6 +48,7 @@ export class LocationComponent implements OnInit, OnDestroy {
   }
 
   onSelectionChanged(city: string): void {
+    console.log(city);
     this.router.navigate(['home', city]);
     this.locationService.setCity(city);
   }

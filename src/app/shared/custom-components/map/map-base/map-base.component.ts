@@ -12,6 +12,7 @@ import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
 import { LocationService } from '@shared/services/location.service';
 import { FilterService } from '@shared/services/filter.service';
+import { Router } from '@angular/router';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
@@ -34,7 +35,8 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private locationService: LocationService,
     private mapService: MapService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -104,6 +106,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {
             this.locationService.setCity(data.address.city);
+            this.router.navigate(['home', data.address.city]);
           });
         this.map.stopLocate();
       })
