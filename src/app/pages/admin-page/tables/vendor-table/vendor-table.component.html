@@ -88,12 +88,12 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="webSite">
+      <ng-container matColumnDef="website">
         <th mat-header-cell class="text text_upper" *matHeaderCellDef>
           {{ 'website' | translate }}
         </th>
         <td mat-cell *matCellDef="let vendor">
-          {{ vendor.website | hostname }}
+          {{ vendor.website }}
         </td>
       </ng-container>
 

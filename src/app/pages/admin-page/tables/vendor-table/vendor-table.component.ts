@@ -24,7 +24,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
     'name',
     'branchOffices',
     'offers',
-    'webSite',
+    'website',
     'updated'
   ];
 
