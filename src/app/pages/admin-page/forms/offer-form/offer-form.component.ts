@@ -26,7 +26,7 @@ export class OfferFormComponent implements OnInit {
     dateEnd: [null, Validators.required],
     promocode: null,
     images: null,
-    offices: [null, Validators.required],
+    vendorEntitiesId: [null, Validators.required],
     tags: null,
     isActive: false
   });
@@ -62,7 +62,7 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
-          this.offerOffices = offer.offices.map((office) => office.id);
+          this.offerOffices = offer.vendorEntitiesId;
           this.vendorId = offer.vendorId;
           this.tags = offer.tags || [];
           this.getOfficesForSelect(this.vendorId);
@@ -75,7 +75,7 @@ export class OfferFormComponent implements OnInit {
             dateEnd: offer.dateEnd,
             promocode: offer.promocode,
             images: '',
-            offices: this.offerOffices,
+            vendorEntitiesId: this.offerOffices,
             tags: this.tags,
             isActive: offer.isActive
           });
