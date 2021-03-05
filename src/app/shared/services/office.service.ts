@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Office } from '@shared/models/office';
-import { map } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -14,20 +14,20 @@ export class OfficeService {
   constructor(private http: HttpService) {}
 
   getVendorOffices(vendorId: string): Observable<Office[]> {
-    // uncomment next 2 lines after back-end connection
-    // const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}`;
-    // return this.http.get<Office[]>(url);
+    // for back-end
+    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}`;
+    return this.http.get<Office[]>(url);
 
-    // comment next 9 lines after back-end connection
-    return this.http
-      .get<Office[]>(OfficeService.OFFICES_URL)
-      .pipe(
-        map((offices) =>
-          offices.filter(
-            (office: { vendorId: string }) => office.vendorId === vendorId
-          )
-        )
-      );
+    // for mock
+    // return this.http
+    //   .get<Office[]>(OfficeService.OFFICES_URL)
+    //   .pipe(
+    //     map((offices) =>
+    //       offices.filter(
+    //         (office: { vendorId: string }) => office.vendorId === vendorId
+    //       )
+    //     )
+    //   );
   }
 
   getOfficeById(id: string): Observable<Office> {
