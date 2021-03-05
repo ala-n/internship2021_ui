@@ -68,8 +68,8 @@ export default [
   {
     id: '7',
     name: 'Flowers',
-    usesByUsers: 12,
-    usesByVendor: 8,
+    usesByUsers: 19,
+    usesByVendor: 3,
     isDeleted: false,
     createdAt: '2021-01-29',
     createdBy: 'Taras Lazarchuk',
@@ -123,8 +123,8 @@ export default [
   {
     id: '12',
     name: 'Markets',
-    usesByUsers: 13,
-    usesByVendor: 4,
+    usesByUsers: 15,
+    usesByVendor: 2,
     isDeleted: false,
     createdAt: '2021-01-11',
     createdBy: 'Taras Lazarchuk',
@@ -156,8 +156,8 @@ export default [
   {
     id: '15',
     name: 'Pizza',
-    usesByUsers: 31,
-    usesByVendor: 4,
+    usesByUsers: 36,
+    usesByVendor: 10,
     isDeleted: false,
     createdAt: '2021-02-01',
     createdBy: 'Alexander Bazukevich',
@@ -178,8 +178,8 @@ export default [
   {
     id: '17',
     name: 'Spa',
-    usesByUsers: 23,
-    usesByVendor: 1,
+    usesByUsers: 26,
+    usesByVendor: 5,
     isDeleted: false,
     createdAt: '2021-02-01',
     createdBy: 'Ularbek Zairbekov',
