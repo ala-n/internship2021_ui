@@ -24,5 +24,5 @@ export interface Offer extends OfferBase {
   rating: number;
   tags: string[];
   isActive: boolean;
-  updated: string;
+  updatedAt: string;
 }

@@ -35,7 +35,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-02-05',
+    updatedAt: '2021-02-05',
     isActive: true
   },
   {
@@ -75,7 +75,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-02-04',
+    updatedAt: '2021-02-04',
     isActive: true
   },
   {
@@ -143,7 +143,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-02-01',
+    updatedAt: '2021-02-01',
     isActive: true
   },
   {
@@ -169,7 +169,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-01-01',
+    updatedAt: '2021-01-01',
     isActive: true
   },
   {
@@ -194,7 +194,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2020-12-09',
+    updatedAt: '2020-12-09',
     isActive: true
   },
   {
@@ -222,7 +222,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2020-11-27',
+    updatedAt: '2020-11-27',
     isActive: true
   },
   {
@@ -247,7 +247,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-01-04',
+    updatedAt: '2021-01-04',
     isActive: true
   },
   {
@@ -272,7 +272,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2021-01-01',
+    updatedAt: '2021-01-01',
     isActive: true
   },
   {
@@ -297,7 +297,7 @@ export default [
         isActive: true
       }
     ],
-    updated: '2020-12-21',
+    updatedAt: '2020-12-21',
     isActive: true
   },
   {
@@ -339,7 +339,7 @@ export default [
         isActive: false
       }
     ],
-    updated: '2020-12-04',
+    updatedAt: '2020-12-04',
     isActive: false
   }
 ];

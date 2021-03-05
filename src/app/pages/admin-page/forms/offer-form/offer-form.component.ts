@@ -106,6 +106,7 @@ export class OfferFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.offer) {
+      console.log(this.offerForm.value);
       this.offerService.updateOffer(this.offerForm.value, this.vendorId);
     } else {
       this.offerService.addOffer(this.offerForm.value, this.vendorNavId);

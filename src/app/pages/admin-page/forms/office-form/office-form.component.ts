@@ -10,7 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
 import { from } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
-import { CityService } from '@shared/services/city.service';
 
 @Component({
   selector: 'app-office-form',
@@ -40,7 +39,6 @@ export class OfficeFormComponent implements OnInit {
     private fb: FormBuilder,
     private officeService: OfficeService,
     private vendorService: VendorService,
-    private cityService: CityService,
     private route: ActivatedRoute,
     public navigationService: NavigationService,
     public dialog: MatDialog,
@@ -58,10 +56,6 @@ export class OfficeFormComponent implements OnInit {
         .getOfficeById(officeId)
         .pipe(take(1))
         .subscribe((office) => {
-          this.cityService
-            .getCityName(office.address.cityId)
-            .pipe(take(1))
-            .subscribe((cityName) => (this.cityName = cityName));
           this.office = office;
           this.officeForm.setValue({
             location: this.office.location,
@@ -121,10 +115,6 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.cityService
-      .getCityId(this.officeForm.value.city)
-      .pipe(take(1))
-      .subscribe((cityId) => (this.officeForm.value.cityId = cityId));
     if (this.office) {
       console.log(this.officeForm.value);
       this.officeService.updateOffice(this.officeForm.value);

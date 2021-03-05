@@ -8,6 +8,6 @@ export interface Vendor {
   description: string;
   website: string;
   offices: Office[];
-  updated: string;
+  updatedAt: string;
   isActive: boolean;
 }
