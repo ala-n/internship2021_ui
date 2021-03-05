@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CityService } from '@shared/services/city.service';
 import { LocationService } from '@shared/services/location.service';
 import { NavigationService } from '@shared/services/navigation.service';
 import { of } from 'rxjs';
@@ -12,6 +13,7 @@ import { delay, map } from 'rxjs/operators';
 export class HomePageComponent implements OnInit {
   isLoading$ = of(true);
   isListVisible = true;
+  loading = true;
 
   toggleListView(): void {
     this.isListVisible = !this.isListVisible;
@@ -19,7 +21,8 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     public navigationService: NavigationService,
-    public locationService: LocationService
+    public locationService: LocationService,
+    private cityService: CityService
   ) {}
 
   ngOnInit(): void {
@@ -27,5 +30,8 @@ export class HomePageComponent implements OnInit {
       delay(0), // fix ExpressionChangedAfterItHasBeenCheckedError
       map((city) => city === '')
     );
+    this.cityService.preload().then(() => {
+      this.loading = false;
+    });
   }
 }

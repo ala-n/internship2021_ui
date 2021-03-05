@@ -21,7 +21,7 @@ export class HttpService {
   }
 
   get token(): string | null {
-    return sessionStorage.getItem('access_token');
+    return localStorage.getItem('access_user');
   }
 
   get<T>(baseURL: string): Observable<T> {

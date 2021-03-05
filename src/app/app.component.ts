@@ -1,20 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { CityService } from '@shared/services/city.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'exadel-app';
-  loading = true;
-
-  constructor(private cityService: CityService) {}
-
-  ngOnInit(): void {
-    this.cityService.preload().then(() => {
-      this.loading = false;
-    });
-  }
 }
