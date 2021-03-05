@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router } from '@angular/router';
+import { CityService } from '@shared/services/city.service';
 import { LocationService } from '@shared/services/location.service';
 import { NavigationService } from '@shared/services/navigation.service';
 import { UserService } from '@shared/services/user.service';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class CityGuard implements CanActivate {
     public navigationService: NavigationService,
     public locationService: LocationService,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private cityService: CityService
   ) {}
 
   canActivate({
@@ -28,7 +30,10 @@ export class CityGuard implements CanActivate {
     return this.userService.user$.pipe(
       tap((user) => {
         if (user) {
-          this.router.navigate(['home', user.city]);
+          this.cityService
+            .getCityById(user.cityId)
+            .pipe(take(1))
+            .subscribe((cityName) => this.router.navigate(['home', cityName]));
         }
       }),
       map(() => false)

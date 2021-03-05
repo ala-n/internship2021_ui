@@ -1,8 +1,7 @@
-import { City } from './city';
 export interface User {
   firstName: string;
   lastName: string;
-  city: City;
+  cityId: string;
   role: string;
   phone: string;
 }

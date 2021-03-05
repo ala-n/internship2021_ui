@@ -17,10 +17,14 @@ export class VendorService {
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
     if (!params) return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
-    else
+    else {
       return this.http.get<Vendor[]>(
         `${VendorService.VENDORS_URL}/?city=${params.city}`
+        // for backend
+        // const cityId = this.cityService.getCityId(params.city);
+        // `${VendorService.VENDORS_URL}/city/${cityId}`
       );
+    }
   }
 
   getVendorsAllAdmin(): Observable<Vendor> {
