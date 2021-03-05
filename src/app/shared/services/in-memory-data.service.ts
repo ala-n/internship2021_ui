@@ -6,6 +6,7 @@ import cities from '../mocks/cities';
 import vendorEntities from '../mocks/offices';
 import topTags from '../mocks/top-tags';
 import tags from '../mocks/tags';
+import user from '../mocks/user';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ import tags from '../mocks/tags';
 export class InMemoryDataService implements InMemoryDbService {
   // eslint-disable-next-line  @typescript-eslint/explicit-module-boundary-types
   createDb() {
-    return { vendors, offers, cities, vendorEntities, topTags, tags };
+    return { vendors, offers, cities, vendorEntities, topTags, tags, user };
   }
 }

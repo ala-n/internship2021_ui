@@ -17,7 +17,8 @@ export class OfferService {
     if (!params) return this.http.get(`${OfferService.OFFERS_URL}`);
     else {
       // for backend
-      // return this.http.get(`${OfferService.OFFERS_URL}/city/{id}`);
+      // const cityId = this.cityService.getCityId(params.city);
+      // return this.http.get(`${OfferService.OFFERS_URL}/city/{cityId}`);
 
       // for mocks
       return this.http.get(`${OfferService.OFFERS_URL}/?city=${params.city}`);
