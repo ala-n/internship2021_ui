@@ -41,6 +41,6 @@ export default [
   },
   {
     id: '11',
-    name: 'Clothes'
+    name: 'Pizza'
   }
 ];

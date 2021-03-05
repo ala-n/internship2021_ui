@@ -36,12 +36,14 @@ export class OfficeService {
   }
 
   addOffice(office: Office, vendorId: string): Observable<Office> {
+    const url = OfficeService.OFFICES_URL;
     office.vendorId = vendorId;
-    return this.http.post(OfficeService.OFFICES_URL, office);
+    return this.http.post(url, office);
   }
 
   updateOffice(office: Office, vendorId: string): Observable<Office> {
+    const url = `${OfficeService.OFFICES_URL}/${office.id}`;
     office.vendorId = vendorId;
-    return this.http.put(OfficeService.OFFICES_URL, office);
+    return this.http.put(url, office);
   }
 }
