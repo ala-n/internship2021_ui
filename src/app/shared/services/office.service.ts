@@ -9,11 +9,16 @@ import { HttpService } from './http.service';
   providedIn: 'root'
 })
 export class OfficeService {
-  static OFFICES_URL = 'api/offices';
+  static OFFICES_URL = 'api/vendorEntities';
 
   constructor(private http: HttpService) {}
 
   getVendorOffices(vendorId: string): Observable<Office[]> {
+    // uncomment next 2 lines after back-end connection
+    // const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}`;
+    // return this.http.get<Office[]>(url);
+
+    // comment next 9 lines after back-end connection
     return this.http
       .get<Office[]>(OfficeService.OFFICES_URL)
       .pipe(
@@ -35,15 +40,14 @@ export class OfficeService {
     return this.http.get<Office[]>(url);
   }
 
-  addOffice(office: Office, vendorId: string): Observable<Office> {
-    const url = OfficeService.OFFICES_URL;
-    office.vendorId = vendorId;
-    return this.http.post(url, office);
-  }
+  // addOffice(office: Office, vendorId: string): Observable<Office> {
+  //   const url = OfficeService.OFFICES_URL;
+  //   office.vendorId = vendorId;
+  //   return this.http.post(url, office);
+  // }
 
-  updateOffice(office: Office, vendorId: string): Observable<Office> {
+  updateOffice(office: Office): Observable<Office> {
     const url = `${OfficeService.OFFICES_URL}/${office.id}`;
-    office.vendorId = vendorId;
     return this.http.put(url, office);
   }
 }

@@ -113,12 +113,10 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.officeForm.value);
-
     if (this.office) {
-      this.officeService.updateOffice(this.officeForm.value, this.vendorId);
+      this.officeService.updateOffice(this.officeForm.value);
     } else {
-      this.officeService.addOffice(this.officeForm.value, this.vendorId);
+      this.vendorService.addOffice(this.officeForm.value, this.vendorId);
     }
   }
 }
