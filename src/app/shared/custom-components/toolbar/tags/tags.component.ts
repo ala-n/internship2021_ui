@@ -38,10 +38,4 @@ export class TagsComponent implements OnInit {
     const tag = (target.textContent || '').trim(); //receive tag
     this.filterService.filterByTags(tag); // filter by tags
   }
-
-  toggle() {
-    this.status = false;
-    this.status = !this.status;
-    console.log(this.status);
-  }
 }
