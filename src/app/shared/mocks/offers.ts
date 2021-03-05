@@ -442,7 +442,7 @@ export default [
     rating: 5,
     updated: '2021-03-01',
     promocode: '',
-    tags: [],
+    tags: ['Relax', 'Fun', 'Children'],
     isActive: true,
     city: 'Hrodna',
     officesId: ['11'],
