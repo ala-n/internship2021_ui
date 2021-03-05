@@ -11,6 +11,12 @@ interface FilterConfig {
   office?: string[];
 }
 
+// interface OffersData {
+//   offers?: Offer[];
+//   vendor: string[];
+//   offices?: Office[];
+// }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -56,6 +62,21 @@ export class FilterService {
   }
 
   private updateList(): void {
+    // const offers: OffersData = {};
+    // this.offerService
+    //   .getOffers(this.filterCfg as { city: string })
+    //   .subscribe((offers: Offer[]) => {
+    //     offers.map((offer) => {
+    //       this.offerService
+    //         .getVendorInfoByOfferId(offer.id)
+    //         .subscribe((vendor) =>
+    //           Object.assign(offers, {
+    //             vendorName: vendor.name,
+    //             vendorId: vendor.id
+    //           })
+    //         );
+    //       this.offerService.getVendorInfoByOfferId(offer.id);
+    //     });
     if (this.listUpdateTimeout) clearTimeout(this.listUpdateTimeout);
     setTimeout(() => {
       this.offerService

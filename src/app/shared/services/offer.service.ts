@@ -74,4 +74,8 @@ export class OfferService {
       })
     );
   }
+
+  getVendorInfoByOfferId(offerId: string): Observable<string[]> {
+    return this.http.get<string[]>(`api/offers/vendorInfo/${offerId}`);
+  }
 }
