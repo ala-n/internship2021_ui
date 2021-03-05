@@ -36,7 +36,11 @@ export default [
       }
     ],
     updated: '2021-02-05',
-    isActive: true
+    isActive: true,
+    rating: 4,
+    created: '2021-02-06',
+    createdBy: 'Alexander Bazukevich',
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '2',
@@ -76,7 +80,11 @@ export default [
       }
     ],
     updated: '2021-02-04',
-    isActive: true
+    isActive: true,
+    rating: 5,
+    created: '2021-01-06',
+    createdBy: 'Alexander Bazukevich',
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '3',
@@ -144,7 +152,11 @@ export default [
       }
     ],
     updated: '2021-02-01',
-    isActive: true
+    isActive: true,
+    rating: 3,
+    created: '2021-02-02',
+    createdBy: 'Alexander Bazukevich',
+    updatedBy: 'Ularbek Zairbekov'
   },
   {
     id: '4',
@@ -170,7 +182,11 @@ export default [
       }
     ],
     updated: '2021-01-01',
-    isActive: true
+    isActive: true,
+    rating: 4.3,
+    created: '2021-01-08',
+    createdBy: 'Anna Barmina',
+    updatedBy: 'Taras Lazarchuk'
   },
   {
     id: '5',
@@ -195,7 +211,11 @@ export default [
       }
     ],
     updated: '2020-12-09',
-    isActive: true
+    isActive: true,
+    rating: 4.7,
+    created: '2021-01-02',
+    createdBy: 'Anna Barmina',
+    updatedBy: 'Taras Lazarchuk'
   },
   {
     id: '6',
@@ -223,7 +243,11 @@ export default [
       }
     ],
     updated: '2020-11-27',
-    isActive: true
+    isActive: true,
+    rating: 4.2,
+    created: '2021-01-01',
+    createdBy: 'Anna Barmina',
+    updatedBy: 'Taras Lazarchuk'
   },
   {
     id: '7',
@@ -248,7 +272,11 @@ export default [
       }
     ],
     updated: '2021-01-04',
-    isActive: true
+    isActive: true,
+    rating: 3.3,
+    created: '2020-12-18',
+    createdBy: 'Anna Barmina',
+    updatedBy: 'Alexander Bazukevich'
   },
   {
     id: '8',
@@ -273,7 +301,11 @@ export default [
       }
     ],
     updated: '2021-01-01',
-    isActive: true
+    isActive: true,
+    rating: 3.5,
+    created: '2020-12-01',
+    createdBy: 'Ularbek Zairbekov',
+    updatedBy: 'Alexander Bazukevich'
   },
   {
     id: '9',
@@ -298,7 +330,11 @@ export default [
       }
     ],
     updated: '2020-12-21',
-    isActive: true
+    isActive: true,
+    rating: 4.9,
+    created: '2020-12-18',
+    createdBy: 'Taras Lazarchuk',
+    updatedBy: 'Alexander Bazukevich'
   },
   {
     id: '10',
@@ -340,6 +376,10 @@ export default [
       }
     ],
     updated: '2020-12-04',
-    isActive: false
+    isActive: false,
+    rating: 4,
+    created: '2020-12-04',
+    createdBy: 'Ularbek Zairbekov',
+    updatedBy: 'Alexander Bazukevich'
   }
 ];
