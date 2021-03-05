@@ -32,20 +32,20 @@ export class OfferService {
 
   getVendorOffers(vendorId: string): Observable<Offer[]> {
     // for mocks
-    // return this.http
-    //   .get<Offer[]>(`${OfferService.OFFERS_URL}`)
-    //   .pipe(
-    //     map((offers) =>
-    //       offers.filter(
-    //         (offer: { vendorId: string }) => offer.vendorId === vendorId
-    //       )
-    //     )
-    //   );
+    return this.http
+      .get<Offer[]>(`${OfferService.OFFERS_URL}`)
+      .pipe(
+        map((offers) =>
+          offers.filter(
+            (offer: { vendorId: string }) => offer.vendorId === vendorId
+          )
+        )
+      );
 
     // for backend
-    return this.http.get<Offer[]>(
-      `${OfferService.OFFERS_URL}/vendor/${vendorId}`
-    );
+    // return this.http.get<Offer[]>(
+    //   `${OfferService.OFFERS_URL}/vendor/${vendorId}`
+    // );
   }
 
   getOfficeOffers(officeId: string): Observable<Offer[]> {
