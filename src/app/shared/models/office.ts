@@ -7,8 +7,8 @@ export interface Office {
   vendorName: string;
   // address: string; //must be joined to string from separate fields
   phone: string;
-  country: string;
   address: {
+    country: string;
     cityId: string;
     city: string;
     street: string;

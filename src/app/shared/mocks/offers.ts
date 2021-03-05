@@ -20,7 +20,7 @@ export default [
     vendorId: '1',
     numberOfUses: 21,
     numberOfViews: 215,
-    updatedAt: '2021-02-01',
+    updatedAt: '2021-03-05T17:29:35.144058+05:00',
     promocode: '34B2J3IB',
     rating: 4.3,
     tags: ['Massage', 'Beauty', 'Health'],
