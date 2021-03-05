@@ -6,10 +6,10 @@ export default [
     description: `Уважаемые клиенты, с 12 ноября ношение масок стало обязательным. Пожалуйста, надевайте маску в салоне, даже если вы здоровы. С заботой о вас, салон красоты "Марсель". Предварительная запись обязательна.
     Стоимость массажей: от 18 руб. от 30 руб. Стоимость и виды массажа смотрите ниже. Услуги расположены по возрастанию цены (от дешевых к дорогим)`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-minsk-skidka-marsel-1.jpg',
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-1-skidka-marsel-1.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-1-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-1-slivki.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
     ],
@@ -25,17 +25,16 @@ export default [
     rating: 4.3,
     tags: ['Massage', 'Beauty', 'Health'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['1', '2'],
     offices: [
       {
         id: '1',
-        x: 53.950248766494305,
-        y: 27.678503384991703,
+        location: [53.950248766494305, 27.678503384991703],
         phone: '+ 375 29 668 16 97',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Шафарнянская',
           house: 'д. 3',
           room: '303'
@@ -45,12 +44,13 @@ export default [
       },
       {
         id: '2',
+        location: [53.90630545040514, 27.579132898483202],
         x: 53.90630545040514,
         y: 27.579132898483202,
         phone: '+ 375 29 634 67 74',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Захарова',
           house: 'д. 23',
           room: ''
@@ -92,17 +92,18 @@ export default [
     promocode: '34B2EFW',
     tags: ['Food', 'Sushi'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['3'],
     offices: [
       {
         id: '3',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр. Победителей',
           house: 'д. 84',
           room: ''
@@ -129,7 +130,7 @@ export default [
     - пицца "Деревенская" 1 метр: 21,95 руб. 43,90 руб.
     - Возможен заказ пицц из 2-х половинок`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-minsk-pizzamania-kar-9.jpg',
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-1-pizzamania-kar-9.jpg',
       'https://pizzamania.by/admin/uploads/items/260.png',
       'https://pizzamania.by/admin/uploads/items/236.png',
       'https://pizzamania.by/admin/uploads/items/191.png',
@@ -150,17 +151,18 @@ export default [
     promocode: '34BEFWWWIB',
     tags: [],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['5', '6', '7', '8'],
     offices: [
       {
         id: '5',
+        location: [53.86553289876855, 27.45302363896044],
         x: 53.86553289876855,
         y: 27.45302363896044,
         phone: '+375 17 375-58-58',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Рафиева',
           house: 'д. 44',
           room: ''
@@ -170,12 +172,13 @@ export default [
       },
       {
         id: '6',
+        location: [53.883091927066054, 27.567344627318217],
         x: 53.883091927066054,
         y: 27.567344627318217,
         phone: '+375 17 375-58-58',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Маяковского',
           house: 'д. 10',
           room: ''
@@ -185,12 +188,13 @@ export default [
       },
       {
         id: '7',
+        location: [53.86734233325647, 27.65028647149643],
         x: 53.86734233325647,
         y: 27.65028647149643,
         phone: '+375 44 553-40-00',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Центральная',
           house: 'д. 9',
           room: ''
@@ -200,12 +204,13 @@ export default [
       },
       {
         id: '8',
+        location: [53.91137617684785, 27.542871240811902],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр-т Победителей',
           house: 'д. 23к1',
           room: ''
@@ -243,17 +248,18 @@ export default [
     promocode: 'UYT783I',
     tags: ['Food', 'Pizza'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['3', '4'],
     offices: [
       {
         id: '3',
+        location: [53.938102489505866, 27.488490327319887],
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр. Победителей',
           house: 'д. 84',
           room: ''
@@ -263,12 +269,13 @@ export default [
       },
       {
         id: '4',
+        location: [53.85829633426384, 27.43278622731758],
         x: 53.85829633426384,
         y: 27.43278622731758,
         phone: '+375 44 771-51-51',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Слободская',
           house: 'д. 27',
           room: ''
@@ -284,7 +291,7 @@ export default [
       'Съедобные шоколадные розы в букете, коробке от 13 руб. Шоколадки из Бельгии и Италии',
     description: `Внимание! Индивидуальные заказы принимаются минимум за день. В наличии есть готовые изделия, их доставка осуществляется после 14:30 в течение 2-4 часов. Промокод дает право на скидку от 10 до 25% на шоколадные розы в букетах из бельгийского шоколада «Standart» и «luxe», шоколад в коробке, шоколадную подписку. Iоколад «Luxe» (100-110 г) из бельгийского, либо итальянского шоколада c добавлением орехов, ягод и различных бонусов.`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg'
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-1-kardash1.jpg'
     ],
     discount: 'от 10 до 25%',
     dateStart: '2021-03-01',
@@ -298,17 +305,18 @@ export default [
     promocode: 'Luxe25',
     tags: ['Food', 'Flowers'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['9'],
     offices: [
       {
         id: '9',
+        location: [53.83947974668578, 27.640475169645576],
         x: 53.83947974668578,
         y: 27.640475169645576,
         phone: '+ 375 25 788 41 32',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'ул. Голодеда',
           house: 'д. 15',
           room: ''
@@ -324,7 +332,7 @@ export default [
       'Хит продаж! Плавание, бассейн + сауна + водные процедуры + аквадискотека - и все это в одном месте!',
     description: `Право на скидку 35% на разовое посещение бассейна: плавание (45 мин), плавание с сауной и водными процедурами (75 мин) или тренажерный зал + бассейн + сауна + гидропроцедуры (90 мин + 75 мин).`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg'
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-1-masherova-kar-11.jpg'
     ],
     discount: '35%',
     dateStart: '2020-10-01',
@@ -338,17 +346,18 @@ export default [
     promocode: '',
     tags: ['Sport', 'Health'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр. Победителей',
           house: 'д. 23к1',
           room: ''
@@ -385,17 +394,18 @@ export default [
     promocode: 'kiss1703',
     tags: ['Spa', 'Beauty'],
     isActive: true,
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр. Победителей',
           house: 'д. 23к1',
           room: ''
@@ -430,17 +440,18 @@ export default [
     promocode: '',
     isActive: false,
     tags: ['Spa', 'Beauty'],
-    city: 'Minsk',
+    cityId: '1',
     vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.91137617684785, 27.542871240811902],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
         address: {
           country: 'Беларусь',
-          city: 'Minsk',
+          cityId: '1',
           street: 'пр. Победителей',
           house: 'д. 23к1',
           room: ''
@@ -470,17 +481,18 @@ export default [
     promocode: '',
     tags: [],
     isActive: true,
-    city: 'Hrodna',
+    cityId: '2',
     vendorEntitiesId: ['11'],
     offices: [
       {
         id: '11',
+        location: [53.65034593967492, 23.85468398498308],
         x: 53.65034593967492,
         y: 23.85468398498308,
         phone: '+ 375 29 120 68 66',
         address: {
           country: 'Беларусь',
-          city: 'Hrodna',
+          cityId: '2',
           street: 'пр. Янки Купалы',
           house: 'д. 87',
           room: ''
@@ -510,17 +522,18 @@ export default [
     promocode: 'VWEVWE888',
     tags: ['Entartainment', 'Music'],
     isActive: true,
-    city: 'Hrodna',
+    cityId: '2',
     vendorEntitiesId: ['12'],
     offices: [
       {
         id: '12',
+        location: [53.684909765450755, 23.845177013681916],
         x: 53.684909765450755,
         y: 23.845177013681916,
         phone: '+ 375 29 232 99 23',
         address: {
           country: 'Беларусь',
-          city: 'Hrodna',
+          cityId: '2',
           street: 'ул.Буденного',
           house: 'д. 54/1',
           room: ''
@@ -550,17 +563,18 @@ export default [
     promocode: '',
     tags: ['Beauty'],
     isActive: true,
-    city: 'Kyiv',
+    cityId: '3',
     vendorEntitiesId: ['13'],
     offices: [
       {
         id: '13',
+        location: [50.42837142443786, 30.517745728722034],
         x: 50.42837142443786,
         y: 30.517745728722034,
         phone: '+38 044 223-77-60',
         address: {
           country: 'Украина',
-          city: 'Kyiv',
+          cityId: '3',
           street: 'ул.Ивана Федорова',
           house: 'д. 6',
           room: '2'
@@ -590,17 +604,18 @@ export default [
     promocode: 'WEAR32',
     tags: ['Clothes', 'Fashion'],
     isActive: false,
-    city: 'Kyiv',
+    cityId: '3',
     vendorEntitiesId: ['14'],
     offices: [
       {
         id: '14',
+        location: [50.44025486038732, 30.52230314847687],
         x: 50.44025486038732,
         y: 30.52230314847687,
         phone: '+38 098 983-07-77',
         address: {
           country: 'Украина',
-          city: 'Kyiv',
+          cityId: '3',
           street: 'ул.Рогнеденская',
           house: 'д. 3',
           room: '4'
@@ -629,17 +644,18 @@ export default [
     promocode: '',
     tags: ['Auto', 'Wheels'],
     isActive: true,
-    city: 'Yekaterinburg',
+    cityId: '4',
     vendorEntitiesId: ['15', '16'],
     offices: [
       {
         id: '15',
+        location: [56.781522754305485, 60.61757015808883],
         x: 56.781522754305485,
         y: 60.61757015808883,
         phone: '+7 343 385-07-00',
         address: {
           country: 'Россия',
-          city: 'Yekaterinburg',
+          cityId: '4',
           street: 'ул. Монтёрская',
           house: 'д. 10а',
           room: ''
@@ -649,12 +665,13 @@ export default [
       },
       {
         id: '16',
+        location: [56.84222661082884, 60.66575335424758],
         x: 56.84222661082884,
         y: 60.66575335424758,
         phone: '+7 343 383-42-43',
         address: {
           country: 'Россия',
-          city: 'Yekaterinburg',
+          cityId: '4',
           street: 'ул. Малышева',
           house: 'д. 145а',
           room: ''

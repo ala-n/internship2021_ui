@@ -9,7 +9,7 @@ export default [
     phone: '+ 375 29 668 16 97',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Шафарнянская',
       house: 'д. 3',
       room: '303'
@@ -27,7 +27,7 @@ export default [
     phone: '+ 375 29 634 67 74',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Захарова',
       house: 'д. 23',
       room: ''
@@ -45,7 +45,7 @@ export default [
     phone: '+375 44 771-51-51',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'пр. Победителей',
       house: 'д. 84',
       room: ''
@@ -63,7 +63,7 @@ export default [
     phone: '+375 44 771-51-51',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Слободская',
       house: 'д. 27',
       room: ''
@@ -81,7 +81,7 @@ export default [
     phone: '+375 17 375-58-58',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Рафиева',
       house: 'д. 44',
       room: ''
@@ -99,7 +99,7 @@ export default [
     phone: '+375 17 375-58-58',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Маяковского',
       house: 'д. 10',
       room: ''
@@ -117,7 +117,7 @@ export default [
     phone: '+375 44 553-40-00',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Центральная',
       house: 'д. 9',
       room: ''
@@ -135,7 +135,7 @@ export default [
     phone: '+ 375 29 120 68 66',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'пр. Победителей',
       house: 'д. 23к1',
       room: ''
@@ -153,7 +153,7 @@ export default [
     phone: '+ 375 25 788 41 32',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'ул. Голодеда',
       house: 'д. 15',
       room: ''
@@ -171,7 +171,7 @@ export default [
     phone: '+ 375 29 120 68 66',
     address: {
       country: 'Беларусь',
-      city: 'Minsk',
+      cityId: '1',
       street: 'пр. Победителей',
       house: 'д. 23к1',
       room: ''
@@ -181,7 +181,7 @@ export default [
   },
   {
     id: '11',
-    location: [53.65034593967492, 27.85468398498308],
+    location: [53.65034593967492, 23.85468398498308],
     x: 53.65034593967492,
     y: 23.85468398498308,
     vendorId: '6',
@@ -189,7 +189,7 @@ export default [
     phone: '+ 375 29 120 68 66',
     address: {
       country: 'Беларусь',
-      city: 'Hrodna',
+      cityId: '2',
       street: 'пр. Янки Купалы',
       house: 'д. 87',
       room: ''
@@ -199,7 +199,7 @@ export default [
   },
   {
     id: '12',
-    location: [53.684909765450755, 27.845177013681916],
+    location: [53.684909765450755, 23.845177013681916],
     x: 53.684909765450755,
     y: 23.845177013681916,
     vendorId: '7',
@@ -207,7 +207,7 @@ export default [
     phone: '+ 375 29 232 99 23',
     address: {
       country: 'Беларусь',
-      city: 'Hrodna',
+      cityId: '2',
       street: 'ул.Буденного',
       house: 'д. 54/1',
       room: ''
@@ -217,7 +217,7 @@ export default [
   },
   {
     id: '13',
-    location: [53.42837142443786, 27.517745728722034],
+    location: [50.42837142443786, 30.517745728722034],
     x: 50.42837142443786,
     y: 30.517745728722034,
     vendorId: '8',
@@ -225,7 +225,7 @@ export default [
     phone: '+38 044 223-77-60',
     address: {
       country: 'Украина',
-      city: 'Kyiv',
+      cityId: '3',
       street: 'ул.Ивана Федорова',
       house: 'д. 6',
       room: '2'
@@ -235,7 +235,7 @@ export default [
   },
   {
     id: '14',
-    location: [53.44025486038732, 27.52230314847687],
+    location: [50.44025486038732, 30.52230314847687],
     x: 50.44025486038732,
     y: 30.52230314847687,
     vendorId: '9',
@@ -243,7 +243,7 @@ export default [
     phone: '+38 098 983-07-77',
     address: {
       country: 'Украина',
-      city: 'Kyiv',
+      cityId: '3',
       street: 'ул.Рогнеденская',
       house: 'д. 3',
       room: '4'
@@ -253,7 +253,7 @@ export default [
   },
   {
     id: '15',
-    location: [53.781522754305485, 27.61757015808883],
+    location: [56.781522754305485, 60.61757015808883],
     x: 56.781522754305485,
     y: 60.61757015808883,
     vendorId: '10',
@@ -261,7 +261,7 @@ export default [
     phone: '+7 343 385-07-00',
     address: {
       country: 'Россия',
-      city: 'Yekaterinburg',
+      cityId: '4',
       street: 'ул. Монтёрская',
       house: 'д. 10а',
       room: ''
@@ -271,7 +271,7 @@ export default [
   },
   {
     id: '16',
-    location: [53.84222661082884, 27.66575335424758],
+    location: [56.84222661082884, 60.66575335424758],
     x: 56.84222661082884,
     y: 60.66575335424758,
     vendorId: '10',
@@ -279,7 +279,7 @@ export default [
     phone: '+7 343 383-42-43',
     address: {
       country: 'Россия',
-      city: 'Yekaterinburg',
+      cityId: '4',
       street: 'ул. Малышева',
       house: 'д. 145а',
       room: ''

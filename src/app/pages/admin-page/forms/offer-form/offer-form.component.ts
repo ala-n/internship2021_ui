@@ -11,6 +11,7 @@ import { take } from 'rxjs/operators';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { CityService } from '@shared/services/city.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -46,6 +47,7 @@ export class OfferFormComponent implements OnInit {
     private offerService: OfferService,
     private vendorService: VendorService,
     private officeService: OfficeService,
+    private cityService: CityService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -100,6 +102,12 @@ export class OfferFormComponent implements OnInit {
       .getVendorOffices(id)
       .pipe(take(1))
       .subscribe((offices: Office[]) => {
+        offices.map(
+          (office) =>
+            (office.address.cityId = this.cityService.getCityName(
+              office.address.cityId
+            ))
+        );
         this.vendorOffices = offices;
       });
   }

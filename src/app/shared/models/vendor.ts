@@ -4,7 +4,7 @@ export interface Vendor {
   id: string;
   name: string;
   title: string;
-  city: string;
+  cityId: string;
   description: string;
   website: string;
   offices: Office[];

@@ -14,15 +14,18 @@ export class OfferService {
   constructor(private http: HttpService) {}
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
-    if (!params)
-      return this.http.get(`${OfferService.OFFERS_URL}/?includeInactive=true`);
+    //for mock
+    const url = `${OfferService.OFFERS_URL}`;
+    //for back
+    // const url = `${OfferService.OFFERS_URL}/?includeInactive=true`;
+    if (!params) return this.http.get(url);
     else {
       // for backend
       // const cityId = this.cityService.getCityId(params.city);
       // return this.http.get(`${OfferService.OFFERS_URL}/city/{cityId}`);
 
       // for mocks
-      return this.http.get(`${OfferService.OFFERS_URL}/?city=${params.city}`);
+      return this.http.get(`${url}/?city=${params.city}`);
     }
   }
 
@@ -51,9 +54,8 @@ export class OfferService {
 
   getOfficeOffers(officeId: string): Observable<Offer[]> {
     // for backend
-    return this.http.get<Offer[]>(
-      `${OfferService.OFFERS_URL}/vendorEntitiy/${officeId}`
-    );
+    const url = `${OfferService.OFFERS_URL}/vendorEntitiy/${officeId}`;
+    return this.http.get<Offer[]>(url);
   }
 
   addOffer(offer: Offer, vendorId: string): Subscription {

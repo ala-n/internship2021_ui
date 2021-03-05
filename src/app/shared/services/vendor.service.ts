@@ -17,13 +17,15 @@ export class VendorService {
   constructor(private http: HttpClient) {}
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
-    if (!params)
-      return this.http.get<Vendor[]>(
-        `${VendorService.VENDORS_URL}/?includeInactive=true`
-      );
+    // for mock
+    const url = VendorService.VENDORS_URL;
+    // for back
+    // const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
+
+    if (!params) return this.http.get<Vendor[]>(url);
     else {
       return this.http.get<Vendor[]>(
-        `${VendorService.VENDORS_URL}/?city=${params.city}`
+        `${url}/?city=${params.city}`
         // for backend
         // const cityId = this.cityService.getCityId(params.city);
         // `${VendorService.VENDORS_URL}/city/${cityId}`

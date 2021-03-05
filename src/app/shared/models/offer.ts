@@ -9,7 +9,7 @@ export interface OfferBase {
   vendorId: string;
   numberOfUses: number;
   numberOfViews: number;
-  city: string;
+  cityId: string;
   vendorEntitiesId: string[];
   offices: Office[];
 }
