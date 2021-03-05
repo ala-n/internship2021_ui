@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Office } from '@shared/models/office';
 // import { map } from 'rxjs/operators';
@@ -46,8 +46,8 @@ export class OfficeService {
   //   return this.http.post(url, office);
   // }
 
-  updateOffice(office: Office): Observable<Office> {
+  updateOffice(office: Office): Subscription {
     const url = `${OfficeService.OFFICES_URL}/${office.id}`;
-    return this.http.put(url, office);
+    return this.http.put(url, office).subscribe();
   }
 }

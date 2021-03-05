@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
@@ -55,16 +55,16 @@ export class OfferService {
     );
   }
 
-  addOffer(offer: Offer, vendorId: string): Observable<Offer> {
+  addOffer(offer: Offer, vendorId: string): Subscription {
     const url = OfferService.OFFERS_URL;
     offer.vendorId = vendorId;
-    return this.http.post(url, offer);
+    return this.http.post(url, offer).subscribe();
   }
 
-  updateOffer(offer: Offer, vendorId: string): Observable<Offer> {
+  updateOffer(offer: Offer, vendorId: string): Subscription {
     const url = `${OfferService.OFFERS_URL}/${offer.id}`;
     offer.vendorId = vendorId;
-    return this.http.put(url, offer);
+    return this.http.put(url, offer).subscribe();
   }
 
   getOffersbyTag(tag: string): Observable<Offer[]> {
