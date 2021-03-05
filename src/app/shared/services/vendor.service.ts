@@ -17,7 +17,10 @@ export class VendorService {
   constructor(private http: HttpClient) {}
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
-    if (!params) return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
+    if (!params)
+      return this.http.get<Vendor[]>(
+        `${VendorService.VENDORS_URL}/?includeInactive=true`
+      );
     else {
       return this.http.get<Vendor[]>(
         `${VendorService.VENDORS_URL}/?city=${params.city}`

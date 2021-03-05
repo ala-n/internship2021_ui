@@ -14,7 +14,8 @@ export class OfferService {
   constructor(private http: HttpService) {}
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
-    if (!params) return this.http.get(`${OfferService.OFFERS_URL}`);
+    if (!params)
+      return this.http.get(`${OfferService.OFFERS_URL}/?includeInactive=true`);
     else {
       // for backend
       // const cityId = this.cityService.getCityId(params.city);
@@ -44,7 +45,7 @@ export class OfferService {
 
     // for backend
     return this.http.get<Offer[]>(
-      `${OfferService.OFFERS_URL}/vendor/${vendorId}`
+      `${OfferService.OFFERS_URL}/vendor/${vendorId}/?includeInactive=true`
     );
   }
 

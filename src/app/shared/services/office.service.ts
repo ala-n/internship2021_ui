@@ -15,7 +15,7 @@ export class OfficeService {
 
   getVendorOffices(vendorId: string): Observable<Office[]> {
     // for back-end
-    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}`;
+    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}/?includeInactive=true`;
     return this.http.get<Office[]>(url);
 
     // for mock
