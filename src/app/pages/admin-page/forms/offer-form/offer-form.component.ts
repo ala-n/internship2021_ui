@@ -64,6 +64,7 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
+          this.vendorName = offer.vendorName;
           this.tags = offer.tags || [];
           this.getOfficesForSelect(offer.vendorId);
           console.log(offer);
