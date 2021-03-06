@@ -1,11 +1,13 @@
 {
   "/api/*": {
-    "target": "https://localhost:5002",
+    "target": "http://20.82.121.44:49001",
     "secure": false,
-    "changeOrigin": true
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": { "^/api": "" }
   },
   "/auth/*": {
-    "target": "https://localhost:5001",
+    "target": "http://20.82.121.44:800",
     "secure": false,
     "changeOrigin": true
   }
