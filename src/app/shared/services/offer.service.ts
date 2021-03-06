@@ -21,8 +21,8 @@ export class OfferService {
     const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
-      // for backend
       const cityId = this.cityService.getCityId(params.city);
+      // for backend
       return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
 
       // for mocks
