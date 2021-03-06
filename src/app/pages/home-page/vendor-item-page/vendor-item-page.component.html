@@ -26,7 +26,7 @@
         <a
           class="link"
           *ngFor="let offer of offers"
-          [routerLink]="['/home/offers', offer.id]"
+          [routerLink]="['../../offers', offer.id]"
           ><app-offer-item [offer]="offer" class="offer-card"></app-offer-item
         ></a>
       </mat-tab>
@@ -42,12 +42,18 @@
           <div class="address" *ngFor="let office of vendor.offices">
             <a
               class="link link_overlay"
-              [routerLink]="['/home/offices', office.id]"
+              [routerLink]="['../../offices', office.id]"
             ></a>
             <mat-icon class="address__location-icon">location_on</mat-icon>
             <div>
               <div>
-                {{ [office.street, office.house, office.room] | concat }}
+                {{
+                  [
+                    office.address.street,
+                    office.address.house,
+                    office.address.room
+                  ] | concat
+                }}
               </div>
               <a
                 href="tel:{{ office.phone }}"

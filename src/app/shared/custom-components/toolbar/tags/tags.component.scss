@@ -34,6 +34,11 @@
       border: 1px solid $blue-primary;
       color: $blue-primary;
     }
+
+    &__active {
+      border: 1px solid $blue-primary;
+      color: $blue-primary;
+    }
   }
 
   &::ng-deep .mat-chip-list-wrapper {

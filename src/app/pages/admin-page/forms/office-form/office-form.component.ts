@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
 import { from } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
+import { CityService } from '@shared/services/city.service';
 
 @Component({
   selector: 'app-office-form',
@@ -18,10 +19,10 @@ import { MapService } from '@shared/services/map.service';
 })
 export class OfficeFormComponent implements OnInit {
   officeForm = this.fb.group({
-    x: null,
-    y: null,
+    id: null,
+    location: null,
     country: [null, Validators.required],
-    city: [null, Validators.required],
+    cityId: [null, Validators.required],
     street: [null, Validators.required],
     house: [null, Validators.required],
     room: null,
@@ -33,11 +34,13 @@ export class OfficeFormComponent implements OnInit {
   office!: Office;
   offices: Office[] = [];
   vendorName!: string;
+  cityName!: string;
 
   constructor(
     private fb: FormBuilder,
     private officeService: OfficeService,
     private vendorService: VendorService,
+    private cityService: CityService,
     private route: ActivatedRoute,
     public navigationService: NavigationService,
     public dialog: MatDialog,
@@ -57,13 +60,13 @@ export class OfficeFormComponent implements OnInit {
         .subscribe((office) => {
           this.office = office;
           this.officeForm.setValue({
-            x: this.office.x,
-            y: this.office.y,
-            country: this.office.country,
-            city: this.office.city,
-            street: this.office.street,
-            house: this.office.house,
-            room: this.office.room,
+            id: this.office.id,
+            location: this.office.location,
+            country: this.office.address.country,
+            cityId: this.cityService.getCityName(office.address.cityId),
+            street: this.office.address.street,
+            house: this.office.address.house,
+            room: this.office.address.room,
             phone: this.office.phone,
             email: this.office.email,
             isActive: this.office.isActive
@@ -97,11 +100,12 @@ export class OfficeFormComponent implements OnInit {
       )
       .subscribe((data) => {
         const address = data.address;
+
         this.officeForm.setValue({
-          x: coordinate.lat,
-          y: coordinate.lng,
+          id: this.office.id,
+          location: [coordinate.lat, coordinate.lng],
           country: address.country,
-          city: address.city,
+          cityId: this.cityService.getCityName(address.city),
           street: address.road,
           house: address.house_number,
           room: '',
@@ -114,10 +118,14 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.officeForm.controls['cityId'].setValue(
+      this.cityService.getCityId(this.officeForm.value.cityId)
+    );
+    console.log(this.officeForm.value);
     if (this.office) {
-      this.officeService.updateOffice(this.officeForm.value, this.vendorId);
+      this.officeService.updateOffice(this.officeForm.value);
     } else {
-      this.officeService.addOffice(this.officeForm.value, this.vendorId);
+      this.vendorService.addOffice(this.officeForm.value, this.vendorId);
     }
   }
 }

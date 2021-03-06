@@ -14,6 +14,7 @@
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
+      value=""
       aria-label="Filter Vendors"
       (click)="applyFilter(group.value, 'isActive')"
     >
@@ -88,7 +89,7 @@
         <td mat-cell *matCellDef="let offer">{{ offer.discount }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="validFrom">
+      <ng-container matColumnDef="dateStart">
         <th
           mat-header-cell
           class="text text_upper"
@@ -102,7 +103,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="validTo">
+      <ng-container matColumnDef="dateEnd">
         <th
           mat-header-cell
           class="text text_upper"
@@ -116,7 +117,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="updated">
+      <ng-container matColumnDef="updatedAt">
         <th
           mat-header-cell
           class="text text_upper"
@@ -126,7 +127,7 @@
           {{ 'updated' | translate }}
         </th>
         <td mat-cell *matCellDef="let offer">
-          {{ offer.updated | date: 'dd.MM.yyyy' }}
+          {{ offer.updatedAt | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 

@@ -1,7 +1,11 @@
 <div class="sort-panel">
   <mat-form-field appearance="fill">
     <mat-label>{{ 'sort_by' | translate }}</mat-label>
-    <mat-select [formControl]="sortControl" disableOptionCentering>
+    <mat-select
+      [formControl]="sortControl"
+      disableOptionCentering
+      (selectionChange)="onSelect()"
+    >
       <mat-option *ngFor="let value of SORT_OPTIONS" [value]="value">
         {{ value | translate }}</mat-option
       >

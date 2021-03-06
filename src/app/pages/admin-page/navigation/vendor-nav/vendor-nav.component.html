@@ -1,8 +1,8 @@
-<mat-card class="vendor-nav">
-  <mat-nav-list class="vendor-nav__menu">
+<mat-card class="table-nav">
+  <mat-nav-list class="table-nav__menu">
     <a
       mat-list-item
-      class="vendor-nav__link"
+      class="table-nav__link"
       [routerLink]="[vendorId, 'edit']"
       routerLinkActive="mat-list-item_active"
       ><span class="text text_s_l text_upper">
@@ -11,7 +11,7 @@
     >
     <a
       mat-list-item
-      class="vendor-nav__link"
+      class="table-nav__link"
       [routerLink]="[vendorId, 'offices']"
       routerLinkActive="mat-list-item_active"
     >
@@ -21,7 +21,7 @@
     </a>
     <a
       mat-list-item
-      class="vendor-nav__link"
+      class="table-nav__link"
       [routerLink]="[vendorId, 'offers']"
       routerLinkActive="mat-list-item_active"
       ><span class="text text_s_l text_upper">{{
@@ -29,7 +29,7 @@
       }}</span></a
     >
   </mat-nav-list>
-  <mat-card-content class="vendor-nav__content">
+  <mat-card-content class="table-nav__content">
     <router-outlet></router-outlet>
   </mat-card-content>
 </mat-card>

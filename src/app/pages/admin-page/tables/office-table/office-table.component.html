@@ -6,6 +6,7 @@
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
+      value=""
       aria-label="Filter Vendors"
       (click)="applyFilter(group.value, 'isActive')"
     >
@@ -56,7 +57,7 @@
         >
           {{ 'country' | translate }}
         </th>
-        <td mat-cell *matCellDef="let office">{{ office.country }}</td>
+        <td mat-cell *matCellDef="let office">{{ office.address.country }}</td>
       </ng-container>
 
       <ng-container matColumnDef="city">
@@ -68,7 +69,7 @@
         >
           {{ 'city' | translate }}
         </th>
-        <td mat-cell *matCellDef="let office">{{ office.city }}</td>
+        <td mat-cell *matCellDef="let office">{{ office.address.cityId }}</td>
       </ng-container>
 
       <ng-container matColumnDef="street">
@@ -80,21 +81,21 @@
         >
           {{ 'street' | translate }}
         </th>
-        <td mat-cell *matCellDef="let office">{{ office.street }}</td>
+        <td mat-cell *matCellDef="let office">{{ office.address.street }}</td>
       </ng-container>
 
       <ng-container matColumnDef="house">
         <th mat-header-cell class="text text_upper" *matHeaderCellDef>
           {{ 'house' | translate }}
         </th>
-        <td mat-cell *matCellDef="let office">{{ office.house }}</td>
+        <td mat-cell *matCellDef="let office">{{ office.address.house }}</td>
       </ng-container>
 
       <ng-container matColumnDef="room">
         <th mat-header-cell class="text text_upper" *matHeaderCellDef>
           {{ 'room' | translate }}
         </th>
-        <td mat-cell *matCellDef="let office">{{ office.room }}</td>
+        <td mat-cell *matCellDef="let office">{{ office.address.room }}</td>
       </ng-container>
 
       <ng-container matColumnDef="phone">

@@ -4,8 +4,6 @@ import {
   Input,
   OnChanges,
   SimpleChanges,
-  Output,
-  EventEmitter,
   OnDestroy
 } from '@angular/core';
 import { MapService } from '@shared/services/map.service';
@@ -13,7 +11,8 @@ import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
 import { LocationService } from '@shared/services/location.service';
-import { OfferListPageService } from '@shared/services/offer-list-page.service';
+import { FilterService } from '@shared/services/filter.service';
+import { Router } from '@angular/router';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({
@@ -23,8 +22,6 @@ export type MarkerExtended = L.Marker & { officeId?: string };
 })
 export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   map!: L.Map;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  @Output() detectChanges: EventEmitter<any> = new EventEmitter();
   @Input() city!: string;
   @Input() markers!: MarkerExtended[];
   markerAll = new L.MarkerClusterGroup({
@@ -38,22 +35,39 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
   constructor(
     private locationService: LocationService,
     private mapService: MapService,
-    private offerListService: OfferListPageService
+    private filterService: FilterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.mapView();
+
     this.map.on('moveend', () => {
-      const officeId: string[] = [];
-      if (this.markers) {
-        for (const marker of this.markers) {
-          if (this.map.getBounds().contains(marker.getLatLng())) {
-            if (marker.officeId) officeId.push(marker.officeId);
-          }
-        }
-        this.offerListService.filterOfferList(officeId); //TODO: this task not completed yet. skip
-      }
+      this.rebuildFilter();
     });
+  }
+
+  rebuildFilter(): void {
+    const officeId: string[] = [];
+    this.mapService.distanceToMarkers = new Map();
+
+    if (!this.markers) return;
+
+    const visibleMarkers = this.markers.filter((marker) => {
+      return this.map.getBounds().contains(marker.getLatLng());
+    });
+
+    for (const marker of visibleMarkers) {
+      marker.officeId && officeId.push(marker.officeId);
+      if (marker.officeId && this.mapService.userCoord) {
+        this.mapService.distanceToMarkers.set(
+          marker.officeId,
+          this.mapService.userCoord.distanceTo(marker.getLatLng())
+        );
+      }
+    }
+
+    this.filterService.filterMap(officeId);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -68,6 +82,7 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
         this.markerAll.clearLayers();
         this.markerAll.addLayers(changes.markers.currentValue);
         this.map.addLayer(this.markerAll);
+        this.rebuildFilter();
       }, 100);
     }
   }
@@ -85,10 +100,13 @@ export class MapBaseComponent implements OnInit, OnChanges, OnDestroy {
     this.map = L.map('map', { center: latlng, zoom: 11, layers: [tiles] });
     this.map
       .on('locationfound', (e) => {
+        // save user position in coordinates
+        this.mapService.userCoord = e.latlng;
         this.mapService
           .getNameCity(e.latlng.lat, e.latlng.lng, 'en-US,en')
           .then((data) => {
             this.locationService.setCity(data.address.city);
+            this.router.navigate(['home', data.address.city]);
           });
         this.map.stopLocate();
       })

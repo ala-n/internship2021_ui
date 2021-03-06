@@ -9,13 +9,16 @@
       <div class="office__info">
         <a
           class="link link_c_default card__name office__vendor"
-          [routerLink]="['/home/vendors', office.vendorId]"
+          [routerLink]="['../../vendors', office.vendorId]"
         >
           {{ vendor.name }}
         </a>
         <div class="card__title office__contact">
           <mat-icon class="card__icon">location_on</mat-icon
-          >{{ [office.street, office.house, office.room] | concat }}
+          >{{
+            [office.address.street, office.address.house, office.address.room]
+              | concat
+          }}
         </div>
         <a
           href="tel:{{ office.phone }}"
@@ -40,7 +43,7 @@
         <a
           class="link"
           *ngFor="let offer of offers"
-          [routerLink]="['/home/offers', offer.id]"
+          [routerLink]="['../../offers', offer.id]"
         >
           <app-offer-item
             [offer]="offer"

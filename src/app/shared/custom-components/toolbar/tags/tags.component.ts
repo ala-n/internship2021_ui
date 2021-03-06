@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Tag } from '@shared/models/tag';
-import { TagsService } from '@shared/services/tag.service';
+import { FilterService } from '@shared/services/filter.service';
+import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-tags',
@@ -11,7 +12,16 @@ import { TagsService } from '@shared/services/tag.service';
 export class TagsComponent implements OnInit {
   tags!: Tag[];
 
-  constructor(private tagsService: TagsService) {}
+  status = false;
+
+  constructor(
+    private tagsService: TagsService,
+    private filterService: FilterService
+  ) {}
+
+  get currentTag(): string {
+    return this.filterService.filterCfg?.tag || '';
+  }
 
   ngOnInit(): void {
     this.tagsService
@@ -21,5 +31,11 @@ export class TagsComponent implements OnInit {
 
   receiveData(data: Tag[]): void {
     this.tags = data;
+  }
+
+  searchByTag(e: Event): void {
+    const target = e.target as HTMLElement;
+    const tag = (target.textContent || '').trim(); //receive tag
+    this.filterService.filterByTags(tag); // filter by tags
   }
 }

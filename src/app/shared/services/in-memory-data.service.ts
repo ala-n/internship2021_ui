@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import vendors from '../mocks/vendors';
 import offers from '../mocks/offers';
-import cities from '../mocks/cities';
-import offices from '../mocks/offices';
-import searchData from '../mocks/mock-search-data';
-import tags from '../mocks/mock-tags';
+import vendorEntities from '../mocks/offices';
+import topTags from '../mocks/top-tags';
+import tags from '../mocks/tags';
 import user from '../mocks/user';
 
 @Injectable({
@@ -17,9 +16,9 @@ export class InMemoryDataService implements InMemoryDbService {
     return {
       vendors,
       offers,
-      cities,
-      offices,
-      searchData,
+      // cities,   // I ask you not to uncommit
+      vendorEntities,
+      topTags,
       tags,
       user
     };

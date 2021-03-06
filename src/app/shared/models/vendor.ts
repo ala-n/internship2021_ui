@@ -4,10 +4,15 @@ export interface Vendor {
   id: string;
   name: string;
   title: string;
-  city: string;
+  cityId: string | undefined;
   description: string;
+  city: string;
   website: string;
   offices: Office[];
-  updated: string;
+  rating: number;
+  created: string;
+  createdBy: string;
+  updatedAt: string;
+  updatedBy: string;
   isActive: boolean;
 }

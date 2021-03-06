@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { OfferService } from '@shared/services/offer.service';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-offer-table',
@@ -25,9 +25,9 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     'vendorName',
     'title',
     'discout',
-    'validFrom',
-    'validTo',
-    'updated'
+    'dateStart',
+    'dateEnd',
+    'updatedAt'
   ];
 
   constructor(
@@ -40,21 +40,40 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.offerService
-      .getOffers()
-      .pipe(
-        take(1),
-        map((offers) =>
-          offers.filter((offer: Offer) => {
-            if (!this.vendorId) return true;
-            return offer.vendorId === this.vendorId;
-          })
-        )
-      )
-      .subscribe((offers: Offer[]) => {
-        if (offers) this.dataSource.data = offers as Offer[];
-        this.isLoading = false;
-      });
+    if (this.vendorId) {
+      this.offerService
+        .getVendorOffers(this.vendorId)
+        .pipe(take(1))
+        .subscribe((offers: Offer[]) => {
+          if (offers) this.dataSource.data = offers as Offer[];
+          this.isLoading = false;
+        });
+    } else {
+      this.offerService
+        .getOffers()
+        .pipe(take(1))
+        .subscribe((offers: Offer[]) => {
+          if (offers) this.dataSource.data = offers as Offer[];
+          this.isLoading = false;
+        });
+    }
+
+    // for mocks
+    // this.offerService
+    //   .getOffers()
+    // .pipe(
+    //   take(1),
+    //     map((offers) =>
+    //       offers.filter((offer: Offer) => {
+    //         if (!this.vendorId) return true;
+    //         return offer.vendorId === this.vendorId;
+    //       })
+    //     )
+    //   )
+    //   .subscribe((offers: Offer[]) => {
+    //     if (offers) this.dataSource.data = offers as Offer[];
+    //     this.isLoading = false;
+    //   });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
@@ -72,12 +91,10 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
       property: string
     ) => {
       switch (property) {
-        case 'validTo':
-          return new Date(item.dateEnd);
-        case 'validFrom':
-          return new Date(item.dateStart);
+        case 'dateEnd':
+        case 'dateStart':
         case 'updated':
-          return new Date(item.updated);
+          return new Date(item[property]);
         default:
           return item[property];
       }

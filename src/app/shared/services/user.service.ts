@@ -10,14 +10,19 @@ import { HttpService } from './http.service';
 export class UserService {
   static USER_URL = 'api/user';
 
+  constructor(private http: HttpService) {}
+
   // User is always be defined, because we get it in auth.guard.
   private _user$ = new BehaviorSubject<User | null>(null);
   readonly user$ = this._user$.asObservable();
 
-  constructor(private http: HttpService) {}
-
   updateCurrentUser(): Observable<boolean> {
-    return this.http.get<User>(UserService.USER_URL).pipe(
+    // for mocks
+    // const user = this.http.get<User>(`${UserService.USER_URL}`);
+
+    // for backend
+    const user = this.http.get<User>(`/auth/users/getUser`);
+    return user.pipe(
       tap((user) => {
         this._user$.next(user);
       }),

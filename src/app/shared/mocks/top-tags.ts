@@ -41,6 +41,42 @@ export default [
   },
   {
     id: '11',
-    name: 'Clothes'
+    name: 'Pizza'
+  },
+  {
+    id: '12',
+    name: 'Sushi'
+  },
+  {
+    id: '13',
+    name: 'Flowers'
+  },
+  {
+    id: '14',
+    name: 'Spa'
+  },
+  {
+    id: '15',
+    name: 'Music'
+  },
+  {
+    id: '16',
+    name: 'Fashion'
+  },
+  {
+    id: '17',
+    name: 'Auto'
+  },
+  {
+    id: '18',
+    name: 'Wheels'
+  },
+  {
+    id: '19',
+    name: 'Health'
+  },
+  {
+    id: '20',
+    name: 'Relax'
   }
 ];

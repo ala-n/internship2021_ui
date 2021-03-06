@@ -39,17 +39,22 @@
     <mat-nav-list class="admin-sidenav__list" (click)="closeSidenav()">
       <a
         mat-list-item
-        routerLink="vendors"
+        [routerLink]="['vendors']"
         routerLinkActive="mat-list-item_active"
         >{{ 'brands' | translate }}</a
       >
       <a
         mat-list-item
-        routerLink="offers"
+        [routerLink]="['offers']"
         routerLinkActive="mat-list-item_active"
         >{{ 'offers' | translate }}</a
       >
-      <a mat-list-item routerLink=".">{{ 'statistics' | translate }}</a>
+      <a
+        mat-list-item
+        routerLink="statistics/vendors"
+        routerLinkActive="mat-list-item_active"
+        >{{ 'statistics' | translate }}</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="admin-sidenav__content">
