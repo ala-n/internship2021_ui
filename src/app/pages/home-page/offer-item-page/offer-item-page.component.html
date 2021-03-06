@@ -54,7 +54,10 @@
         <mat-icon class="address__location-icon">location_on</mat-icon>
         <div>
           <div>
-            {{ [office.street, office.house, office.room] | concat }}
+            {{
+              [office.address.street, office.address.house, office.address.room]
+                | concat
+            }}
           </div>
           <a
             href="tel:{{ office.phone }}"

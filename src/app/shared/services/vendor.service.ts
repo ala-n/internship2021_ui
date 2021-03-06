@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
+import { CityService } from './city.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +15,21 @@ export class VendorService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cityService: CityService) {}
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
-    if (!params) return this.http.get<Vendor[]>(VendorService.VENDORS_URL);
+    // for mock
+    // const url = VendorService.VENDORS_URL;
+    // for back
+    const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
+
+    if (!params) return this.http.get<Vendor[]>(url);
     else {
+      `${url}/?city=${params.city}`;
+      // for backend
+      const cityId = this.cityService.getCityId(params.city);
       return this.http.get<Vendor[]>(
-        `${VendorService.VENDORS_URL}/?city=${params.city}`
-        // for backend
-        // const cityId = this.cityService.getCityId(params.city);
-        // `${VendorService.VENDORS_URL}/city/${cityId}`
+        `${VendorService.VENDORS_URL}/city/${cityId}`
       );
     }
   }
@@ -38,19 +44,19 @@ export class VendorService {
     return this.http.get<Vendor>(url);
   }
 
-  addVendor(vendor: Vendor): Observable<Vendor> {
+  addVendor(vendor: Vendor): Subscription {
     const url = VendorService.VENDORS_URL;
-    return this.http.post<Vendor>(url, vendor, this.httpOptions);
+    return this.http.post<Vendor>(url, vendor, this.httpOptions).subscribe();
   }
 
-  updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
+  updateVendor(vendor: Vendor, vendorId: string): Subscription {
     const url = `${VendorService.VENDORS_URL}/${vendorId}`;
-    return this.http.put<Vendor>(url, vendor, this.httpOptions);
+    return this.http.put<Vendor>(url, vendor, this.httpOptions).subscribe();
   }
 
-  addOffice(office: Office, vendorId: string): Observable<Office> {
+  addOffice(office: Office, vendorId: string): Subscription {
     const url = `${VendorService.VENDORS_URL}/${vendorId}/vendorEntities`;
     office.vendorId = vendorId;
-    return this.http.post<Office>(url, office);
+    return this.http.post<Office>(url, office).subscribe();
   }
 }

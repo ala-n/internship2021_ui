@@ -6,10 +6,10 @@ export default [
     description: `Уважаемые клиенты, с 12 ноября ношение масок стало обязательным. Пожалуйста, надевайте маску в салоне, даже если вы здоровы. С заботой о вас, салон красоты "Марсель". Предварительная запись обязательна.
     Стоимость массажей: от 18 руб. от 30 руб. Стоимость и виды массажа смотрите ниже. Услуги расположены по возрастанию цены (от дешевых к дорогим)`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-minsk-skidka-marsel-1.jpg',
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/massazh-klassicheskiy-ekzoticheskiy-spa-1-skidka-marsel-1.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988643_1520768367_izo7.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
-      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-minsk-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-1-slivki.jpg',
+      'https://www.slivki.by/znijki-media/initial/default/1009921/1538988682_1523700874_salon-marsel-nekrasona-3-1-slivki.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/1538988456_42.jpg',
       'https://www.slivki.by/znijki-media/initial/default/1009921/izo-marsel-1.jpg'
     ],
@@ -20,37 +20,41 @@ export default [
     vendorId: '1',
     numberOfUses: 21,
     numberOfViews: 215,
-    updated: '2021-02-01',
+    updatedAt: '2021-03-05T17:29:35.144058+05:00',
     promocode: '34B2J3IB',
     rating: 4.3,
     tags: ['Massage', 'Beauty', 'Health'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['1', '2'],
+    cityId: '1',
+    vendorEntitiesId: ['1', '2'],
     offices: [
       {
         id: '1',
-        x: 53.950248766494305,
-        y: 27.678503384991703,
+        location: [53.950248766494305, 27.678503384991703],
         phone: '+ 375 29 668 16 97',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Шафарнянская',
-        house: 'д. 3',
-        room: '303',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Шафарнянская',
+          house: 'д. 3',
+          room: '303'
+        },
         email: 'marsel1@gmail.com',
         isActive: true
       },
       {
         id: '2',
+        location: [53.90630545040514, 27.579132898483202],
         x: 53.90630545040514,
         y: 27.579132898483202,
         phone: '+ 375 29 634 67 74',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Захарова',
-        house: 'д. 23',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Захарова',
+          house: 'д. 23',
+          room: ''
+        },
         email: 'marsel2@gmail.com',
         isActive: true
       }
@@ -84,23 +88,26 @@ export default [
     numberOfUses: 100,
     numberOfViews: 119,
     rating: 4.5,
-    updated: '2021-02-05',
+    updatedAt: '2021-02-05',
     promocode: '34B2EFW',
     tags: ['Food', 'Sushi'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['3'],
+    cityId: '1',
+    vendorEntitiesId: ['3'],
     offices: [
       {
         id: '3',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 84',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр. Победителей',
+          house: 'д. 84',
+          room: ''
+        },
         email: 'sushi2@gmail.com',
         isActive: true
       }
@@ -123,7 +130,7 @@ export default [
     - пицца "Деревенская" 1 метр: 21,95 руб. 43,90 руб.
     - Возможен заказ пицц из 2-х половинок`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-minsk-pizzamania-kar-9.jpg',
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/pizza-1-pizzamania-kar-9.jpg',
       'https://pizzamania.by/admin/uploads/items/260.png',
       'https://pizzamania.by/admin/uploads/items/236.png',
       'https://pizzamania.by/admin/uploads/items/191.png',
@@ -140,62 +147,74 @@ export default [
     numberOfUses: 139,
     numberOfViews: 212,
     rating: 4.1,
-    updated: '2021-01-01',
+    updatedAt: '2021-01-01',
     promocode: '34BEFWWWIB',
     tags: [],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['5', '6', '7', '8'],
+    cityId: '1',
+    vendorEntitiesId: ['5', '6', '7', '8'],
     offices: [
       {
         id: '5',
+        location: [53.86553289876855, 27.45302363896044],
         x: 53.86553289876855,
         y: 27.45302363896044,
         phone: '+375 17 375-58-58',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Рафиева',
-        house: 'д. 44',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Рафиева',
+          house: 'д. 44',
+          room: ''
+        },
         email: 'pizza1@gmail.com',
         isActive: true
       },
       {
         id: '6',
+        location: [53.883091927066054, 27.567344627318217],
         x: 53.883091927066054,
         y: 27.567344627318217,
         phone: '+375 17 375-58-58',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Маяковского',
-        house: 'д. 10',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Маяковского',
+          house: 'д. 10',
+          room: ''
+        },
         email: 'pizza2@gmail.com',
         isActive: true
       },
       {
         id: '7',
+        location: [53.86734233325647, 27.65028647149643],
         x: 53.86734233325647,
         y: 27.65028647149643,
         phone: '+375 44 553-40-00',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Центральная',
-        house: 'д. 9',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Центральная',
+          house: 'д. 9',
+          room: ''
+        },
         email: 'pizza3@gmail.com',
         isActive: true
       },
       {
         id: '8',
+        location: [53.91137617684785, 27.542871240811902],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр-т Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр-т Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       }
@@ -225,36 +244,42 @@ export default [
     numberOfUses: 68,
     numberOfViews: 69,
     rating: 4.7,
-    updated: '2021-02-07',
+    updatedAt: '2021-02-07',
     promocode: 'UYT783I',
     tags: ['Food', 'Pizza'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['3', '4'],
+    cityId: '1',
+    vendorEntitiesId: ['3', '4'],
     offices: [
       {
         id: '3',
+        location: [53.938102489505866, 27.488490327319887],
         x: 53.938102489505866,
         y: 27.488490327319887,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 84',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр. Победителей',
+          house: 'д. 84',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       },
       {
         id: '4',
+        location: [53.85829633426384, 27.43278622731758],
         x: 53.85829633426384,
         y: 27.43278622731758,
         phone: '+375 44 771-51-51',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Слободская',
-        house: 'д. 27',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Слободская',
+          house: 'д. 27',
+          room: ''
+        },
         email: 'sushi1@gmail.com',
         isActive: true
       }
@@ -266,7 +291,7 @@ export default [
       'Съедобные шоколадные розы в букете, коробке от 13 руб. Шоколадки из Бельгии и Италии',
     description: `Внимание! Индивидуальные заказы принимаются минимум за день. В наличии есть готовые изделия, их доставка осуществляется после 14:30 в течение 2-4 часов. Промокод дает право на скидку от 10 до 25% на шоколадные розы в букетах из бельгийского шоколада «Standart» и «luxe», шоколад в коробке, шоколадную подписку. Iоколад «Luxe» (100-110 г) из бельгийского, либо итальянского шоколада c добавлением орехов, ягод и различных бонусов.`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-minsk-kardash1.jpg'
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/1609755470_shokoladnie-rozy-1-kardash1.jpg'
     ],
     discount: 'от 10 до 25%',
     dateStart: '2021-03-01',
@@ -276,23 +301,26 @@ export default [
     numberOfUses: 3,
     numberOfViews: 90,
     rating: 4,
-    updated: '2021-01-01',
+    updatedAt: '2021-01-01',
     promocode: 'Luxe25',
     tags: ['Food', 'Flowers'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['9'],
+    cityId: '1',
+    vendorEntitiesId: ['9'],
     offices: [
       {
         id: '9',
+        location: [53.83947974668578, 27.640475169645576],
         x: 53.83947974668578,
         y: 27.640475169645576,
         phone: '+ 375 25 788 41 32',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'ул. Голодеда',
-        house: 'д. 15',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'ул. Голодеда',
+          house: 'д. 15',
+          room: ''
+        },
         email: 'luxe@gmail.com',
         isActive: true
       }
@@ -304,7 +332,7 @@ export default [
       'Хит продаж! Плавание, бассейн + сауна + водные процедуры + аквадискотека - и все это в одном месте!',
     description: `Право на скидку 35% на разовое посещение бассейна: плавание (45 мин), плавание с сауной и водными процедурами (75 мин) или тренажерный зал + бассейн + сауна + гидропроцедуры (90 мин + 75 мин).`,
     photoUrl: [
-      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-minsk-masherova-kar-11.jpg'
+      'https://www.slivki.by/znijki-media/w522_322/default/1009921/basseyn-sauna-geyzer-gidromassazh-1-masherova-kar-11.jpg'
     ],
     discount: '35%',
     dateStart: '2020-10-01',
@@ -314,23 +342,26 @@ export default [
     numberOfUses: 78,
     numberOfViews: 292,
     rating: 3.3,
-    updated: '2021-02-10',
+    updatedAt: '2021-02-10',
     promocode: '',
     tags: ['Sport', 'Health'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['10'],
+    cityId: '1',
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -359,23 +390,26 @@ export default [
     numberOfUses: 0,
     rating: 3,
     numberOfViews: 5,
-    updated: '2021-01-11',
+    updatedAt: '2021-01-11',
     promocode: 'kiss1703',
     tags: ['Spa', 'Beauty'],
     isActive: true,
-    city: 'Minsk',
-    officesId: ['10'],
+    cityId: '1',
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.950248766494305, 27.678503384991703],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -402,23 +436,26 @@ export default [
     numberOfUses: 431,
     numberOfViews: 990,
     rating: 4,
-    updated: '2021-02-21',
+    updatedAt: '2021-02-21',
     promocode: '',
     isActive: false,
     tags: ['Spa', 'Beauty'],
-    city: 'Minsk',
-    officesId: ['10'],
+    cityId: '1',
+    vendorEntitiesId: ['10'],
     offices: [
       {
         id: '10',
+        location: [53.91137617684785, 27.542871240811902],
         x: 53.91137617684785,
         y: 27.542871240811902,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Minsk',
-        street: 'пр. Победителей',
-        house: 'д. 23к1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '1',
+          street: 'пр. Победителей',
+          house: 'д. 23к1',
+          room: ''
+        },
         email: 'fok@gmail.com',
         isActive: true
       }
@@ -440,23 +477,26 @@ export default [
     numberOfUses: 40,
     numberOfViews: 56,
     rating: 5,
-    updated: '2021-03-01',
+    updatedAt: '2021-03-01',
     promocode: '',
     tags: [],
     isActive: true,
-    city: 'Hrodna',
-    officesId: ['11'],
+    cityId: '2',
+    vendorEntitiesId: ['11'],
     offices: [
       {
         id: '11',
+        location: [53.65034593967492, 23.85468398498308],
         x: 53.65034593967492,
         y: 23.85468398498308,
         phone: '+ 375 29 120 68 66',
-        country: 'Беларусь',
-        city: 'Hrodna',
-        street: 'пр. Янки Купалы',
-        house: 'д. 87',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '2',
+          street: 'пр. Янки Купалы',
+          house: 'д. 87',
+          room: ''
+        },
         email: 'yetideti@gmail.com',
         isActive: true
       }
@@ -478,23 +518,26 @@ export default [
     numberOfUses: 88,
     numberOfViews: 103,
     rating: 4.3,
-    updated: '2021-02-04',
+    updatedAt: '2021-02-04',
     promocode: 'VWEVWE888',
     tags: ['Entartainment', 'Music'],
     isActive: true,
-    city: 'Hrodna',
-    officesId: ['12'],
+    cityId: '2',
+    vendorEntitiesId: ['12'],
     offices: [
       {
         id: '12',
+        location: [53.684909765450755, 23.845177013681916],
         x: 53.684909765450755,
         y: 23.845177013681916,
         phone: '+ 375 29 232 99 23',
-        country: 'Беларусь',
-        city: 'Hrodna',
-        street: 'ул.Буденного',
-        house: 'д. 54/1',
-        room: '',
+        address: {
+          country: 'Беларусь',
+          cityId: '2',
+          street: 'ул.Буденного',
+          house: 'д. 54/1',
+          room: ''
+        },
         email: 'rock@gmail.com',
         isActive: true
       }
@@ -516,23 +559,26 @@ export default [
     numberOfUses: 2,
     numberOfViews: 300,
     rating: 4.8,
-    updated: '2021-02-11',
+    updatedAt: '2021-02-11',
     promocode: '',
     tags: ['Beauty'],
     isActive: true,
-    city: 'Kyiv',
-    officesId: ['13'],
+    cityId: '3',
+    vendorEntitiesId: ['13'],
     offices: [
       {
         id: '13',
+        location: [50.42837142443786, 30.517745728722034],
         x: 50.42837142443786,
         y: 30.517745728722034,
         phone: '+38 044 223-77-60',
-        country: 'Украина',
-        city: 'Kyiv',
-        street: 'ул.Ивана Федорова',
-        house: 'д. 6',
-        room: '2',
+        address: {
+          country: 'Украина',
+          cityId: '3',
+          street: 'ул.Ивана Федорова',
+          house: 'д. 6',
+          room: '2'
+        },
         email: 'ira.les@gmail.com',
         isActive: true
       }
@@ -554,23 +600,26 @@ export default [
     numberOfUses: 32,
     numberOfViews: 56,
     rating: 4.9,
-    updated: '2021-02-22',
+    updatedAt: '2021-02-22',
     promocode: 'WEAR32',
     tags: ['Clothes', 'Fashion'],
     isActive: false,
-    city: 'Kyiv',
-    officesId: ['14'],
+    cityId: '3',
+    vendorEntitiesId: ['14'],
     offices: [
       {
         id: '14',
+        location: [50.44025486038732, 30.52230314847687],
         x: 50.44025486038732,
         y: 30.52230314847687,
         phone: '+38 098 983-07-77',
-        country: 'Украина',
-        city: 'Kyiv',
-        street: 'ул.Рогнеденская',
-        house: 'д. 3',
-        room: '4',
+        address: {
+          country: 'Украина',
+          cityId: '3',
+          street: 'ул.Рогнеденская',
+          house: 'д. 3',
+          room: '4'
+        },
         email: 'fashion-wear@gmail.com',
         isActive: true
       }
@@ -591,36 +640,42 @@ export default [
     numberOfUses: 49,
     numberOfViews: 62,
     rating: 5,
-    updated: '2021-02-05',
+    updatedAt: '2021-02-05',
     promocode: '',
     tags: ['Auto', 'Wheels'],
     isActive: true,
-    city: 'Yekaterinburg',
-    officesId: ['15', '16'],
+    cityId: '4',
+    vendorEntitiesId: ['15', '16'],
     offices: [
       {
         id: '15',
+        location: [56.781522754305485, 60.61757015808883],
         x: 56.781522754305485,
         y: 60.61757015808883,
         phone: '+7 343 385-07-00',
-        country: 'Россия',
-        city: 'Yekaterinburg',
-        street: 'ул. Монтёрская',
-        house: 'д. 10а',
-        room: '',
+        address: {
+          country: 'Россия',
+          cityId: '4',
+          street: 'ул. Монтёрская',
+          house: 'д. 10а',
+          room: ''
+        },
         email: 'wheel1@gmail.com',
         isActive: true
       },
       {
         id: '16',
+        location: [56.84222661082884, 60.66575335424758],
         x: 56.84222661082884,
         y: 60.66575335424758,
         phone: '+7 343 383-42-43',
-        country: 'Россия',
-        city: 'Yekaterinburg',
-        street: 'ул. Малышева',
-        house: 'д. 145а',
-        room: '',
+        address: {
+          country: 'Россия',
+          cityId: '4',
+          street: 'ул. Малышева',
+          house: 'д. 145а',
+          room: ''
+        },
         email: 'wheel2@gmail.com',
         isActive: false
       }

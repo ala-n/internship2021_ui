@@ -15,7 +15,10 @@
         </a>
         <div class="card__title office__contact">
           <mat-icon class="card__icon">location_on</mat-icon
-          >{{ [office.street, office.house, office.room] | concat }}
+          >{{
+            [office.address.street, office.address.house, office.address.room]
+              | concat
+          }}
         </div>
         <a
           href="tel:{{ office.phone }}"

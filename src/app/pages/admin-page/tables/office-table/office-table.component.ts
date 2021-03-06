@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
+import { CityService } from '@shared/services/city.service';
 import { OfficeService } from '@shared/services/office.service';
 import { take } from 'rxjs/operators';
 
@@ -31,6 +32,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private officeService: OfficeService,
+    private cityService: CityService,
     private route: ActivatedRoute
   ) {}
 
@@ -41,7 +43,14 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
         .getVendorOffices(vendorId)
         .pipe(take(1))
         .subscribe((offices: Office[]) => {
-          if (offices) this.dataSource.data = offices as Office[];
+          if (offices) {
+            offices.map((office) => {
+              office.address.cityId = this.cityService.getCityName(
+                office.address.cityId
+              );
+            });
+            this.dataSource.data = offices as Office[];
+          }
           this.isLoading = false;
         });
     }

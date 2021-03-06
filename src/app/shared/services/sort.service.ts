@@ -41,8 +41,8 @@ export class SortService {
 
   sortByRecency(offers: Offer[]): Offer[] {
     return offers.sort((a, b) => {
-      const dateA = new Date(a.updated).getTime();
-      const dateB = new Date(b.updated).getTime();
+      const dateA = new Date(a.updatedAt).getTime();
+      const dateB = new Date(b.updatedAt).getTime();
       return dateB - dateA;
     });
   }
@@ -57,7 +57,7 @@ export class SortService {
   ): Offer[] {
     if (!this.mapService.distanceToMarkers) return offers;
     const offerWithDistance: OfferWithDistance[] = offers.map((offer) => {
-      const distances: number[] = offer.officesId.map(
+      const distances: number[] = offer.vendorEntitiesId.map(
         (id) => distanceToMarkers.get(id) || Number.POSITIVE_INFINITY
       );
       const distance = Math.min.apply(null, distances);

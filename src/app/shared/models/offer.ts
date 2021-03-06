@@ -9,8 +9,8 @@ export interface OfferBase {
   vendorId: string;
   numberOfUses: number;
   numberOfViews: number;
-  city: string;
-  officesId: string[];
+  cityId: string;
+  vendorEntitiesId: string[];
   offices: Office[];
 }
 
@@ -24,5 +24,5 @@ export interface Offer extends OfferBase {
   rating: number;
   tags: string[];
   isActive: boolean;
-  updated: string;
+  updatedAt: string;
 }

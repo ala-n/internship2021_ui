@@ -81,13 +81,19 @@
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'offices' | translate }}</mat-label>
-        <mat-select formControlName="offices" disableOptionCentering multiple>
+        <mat-select
+          formControlName="vendorEntitiesId"
+          disableOptionCentering
+          multiple
+        >
           <mat-option *ngFor="let office of vendorOffices" [value]="office.id"
-            >{{ office.city }}, {{ office.street }},
-            {{ office.house }}</mat-option
+            >{{ office.address.cityId }}, {{ office.address.street }},
+            {{ office.address.house }}</mat-option
           >
         </mat-select>
-        <mat-error *ngIf="offerForm.controls['offices'].hasError('required')">
+        <mat-error
+          *ngIf="offerForm.controls['vendorEntitiesId'].hasError('required')"
+        >
           {{ 'offices' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
         </mat-error>
