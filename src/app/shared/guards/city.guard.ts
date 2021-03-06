@@ -5,7 +5,7 @@ import { LocationService } from '@shared/services/location.service';
 import { NavigationService } from '@shared/services/navigation.service';
 import { UserService } from '@shared/services/user.service';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +27,12 @@ export class CityGuard implements CanActivate {
       return true;
     }
 
-    return this.userService.user$.pipe(
+    return this.cityService.preload().pipe(
+      switchMap(() => this.userService.user$),
       tap((user) => {
         if (user) {
-          const cityName = this.cityService.getCityName(user.cityId);
+          const cityName =
+            this.cityService.getCityName(user.cityId) ?? 'Antananarivo';
           this.router.navigate(['home', cityName]);
         }
       }),

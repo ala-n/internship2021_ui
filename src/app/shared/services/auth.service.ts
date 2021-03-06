@@ -25,14 +25,11 @@ export class AuthService {
 
   // This function send Login Data and try to receive User
   login(data: LoginData): Observable<UserLogin> {
-    return this.http
-      .post<UserLogin>('https://localhost:5001/auth/users/login', data)
-      .pipe(
-        tap((data) => {
-          console.log(data);
-          localStorage.setItem('access_user', data.token);
-        })
-      );
+    return this.http.post<UserLogin>(this.URL, data).pipe(
+      tap((data) => {
+        localStorage.setItem('access_user', data.token);
+      })
+    );
   } // TODO: create error handler
 
   // Checking if User is set

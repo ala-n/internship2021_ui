@@ -17,10 +17,11 @@ export class UserService {
   readonly user$ = this._user$.asObservable();
 
   updateCurrentUser(): Observable<boolean> {
+    // for mocks
     // const user = this.http.get<User>(`${UserService.USER_URL}`);
-    const user = this.http.get<User>(
-      `https://localhost:5001/auth/users/getUser`
-    );
+
+    // for backend
+    const user = this.http.get<User>(`/auth/users/getUser`);
     return user.pipe(
       tap((user) => {
         this._user$.next(user);
