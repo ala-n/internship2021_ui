@@ -16,17 +16,18 @@ export class OfferService {
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
     //for mock
-    const url = `${OfferService.OFFERS_URL}`;
-    //for back
-    // const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
+    // const url = `${OfferService.OFFERS_URL}`;
+
+    //for backend
+    const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
       // for backend
       const cityId = this.cityService.getCityId(params.city);
-      // return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
+      return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
 
       // for mocks
-      return this.http.get(`${url}/?cityId=${cityId}`);
+      // return this.http.get(`${OfferService.OFFERS_URL}/?cityId=${cityId}`);
     }
   }
 
