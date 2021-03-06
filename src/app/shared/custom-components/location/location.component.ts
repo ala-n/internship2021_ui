@@ -47,7 +47,6 @@ export class LocationComponent implements OnInit, OnDestroy {
   }
 
   onSelectionChanged(city: string): void {
-    console.log(city);
     this.router.navigate(['home', city]);
     this.locationService.setCity(city);
   }
