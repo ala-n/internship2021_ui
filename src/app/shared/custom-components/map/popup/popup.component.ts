@@ -14,7 +14,7 @@ export class PopupComponent {
   @Input() address!: string;
   @Input() phoneNumber!: string;
 
-  cityName!: string;
+  cityName!: string | undefined;
 
   constructor(private citiService: CityService) {}
 

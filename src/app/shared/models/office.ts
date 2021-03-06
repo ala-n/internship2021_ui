@@ -8,7 +8,7 @@ export interface Office {
   phone: string;
   address: {
     country: string;
-    cityId: string;
+    cityId: string | undefined;
     street: string;
     house: string;
     room?: string;

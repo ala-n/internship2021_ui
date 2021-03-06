@@ -19,12 +19,16 @@ export class CityService {
     return this._cities;
   }
 
-  getCityId(cityName: string): string | undefined {
+  getCityId(cityName: string | undefined): string | undefined {
+    if (!cityName) return undefined;
+
     const city = this.cities.find((city) => city.name === cityName);
     return city ? city.id : undefined;
   }
 
-  getCityName(cityId: string): string | undefined {
+  getCityName(cityId: string | undefined): string | undefined {
+    if (!cityId) return undefined;
+
     const city = this.cities.find((city) => city.id === cityId);
     return city ? city.name : undefined;
   }

@@ -7,7 +7,7 @@ export interface User {
   id?: string;
   firstName: string;
   lastName: string;
-  cityId: string;
+  cityId: string | undefined;
   role: string;
   phone: string;
   photoUrl?: string;
