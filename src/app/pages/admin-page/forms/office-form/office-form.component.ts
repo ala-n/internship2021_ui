@@ -118,7 +118,7 @@ export class OfficeFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.officeForm.controls['city'].setValue(
+    this.officeForm.controls['cityId'].setValue(
       this.cityService.getCityId(this.officeForm.value.city)
     );
     console.log(this.officeForm.value);
