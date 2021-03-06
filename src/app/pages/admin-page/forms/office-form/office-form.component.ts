@@ -19,6 +19,7 @@ import { CityService } from '@shared/services/city.service';
 })
 export class OfficeFormComponent implements OnInit {
   officeForm = this.fb.group({
+    id: null,
     location: null,
     country: [null, Validators.required],
     city: [null, Validators.required],
@@ -59,6 +60,7 @@ export class OfficeFormComponent implements OnInit {
         .subscribe((office) => {
           this.office = office;
           this.officeForm.setValue({
+            id: this.office.id,
             location: this.office.location,
             country: this.office.address.country,
             city: this.cityService.getCityName(office.address.cityId),
@@ -100,6 +102,7 @@ export class OfficeFormComponent implements OnInit {
         const address = data.address;
 
         this.officeForm.setValue({
+          id: this.office.id,
           location: [coordinate.lat, coordinate.lng],
           country: address.country,
           city: this.cityService.getCityName(address.city),

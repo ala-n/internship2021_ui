@@ -18,7 +18,7 @@ export class OfferService {
     //for mock
     // const url = `${OfferService.OFFERS_URL}`;
     //for back
-    const url = `${OfferService.OFFERS_URL}/?includeInactive=true`;
+    const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
       // for backend
@@ -26,7 +26,7 @@ export class OfferService {
       return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
 
       // for mocks
-      // return this.http.get(`${url}/?city=${params.city}`);
+      // return this.http.get(`${url}/?cityId=${cityId}`);
     }
   }
 
@@ -49,7 +49,7 @@ export class OfferService {
 
     // for backend
     return this.http.get<Offer[]>(
-      `${OfferService.OFFERS_URL}/vendor/${vendorId}/?includeInactive=true`
+      `${OfferService.OFFERS_URL}/vendor/${vendorId}/vendorInfo/?includeInactive=true`
     );
   }
 
