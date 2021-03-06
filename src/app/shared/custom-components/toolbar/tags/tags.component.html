@@ -6,6 +6,7 @@
       *ngFor="let tag of tags"
       [value]="tag.name"
       (click)="searchByTag($event)"
+      [class.tags__item__active]="tag.name === currentTag"
     >
       {{ tag.name }}
     </mat-chip>
