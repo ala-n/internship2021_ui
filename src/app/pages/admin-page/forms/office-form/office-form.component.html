@@ -39,8 +39,8 @@
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>{{ 'city' | translate }}</mat-label>
-          <input matInput formControlName="city" />
-          <mat-error *ngIf="officeForm.controls['city'].hasError('required')">
+          <input matInput formControlName="cityId" />
+          <mat-error *ngIf="officeForm.controls['cityId'].hasError('required')">
             {{ 'city' | translate }} {{ 'is' | translate }}
             <strong>{{ 'required' | translate }}</strong>
           </mat-error>

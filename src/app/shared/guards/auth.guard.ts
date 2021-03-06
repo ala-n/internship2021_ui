@@ -9,16 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate {
   constructor(private userService: UserService) {}
 
-  canActivate(): boolean | Observable<boolean> {
-    // it will be uncommented later
-
-    // if (!this.authService.isLoggedIn()) {
-    //   this.router.navigate(['/login']);
-    //   return false;
-    // } else {
-    //   return this.userService.updateCurrentUser();
-    // }
-
+  canActivate(): Observable<boolean> {
     return this.userService.updateCurrentUser();
   }
 }
