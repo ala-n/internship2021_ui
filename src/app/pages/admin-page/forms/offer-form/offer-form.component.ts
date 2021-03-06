@@ -20,6 +20,7 @@ import { CityService } from '@shared/services/city.service';
 })
 export class OfferFormComponent implements OnInit {
   offerForm = this.fb.group({
+    id: null,
     title: [null, Validators.required],
     discount: [null, Validators.required],
     description: null,
@@ -70,6 +71,7 @@ export class OfferFormComponent implements OnInit {
           this.getOfficesForSelect(this.vendorId);
           this.getVendorName(this.vendorId);
           this.offerForm.setValue({
+            id: offer.id,
             title: offer.title,
             discount: offer.discount,
             description: offer.description,
