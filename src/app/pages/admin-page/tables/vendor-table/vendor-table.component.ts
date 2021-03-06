@@ -24,8 +24,8 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
     'name',
     'branchOffices',
     'offers',
-    'webSite',
-    'updated'
+    'website',
+    'updatedAt'
   ];
 
   constructor(private vendorService: VendorService) {}
@@ -58,7 +58,7 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
     ): any => {
       //TODO question about types
       switch (property) {
-        case 'updated': {
+        case 'updatedAt': {
           return new Date(item[property]);
         }
         default:

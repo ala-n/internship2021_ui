@@ -11,6 +11,7 @@ import { take } from 'rxjs/operators';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { CityService } from '@shared/services/city.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -19,6 +20,7 @@ import { MatChipInputEvent } from '@angular/material/chips';
 })
 export class OfferFormComponent implements OnInit {
   offerForm = this.fb.group({
+    id: null,
     title: [null, Validators.required],
     discount: [null, Validators.required],
     description: null,
@@ -26,7 +28,7 @@ export class OfferFormComponent implements OnInit {
     dateEnd: [null, Validators.required],
     promocode: null,
     images: null,
-    offices: [null, Validators.required],
+    vendorEntitiesId: [null, Validators.required],
     tags: null,
     isActive: false
   });
@@ -46,6 +48,7 @@ export class OfferFormComponent implements OnInit {
     private offerService: OfferService,
     private vendorService: VendorService,
     private officeService: OfficeService,
+    private cityService: CityService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -62,20 +65,21 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
-          this.offerOffices = offer.offices.map((office) => office.id);
+          this.offerOffices = offer.vendorEntitiesId;
           this.vendorId = offer.vendorId;
           this.tags = offer.tags || [];
           this.getOfficesForSelect(this.vendorId);
           this.getVendorName(this.vendorId);
           this.offerForm.setValue({
+            id: offer.id,
             title: offer.title,
             discount: offer.discount,
             description: offer.description,
-            dateStart: offer.dateStart,
+            dateStart: new Date(offer.dateStart),
             dateEnd: offer.dateEnd,
-            promocode: offer.promocode,
+            promocode: offer.promoCode,
             images: '',
-            offices: this.offerOffices,
+            vendorEntitiesId: this.offerOffices,
             tags: this.tags,
             isActive: offer.isActive
           });
@@ -100,11 +104,18 @@ export class OfferFormComponent implements OnInit {
       .getVendorOffices(id)
       .pipe(take(1))
       .subscribe((offices: Office[]) => {
+        offices.map(
+          (office) =>
+            (office.address.cityId = this.cityService.getCityName(
+              office.address.cityId
+            ))
+        );
         this.vendorOffices = offices;
       });
   }
 
   onSubmit(): void {
+    console.log(this.offerForm.value);
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.vendorId);
     } else {

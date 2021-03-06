@@ -12,10 +12,16 @@ import { TagsService } from '@shared/services/tags.service';
 export class TagsComponent implements OnInit {
   tags!: Tag[];
 
+  status = false;
+
   constructor(
     private tagsService: TagsService,
     private filterService: FilterService
   ) {}
+
+  get currentTag(): string {
+    return this.filterService.filterCfg?.tag || '';
+  }
 
   ngOnInit(): void {
     this.tagsService

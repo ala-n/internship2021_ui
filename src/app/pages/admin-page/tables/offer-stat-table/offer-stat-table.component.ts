@@ -24,9 +24,9 @@ export class OfferStatTableComponent implements OnInit, AfterViewInit {
     'rating',
     'numberOfViews',
     'numberOfUses',
-    'created',
+    'createdAt',
     'createdBy',
-    'updated',
+    'updatedAt',
     'updatedBy'
   ];
 
@@ -61,8 +61,8 @@ export class OfferStatTableComponent implements OnInit, AfterViewInit {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
       switch (property) {
-        case 'updated':
-        case 'created': {
+        case 'updatedAt':
+        case 'createdAt': {
           return new Date(item[property]);
         }
         case 'rating':

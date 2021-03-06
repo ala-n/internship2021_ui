@@ -5,13 +5,14 @@ export interface Office {
   y: number;
   vendorId: string;
   vendorName: string;
-  address: string; //must be joined to string from separate fields
   phone: string;
-  country: string;
-  city: string;
-  street: string;
-  house: string;
-  room?: string;
+  address: {
+    country: string;
+    cityId: string | undefined;
+    street: string;
+    house: string;
+    room?: string;
+  };
   email: string;
   isActive: boolean;
 }

@@ -8,11 +8,11 @@ import { OfferFormComponent } from './forms/offer-form/offer-form.component';
 import { OfferTableComponent } from './tables/offer-table/offer-table.component';
 import { OfficeTableComponent } from './tables/office-table/office-table.component';
 import { VendorNavComponent } from './navigation/vendor-nav/vendor-nav.component';
-import { FormGuard } from '@shared/guards/form.guard';
 import { VendorStatTableComponent } from './tables/vendor-stat-table/vendor-stat-table.component';
 import { TagsStatTableComponent } from './tables/tags-stat-table/tags-stat-table.component';
 import { OfferStatTableComponent } from './tables/offer-stat-table/offer-stat-table.component';
 import { StatNavComponent } from './navigation/stat-nav/stat-nav.component';
+// import { FormGuard } from '@shared/guards/form.guard';
 
 const routes: Routes = [
   {
@@ -62,8 +62,8 @@ const routes: Routes = [
                     children: [
                       {
                         path: '',
-                        component: OfficeTableComponent,
-                        canActivate: [FormGuard]
+                        component: OfficeTableComponent
+                        // canActivate: [FormGuard]
                       }
                     ]
                   },
@@ -72,8 +72,8 @@ const routes: Routes = [
                     children: [
                       {
                         path: '',
-                        component: OfferTableComponent,
-                        canActivate: [FormGuard]
+                        component: OfferTableComponent
+                        // canActivate: [FormGuard]
                       }
                     ]
                   }
@@ -134,7 +134,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-  providers: [FormGuard]
+  exports: [RouterModule]
+  // providers: [FormGuard]
 })
 export class AdminPageRoutingModule {}

@@ -4,6 +4,7 @@ export interface Vendor {
   id: string;
   name: string;
   title: string;
+  cityId: string | undefined;
   description: string;
   city: string;
   website: string;
@@ -11,7 +12,7 @@ export interface Vendor {
   rating: number;
   created: string;
   createdBy: string;
-  updated: string;
+  updatedAt: string;
   updatedBy: string;
   isActive: boolean;
 }

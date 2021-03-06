@@ -23,7 +23,7 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
     'rating',
     'created',
     'createdBy',
-    'updated',
+    'updatedAt',
     'updatedBy'
   ];
 
@@ -56,8 +56,8 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
       switch (property) {
-        case 'updated':
-        case 'created': {
+        case 'updatedAt':
+        case 'createdAt': {
           return new Date(item[property]);
         }
         case 'rating': {

@@ -7,8 +7,8 @@ export interface OfferBase {
   photoUrl: string[];
   numberOfUses: number;
   numberOfViews: number;
-  city: string;
-  officesId: string[];
+  cityId: string | undefined;
+  vendorEntitiesId: string[];
   offices: Office[];
   vendorName: string;
   vendorId: string;
@@ -16,14 +16,14 @@ export interface OfferBase {
 
 export interface Offer extends OfferBase {
   description: string;
-  promocode?: string;
+  promoCode?: string;
   dateStart: string;
   dateEnd: string;
   rating: number;
   tags: string[];
   created: string;
   createdBy: string;
-  updated: string;
+  updatedAt: string;
   updatedBy: string;
   isActive: boolean;
 }

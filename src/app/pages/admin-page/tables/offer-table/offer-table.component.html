@@ -116,7 +116,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="updated">
+      <ng-container matColumnDef="updatedAt">
         <th
           mat-header-cell
           class="text text_upper"
@@ -126,7 +126,7 @@
           {{ 'updated' | translate }}
         </th>
         <td mat-cell *matCellDef="let offer">
-          {{ offer.updated | date: 'dd.MM.yyyy' }}
+          {{ offer.updatedAt | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 

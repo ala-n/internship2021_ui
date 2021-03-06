@@ -26,7 +26,7 @@
       class="full-width-table"
       mat-table
       matSort
-      matSortActive="updated"
+      matSortActive="updatedAt"
       matSortDirection="desc"
       [dataSource]="dataSource"
     >
@@ -61,7 +61,7 @@
         <td mat-cell *matCellDef="let vendor">{{ vendor.rating }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="created">
+      <ng-container matColumnDef="createdAt">
         <th
           mat-header-cell
           class="text text_upper"
@@ -71,7 +71,7 @@
           {{ 'created' | translate }}
         </th>
         <td mat-cell *matCellDef="let vendor">
-          {{ vendor.created | date: 'dd.MM.yyyy' }}
+          {{ vendor.createdAt | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
@@ -87,7 +87,7 @@
         <td mat-cell *matCellDef="let vendor">{{ vendor.createdBy }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="updated">
+      <ng-container matColumnDef="updatedAt">
         <th
           mat-header-cell
           class="text text_upper"
@@ -97,7 +97,7 @@
           {{ 'updated' | translate }}
         </th>
         <td mat-cell *matCellDef="let vendor">
-          {{ vendor.updated | date: 'dd.MM.yyyy' }}
+          {{ vendor.updatedAt | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
