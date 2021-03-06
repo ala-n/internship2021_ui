@@ -34,7 +34,7 @@ export class CityService {
   }
 
   preload(): Observable<City[]> {
-    return this.http.get<City[]>('/api/cities?includeInactive=true').pipe(
+    return this.http.get<City[]>('api/cities').pipe(
       tap((cities) => {
         this._cities = [...cities];
       })
