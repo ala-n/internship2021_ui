@@ -3,7 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
-import { CityService } from './city.service';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -12,21 +11,20 @@ import { HttpService } from './http.service';
 export class OfferService {
   static OFFERS_URL = 'api/offers';
 
-  constructor(private http: HttpService, private cityService: CityService) {}
+  constructor(private http: HttpService) {}
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
     //for mock
-    // const url = `${OfferService.OFFERS_URL}`;
+    const url = `${OfferService.OFFERS_URL}`;
     //for back
-    const url = `${OfferService.OFFERS_URL}/?includeInactive=true`;
+    // const url = `${OfferService.OFFERS_URL}/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
       // for backend
-      const cityId = this.cityService.getCityId(params.city);
-      return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
-
+      // const cityId = this.cityService.getCityId(params.city);
+      // return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
       // for mocks
-      // return this.http.get(`${url}/?city=${params.city}`);
+      return this.http.get(`${url}/?city=${params.city}`);
     }
   }
 
