@@ -35,8 +35,8 @@ export class OfficeService {
     return this.http.get(url);
   }
 
-  getOfficesById(arr: string[]): Observable<Office[]> {
-    const url = `${OfficeService.OFFICES_URL}/${arr}`;
+  getOfficesById(offerId: string): Observable<Office[]> {
+    const url = `${OfficeService.OFFICES_URL}/offer/${offerId}`;
     return this.http.get<Office[]>(url);
   }
 
