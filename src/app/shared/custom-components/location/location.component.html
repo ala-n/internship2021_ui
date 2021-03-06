@@ -18,9 +18,9 @@
       class="location__autocomplete"
     >
       <mat-option
-        *ngFor="let option of filteredOptions$ | async"
-        [value]="option"
-        >{{ option }}
+        *ngFor="let city of filteredOptions$ | async"
+        [value]="city.name"
+        >{{ city.name }}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>

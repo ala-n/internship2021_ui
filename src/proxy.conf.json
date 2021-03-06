@@ -1,6 +1,11 @@
 {
   "/api/*": {
-    "target": "https://localhost:5001",
+    "target": "http://20.82.121.44:49001",
+    "secure": false,
+    "changeOrigin": true
+  },
+  "/auth/*": {
+    "target": "http://20.82.121.44:800",
     "secure": false,
     "changeOrigin": true
   }

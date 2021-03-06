@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '@shared/services/auth.service';
 import { LoginData } from '@shared/models/login_data';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { LoginData } from '@shared/models/login_data';
 export class LogInComponent {
   model: LoginData = {};
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
     this.authService.logout();
@@ -18,8 +19,8 @@ export class LogInComponent {
 
   login(): void {
     this.authService.login(this.model).subscribe(
-      (response) => {
-        console.log(response);
+      () => {
+        this.router.navigate(['../home']);
       },
       (error) => {
         console.error(error);

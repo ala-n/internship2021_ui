@@ -1,16 +1,43 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { City } from '@shared/models/city';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
+  private _cities: City[] = [];
+
   static LOCATION_URL = 'api/cities';
 
   constructor(private http: HttpClient) {}
 
-  getCities(): Observable<string[]> {
-    return this.http.get<string[]>(CityService.LOCATION_URL);
+  get cities(): City[] {
+    return this._cities;
+  }
+
+  getCityId(cityName: string | undefined): string | undefined {
+    if (!cityName) return undefined;
+
+    const city = this.cities.find((city) => city.name === cityName);
+    return city ? city.id : undefined;
+  }
+
+  getCityName(cityId: string | undefined): string | undefined {
+    if (!cityId) return undefined;
+
+    const city = this.cities.find((city) => city.id === cityId);
+    return city ? city.name : undefined;
+  }
+
+  preload(): Observable<City[]> {
+    return this.http.get<City[]>('api/cities').pipe(
+      tap((cities) => {
+        this._cities = [...cities];
+      })
+    );
   }
 }
