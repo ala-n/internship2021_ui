@@ -16,7 +16,7 @@ export interface OfferBase {
 
 export interface Offer extends OfferBase {
   description: string;
-  promocode?: string;
+  promoCode?: string;
   dateStart: string;
   dateEnd: string;
   numberOfUses: number;
