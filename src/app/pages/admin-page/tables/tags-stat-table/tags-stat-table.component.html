@@ -26,7 +26,7 @@
       class="full-width-table"
       mat-table
       matSort
-      matSortActive="updated"
+      matSortActive="updatedAt"
       matSortDirection="desc"
       [dataSource]="dataSource"
     >
@@ -131,7 +131,7 @@
         >
           {{ 'updated-by' | translate }}
         </th>
-        <td mat-cell *matCellDef="let tag">{{ tag.createdBy }}</td>
+        <td mat-cell *matCellDef="let tag">{{ tag.updatedBy }}</td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

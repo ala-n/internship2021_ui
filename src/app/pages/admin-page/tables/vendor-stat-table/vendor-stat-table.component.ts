@@ -21,7 +21,7 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
     'number',
     'name',
     'rating',
-    'created',
+    'createdAt',
     'createdBy',
     'updatedAt',
     'updatedBy'

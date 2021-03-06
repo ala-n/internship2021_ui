@@ -16,42 +16,42 @@ export class OfferService {
 
   getOffers(params?: { city: string }): Observable<Offer[]> {
     //for mock
-    const url = `${OfferService.OFFERS_URL}`;
+    // const url = `${OfferService.OFFERS_URL}`;
 
     //for backend
-    // const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
+    const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
       // for backend
       const cityId = this.cityService.getCityId(params.city);
-      // return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
+      return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
 
       // for mocks
-      return this.http.get(`${OfferService.OFFERS_URL}/?cityId=${cityId}`);
+      // return this.http.get(`${OfferService.OFFERS_URL}/?cityId=${cityId}`);
     }
   }
 
   getOfferById(id: string): Observable<Offer> {
     // for backend and for mocks
-    return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
+    return this.http.get(`${OfferService.OFFERS_URL}/${id}/vendorInfo`);
   }
 
   getVendorOffers(vendorId: string): Observable<Offer[]> {
     // for mocks
-    return this.http
-      .get<Offer[]>(`${OfferService.OFFERS_URL}`)
-      .pipe(
-        map((offers) =>
-          offers.filter(
-            (offer: { vendorId: string }) => offer.vendorId === vendorId
-          )
-        )
-      );
+    // return this.http
+    //   .get<Offer[]>(`${OfferService.OFFERS_URL}`)
+    //   .pipe(
+    //     map((offers) =>
+    //       offers.filter(
+    //         (offer: { vendorId: string }) => offer.vendorId === vendorId
+    //       )
+    //     )
+    //   );
 
     // for backend
-    // return this.http.get<Offer[]>(
-    //   `${OfferService.OFFERS_URL}/vendor/${vendorId}/vendorInfo/?includeInactive=true`
-    // );
+    return this.http.get<Offer[]>(
+      `${OfferService.OFFERS_URL}/vendor/${vendorId}/vendorInfo/?includeInactive=true`
+    );
   }
 
   getOfficeOffers(officeId: string): Observable<Offer[]> {
