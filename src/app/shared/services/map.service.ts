@@ -105,9 +105,9 @@ export class MapService {
     component.instance.office = office;
     component.instance.vendorName = name;
     component.instance.address = this.concat([
-      office.address.street,
-      office.address.house,
-      office.address.room
+      office.street,
+      office.house,
+      office.room
     ]);
     component.instance.phoneNumber = office.phone;
     const marker = L.marker(

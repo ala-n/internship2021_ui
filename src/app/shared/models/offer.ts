@@ -11,7 +11,7 @@ export interface OfferBase {
   numberOfViews: number;
   cityId: string | undefined;
   vendorEntitiesId: string[];
-  offices: Office[];
+  vendorEntities: Office[];
 }
 
 export interface Offer extends OfferBase {
