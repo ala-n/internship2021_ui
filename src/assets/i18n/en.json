@@ -15,6 +15,10 @@
   "distance": "Distance",
   "recency": "Recency",
   "rating": "Rating",
+  "views": "Views",
+  "orders": "Orders",
+  "user-uses": "Used by user",
+  "brand-uses": "Applied to brands",
 
   "addresses": "Addresses",
   "brands": "Brands",
@@ -50,6 +54,9 @@
   "active": "Active",
   "inactive": "Inactive",
   "updated": "Updated",
+  "updated-by": "Updated by",
+  "created": "Created",
+  "created-by": "Created by",
 
   "enter_information_about_offer_of": "Enter information about offer of",
   "enter_information_about_office_of": "Enter information about office of",

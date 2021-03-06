@@ -9,8 +9,8 @@
     <mat-button-toggle-group
       #group="matButtonToggleGroup"
       class="table__filter"
-      aria-label="Filter Vendors"
       value=""
+      aria-label="Filter Vendors"
       (click)="applyFilter(group.value, 'isActive')"
     >
       <mat-button-toggle value="">{{ 'all' | translate }}</mat-button-toggle>
@@ -31,19 +31,6 @@
       matSortDirection="desc"
       [dataSource]="dataSource"
     >
-      <ng-container matColumnDef="edit">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <td mat-cell *matCellDef="let vendor">
-          <button
-            class="button_edit button_c_primary"
-            [routerLink]="['details', vendor.id, 'edit']"
-            mat-icon-button
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
       <ng-container matColumnDef="number">
         <th mat-header-cell class="text" *matHeaderCellDef>№</th>
         <td mat-cell *matCellDef="let vendor; let i = index">
@@ -63,39 +50,42 @@
         <td mat-cell *matCellDef="let vendor">{{ vendor.name }}</td>
       </ng-container>
 
-      <ng-container matColumnDef="branchOffices">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
-          {{ 'offices' | translate }}
+      <ng-container matColumnDef="rating">
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'rating' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let vendor">{{ vendor.rating }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'created' | translate }}
         </th>
         <td mat-cell *matCellDef="let vendor">
-          <a
-            class="link link_c_primary"
-            [routerLink]="['details', vendor.id, 'offices']"
-            >{{ 'show' | translate }} {{ 'offices' | translate }}</a
-          >
+          {{ vendor.createdAt | date: 'dd.MM.yyyy' }}
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="offers">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
-          {{ 'offers' | translate }}
+      <ng-container matColumnDef="createdBy">
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'created-by' | translate }}
         </th>
-        <td mat-cell *matCellDef="let vendor">
-          <a
-            class="link link_c_primary"
-            [routerLink]="['details', vendor.id, 'offers']"
-            >{{ 'show' | translate }} {{ 'offers' | translate }}</a
-          >
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="website">
-        <th mat-header-cell class="text text_upper" *matHeaderCellDef>
-          {{ 'website' | translate }}
-        </th>
-        <td mat-cell *matCellDef="let vendor">
-          {{ vendor.website }}
-        </td>
+        <td mat-cell *matCellDef="let vendor">{{ vendor.createdBy }}</td>
       </ng-container>
 
       <ng-container matColumnDef="updatedAt">
@@ -112,6 +102,18 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="updatedBy">
+        <th
+          mat-header-cell
+          class="text text_upper"
+          *matHeaderCellDef
+          mat-sort-header
+        >
+          {{ 'updated-by' | translate }}
+        </th>
+        <td mat-cell *matCellDef="let vendor">{{ vendor.updatedBy }}</td>
+      </ng-container>
+
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
       <tr mat-row *matRowDef="let vendor; columns: displayedColumns"></tr>
 
@@ -123,13 +125,6 @@
     </table>
   </div>
   <div class="table__footer">
-    <button
-      class="button button_hidden_mobile button_c_icon-primary"
-      mat-raised-button
-      [routerLink]="['details', 'form']"
-    >
-      {{ 'add_brand' | translate }}
-    </button>
     <mat-paginator
       class="table__paginator"
       #paginator
@@ -139,12 +134,5 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
     </mat-paginator>
-    <button
-      class="button button_hidden_tablet button_c_icon-primary"
-      mat-fab
-      [routerLink]="['details', 'form']"
-    >
-      <mat-icon>add</mat-icon>
-    </button>
   </div>
 </div>

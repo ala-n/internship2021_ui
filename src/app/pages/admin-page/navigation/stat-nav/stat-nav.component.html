@@ -1,0 +1,33 @@
+<mat-card class="table-nav">
+  <mat-nav-list class="table-nav__menu">
+    <a
+      mat-list-item
+      class="table-nav__link"
+      [routerLink]="['vendors']"
+      routerLinkActive="mat-list-item_active"
+      ><span class="text text_s_l text_upper">
+        {{ 'brands' | translate }}</span
+      ></a
+    >
+    <a
+      mat-list-item
+      class="table-nav__link"
+      [routerLink]="['offers']"
+      routerLinkActive="mat-list-item_active"
+    >
+      <span class="text text_s_l text_upper"> {{ 'offers' | translate }}</span>
+    </a>
+    <a
+      mat-list-item
+      class="table-nav__link"
+      [routerLink]="['tags']"
+      routerLinkActive="mat-list-item_active"
+      ><span class="text text_s_l text_upper">
+        {{ 'tags' | translate }}</span
+      ></a
+    >
+  </mat-nav-list>
+  <mat-card-content class="table-nav__content">
+    <router-outlet></router-outlet>
+  </mat-card-content>
+</mat-card>

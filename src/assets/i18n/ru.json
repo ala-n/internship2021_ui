@@ -15,6 +15,10 @@
   "distance": "Расстоянию",
   "recency": "Новизне",
   "rating": "Рейтингу",
+  "views": "Просмотры",
+  "orders": "Заказы",
+  "user-uses": "Применен пользователем",
+  "brand-uses": "Назначен брэнду",
 
   "addresses": "Адреса",
   "brands": "Бренды",
@@ -49,7 +53,10 @@
   "all": "Все",
   "active": "Активные",
   "inactive": "Неактивные",
-  "updated": "Обновлено",
+  "updated": "Обновлен",
+  "updated-by": "Обновил(а)",
+  "created": "Создан",
+  "created-by": "Создал(а)",
 
   "enter_information_about_offer_of": "Введите информацию об акции",
   "enter_information_about_office_of": "Введите информацию об офисе",

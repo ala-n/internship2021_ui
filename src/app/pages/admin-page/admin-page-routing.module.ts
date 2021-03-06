@@ -7,7 +7,11 @@ import { OfficeFormComponent } from './forms/office-form/office-form.component';
 import { OfferFormComponent } from './forms/offer-form/offer-form.component';
 import { OfferTableComponent } from './tables/offer-table/offer-table.component';
 import { OfficeTableComponent } from './tables/office-table/office-table.component';
-import { VendorNavComponent } from './vendor-nav/vendor-nav.component';
+import { VendorNavComponent } from './navigation/vendor-nav/vendor-nav.component';
+import { VendorStatTableComponent } from './tables/vendor-stat-table/vendor-stat-table.component';
+import { TagsStatTableComponent } from './tables/tags-stat-table/tags-stat-table.component';
+import { OfferStatTableComponent } from './tables/offer-stat-table/offer-stat-table.component';
+import { StatNavComponent } from './navigation/stat-nav/stat-nav.component';
 // import { FormGuard } from '@shared/guards/form.guard';
 
 const routes: Routes = [
@@ -93,6 +97,29 @@ const routes: Routes = [
           {
             path: ':offerId',
             component: OfferFormComponent
+          }
+        ]
+      },
+      {
+        path: 'statistics',
+        children: [
+          {
+            path: '',
+            component: StatNavComponent,
+            children: [
+              {
+                path: 'vendors',
+                component: VendorStatTableComponent
+              },
+              {
+                path: 'offers',
+                component: OfferStatTableComponent
+              },
+              {
+                path: 'tags',
+                component: TagsStatTableComponent
+              }
+            ]
           }
         ]
       },
