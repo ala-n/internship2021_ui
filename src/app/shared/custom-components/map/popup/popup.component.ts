@@ -18,7 +18,7 @@ export class PopupComponent {
 
   constructor(private citiService: CityService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.cityName = this.citiService.getCityName(this.office.address.cityId);
   }
 }

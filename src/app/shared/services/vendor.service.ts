@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
+import { CityService } from './city.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,21 +15,21 @@ export class VendorService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cityService: CityService) {}
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
     // for mock
-    const url = VendorService.VENDORS_URL;
+    // const url = VendorService.VENDORS_URL;
     // for back
-    // const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
+    const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
 
     if (!params) return this.http.get<Vendor[]>(url);
     else {
+      `${url}/?city=${params.city}`;
+      // for backend
+      const cityId = this.cityService.getCityId(params.city);
       return this.http.get<Vendor[]>(
-        `${url}/?city=${params.city}`
-        // for backend
-        // const cityId = this.cityService.getCityId(params.city);
-        // `${VendorService.VENDORS_URL}/city/${cityId}`
+        `${VendorService.VENDORS_URL}/city/${cityId}`
       );
     }
   }

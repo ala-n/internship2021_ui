@@ -4,7 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Office } from '@shared/models/office';
 // import { map } from 'rxjs/operators';
 import { HttpService } from './http.service';
-import { map } from 'rxjs/operators';
+// import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -16,19 +16,19 @@ export class OfficeService {
 
   getVendorOffices(vendorId: string): Observable<Office[]> {
     // for back-end
-    // const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}/?includeInactive=true`;
-    // return this.http.get<Office[]>(url);
+    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}/?includeInactive=true`;
+    return this.http.get<Office[]>(url);
 
     // for mock
-    return this.http
-      .get<Office[]>(OfficeService.OFFICES_URL)
-      .pipe(
-        map((offices) =>
-          offices.filter(
-            (office: { vendorId: string }) => office.vendorId === vendorId
-          )
-        )
-      );
+    // return this.http
+    //   .get<Office[]>(OfficeService.OFFICES_URL)
+    //   .pipe(
+    //     map((offices) =>
+    //       offices.filter(
+    //         (office: { vendorId: string }) => office.vendorId === vendorId
+    //       )
+    //     )
+    //   );
   }
 
   getOfficeById(id: string): Observable<Office> {
