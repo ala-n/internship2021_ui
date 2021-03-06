@@ -110,9 +110,12 @@ export class MapService {
       office.address.room
     ]);
     component.instance.phoneNumber = office.phone;
-    const marker = L.marker(new L.LatLng(office.x, office.y), {
-      icon: this.myIcon
-    });
+    const marker = L.marker(
+      new L.LatLng(office.location[0], office.location[1]),
+      {
+        icon: this.myIcon
+      }
+    );
     Object.assign(marker, { officeId: office.id });
     marker.bindPopup(popupContent);
     this.markerPopup.push({

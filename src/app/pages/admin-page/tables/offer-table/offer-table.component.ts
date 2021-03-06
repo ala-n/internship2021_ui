@@ -27,7 +27,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
     'discout',
     'validFrom',
     'validTo',
-    'updated'
+    'updatedAt'
   ];
 
   constructor(
@@ -95,8 +95,8 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
           return new Date(item.dateEnd);
         case 'validFrom':
           return new Date(item.dateStart);
-        case 'updated':
-          return new Date(item.updated);
+        case 'updatedAt':
+          return new Date(item.updatedAt);
         default:
           return item[property];
       }

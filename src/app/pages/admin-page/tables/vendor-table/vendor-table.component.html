@@ -26,7 +26,7 @@
       class="full-width-table"
       mat-table
       matSort
-      matSortActive="updated"
+      matSortActive="updatedAt"
       matSortDirection="desc"
       [dataSource]="dataSource"
     >
@@ -97,7 +97,7 @@
         </td>
       </ng-container>
 
-      <ng-container matColumnDef="updated">
+      <ng-container matColumnDef="updatedAt">
         <th
           mat-header-cell
           class="text text_upper"
