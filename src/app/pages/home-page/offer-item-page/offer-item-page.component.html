@@ -9,12 +9,12 @@
         </div>
         <div class="item__actions">
           <button
-            *ngIf="offer.promocode"
+            *ngIf="offer.promoCode"
             mat-button
             class="button_upper button_c_primary"
-            [cdkCopyToClipboard]="offer.promocode"
+            [cdkCopyToClipboard]="offer.promoCode"
           >
-            {{ offer.promocode }}
+            {{ offer.promoCode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
           <button mat-stroked-button class="button_upper button_c_primary">
