@@ -2,9 +2,7 @@
   "/api/*": {
     "target": "http://20.82.121.44:49001",
     "secure": false,
-    "changeOrigin": true,
-    "logLevel": "debug",
-    "pathRewrite": { "^/api": "" }
+    "changeOrigin": true
   },
   "/auth/*": {
     "target": "http://20.82.121.44:800",
