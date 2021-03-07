@@ -1,7 +1,7 @@
 export default [
   {
     id: '1',
-    name: '1',
+    name: 'Auto',
     usesByUsers: 27,
     usesByVendor: 4,
     isDeleted: false,
@@ -12,7 +12,7 @@ export default [
   },
   {
     id: '2',
-    name: '2',
+    name: 'Beauty',
     usesByUsers: 23,
     usesByVendor: 15,
     isDeleted: false,
@@ -23,7 +23,7 @@ export default [
   },
   {
     id: '3',
-    name: '3',
+    name: 'Clothes',
     usesByUsers: 55,
     usesByVendor: 22,
     isDeleted: false,
@@ -34,7 +34,7 @@ export default [
   },
   {
     id: '4',
-    name: '4',
+    name: 'Electronics',
     usesByUsers: 7,
     usesByVendor: 2,
     isDeleted: false,
