@@ -40,7 +40,7 @@ export class OfficeTableComponent implements OnInit, AfterViewInit {
     const vendorId = this.route.snapshot.params.id;
     if (vendorId) {
       this.officeService
-        .getVendorOffices(vendorId)
+        .getVendorOffices(vendorId, true)
         .pipe(take(1))
         .subscribe((offices: Office[]) => {
           if (offices) {

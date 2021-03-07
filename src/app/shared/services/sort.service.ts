@@ -57,7 +57,8 @@ export class SortService {
   ): Offer[] {
     if (!this.mapService.distanceToMarkers) return offers;
     const offerWithDistance: OfferWithDistance[] = offers.map((offer) => {
-      const distances: number[] = offer.vendorEntitiesId.map(
+      const offerOfficesId = offer.vendorEntities.map((office) => office.id);
+      const distances: number[] = offerOfficesId.map(
         (id) => distanceToMarkers.get(id) || Number.POSITIVE_INFINITY
       );
       const distance = Math.min.apply(null, distances);

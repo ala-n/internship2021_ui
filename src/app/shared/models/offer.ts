@@ -8,8 +8,8 @@ export interface OfferBase {
   numberOfUses: number;
   numberOfViews: number;
   cityId: string | undefined;
-  vendorEntitiesId: string[];
-  offices: Office[];
+  vendorEntitiesId?: string[];
+  vendorEntities: Office[];
   vendorName: string;
   vendorId: string;
 }
@@ -21,7 +21,7 @@ export interface Offer extends OfferBase {
   dateEnd: string;
   rating: number;
   tags: string[];
-  created: string;
+  createdAt: string;
   createdBy: string;
   updatedAt: string;
   updatedBy: string;

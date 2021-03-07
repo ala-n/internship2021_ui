@@ -10,7 +10,7 @@ export interface Vendor {
   website: string;
   offices: Office[];
   rating: number;
-  created: string;
+  createdAt: string;
   createdBy: string;
   updatedAt: string;
   updatedBy: string;

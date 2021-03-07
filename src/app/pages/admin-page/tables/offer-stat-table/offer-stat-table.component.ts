@@ -21,7 +21,7 @@ export class OfferStatTableComponent implements OnInit, AfterViewInit {
     'number',
     'vendorName',
     'title',
-    'rating',
+    'rate',
     'numberOfViews',
     'numberOfUses',
     'createdAt',
@@ -65,7 +65,7 @@ export class OfferStatTableComponent implements OnInit, AfterViewInit {
         case 'createdAt': {
           return new Date(item[property]);
         }
-        case 'rating':
+        case 'rate':
         case 'numberOfViews':
         case 'numberOfUses': {
           return +item[property];
