@@ -37,7 +37,7 @@ export class OfferService {
     return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
   }
 
-  getVendorOffers(vendorId: string, active?: boolean): Observable<Offer[]> {
+  getVendorOffers(vendorId: string, inactive?: boolean): Observable<Offer[]> {
     // for mocks
     // return this.http
     //   .get<Offer[]>(`${OfferService.OFFERS_URL}`)
@@ -50,7 +50,7 @@ export class OfferService {
     //   );
 
     // for backend
-    if (active) {
+    if (inactive) {
       return this.http.get<Offer[]>(
         `${OfferService.OFFERS_URL}/vendor/${vendorId}/?includeInactive=true`
       );

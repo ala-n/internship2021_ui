@@ -17,8 +17,8 @@
   "rating": "Rating",
   "views": "Views",
   "orders": "Orders",
-  "user-uses": "Used by user",
-  "brand-uses": "Applied to brands",
+  "user-uses": "Used",
+  "brand-uses": "Applied to brand",
 
   "addresses": "Addresses",
   "brands": "Brands",
@@ -74,6 +74,7 @@
   "discount": "Discount",
   "images": "Images",
   "promocode": "Promocode",
+  "tag": "Tag",
   "tags": "Tags",
   "new_tag": "New tag...",
   "on_map": "On map",
