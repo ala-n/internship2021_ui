@@ -30,7 +30,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['1', '2'],
-    offices: [
+    vendorEntities: [
       {
         id: '1',
         location: [53.950248766494305, 27.678503384991703],
@@ -100,7 +100,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['3'],
-    offices: [
+    vendorEntities: [
       {
         id: '3',
         location: [53.938102489505866, 27.488490327319887],
@@ -162,7 +162,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['5', '6', '7', '8'],
-    offices: [
+    vendorEntities: [
       {
         id: '5',
         location: [53.86553289876855, 27.45302363896044],
@@ -262,7 +262,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['3', '4'],
-    offices: [
+    vendorEntities: [
       {
         id: '3',
         location: [53.938102489505866, 27.488490327319887],
@@ -322,7 +322,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['9'],
-    offices: [
+    vendorEntities: [
       {
         id: '9',
         location: [53.83947974668578, 27.640475169645576],
@@ -366,7 +366,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -417,7 +417,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -466,7 +466,7 @@ export default [
     tags: ['spa', 'beauty'],
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -510,7 +510,7 @@ export default [
     isActive: true,
     cityId: '2',
     vendorEntitiesId: ['11'],
-    offices: [
+    vendorEntities: [
       {
         id: '11',
         location: [53.65034593967492, 23.85468398498308],
@@ -554,7 +554,7 @@ export default [
     isActive: true,
     cityId: '2',
     vendorEntitiesId: ['12'],
-    offices: [
+    vendorEntities: [
       {
         id: '12',
         location: [53.684909765450755, 23.845177013681916],
@@ -598,7 +598,7 @@ export default [
     isActive: true,
     cityId: '3',
     vendorEntitiesId: ['13'],
-    offices: [
+    vendorEntities: [
       {
         id: '13',
         location: [50.42837142443786, 30.517745728722034],
@@ -642,7 +642,7 @@ export default [
     isActive: false,
     cityId: '3',
     vendorEntitiesId: ['14'],
-    offices: [
+    vendorEntities: [
       {
         id: '14',
         location: [50.44025486038732, 30.52230314847687],
@@ -685,7 +685,7 @@ export default [
     isActive: true,
     cityId: '4',
     vendorEntitiesId: ['15', '16'],
-    offices: [
+    vendorEntities: [
       {
         id: '15',
         location: [56.781522754305485, 60.61757015808883],

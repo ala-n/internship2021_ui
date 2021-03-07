@@ -110,6 +110,8 @@ export class MapService {
       office.address.room
     ]);
     component.instance.phoneNumber = office.phone;
+    console.log(office.location);
+
     const marker = L.marker(
       new L.LatLng(office.location[0], office.location[1]),
       {
