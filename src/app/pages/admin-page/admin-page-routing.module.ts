@@ -12,7 +12,7 @@ import { VendorStatTableComponent } from './tables/vendor-stat-table/vendor-stat
 import { TagsStatTableComponent } from './tables/tags-stat-table/tags-stat-table.component';
 import { OfferStatTableComponent } from './tables/offer-stat-table/offer-stat-table.component';
 import { StatNavComponent } from './navigation/stat-nav/stat-nav.component';
-// import { FormGuard } from '@shared/guards/form.guard';
+import { FormGuard } from '@shared/guards/form.guard';
 
 const routes: Routes = [
   {
@@ -62,8 +62,8 @@ const routes: Routes = [
                     children: [
                       {
                         path: '',
-                        component: OfficeTableComponent
-                        // canActivate: [FormGuard]
+                        component: OfficeTableComponent,
+                        canActivate: [FormGuard]
                       }
                     ]
                   },
@@ -72,8 +72,8 @@ const routes: Routes = [
                     children: [
                       {
                         path: '',
-                        component: OfferTableComponent
-                        // canActivate: [FormGuard]
+                        component: OfferTableComponent,
+                        canActivate: [FormGuard]
                       }
                     ]
                   }
@@ -134,7 +134,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
-  // providers: [FormGuard]
+  exports: [RouterModule],
+  providers: [FormGuard]
 })
 export class AdminPageRoutingModule {}
