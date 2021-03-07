@@ -11,7 +11,6 @@ import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.com
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
-
 @NgModule({
   declarations: [
     HomePageComponent,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './custom-components/toolbar/toolbar.component';
 import { MapComponent } from './custom-components/map/map.component';
@@ -19,7 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
-import { RatingComponent } from './custom-components/rating/rating.component';
+
+import '@shared/custom-components/rating-stars';
 
 @NgModule({
   declarations: [
@@ -33,8 +34,7 @@ import { RatingComponent } from './custom-components/rating/rating.component';
     OfferItemComponent,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe,
-    RatingComponent
+    HostnamePipe
   ],
   imports: [
     CommonModule,
@@ -57,9 +57,9 @@ import { RatingComponent } from './custom-components/rating/rating.component';
     TranslateModule,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe,
-    RatingComponent
+    HostnamePipe
   ],
-  entryComponents: [PopupComponent]
+  entryComponents: [PopupComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {}
