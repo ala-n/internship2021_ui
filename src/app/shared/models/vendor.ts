@@ -9,7 +9,7 @@ export interface Vendor {
   city: string;
   website: string;
   offices: Office[];
-  rating: number;
+  rate: number;
   created: string;
   createdBy: string;
   updatedAt: string;
