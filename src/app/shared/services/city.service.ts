@@ -1,9 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { City } from '@shared/models/city';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
+import { HttpService } from './http.service';
+import { City } from '@shared/models/city';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class CityService {
 
   static LOCATION_URL = 'api/cities';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpService) {}
 
   get cities(): City[] {
     return this._cities;

@@ -7,7 +7,7 @@ export interface Vendor {
   cityId: string | undefined;
   description: string;
   website: string;
-  offices: Office[];
+  vendorEntities: Office[];
   updatedAt: string;
   isActive: boolean;
 }

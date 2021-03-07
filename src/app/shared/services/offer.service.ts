@@ -32,11 +32,11 @@ export class OfferService {
   }
 
   getOfferById(id: string): Observable<Offer> {
-    // for backend and for mocks
-    return this.http.get(`${OfferService.OFFERS_URL}/${id}/vendorInfo`);
+    // for backend and mocks
+    return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
   }
 
-  getVendorOffers(vendorId: string): Observable<Offer[]> {
+  getVendorOffers(vendorId: string, active = false): Observable<Offer[]> {
     // for mocks
     // return this.http
     //   .get<Offer[]>(`${OfferService.OFFERS_URL}`)
@@ -49,14 +49,19 @@ export class OfferService {
     //   );
 
     // for backend
-    return this.http.get<Offer[]>(
-      `${OfferService.OFFERS_URL}/vendor/${vendorId}/vendorInfo/?includeInactive=true`
-    );
+    if (!active)
+      return this.http.get<Offer[]>(
+        `${OfferService.OFFERS_URL}/vendor/${vendorId}`
+      );
+    else
+      return this.http.get<Offer[]>(
+        `${OfferService.OFFERS_URL}/vendor/${vendorId}/?includeInactive=true`
+      );
   }
 
   getOfficeOffers(officeId: string): Observable<Offer[]> {
     // for backend
-    const url = `${OfferService.OFFERS_URL}/vendorEntitiy/${officeId}`;
+    const url = `${OfferService.OFFERS_URL}/vendorEntity/${officeId}`;
     return this.http.get<Offer[]>(url);
   }
 
@@ -70,9 +75,5 @@ export class OfferService {
     const url = `${OfferService.OFFERS_URL}/${offer.id}`;
     offer.vendorId = vendorId;
     return this.http.put(url, offer).subscribe();
-  }
-
-  getVendorInfoByOfferId(offerId: string): Observable<string[]> {
-    return this.http.get<string[]>(`api/offers/vendorInfo/${offerId}`);
   }
 }

@@ -105,11 +105,13 @@ export class MapService {
     component.instance.office = office;
     component.instance.vendorName = name;
     component.instance.address = this.concat([
-      office.street,
-      office.house,
-      office.room
+      office.address.street,
+      office.address.house,
+      office.address.room
     ]);
     component.instance.phoneNumber = office.phone;
+    console.log(office.location);
+
     const marker = L.marker(
       new L.LatLng(office.location[0], office.location[1]),
       {

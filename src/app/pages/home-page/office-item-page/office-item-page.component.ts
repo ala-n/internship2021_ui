@@ -36,20 +36,24 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => this.officeService.getOfficeById(params['id'])),
       tap((office) => {
         this.office = office;
+        console.log(this.office, 'this.office');
+
         this.mapService.setOffice(office);
       }),
       switchMap((office) =>
         forkJoin([
           this.vendorService.getVendorById(office.vendorId),
           // for mocks
-          this.offerService.getVendorOffers(office.vendorId)
+          // this.offerService.getVendorOffers(office.vendorId)
           // for backend
-          // this.offerService.getOfficeOffers(office.id)
+          this.offerService.getOfficeOffers(office.id)
         ])
       ),
       tap(([vendor, offers]) => {
         this.vendor = vendor;
+        console.log(this.vendor, 'this.vendor');
         this.offers = offers;
+        console.log(this.offers, 'this.offers');
       }),
       map(() => false)
     );
