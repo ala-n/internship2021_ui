@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
 import { CityService } from './city.service';
@@ -19,11 +18,12 @@ export class OfferService {
     // const url = `${OfferService.OFFERS_URL}`;
 
     //for backend
-    const url = `${OfferService.OFFERS_URL}/vendorInfo/?includeInactive=true`;
+    const url = `${OfferService.OFFERS_URL}/?includeInactive=true`;
     if (!params) return this.http.get(url);
     else {
-      // for backend
       const cityId = this.cityService.getCityId(params.city);
+
+      // for backend
       return this.http.get(`${OfferService.OFFERS_URL}/city/${cityId}`);
 
       // for mocks
@@ -70,14 +70,6 @@ export class OfferService {
     const url = `${OfferService.OFFERS_URL}/${offer.id}`;
     offer.vendorId = vendorId;
     return this.http.put(url, offer).subscribe();
-  }
-
-  getOffersbyTag(tag: string): Observable<Offer[]> {
-    return this.http.get<Offer[]>(`${OfferService.OFFERS_URL}`).pipe(
-      map((offers) => {
-        return offers.filter((offer) => offer.tags.includes(tag));
-      })
-    );
   }
 
   getVendorInfoByOfferId(offerId: string): Observable<string[]> {
