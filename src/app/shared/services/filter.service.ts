@@ -82,14 +82,20 @@ export class FilterService {
       )
     );
   }
+
   isIntersects<T>(list: T[], list2: T[]): boolean {
     return list.some((item) => list2.includes(item));
   }
+
   filterByTags(tag: string): void {
     if (tag === this.filterCfg.tag) {
-      this.filter({ tag: '' });
+      return;
     } else {
       this.filter({ tag });
     }
+  }
+
+  clearFilter(): void {
+    this.filter({ tag: '' });
   }
 }
