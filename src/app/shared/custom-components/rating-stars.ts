@@ -1,6 +1,61 @@
 const TEMPLATE = document.createElement('template');
 
 TEMPLATE.innerHTML = `
+  <style>
+    :host {
+      --color-star: #0E7CB9;
+      --color-star-selected: #f9bf3b;
+      --color-star-shadow: #0E7CB9;
+      --star-empty: '☆';
+      --star-filled: '★';
+
+      width: 120px;
+
+      @keyframes pulse {
+        50% {
+          color: var(--color-star);
+          text-shadow: var(--color-star-shadow);
+        }
+      }
+    }
+
+    label {
+        display: block;
+        float: right;
+        height: 22px;
+        width: 20%;
+        position: relative;
+        cursor: pointer;
+    }
+
+    label::after {
+      content: var(--star-empty);
+      transition: all 1s ease-out;
+      position: absolute;
+      color: var(--color-star);
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      font-size: 22px;
+      animation: pulse 1s ease;
+    }
+
+    label:hover::after {
+      color: var( --color-star-shadow);
+      text-shadow: 0 0 10px var( --color-star-shadow);
+    }
+
+    input { display: none; }
+
+    input:checked ~ label::after {
+        content: var( --star-filled );
+        color: var( --color-star-selected );
+        text-shadow: 0 0 7px var( --color-star-selected );
+    }
+  </style>
+
   <input type="radio" name="star" id="Excellent" value="5"/>
   <label for="Excellent"></label>
 

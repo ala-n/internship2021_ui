@@ -146,16 +146,3 @@ $small-card: 1500px;
     padding-bottom: 0.3em;
   }
 }
-
-.stars {
-  display: flex;
-  color: $blue-primary;
-
-  > mat-icon {
-    @media screen and (max-width: $mobile) {
-      width: 19px;
-      height: 19px;
-      font-size: 19px;
-    }
-  }
-}

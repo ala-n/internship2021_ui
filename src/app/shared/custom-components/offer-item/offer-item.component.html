@@ -21,13 +21,7 @@
   </div>
 
   <div class="offer-card__properties">
-    <div class="stars">
-      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="star">star</mat-icon>
-    </div>
+    <rating-stars [rating]="offer.rating"></rating-stars>
     <div class="offer-card__statistics">
       <div class="offer-card__views">
         <mat-icon aria-hidden="false" aria-label="views">visibility</mat-icon>

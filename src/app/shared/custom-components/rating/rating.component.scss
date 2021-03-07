@@ -1,14 +1,6 @@
 @import '/src/app/styles/variables.scss';
 
 .rating {
-  $color-star: #f9bf3b;
-  $star--filled: ★;
-  $star--empty: ☆;
-  width: 120px;
-  > * {
-    float: right;
-  }
-
   @at-root {
     @keyframes pulse {
       50% {
