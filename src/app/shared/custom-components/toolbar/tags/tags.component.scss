@@ -31,12 +31,8 @@
       color: $blue-accent;
     }
 
-    &:focus {
-      border: 1px solid $blue-primary;
-      color: $blue-primary;
-    }
-
-    &__active {
+    &:focus,
+    &_active {
       border: 1px solid $blue-primary;
       color: $blue-primary;
     }

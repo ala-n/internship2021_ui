@@ -89,9 +89,13 @@ export class FilterService {
 
   filterByTags(tag: string): void {
     if (tag === this.filterCfg.tag) {
-      this.filter({ tag: '' });
+      return;
     } else {
       this.filter({ tag });
     }
+  }
+
+  clearFilter(): void {
+    this.filter({ tag: '' });
   }
 }

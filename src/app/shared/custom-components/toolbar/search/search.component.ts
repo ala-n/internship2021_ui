@@ -32,9 +32,11 @@ export class SearchComponent implements OnInit {
     const tag = this.control.value.trim().toLowerCase();
     this.control.setValue(tag);
     this.filterService.filterByTags(tag);
+    this.control.setValue('');
   }
 
   ngOnInit(): void {
+    this.control.setValue('');
     this.tagService.getAllTags().subscribe((data: Tag[]) => {
       this.parseSearchData(data);
     });
