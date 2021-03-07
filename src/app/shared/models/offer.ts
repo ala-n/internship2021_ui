@@ -26,4 +26,5 @@ export interface Offer extends OfferBase {
   updatedAt: string;
   updatedBy: string;
   isActive: boolean;
+  rate?: number;
 }
