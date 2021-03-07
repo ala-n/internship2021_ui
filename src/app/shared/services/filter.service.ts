@@ -86,7 +86,7 @@ export class FilterService {
     return list.some((item) => list2.includes(item));
   }
   filterByTags(tag: string): void {
-    debugger
+    debugger;
     if (tag === this.filterCfg.tag) {
       this.filter({ tag: '' });
     } else {

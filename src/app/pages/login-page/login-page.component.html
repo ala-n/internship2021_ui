@@ -1,7 +1,9 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
   <mat-card class="box">
     <mat-card-header class="box__title">
-      <mat-card-title><p>{{ 'Log in' | translate }}</p></mat-card-title>
+      <mat-card-title
+        ><p>{{ 'Log in' | translate }}</p></mat-card-title
+      >
     </mat-card-header>
 
     <form class="example-form" (ngSubmit)="login()" #form="ngForm">
