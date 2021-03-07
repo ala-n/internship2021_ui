@@ -23,14 +23,10 @@ export default [
     updatedAt: '2021-03-05T17:29:35.144058+05:00',
     promoCode: '34B2J3IB',
     rating: 4.3,
-<<<<<<< HEAD
-    tags: ['2', '9'],
-=======
     createdAt: '2021-02-06',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov',
-    tags: ['Massage', 'Beauty', 'Health'],
->>>>>>> develop
+    tags: ['2', '9'],
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['1', '2'],
@@ -642,7 +638,7 @@ export default [
     updatedBy: 'Anna Barmina',
     updatedAt: '2021-02-22',
     promoCode: 'WEAR32',
-    tags: ['3','6'],
+    tags: ['3', '6'],
     isActive: false,
     cityId: '3',
     vendorEntitiesId: ['14'],

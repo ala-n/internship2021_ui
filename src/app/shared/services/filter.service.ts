@@ -39,6 +39,7 @@ export class FilterService {
 
   private applyFilter(offers: Offer[]) {
     return offers.filter((offer) => {
+      console.log(offer);
       if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
         return false;
       return true;
@@ -86,7 +87,6 @@ export class FilterService {
     return list.some((item) => list2.includes(item));
   }
   filterByTags(tag: string): void {
-    debugger;
     if (tag === this.filterCfg.tag) {
       this.filter({ tag: '' });
     } else {
