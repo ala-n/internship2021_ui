@@ -9,14 +9,7 @@ TEMPLATE.innerHTML = `
       --star-empty: '☆';
       --star-filled: '★';
 
-      width: 120px;
-
-      @keyframes pulse {
-        50% {
-          color: var(--color-star);
-          text-shadow: var(--color-star-shadow);
-        }
-      }
+      width: 110px;
     }
 
     label {
@@ -38,8 +31,13 @@ TEMPLATE.innerHTML = `
       width: 100%;
       height: 100%;
       text-align: center;
-      font-size: 22px;
+      font-size: 20px;
       animation: pulse 1s ease;
+
+      @media screen and (max-width: 424px) {
+        font-size: 17px;
+        height: 17px;
+      }
     }
 
     label:hover::after {
@@ -130,6 +128,8 @@ class RatingStars extends HTMLElement {
       cancelable: true
     });
     this.dispatchEvent(event);
+
+    console.log(this.value);
   }
 }
 
