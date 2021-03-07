@@ -11,7 +11,7 @@ export class FormGuard implements CanActivate {
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot): boolean {
-    if (isNaN(+route.params.id)) {
+    if (route.params.id === 'undefined') {
       this.showSnackbar();
       return false;
     }
