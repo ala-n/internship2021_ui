@@ -21,7 +21,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     'delete',
     'number',
     'name',
-    'usesByUsers',
+    'usesByUser',
     'usesByVendor',
     'createdAt',
     'createdBy',
@@ -33,7 +33,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.tagsService
-      .getAllTags()
+      .getTagsForAdmin()
       .pipe(take(1))
       .subscribe((tags: Tag[]) => {
         if (tags) this.dataSource.data = tags as Tag[];
@@ -62,7 +62,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
         case 'createdAt': {
           return new Date(item[property]);
         }
-        case 'usesByUsers':
+        case 'usesByUser':
         case 'usesByVendor': {
           return +item[property];
         }

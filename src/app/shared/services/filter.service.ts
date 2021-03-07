@@ -48,7 +48,7 @@ export class FilterService {
   private applyFilterMap(offer: Offer[], office: string[]) {
     return offer.filter((offer) => {
       if (office?.length) {
-        const officesId = offer.offices.map((o) => o.id);
+        const officesId = offer.vendorEntities.map((o) => o.id);
         if (!this.isIntersects(office, officesId)) return false;
       }
       return true;

@@ -59,8 +59,6 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     // TODO question about this solution to check if it update or add
-    console.log(this.vendorForm.value);
-
     if (this.vendor) {
       this.vendorService.updateVendor(this.vendorForm.value, this.vendorId);
     } else {
