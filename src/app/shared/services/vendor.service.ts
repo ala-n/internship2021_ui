@@ -19,19 +19,19 @@ export class VendorService {
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
     // for mock
-    const url = VendorService.VENDORS_URL;
+    // const url = VendorService.VENDORS_URL;
     // for back
-    // const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
+    const url = `${VendorService.VENDORS_URL}/?includeInactive=true`;
 
     if (!params) return this.http.get<Vendor[]>(url);
     else {
       const cityId = this.cityService.getCityId(params.city);
       //for mock
-      return this.http.get<Vendor[]>(`${url}/?cityId=${cityId}`);
+      // return this.http.get<Vendor[]>(`${url}/?cityId=${cityId}`);
       // for backend
-      // return this.http.get<Vendor[]>(
-      //   `${VendorService.VENDORS_URL}/city/${cityId}`
-      // );
+      return this.http.get<Vendor[]>(
+        `${VendorService.VENDORS_URL}/city/${cityId}`
+      );
     }
   }
 

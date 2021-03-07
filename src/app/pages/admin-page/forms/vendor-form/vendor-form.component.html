@@ -49,9 +49,11 @@
   </div>
   <div class="row">
     <div class="col">
-      <mat-slide-toggle formControlName="isActive" color="primary">{{
-        'activate' | translate
-      }}</mat-slide-toggle>
+      <mat-slide-toggle
+        formControlName="isActive"
+        (change)="showSnackbar($event)"
+        >{{ 'activate' | translate }}</mat-slide-toggle
+      >
     </div>
   </div>
   <div class="actions">

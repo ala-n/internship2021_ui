@@ -6,7 +6,7 @@ import vendorEntities from '../mocks/offices';
 import topTags from '../mocks/top-tags';
 import tags from '../mocks/tags';
 import user from '../mocks/user';
-import cities from '../mocks/cities';
+// import cities from '../mocks/cities';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class InMemoryDataService implements InMemoryDbService {
     return {
       vendors,
       offers,
-      cities, // I ask you not to uncommit
+      // cities, // I ask you not to uncommit
       vendorEntities,
       topTags,
       tags,
