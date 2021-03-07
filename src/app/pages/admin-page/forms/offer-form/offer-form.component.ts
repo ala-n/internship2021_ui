@@ -38,7 +38,6 @@ export class OfferFormComponent implements OnInit {
 
   offers: Offer[] = [];
   offer!: Offer;
-  vendorId!: string;
   vendorName!: string;
   vendorOffices: Office[] = [];
   offerOffices: string[] = [];
@@ -65,21 +64,20 @@ export class OfferFormComponent implements OnInit {
         .pipe(take(1))
         .subscribe((offer: Offer) => {
           this.offer = offer;
-          this.offerOffices = offer.vendorEntitiesId;
-          this.vendorId = offer.vendorId;
+          this.vendorName = offer.vendorName;
           this.tags = offer.tags || [];
-          this.getOfficesForSelect(this.vendorId);
-          this.getVendorName(this.vendorId);
+          this.getOfficesForSelect(offer.vendorId);
+          console.log(offer);
           this.offerForm.setValue({
             id: offer.id,
             title: offer.title,
             discount: offer.discount,
             description: offer.description,
-            dateStart: new Date(offer.dateStart),
-            dateEnd: offer.dateEnd,
+            dateStart: offer.dateStart.substring(0, 10),
+            dateEnd: offer.dateStart.substring(0, 10),
             promocode: offer.promoCode,
             images: '',
-            vendorEntitiesId: this.offerOffices,
+            vendorEntitiesId: offer.vendorEntitiesId,
             tags: this.tags,
             isActive: offer.isActive
           });
@@ -117,7 +115,7 @@ export class OfferFormComponent implements OnInit {
   onSubmit(): void {
     console.log(this.offerForm.value);
     if (this.offer) {
-      this.offerService.updateOffer(this.offerForm.value, this.vendorId);
+      this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
     } else {
       this.offerService.addOffer(this.offerForm.value, this.vendorNavId);
     }

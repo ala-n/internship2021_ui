@@ -19,7 +19,7 @@ export default [
     createdAt: '2021-02-01',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-04-01',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ann Barmina'
   },
   {
     id: '3',
@@ -41,7 +41,7 @@ export default [
     createdAt: '2021-02-01',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-02-02',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ann Barmina'
   },
   {
     id: '5',
@@ -107,7 +107,7 @@ export default [
     createdAt: '2021-01-15',
     createdBy: 'Taras Lazarchuk',
     updatedAt: '2021-01-18',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ann Barmina'
   },
   {
     id: '11',
@@ -118,7 +118,7 @@ export default [
     createdAt: '2021-01-01',
     createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-22',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ann Barmina'
   },
   {
     id: '12',
@@ -162,7 +162,7 @@ export default [
     createdAt: '2021-02-01',
     createdBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-28',
-    updatedBy: 'Ann Burmina'
+    updatedBy: 'Ann Barmina'
   },
   {
     id: '16',

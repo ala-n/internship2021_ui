@@ -3,15 +3,15 @@ import { Office } from './office';
 export interface OfferBase {
   id: string;
   title: string;
-  photoUrl: string[];
   discount: string;
-  vendorName: string;
-  vendorId: string;
+  photoUrl: string[];
   numberOfUses: number;
   numberOfViews: number;
   cityId: string | undefined;
   vendorEntitiesId: string[];
   offices: Office[];
+  vendorName: string;
+  vendorId: string;
 }
 
 export interface Offer extends OfferBase {
@@ -19,10 +19,11 @@ export interface Offer extends OfferBase {
   promoCode?: string;
   dateStart: string;
   dateEnd: string;
-  numberOfUses: number;
-  numberOfViews: number;
   rating: number;
   tags: string[];
-  isActive: boolean;
+  created: string;
+  createdBy: string;
   updatedAt: string;
+  updatedBy: string;
+  isActive: boolean;
 }

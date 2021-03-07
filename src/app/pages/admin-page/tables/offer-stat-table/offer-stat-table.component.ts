@@ -2,51 +2,55 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Vendor } from '@shared/models/vendor';
-import { VendorService } from '@shared/services/vendor.service';
+import { Offer } from '@shared/models/offer';
+import { OfferService } from '@shared/services/offer.service';
 import { take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './vendor-table.component.html',
-  styleUrls: ['./vendor-table.component.scss']
+  selector: 'app-offer-stat-table',
+  templateUrl: './offer-stat-table.component.html',
+  styleUrls: ['./offer-stat-table.component.scss']
 })
-export class VendorTableComponent implements OnInit, AfterViewInit {
+export class OfferStatTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
-  dataSource = new MatTableDataSource<Vendor>();
+  dataSource = new MatTableDataSource<Offer>();
   isLoading = true;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
-    'edit',
     'number',
-    'name',
-    'branchOffices',
-    'offers',
-    'website',
-    'updatedAt'
+    'vendorName',
+    'title',
+    'rating',
+    'numberOfViews',
+    'numberOfUses',
+    'createdAt',
+    'createdBy',
+    'updatedAt',
+    'updatedBy'
   ];
 
-  constructor(private vendorService: VendorService) {}
+  constructor(private offerService: OfferService) {}
 
   ngOnInit(): void {
-    this.vendorService
-      .getVendors()
+    this.offerService
+      .getOffers()
       .pipe(take(1))
-      .subscribe((vendors: Vendor[]) => {
-        if (vendors) this.dataSource.data = vendors as Vendor[];
+      .subscribe((offers: Offer[]) => {
+        if (offers) this.dataSource.data = offers as Offer[];
         this.isLoading = false;
       });
     // custom filter: search results only from vendor name column
-    this.dataSource.filterPredicate = (data: Vendor, filter) => {
+    this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
       if (!filter) return true;
       if (filterObj.isActive && String(data.isActive) !== filterObj.isActive)
         return false;
-      if (!filterObj.name) return true;
+      if (!filterObj.vendorName) return true;
       return (
-        data.name.toLowerCase().indexOf(filterObj.name.toLowerCase()) != -1
+        data.vendorName
+          .toLowerCase()
+          .indexOf(filterObj.vendorName.toLowerCase()) != -1
       );
     };
     // custom sort: string date transformes to Date format for correct sorting
@@ -56,10 +60,15 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       property: string
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
-      //TODO question about types
       switch (property) {
-        case 'updatedAt': {
+        case 'updatedAt':
+        case 'createdAt': {
           return new Date(item[property]);
+        }
+        case 'rating':
+        case 'numberOfViews':
+        case 'numberOfUses': {
+          return +item[property];
         }
         default:
           return item[property];

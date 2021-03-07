@@ -33,7 +33,7 @@ export class OfferService {
 
   getOfferById(id: string): Observable<Offer> {
     // for backend and for mocks
-    return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
+    return this.http.get(`${OfferService.OFFERS_URL}/${id}/vendorInfo`);
   }
 
   getVendorOffers(vendorId: string): Observable<Offer[]> {

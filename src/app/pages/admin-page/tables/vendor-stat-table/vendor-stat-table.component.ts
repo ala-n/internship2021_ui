@@ -7,25 +7,24 @@ import { VendorService } from '@shared/services/vendor.service';
 import { take } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './vendor-table.component.html',
-  styleUrls: ['./vendor-table.component.scss']
+  selector: 'app-vendor-stat-table',
+  templateUrl: './vendor-stat-table.component.html',
+  styleUrls: ['./vendor-stat-table.component.scss']
 })
-export class VendorTableComponent implements OnInit, AfterViewInit {
+export class VendorStatTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource = new MatTableDataSource<Vendor>();
   isLoading = true;
 
-  /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = [
-    'edit',
     'number',
     'name',
-    'branchOffices',
-    'offers',
-    'website',
-    'updatedAt'
+    'rating',
+    'createdAt',
+    'createdBy',
+    'updatedAt',
+    'updatedBy'
   ];
 
   constructor(private vendorService: VendorService) {}
@@ -56,10 +55,13 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       property: string
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
-      //TODO question about types
       switch (property) {
-        case 'updatedAt': {
+        case 'updatedAt':
+        case 'createdAt': {
           return new Date(item[property]);
+        }
+        case 'rating': {
+          return +item[property];
         }
         default:
           return item[property];
