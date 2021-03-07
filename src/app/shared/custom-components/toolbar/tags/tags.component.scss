@@ -24,6 +24,7 @@
     background-color: $background-light;
     color: $text-secondary;
     cursor: pointer;
+    text-transform: capitalize;
 
     &:hover {
       border: 1px solid $blue-accent;

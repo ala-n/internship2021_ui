@@ -28,9 +28,11 @@ app-search {
     border: none;
     border-radius: 25px;
     outline: none;
+    text-transform: capitalize;
   }
 
   &__autocomplete {
     max-height: 10.5em;
+    text-transform: capitalize;
   }
 }

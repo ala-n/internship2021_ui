@@ -29,7 +29,7 @@ export class SearchComponent implements OnInit {
   ) {}
 
   searchBy(): void {
-    const tag = this.control.value.trim();
+    const tag = this.control.value.trim().toLowerCase();
     this.control.setValue(tag);
     this.filterService.filterByTags(tag);
   }
