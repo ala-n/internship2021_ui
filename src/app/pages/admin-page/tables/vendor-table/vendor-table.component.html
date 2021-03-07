@@ -1,6 +1,6 @@
 <mat-spinner class="table__spinner" *ngIf="isLoading"></mat-spinner>
 
-<div class="table mat-elevation-z8">
+<div class="table mat-elevation-z8" [class.table_hidden]="isLoading">
   <div class="table__header">
     <mat-form-field class="table__search" appearance="outline">
       <mat-label>{{ 'search' | translate }}</mat-label>
@@ -10,6 +10,7 @@
       #group="matButtonToggleGroup"
       class="table__filter"
       aria-label="Filter Vendors"
+      value=""
       (click)="applyFilter(group.value, 'isActive')"
     >
       <mat-button-toggle value="">{{ 'all' | translate }}</mat-button-toggle>

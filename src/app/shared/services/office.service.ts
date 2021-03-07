@@ -40,12 +40,6 @@ export class OfficeService {
     return this.http.get<Office[]>(url);
   }
 
-  // addOffice(office: Office, vendorId: string): Observable<Office> {
-  //   const url = OfficeService.OFFICES_URL;
-  //   office.vendorId = vendorId;
-  //   return this.http.post(url, office);
-  // }
-
   updateOffice(office: Office): Subscription {
     const url = `${OfficeService.OFFICES_URL}/${office.id}`;
     return this.http.put(url, office).subscribe();
