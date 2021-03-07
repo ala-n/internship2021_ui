@@ -1,23 +1,23 @@
 export default [
   {
     id: '1',
-    name: 'Food'
+    name: '1'
   },
   {
     id: '2',
-    name: 'Sport'
+    name: '2'
   },
   {
     id: '3',
-    name: 'Clothes'
+    name: '3'
   },
   {
     id: '4',
-    name: 'Entertaiment'
+    name: '4'
   },
   {
     id: '5',
-    name: 'Beauty'
+    name: '5'
   },
   {
     id: '6',
