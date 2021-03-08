@@ -15,11 +15,7 @@ export class HeaderComponent {
     public navigationService: NavigationService,
     private router: Router
   ) {
-    // hotfix of problem: after page refresh "home/manage: navigation buttons return to default state
-    // like we are on home-page;
-    // TODO find better solution
     router.events.subscribe((event) => {
-      // see also
       if (event instanceof NavigationEnd) {
         this.homePageVisibility = !/home/.test(this.router.url);
         this.navigationService.setHomePageVisibility(this.homePageVisibility);
