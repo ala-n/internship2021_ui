@@ -37,7 +37,6 @@ export class CityService {
     return this.http.get<City[]>('api/cities').pipe(
       tap((cities) => {
         this._cities = [...cities];
-        console.log(this._cities);
       })
     );
   }
