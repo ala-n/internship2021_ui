@@ -70,13 +70,15 @@ export class MapComponent implements OnInit, OnDestroy {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private initMarkers(data: any) {
-    const { name, offices, vendorName } = data;
+    const { name, vendorEntities, vendorName } = data;
     if (name) this.name = name;
     else this.name = vendorName;
     const markers = [];
-    for (const office of offices) {
-      const marker = this.mapService.getMarkers(office, this.name);
-      markers.push(marker);
+    for (const office of vendorEntities) {
+      if (office.location.length !== 0) {
+        const marker = this.mapService.getMarkers(office, this.name);
+        markers.push(marker);
+      }
     }
     return markers;
   }

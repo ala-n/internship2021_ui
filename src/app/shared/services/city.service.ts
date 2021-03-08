@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-
-import { City } from '@shared/models/city';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { HttpService } from './http.service';
+
+import { HttpService } from './http.service';
+import { City } from '@shared/models/city';
 
 @Injectable({
   providedIn: 'root'

@@ -5,7 +5,6 @@ import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
-import { OfficeService } from '@shared/services/office.service';
 import { of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
@@ -23,7 +22,6 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
-    private readonly officeService: OfficeService,
     private readonly mapService: MapService
   ) {}
 
@@ -35,11 +33,9 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         this.mapService.setOffer(offer);
       }),
       // for mocks
-      switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
+      // switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
 
       // for backend
-      // switchMap((offer) => this.officeService.getOfficesById(offer.officesId)),
-      tap((offices) => (this.offices = offices)),
       map(() => false)
     );
   }
