@@ -11,7 +11,7 @@ import { TagsService } from '@shared/services/tags.service';
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];
-
+  selectedAll = true;
   status = false;
 
   constructor(
@@ -36,6 +36,12 @@ export class TagsComponent implements OnInit {
   searchByTag(e: Event): void {
     const target = e.target as HTMLElement;
     const tag = (target.textContent || '').trim(); //receive tag
+    this.selectedAll = false;
     this.filterService.filterByTags(tag); // filter by tags
+  }
+
+  resetTagSearch(): void {
+    this.selectedAll = true;
+    this.filterService.clearFilter();
   }
 }

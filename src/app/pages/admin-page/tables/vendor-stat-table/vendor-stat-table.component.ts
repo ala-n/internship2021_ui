@@ -20,7 +20,7 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
   displayedColumns = [
     'number',
     'name',
-    'rating',
+    'rate',
     'createdAt',
     'createdBy',
     'updatedAt',
@@ -60,7 +60,7 @@ export class VendorStatTableComponent implements OnInit, AfterViewInit {
         case 'createdAt': {
           return new Date(item[property]);
         }
-        case 'rating': {
+        case 'rate': {
           return +item[property];
         }
         default:

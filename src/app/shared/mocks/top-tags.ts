@@ -1,82 +1,82 @@
 export default [
   {
     id: '1',
-    name: 'Food'
+    name: 'food'
   },
   {
     id: '2',
-    name: 'Sport'
+    name: 'sport'
   },
   {
     id: '3',
-    name: 'Clothes'
+    name: 'clothes'
   },
   {
     id: '4',
-    name: 'Entertaiment'
+    name: 'entertaiment'
   },
   {
     id: '5',
-    name: 'Beauty'
+    name: 'beauty'
   },
   {
     id: '6',
-    name: 'Home'
+    name: 'home'
   },
   {
     id: '7',
-    name: 'Electronics'
+    name: 'electronics'
   },
   {
     id: '8',
-    name: 'Hotels'
+    name: 'hotels'
   },
   {
     id: '9',
-    name: 'Markets'
+    name: 'markets'
   },
   {
     id: '10',
-    name: 'Pharmacy'
+    name: 'pharmacy'
   },
   {
     id: '11',
-    name: 'Pizza'
+    name: 'pizza'
   },
   {
     id: '12',
-    name: 'Sushi'
+    name: 'sushi'
   },
   {
     id: '13',
-    name: 'Flowers'
+    name: 'flowers'
   },
   {
     id: '14',
-    name: 'Spa'
+    name: 'spa'
   },
   {
     id: '15',
-    name: 'Music'
+    name: 'music'
   },
   {
     id: '16',
-    name: 'Fashion'
+    name: 'fashion'
   },
   {
     id: '17',
-    name: 'Auto'
+    name: 'auto'
   },
   {
     id: '18',
-    name: 'Wheels'
+    name: 'wheels'
   },
   {
     id: '19',
-    name: 'Health'
+    name: 'health'
   },
   {
     id: '20',
-    name: 'Relax'
+    name: 'relax'
   }
 ];
