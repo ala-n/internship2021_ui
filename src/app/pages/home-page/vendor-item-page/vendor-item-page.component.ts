@@ -32,8 +32,6 @@ export class VendorItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => this.vendorService.getVendorById(params['id'])),
       tap((vendor) => {
         this.vendor = vendor;
-        console.log(this.vendor);
-
         this.mapService.setVendor(vendor);
       }),
       switchMap((vendor) => this.offerService.getVendorOffers(vendor.id)),

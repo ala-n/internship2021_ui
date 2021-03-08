@@ -36,8 +36,6 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => this.officeService.getOfficeById(params['id'])),
       tap((office) => {
         this.office = office;
-        console.log(this.office, 'this.office');
-
         this.mapService.setOffice(office);
       }),
       switchMap((office) =>
@@ -51,9 +49,7 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
       ),
       tap(([vendor, offers]) => {
         this.vendor = vendor;
-        console.log(this.vendor, 'this.vendor');
         this.offers = offers;
-        console.log(this.offers, 'this.offers');
       }),
       map(() => false)
     );
