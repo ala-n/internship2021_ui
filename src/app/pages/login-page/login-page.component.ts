@@ -14,14 +14,10 @@ export class LogInComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.authService.logout();
-  }
-
   login(): void {
     this.authService.login(this.model).subscribe(
       () => {
-        this.router.navigate(['../home']);
+        this.router.navigate(['./home']);
       },
       (error) => {
         console.error(error);
