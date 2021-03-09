@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { CityService } from '@shared/services/city.service';
-// import { TagsService } from '@shared/services/tags.service';
+import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -49,7 +49,7 @@ export class OfferFormComponent implements OnInit {
     private vendorService: VendorService,
     private officeService: OfficeService,
     private cityService: CityService,
-    // private tagsService: TagsService,
+    private tagsService: TagsService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -68,8 +68,9 @@ export class OfferFormComponent implements OnInit {
           this.offer = offer;
           this.vendorName = offer.vendorName;
           this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
-          // offer.tags.map((tag) => this.tagsService.ge);
-          this.tags = offer.tags || [];
+          this.tags =
+            offer.tags.map((tag: string) => this.tagsService.getTagName(tag)) ||
+            [];
           this.getOfficesForSelect(offer.vendorId);
           this.offerForm.setValue({
             id: offer.id,
@@ -116,6 +117,13 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.offerForm.patchValue({
+      photoUrl: [this.offerForm.value.photoUrl],
+      tags: this.offerForm.value.tags.map((tag: string) =>
+        this.tagsService.getTagId(tag)
+      )
+    });
+    console.log(this.offerForm.value);
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
     } else {
