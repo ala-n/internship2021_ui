@@ -37,6 +37,7 @@ export class TagsComponent implements OnInit {
     const target = e.target as HTMLElement;
     const tagName = (target.textContent || '').trim().toLowerCase(); //receive tag
     const tagId = this.tagsService.getTagId(tagName);
+    this.selectedAll = false;
     this.filterService.filterByTags(tagId); // filter by tags
   }
 
