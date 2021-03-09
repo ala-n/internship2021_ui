@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { CityService } from '@shared/services/city.service';
+// import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -27,7 +28,7 @@ export class OfferFormComponent implements OnInit {
     dateStart: null,
     dateEnd: [null, Validators.required],
     promoCode: null,
-    images: null,
+    photoUrl: null,
     vendorEntitiesId: [null, Validators.required],
     tags: null,
     isActive: false
@@ -48,6 +49,7 @@ export class OfferFormComponent implements OnInit {
     private vendorService: VendorService,
     private officeService: OfficeService,
     private cityService: CityService,
+    // private tagsService: TagsService,
     private route: ActivatedRoute,
     public navigationService: NavigationService
   ) {}
@@ -66,6 +68,7 @@ export class OfferFormComponent implements OnInit {
           this.offer = offer;
           this.vendorName = offer.vendorName;
           this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
+          // offer.tags.map((tag) => this.tagsService.ge);
           this.tags = offer.tags || [];
           this.getOfficesForSelect(offer.vendorId);
           this.offerForm.setValue({
@@ -76,7 +79,7 @@ export class OfferFormComponent implements OnInit {
             dateStart: new Date(offer.dateStart).toISOString().substring(0, 10),
             dateEnd: new Date(offer.dateEnd).toISOString().substring(0, 10),
             promoCode: offer.promoCode,
-            images: '',
+            photoUrl: offer.photoUrl[0],
             vendorEntitiesId: this.offerOfficesId,
             tags: this.tags,
             isActive: offer.isActive

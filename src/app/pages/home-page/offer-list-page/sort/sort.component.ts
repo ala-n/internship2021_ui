@@ -42,8 +42,8 @@ export class SortByComponent {
   showSnackbar(): void {
     const message =
       this.translate.currentLang === 'en'
-        ? 'Select current location on map first'
-        : 'Сначала перейдите к текущему местоположение на карте';
+        ? 'Your current location is required'
+        : 'Необходимо Ваше текущее местоположение';
     const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
     this.snackBar.open(message, action, {
       duration: 3000,
