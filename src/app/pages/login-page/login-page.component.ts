@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LogInComponent {
   model: LoginData = {};
+  hide = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 
