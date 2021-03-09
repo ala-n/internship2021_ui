@@ -30,21 +30,9 @@ export class MatPaginationIntlService extends MatPaginatorIntl {
   }
 
   translateLabels(): void {
-    this.firstPageLabel = this.translateService.instant(
-      'I18N.MAT_PAGINATOR.FIRST_PAGE'
-    );
-    this.itemsPerPageLabel = this.translateService.instant(
-      'I18N.MAT_PAGINATOR.ITEMS_PER_PAGE'
-    );
-    this.lastPageLabel = this.translateService.instant(
-      'I18N.MAT_PAGINATOR.LAST_PAGE'
-    );
-    this.nextPageLabel = this.translateService.instant(
-      'I18N.MAT_PAGINATOR.NEXT_PAGE'
-    );
-    this.previousPageLabel = this.translateService.instant(
-      'I18N.MAT_PAGINATOR.PREVIOUS_PAGE'
-    );
+    this.itemsPerPageLabel = this.translateService.instant('items_per_page');
+    this.nextPageLabel = this.translateService.instant('next_page');
+    this.previousPageLabel = this.translateService.instant('previous_page');
     this.changes.next(); // Fire a change event to make sure that the labels are refreshed
   }
 }
