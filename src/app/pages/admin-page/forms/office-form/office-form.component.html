@@ -39,7 +39,21 @@
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>{{ 'city' | translate }}</mat-label>
-          <input matInput formControlName="cityId" />
+          <input
+            matInput
+            formControlName="cityId"
+            [matAutocomplete]="auto"
+            (blur)="checkCity()"
+            (keyup.enter)="checkCity()"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
           <mat-error *ngIf="officeForm.controls['cityId'].hasError('required')">
             {{ 'city' | translate }} {{ 'is' | translate }}
             <strong>{{ 'required' | translate }}</strong>
@@ -123,7 +137,7 @@
       mat-raised-button
       type="submit"
       (click)="navigationService.goBack()"
-      [disabled]="officeForm.invalid"
+      [disabled]="!officeForm.valid"
     >
       {{ 'save' | translate }}
     </button>

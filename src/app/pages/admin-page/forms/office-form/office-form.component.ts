@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap, take } from 'rxjs/operators';
+import { map, mergeMap, startWith, take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
 import { CityService } from '@shared/services/city.service';
+import { TranslateService } from '@ngx-translate/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-office-form',
@@ -31,6 +33,9 @@ export class OfficeFormComponent implements OnInit {
     isActive: false
   });
 
+  options: string[] = [];
+  filteredOptions!: Observable<string[]>;
+
   office!: Office;
   offices: Office[] = [];
   vendorName!: string;
@@ -44,7 +49,9 @@ export class OfficeFormComponent implements OnInit {
     private route: ActivatedRoute,
     public navigationService: NavigationService,
     public dialog: MatDialog,
-    private mapService: MapService
+    private mapService: MapService,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar
   ) {}
 
   get vendorId(): string {
@@ -53,6 +60,11 @@ export class OfficeFormComponent implements OnInit {
 
   ngOnInit(): void {
     const officeId = this.route.snapshot.params.officeId;
+    this.options = this.cityService.cities.map((city) => city.name);
+    this.filteredOptions = this.officeForm.controls['cityId'].valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value))
+    );
     if (officeId) {
       this.officeService
         .getOfficeById(officeId)
@@ -124,5 +136,36 @@ export class OfficeFormComponent implements OnInit {
     } else {
       this.vendorService.addOffice(this.officeForm.value, this.vendorId);
     }
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(
+      (option) => option.toLowerCase().indexOf(filterValue) === 0
+    );
+  }
+
+  checkCity(): void {
+    if (
+      !this.options.includes(this.officeForm.controls['cityId'].value) &&
+      this.officeForm.controls['cityId'].value
+    ) {
+      this.showSnackbar();
+      this.officeForm.controls['cityId'].setValue('');
+    }
+  }
+
+  showSnackbar(): void {
+    const message =
+      this.translate.currentLang === 'en'
+        ? 'Please, input address from list of availible cities!'
+        : 'Пожалуйста, введите адресс из списка доступных городов!';
+    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar']
+    });
   }
 }
