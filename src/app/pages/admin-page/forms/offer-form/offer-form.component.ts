@@ -26,7 +26,7 @@ export class OfferFormComponent implements OnInit {
     description: null,
     dateStart: null,
     dateEnd: [null, Validators.required],
-    promocode: null,
+    promoCode: null,
     images: null,
     vendorEntitiesId: [null, Validators.required],
     tags: null,
@@ -40,7 +40,7 @@ export class OfferFormComponent implements OnInit {
   offer!: Offer;
   vendorName!: string;
   vendorOffices: Office[] = [];
-  offerOffices: string[] = [];
+  offerOfficesId!: string[];
 
   constructor(
     private fb: FormBuilder,
@@ -65,19 +65,19 @@ export class OfferFormComponent implements OnInit {
         .subscribe((offer: Offer) => {
           this.offer = offer;
           this.vendorName = offer.vendorName;
+          this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
           this.tags = offer.tags || [];
           this.getOfficesForSelect(offer.vendorId);
-          console.log(offer);
           this.offerForm.setValue({
             id: offer.id,
             title: offer.title,
             discount: offer.discount,
             description: offer.description,
-            dateStart: offer.dateStart.substring(0, 10),
-            dateEnd: offer.dateStart.substring(0, 10),
-            promocode: offer.promoCode,
+            dateStart: new Date(offer.dateStart).toISOString().substring(0, 10),
+            dateEnd: new Date(offer.dateEnd).toISOString().substring(0, 10),
+            promoCode: offer.promoCode,
             images: '',
-            vendorEntitiesId: offer.vendorEntitiesId,
+            vendorEntitiesId: this.offerOfficesId,
             tags: this.tags,
             isActive: offer.isActive
           });
@@ -97,9 +97,9 @@ export class OfferFormComponent implements OnInit {
       });
   }
 
-  getOfficesForSelect(id: string): void {
+  getOfficesForSelect(vendorId: string): void {
     this.officeService
-      .getVendorOffices(id)
+      .getVendorOffices(vendorId, true)
       .pipe(take(1))
       .subscribe((offices: Office[]) => {
         offices.map(
@@ -113,7 +113,6 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.offerForm.value);
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
     } else {

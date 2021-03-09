@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
 import { CityService } from './city.service';
+import { HttpService } from './http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +11,7 @@ import { CityService } from './city.service';
 export class VendorService {
   static VENDORS_URL = 'api/vendors';
 
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  constructor(private http: HttpClient, private cityService: CityService) {}
+  constructor(private http: HttpService, private cityService: CityService) {}
 
   getVendors(params?: { city: string }): Observable<Vendor[]> {
     // for mock
@@ -47,12 +43,12 @@ export class VendorService {
 
   addVendor(vendor: Vendor): Subscription {
     const url = VendorService.VENDORS_URL;
-    return this.http.post<Vendor>(url, vendor, this.httpOptions).subscribe();
+    return this.http.post<Vendor>(url, vendor).subscribe();
   }
 
   updateVendor(vendor: Vendor, vendorId: string): Subscription {
     const url = `${VendorService.VENDORS_URL}/${vendorId}`;
-    return this.http.put<Vendor>(url, vendor, this.httpOptions).subscribe();
+    return this.http.put<Vendor>(url, vendor).subscribe();
   }
 
   addOffice(office: Office, vendorId: string): Subscription {

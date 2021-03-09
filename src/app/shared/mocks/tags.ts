@@ -1,7 +1,7 @@
 export default [
   {
     id: '1',
-    name: 'Auto',
+    name: 'auto',
     usesByUsers: 27,
     usesByVendor: 4,
     isDeleted: false,
@@ -12,7 +12,7 @@ export default [
   },
   {
     id: '2',
-    name: 'Beauty',
+    name: 'beauty',
     usesByUsers: 23,
     usesByVendor: 15,
     isDeleted: false,
@@ -23,7 +23,7 @@ export default [
   },
   {
     id: '3',
-    name: 'Clothes',
+    name: 'clothes',
     usesByUsers: 55,
     usesByVendor: 22,
     isDeleted: false,
@@ -34,7 +34,7 @@ export default [
   },
   {
     id: '4',
-    name: 'Electronics',
+    name: 'electronics',
     usesByUsers: 7,
     usesByVendor: 2,
     isDeleted: false,
@@ -45,7 +45,7 @@ export default [
   },
   {
     id: '5',
-    name: 'Entertaiment',
+    name: 'entertaiment',
     usesByUsers: 25,
     usesByVendor: 5,
     isDeleted: false,
@@ -56,7 +56,7 @@ export default [
   },
   {
     id: '6',
-    name: 'Fashion',
+    name: 'fashion',
     usesByUsers: 12,
     usesByVendor: 8,
     isDeleted: false,
@@ -67,7 +67,7 @@ export default [
   },
   {
     id: '7',
-    name: 'Flowers',
+    name: 'flowers',
     usesByUsers: 19,
     usesByVendor: 3,
     isDeleted: false,
@@ -78,7 +78,7 @@ export default [
   },
   {
     id: '8',
-    name: 'Food',
+    name: 'food',
     usesByUsers: 12,
     usesByVendor: 8,
     isDeleted: false,
@@ -89,7 +89,7 @@ export default [
   },
   {
     id: '9',
-    name: 'Health',
+    name: 'health',
     usesByUsers: 10,
     usesByVendor: 2,
     isDeleted: false,
@@ -100,7 +100,7 @@ export default [
   },
   {
     id: '10',
-    name: 'Home',
+    name: 'home',
     usesByUsers: 18,
     usesByVendor: 7,
     isDeleted: false,
@@ -111,7 +111,7 @@ export default [
   },
   {
     id: '11',
-    name: 'Hotels',
+    name: 'hotels',
     usesByUsers: 15,
     usesByVendor: 8,
     isDeleted: false,
@@ -122,7 +122,7 @@ export default [
   },
   {
     id: '12',
-    name: 'Markets',
+    name: 'markets',
     usesByUsers: 15,
     usesByVendor: 2,
     isDeleted: false,
@@ -133,7 +133,7 @@ export default [
   },
   {
     id: '13',
-    name: 'Music',
+    name: 'music',
     usesByUsers: 13,
     usesByVendor: 4,
     isDeleted: false,
@@ -144,7 +144,7 @@ export default [
   },
   {
     id: '14',
-    name: 'Pharmacy',
+    name: 'pharmacy',
     usesByUsers: 22,
     usesByVendor: 3,
     isDeleted: false,
@@ -155,7 +155,7 @@ export default [
   },
   {
     id: '15',
-    name: 'Pizza',
+    name: 'pizza',
     usesByUsers: 36,
     usesByVendor: 10,
     isDeleted: false,
@@ -166,7 +166,7 @@ export default [
   },
   {
     id: '16',
-    name: 'Relax',
+    name: 'relax',
     usesByUsers: 31,
     usesByVendor: 4,
     isDeleted: false,
@@ -177,7 +177,7 @@ export default [
   },
   {
     id: '17',
-    name: 'Spa',
+    name: 'spa',
     usesByUsers: 26,
     usesByVendor: 5,
     isDeleted: false,
@@ -188,7 +188,7 @@ export default [
   },
   {
     id: '18',
-    name: 'Sport',
+    name: 'sport',
     usesByUsers: 23,
     usesByVendor: 1,
     isDeleted: false,
@@ -199,7 +199,7 @@ export default [
   },
   {
     id: '19',
-    name: 'Sushi',
+    name: 'sushi',
     usesByUsers: 27,
     usesByVendor: 3,
     isDeleted: false,
@@ -210,7 +210,7 @@ export default [
   },
   {
     id: '20',
-    name: 'Wheels',
+    name: 'wheels',
     usesByUsers: 33,
     usesByVendor: 2,
     isDeleted: false,

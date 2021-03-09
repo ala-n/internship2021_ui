@@ -75,3 +75,11 @@ body {
     display: none;
   }
 }
+
+.snackbar {
+  background-color: $background-blue;
+  color: #fff;
+  .mat-simple-snackbar-action {
+    color: #fff;
+  }
+}

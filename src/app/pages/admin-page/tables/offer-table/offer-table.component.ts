@@ -42,7 +42,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     if (this.vendorId) {
       this.offerService
-        .getVendorOffers(this.vendorId)
+        .getVendorOffers(this.vendorId, true)
         .pipe(take(1))
         .subscribe((offers: Offer[]) => {
           if (offers) this.dataSource.data = offers as Offer[];
@@ -57,23 +57,6 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
           this.isLoading = false;
         });
     }
-
-    // for mocks
-    // this.offerService
-    //   .getOffers()
-    // .pipe(
-    //   take(1),
-    //     map((offers) =>
-    //       offers.filter((offer: Offer) => {
-    //         if (!this.vendorId) return true;
-    //         return offer.vendorId === this.vendorId;
-    //       })
-    //     )
-    //   )
-    //   .subscribe((offers: Offer[]) => {
-    //     if (offers) this.dataSource.data = offers as Offer[];
-    //     this.isLoading = false;
-    //   });
 
     this.dataSource.filterPredicate = (data: Offer, filter) => {
       const filterObj = JSON.parse(filter);
@@ -93,7 +76,7 @@ export class OfferTableComponent implements OnInit, AfterViewInit {
       switch (property) {
         case 'dateEnd':
         case 'dateStart':
-        case 'updated':
+        case 'updatedAt':
           return new Date(item[property]);
         default:
           return item[property];

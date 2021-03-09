@@ -32,5 +32,6 @@ app-search {
 
   &__autocomplete {
     max-height: 10.5em;
+    text-transform: capitalize;
   }
 }

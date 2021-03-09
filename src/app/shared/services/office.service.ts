@@ -13,10 +13,14 @@ export class OfficeService {
 
   constructor(private http: HttpService) {}
 
-  getVendorOffices(vendorId: string): Observable<Office[]> {
+  getVendorOffices(vendorId: string, inactive?: boolean): Observable<Office[]> {
     // for back-end
-    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}/?includeInactive=true`;
-    return this.http.get<Office[]>(url);
+    const url = `${OfficeService.OFFICES_URL}/vendor/${vendorId}`;
+    if (inactive) {
+      return this.http.get<Office[]>(`${url}/?includeInactive=true`);
+    } else {
+      return this.http.get<Office[]>(url);
+    }
 
     // for mock
     // return this.http
@@ -33,11 +37,6 @@ export class OfficeService {
   getOfficeById(id: string): Observable<Office> {
     const url = `${OfficeService.OFFICES_URL}/${id}`;
     return this.http.get(url);
-  }
-
-  getOfficesById(arr: string[]): Observable<Office[]> {
-    const url = `${OfficeService.OFFICES_URL}/${arr}`;
-    return this.http.get<Office[]>(url);
   }
 
   updateOffice(office: Office): Subscription {

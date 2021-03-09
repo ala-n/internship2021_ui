@@ -21,8 +21,11 @@ export class TagsService {
   }
 
   getTagsValue(): Observable<Tag[]> {
-    // return this.http.get(TagsService.TOP_TAGS_URL);
     return this.http.get(TagsService.TOP_TAGS_URL);
+  }
+
+  getTagsForAdmin(): Observable<Tag[]> {
+    return this.http.get(`${TagsService.TAGS_URL}/statistics`);
   }
 
   setTag(tag: string): void {
