@@ -86,8 +86,7 @@ class RatingStars extends HTMLElement {
 
   connectedCallback() {
     this.update();
-    if (!this.shadowRoot) return;
-    this.shadowRoot.addEventListener('change', this._onChange);
+    this.disconnectedCallback();
   }
 
   disconnectedCallback() {
