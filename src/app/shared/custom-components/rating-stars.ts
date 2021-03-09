@@ -108,7 +108,7 @@ class RatingStars extends HTMLElement {
     this.update();
   }
 
-  private update() {
+  private update(): void {
     if (!this.shadowRoot) return;
     const value = String(this.value);
     const inputs = Array.from(
@@ -120,7 +120,7 @@ class RatingStars extends HTMLElement {
     }
   }
 
-  private _onChange(e: Event) {
+  private _onChange(e: Event): void {
     this.value = +(e.target as HTMLInputElement).value;
     const event = new CustomEvent('change', {
       bubbles: true,
