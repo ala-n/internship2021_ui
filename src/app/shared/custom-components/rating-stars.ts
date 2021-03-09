@@ -94,7 +94,7 @@ class RatingStars extends HTMLElement {
     this.shadowRoot.removeEventListener('change', this._onChange);
   }
 
-  get value() {
+  get value(): number {
     const val = this.getAttribute('value');
     return +(val || 0);
   }
