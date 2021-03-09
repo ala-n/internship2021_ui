@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-// import { map } from 'rxjs/operators';
 
 import { Offer } from '../models/offer';
 import { CityService } from './city.service';
@@ -33,7 +32,7 @@ export class OfferService {
   }
 
   getOfferById(id: string): Observable<Offer> {
-    // for backend and for mocks
+    // for backend and mocks
     return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
   }
 
@@ -63,7 +62,7 @@ export class OfferService {
 
   getOfficeOffers(officeId: string): Observable<Offer[]> {
     // for backend
-    const url = `${OfferService.OFFERS_URL}/vendorEntitiy/${officeId}`;
+    const url = `${OfferService.OFFERS_URL}/vendorEntity/${officeId}`;
     return this.http.get<Offer[]>(url);
   }
 

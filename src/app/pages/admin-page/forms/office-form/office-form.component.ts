@@ -94,23 +94,26 @@ export class OfficeFormComponent implements OnInit {
       .pipe(
         mergeMap(() =>
           from(
-            this.mapService.getNameCity(coordinate.lat, coordinate.lng, 'ru')
+            this.mapService.getNameCity(
+              coordinate.lat,
+              coordinate.lng,
+              'en-US,en'
+            )
           )
         )
       )
       .subscribe((data) => {
         const address = data.address;
 
-        this.officeForm.setValue({
-          id: this.office.id,
+        this.officeForm.patchValue({
           location: [coordinate.lat, coordinate.lng],
           country: address.country,
-          cityId: this.cityService.getCityName(address.city),
+          cityId: address.city,
           street: address.road,
           house: address.house_number,
           room: '',
           phone: null,
-          email: '',
+          email: this.office.email,
           isActive: true
         });
         sub.unsubscribe();

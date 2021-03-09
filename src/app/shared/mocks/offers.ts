@@ -22,15 +22,15 @@ export default [
     numberOfViews: 215,
     updatedAt: '2021-03-05T17:29:35.144058+05:00',
     promoCode: '34B2J3IB',
-    rating: 4.3,
+    rate: 4.3,
     createdAt: '2021-02-06',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov',
-    tags: ['massage', 'beauty', 'health'],
+    tags: ['2', '9'],
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['1', '2'],
-    offices: [
+    vendorEntities: [
       {
         id: '1',
         location: [53.950248766494305, 27.678503384991703],
@@ -90,7 +90,7 @@ export default [
     vendorId: '2',
     numberOfUses: 100,
     numberOfViews: 119,
-    rating: 4.5,
+    rate: 4.5,
     createdAt: '2021-02-06',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov',
@@ -100,7 +100,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['3'],
-    offices: [
+    vendorEntities: [
       {
         id: '3',
         location: [53.938102489505866, 27.488490327319887],
@@ -152,17 +152,17 @@ export default [
     vendorId: '3',
     numberOfUses: 139,
     numberOfViews: 212,
-    rating: 4.1,
+    rate: 4.1,
     createdAt: '2021-01-08',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk',
     updatedAt: '2021-01-01',
     promoCode: '34BEFWWWIB',
-    tags: [],
+    tags: ['8', '15'],
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['5', '6', '7', '8'],
-    offices: [
+    vendorEntities: [
       {
         id: '5',
         location: [53.86553289876855, 27.45302363896044],
@@ -252,7 +252,7 @@ export default [
     vendorId: '2',
     numberOfUses: 68,
     numberOfViews: 69,
-    rating: 4.7,
+    rate: 4.7,
     createdAt: '2021-01-02',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk',
@@ -262,7 +262,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['3', '4'],
-    offices: [
+    vendorEntities: [
       {
         id: '3',
         location: [53.938102489505866, 27.488490327319887],
@@ -312,7 +312,7 @@ export default [
     vendorId: '4',
     numberOfUses: 3,
     numberOfViews: 90,
-    rating: 4,
+    rate: 4,
     createdAt: '2021-01-08',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk',
@@ -322,7 +322,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['9'],
-    offices: [
+    vendorEntities: [
       {
         id: '9',
         location: [53.83947974668578, 27.640475169645576],
@@ -356,17 +356,17 @@ export default [
     vendorId: '5',
     numberOfUses: 78,
     numberOfViews: 292,
-    rating: 3.3,
+    rate: 3.3,
     createdAt: '2021-01-01',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk',
     updatedAt: '2021-02-10',
     promoCode: '',
-    tags: ['sport', 'health'],
+    tags: ['9', '18'],
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -406,7 +406,7 @@ export default [
     vendorName: 'ФОЦ им. Машерова',
     vendorId: 5,
     numberOfUses: 0,
-    rating: 3,
+    rate: 3,
     createdAt: '2020-12-18',
     createdBy: 'Anna Barmina',
     updatedBy: 'Alexander Bazukevich',
@@ -417,7 +417,7 @@ export default [
     isActive: true,
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -456,7 +456,7 @@ export default [
     vendorId: '5',
     numberOfUses: 431,
     numberOfViews: 990,
-    rating: 4,
+    rate: 4,
     createdAt: '2020-12-01',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Alexander Bazukevich',
@@ -466,7 +466,7 @@ export default [
     tags: ['spa', 'beauty'],
     cityId: '1',
     vendorEntitiesId: ['10'],
-    offices: [
+    vendorEntities: [
       {
         id: '10',
         location: [53.91137617684785, 27.542871240811902],
@@ -500,17 +500,17 @@ export default [
     vendorId: '6',
     numberOfUses: 40,
     numberOfViews: 56,
-    rating: 5,
+    rate: 5,
     createdAt: '2020-12-18',
     createdBy: 'Taras Lazarchuk',
     updatedBy: 'Alexander Bazukevich',
     updatedAt: '2021-03-01',
     promoCode: '',
-    tags: [],
+    tags: ['16'],
     isActive: true,
     cityId: '2',
     vendorEntitiesId: ['11'],
-    offices: [
+    vendorEntities: [
       {
         id: '11',
         location: [53.65034593967492, 23.85468398498308],
@@ -544,17 +544,17 @@ export default [
     vendorId: '7',
     numberOfUses: 88,
     numberOfViews: 103,
-    rating: 4.3,
+    rate: 4.3,
     createdAt: '2020-12-13',
     createdBy: 'Taras Lazarchuk',
     updatedBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-04',
     promoCode: 'VWEVWE888',
-    tags: ['entartainment', 'music'],
+    tags: ['5', '13'],
     isActive: true,
     cityId: '2',
     vendorEntitiesId: ['12'],
-    offices: [
+    vendorEntities: [
       {
         id: '12',
         location: [53.684909765450755, 23.845177013681916],
@@ -588,17 +588,17 @@ export default [
     vendorId: '8',
     numberOfUses: 2,
     numberOfViews: 300,
-    rating: 4.8,
+    rate: 4.8,
     createdAt: '2020-12-04',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Alexander Bazukevich',
     updatedAt: '2021-02-11',
     promoCode: '',
-    tags: ['beauty'],
+    tags: ['2'],
     isActive: true,
     cityId: '3',
     vendorEntitiesId: ['13'],
-    offices: [
+    vendorEntities: [
       {
         id: '13',
         location: [50.42837142443786, 30.517745728722034],
@@ -632,17 +632,17 @@ export default [
     vendorId: '9',
     numberOfUses: 32,
     numberOfViews: 56,
-    rating: 4.9,
+    rate: 4.9,
     createdAt: '2021-02-04',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Anna Barmina',
     updatedAt: '2021-02-22',
     promoCode: 'WEAR32',
-    tags: ['clothes', 'fashion'],
+    tags: ['3', '6'],
     isActive: false,
     cityId: '3',
     vendorEntitiesId: ['14'],
-    offices: [
+    vendorEntities: [
       {
         id: '14',
         location: [50.44025486038732, 30.52230314847687],
@@ -675,17 +675,17 @@ export default [
     vendorId: '10',
     numberOfUses: 49,
     numberOfViews: 62,
-    rating: 5,
+    rate: 5,
     createdAt: '2021-01-04',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Anna Barmina',
     updatedAt: '2021-02-05',
     promoCode: '',
-    tags: ['auto', 'wheels'],
+    tags: ['1', '20'],
     isActive: true,
     cityId: '4',
     vendorEntitiesId: ['15', '16'],
-    offices: [
+    vendorEntities: [
       {
         id: '15',
         location: [56.781522754305485, 60.61757015808883],

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { AdminPageComponent } from './admin-page.component';
 import { VendorTableComponent } from './tables/vendor-table/vendor-table.component';
 import { VendorFormComponent } from './forms/vendor-form/vendor-form.component';

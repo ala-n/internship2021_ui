@@ -39,7 +39,7 @@ export default [
     ],
     updatedAt: '2021-02-05',
     isActive: true,
-    rating: 4,
+    rate: 4,
     createdAt: '2021-02-06',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov'
@@ -85,7 +85,7 @@ export default [
     ],
     updatedAt: '2021-02-04',
     isActive: true,
-    rating: 5,
+    rate: 5,
     createdAt: '2021-01-06',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov'
@@ -161,7 +161,7 @@ export default [
     ],
     updatedAt: '2021-02-01',
     isActive: true,
-    rating: 3,
+    rate: 3,
     createdAt: '2021-02-02',
     createdBy: 'Alexander Bazukevich',
     updatedBy: 'Ularbek Zairbekov'
@@ -192,7 +192,7 @@ export default [
     ],
     updatedAt: '2021-01-01',
     isActive: true,
-    rating: 4.3,
+    rate: 4.3,
     createdAt: '2021-01-08',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk'
@@ -222,7 +222,7 @@ export default [
     ],
     updatedAt: '2020-12-09',
     isActive: true,
-    rating: 4.7,
+    rate: 4.7,
     createdAt: '2021-01-02',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk'
@@ -255,7 +255,7 @@ export default [
     ],
     updatedAt: '2020-11-27',
     isActive: true,
-    rating: 4.2,
+    rate: 4.2,
     createdAt: '2021-01-01',
     createdBy: 'Anna Barmina',
     updatedBy: 'Taras Lazarchuk'
@@ -285,7 +285,7 @@ export default [
     ],
     updatedAt: '2021-01-04',
     isActive: true,
-    rating: 3.3,
+    rate: 3.3,
     createdAt: '2020-12-18',
     createdBy: 'Anna Barmina',
     updatedBy: 'Alexander Bazukevich'
@@ -315,7 +315,7 @@ export default [
     ],
     updatedAt: '2021-01-01',
     isActive: true,
-    rating: 3.5,
+    rate: 3.5,
     createdAt: '2020-12-01',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Alexander Bazukevich'
@@ -345,7 +345,7 @@ export default [
     ],
     updatedAt: '2020-12-21',
     isActive: true,
-    rating: 4.9,
+    rate: 4.9,
     createdAt: '2020-12-18',
     createdBy: 'Taras Lazarchuk',
     updatedBy: 'Alexander Bazukevich'
@@ -393,7 +393,7 @@ export default [
     ],
     updatedAt: '2020-12-04',
     isActive: false,
-    rating: 4,
+    rate: 4,
     createdAt: '2020-12-04',
     createdBy: 'Ularbek Zairbekov',
     updatedBy: 'Alexander Bazukevich'
