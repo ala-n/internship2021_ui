@@ -1,5 +1,6 @@
 @import '../custom-theme.scss';
 @import '../variables.scss';
+@import './form-field.scss';
 
 .table {
   position: absolute;
@@ -125,4 +126,9 @@
   @media screen and (max-width: $mobile) {
     display: none;
   }
+}
+
+::ng-deep .mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: $blue-primary !important;
 }

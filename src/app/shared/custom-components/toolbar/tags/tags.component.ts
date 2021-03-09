@@ -35,9 +35,10 @@ export class TagsComponent implements OnInit {
 
   searchByTag(e: Event): void {
     const target = e.target as HTMLElement;
-    const tag = (target.textContent || '').trim(); //receive tag
+    const tagName = (target.textContent || '').trim().toLowerCase(); //receive tag
+    const tagId = this.tagsService.getTagId(tagName);
     this.selectedAll = false;
-    this.filterService.filterByTags(tag); // filter by tags
+    this.filterService.filterByTags(tagId); // filter by tags
   }
 
   resetTagSearch(): void {

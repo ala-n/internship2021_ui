@@ -48,7 +48,7 @@ export class SortService {
   }
 
   sortByRating(offers: Offer[]): Offer[] {
-    return offers.sort((a, b) => b.rating - a.rating);
+    return offers.sort((a, b) => b.rate - a.rate);
   }
 
   sortByDistance(

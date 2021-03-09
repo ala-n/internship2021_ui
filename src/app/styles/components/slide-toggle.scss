@@ -1,0 +1,11 @@
+@import '../variables.scss';
+
+::ng-deep .mat-slide-toggle.mat-checked {
+  .mat-slide-toggle-bar {
+    background-color: $blue-accent !important;
+  }
+
+  .mat-slide-toggle-thumb {
+    background-color: $blue-primary !important;
+  }
+}

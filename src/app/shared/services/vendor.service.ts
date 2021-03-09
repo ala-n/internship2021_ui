@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
 import { CityService } from './city.service';
@@ -37,7 +38,7 @@ export class VendorService {
   }
 
   getVendorById(id: string): Observable<Vendor> {
-    const url = `${VendorService.VENDORS_URL}/${id}`;
+    const url = `${VendorService.VENDORS_URL}/${id}/?includeEntities=true`;
     return this.http.get<Vendor>(url);
   }
 

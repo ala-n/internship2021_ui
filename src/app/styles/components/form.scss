@@ -1,5 +1,8 @@
 @import '../custom-theme.scss';
 @import '../variables.scss';
+@import './form-field.scss';
+@import './slide-toggle.scss';
+@import './select.scss';
 
 .form {
   display: flex;
@@ -74,14 +77,5 @@
   margin: 0 1em 1em auto;
   .button {
     margin-left: 20px;
-  }
-}
-::ng-deep .mat-slide-toggle.mat-checked {
-  .mat-slide-toggle-bar {
-    background-color: $blue-accent !important;
-  }
-
-  .mat-slide-toggle-thumb {
-    background-color: $blue-primary !important;
   }
 }

@@ -13,6 +13,10 @@ export interface Office {
     house: string;
     room?: string;
   };
+  street?: string; // for /api/offers/city/{cityId}
+  house?: string; // for /api/offers/city/{cityId}
+  room?: string; // for /api/offers/city/{cityId}
+  city?: string | undefined; // for /api/offers/city/{cityId}
   email: string;
   isActive: boolean;
 }
