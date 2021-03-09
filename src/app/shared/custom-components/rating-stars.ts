@@ -4,7 +4,7 @@ TEMPLATE.innerHTML = `
   <style>
     :host {
       --color-star: #0E7CB9;
-      --color-star-selected: #f9bf3b;
+      --color-star-selected: #65b3cc;
       --color-star-shadow: #0E7CB9;
       --star-empty: '☆';
       --star-filled: '★';
@@ -50,7 +50,7 @@ TEMPLATE.innerHTML = `
     input:checked ~ label::after {
         content: var( --star-filled );
         color: var( --color-star-selected );
-        text-shadow: 0 0 7px var( --color-star-selected );
+        text-shadow: 0 0 4px var( --color-star-selected );
     }
   </style>
 
@@ -105,7 +105,7 @@ class RatingStars extends HTMLElement {
       throw new Error(`${RatingStars.is} accepts only number value`);
     }
     val = Math.min(5, Math.max(0, val));
-    this.setAttribute('value', String(val));
+    this.setAttribute('value', String(Math.round(val)));
     this.update();
   }
 
