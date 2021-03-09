@@ -39,7 +39,6 @@ export class FilterService {
 
   private applyFilter(offers: Offer[]) {
     return offers.filter((offer) => {
-      console.log(offer);
       if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
         return false;
       return true;
