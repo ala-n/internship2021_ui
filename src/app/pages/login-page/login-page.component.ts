@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LogInComponent {
   model: LoginData = {};
   errorMessage!: boolean;
+  hide = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 
