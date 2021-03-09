@@ -1,6 +1,6 @@
 <div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
-  <mat-card class="box">
-    <mat-card-header class="box__title">
+  <mat-card class="login">
+    <mat-card-header class="login__title">
       <mat-card-title>{{ 'Log in' | translate }}</mat-card-title>
     </mat-card-header>
 
@@ -25,7 +25,12 @@
             [type]="hide ? 'password' : 'text'"
             required
           />
-          <button mat-icon-button matSuffix (click)="hide = !hide">
+          <button
+            mat-icon-button
+            type="button"
+            matSuffix
+            (click)="hide = !hide"
+          >
             <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
           </button>
         </mat-form-field>
