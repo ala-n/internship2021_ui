@@ -38,8 +38,19 @@
             mat-icon-button
             color="warn"
             aria-label="button with a heart icon"
+            (click)="deleteFavoriteOffer()"
+            *ngIf="favoriteIs"
           >
-            <mat-icon>favorite</mat-icon>
+            <mat-icon *ngIf="favoriteIs">favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            aria-label="button with a heart icon"
+            (click)="addFavoriteOffer()"
+            *ngIf="!favoriteIs"
+          >
+            <mat-icon>favorite_border</mat-icon>
           </button>
         </div>
       </div>
