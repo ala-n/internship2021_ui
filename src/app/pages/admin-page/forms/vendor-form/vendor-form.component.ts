@@ -67,7 +67,7 @@ export class VendorFormComponent implements OnInit {
   }
 
   showSnackbar(e: MatSlideToggleChange): void {
-    if (e.checked) return;
+    if (e.checked || !this.vendorId) return;
     const message =
       this.translate.currentLang === 'en'
         ? 'Deactivation of brand provides deactivation of all it`s offers and offices'

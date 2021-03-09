@@ -1,4 +1,6 @@
-@import '../../styles/variables.scss';
+@import '/src/app/styles/variables.scss';
+@import '/src/app/styles/components/form-field.scss';
+@import '/src/app/styles/blocks/buttons.scss';
 
 .main-wrapper {
   position: fixed;
