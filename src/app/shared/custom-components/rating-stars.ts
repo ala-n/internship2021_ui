@@ -4,7 +4,7 @@ TEMPLATE.innerHTML = `
   <style>
     :host {
       --color-star: #0E7CB9;
-      --color-star-selected: #65b3cc;
+      --color-star-selected: #0e7cb9;
       --color-star-shadow: #0E7CB9;
       --star-empty: '☆';
       --star-filled: '★';
@@ -50,7 +50,7 @@ TEMPLATE.innerHTML = `
     input:checked ~ label::after {
         content: var( --star-filled );
         color: var( --color-star-selected );
-        text-shadow: 0 0 4px var( --color-star-selected );
+        text-shadow: 0 0 1px var( --color-star-selected );
     }
   </style>
 
