@@ -1,18 +1,26 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Offer } from '@shared/models/offer';
-import { Office } from '@shared/models/office';
-import { NavigationService } from '@shared/services/navigation.service';
-import { OfferService } from '@shared/services/offer.service';
-import { OfficeService } from '@shared/services/office.service';
-import { VendorService } from '@shared/services/vendor.service';
-import { take } from 'rxjs/operators';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import {
+  MatAutocomplete,
+  MatAutocompleteSelectedEvent
+} from '@angular/material/autocomplete';
+
+import { NavigationService } from '@shared/services/navigation.service';
+import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { CityService } from '@shared/services/city.service';
 import { TagsService } from '@shared/services/tags.service';
+import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/office.service';
+import { VendorService } from '@shared/services/vendor.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -30,12 +38,15 @@ export class OfferFormComponent implements OnInit {
     promoCode: null,
     photoUrl: null,
     vendorEntitiesId: [null, Validators.required],
-    tags: null,
+    tags: [null],
     isActive: false
   });
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  allTags: string[] = [];
   tags: string[] = [];
+  tagsCtrl = new FormControl();
+  filteredTags: Observable<string[]>;
 
   offers: Offer[] = [];
   offer!: Offer;
@@ -43,6 +54,8 @@ export class OfferFormComponent implements OnInit {
   vendorOffices: Office[] = [];
   offerOfficesId!: string[];
 
+  @ViewChild('auto') matAutocomplete!: MatAutocomplete;
+  @ViewChild('tagsInput') tagsInput!: ElementRef<HTMLInputElement>;
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
@@ -51,14 +64,24 @@ export class OfferFormComponent implements OnInit {
     private cityService: CityService,
     private tagsService: TagsService,
     private route: ActivatedRoute,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar,
     public navigationService: NavigationService
-  ) {}
+  ) {
+    this.filteredTags = this.tagsCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) =>
+        fruit ? this._filter(fruit) : this.allTags.slice()
+      )
+    );
+  }
 
   get vendorNavId(): string {
     return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
+    this.allTags = this.tagsService.tags.map((tag) => tag.name);
     const offerId = this.route.snapshot.params.offerId;
     if (offerId) {
       this.offerService
@@ -117,13 +140,11 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    console.log(this.offerForm.value);
     this.offerForm.patchValue({
       photoUrl: [this.offerForm.value.photoUrl],
-      tags: this.offerForm.value.tags.map((tag: string) =>
-        this.tagsService.getTagId(tag)
-      )
+      tags: this.tags.map((tag: string) => this.tagsService.getTagId(tag))
     });
-    console.log(this.offerForm.value);
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
     } else {
@@ -133,14 +154,57 @@ export class OfferFormComponent implements OnInit {
 
   addTag(event: MatChipInputEvent): void {
     const input = event.input;
-    const value = event.value;
+    const value = event.value.toLowerCase();
 
     if ((value || '').trim()) {
       this.tags.push(value.trim());
     }
 
+    if (value && !this.allTags.includes(value)) {
+      input.value = '';
+      this.removeTag(value);
+      this.showSnackbar();
+      return;
+    }
+
     if (input) {
       input.value = '';
     }
+  }
+
+  removeTag(tag: string): void {
+    const index = this.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  selectedTag(event: MatAutocompleteSelectedEvent): void {
+    this.tags.push(event.option.viewValue);
+    this.tagsInput.nativeElement.value = '';
+    this.tagsCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allTags.filter(
+      (tag) => tag.toLowerCase().indexOf(filterValue) === 0
+    );
+  }
+
+  showSnackbar(): void {
+    const message =
+      this.translate.currentLang === 'en'
+        ? 'Please, select existing tag!'
+        : 'Пожалуйста, выберите существующий тэг!';
+    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar']
+    });
   }
 }

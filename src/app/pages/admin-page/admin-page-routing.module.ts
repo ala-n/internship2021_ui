@@ -60,23 +60,13 @@ const routes: Routes = [
                   },
                   {
                     path: 'offices',
-                    children: [
-                      {
-                        path: '',
-                        component: OfficeTableComponent,
-                        canActivate: [FormGuard]
-                      }
-                    ]
+                    component: OfficeTableComponent,
+                    canActivate: [FormGuard]
                   },
                   {
                     path: 'offers',
-                    children: [
-                      {
-                        path: '',
-                        component: OfferTableComponent,
-                        canActivate: [FormGuard]
-                      }
-                    ]
+                    component: OfferTableComponent,
+                    canActivate: [FormGuard]
                   }
                 ]
               }
@@ -103,24 +93,23 @@ const routes: Routes = [
       },
       {
         path: 'statistics',
+        component: StatNavComponent,
         children: [
           {
             path: '',
-            component: StatNavComponent,
-            children: [
-              {
-                path: 'vendors',
-                component: VendorStatTableComponent
-              },
-              {
-                path: 'offers',
-                component: OfferStatTableComponent
-              },
-              {
-                path: 'tags',
-                component: TagsStatTableComponent
-              }
-            ]
+            redirectTo: 'vendors'
+          },
+          {
+            path: 'vendors',
+            component: VendorStatTableComponent
+          },
+          {
+            path: 'offers',
+            component: OfferStatTableComponent
+          },
+          {
+            path: 'tags',
+            component: TagsStatTableComponent
           }
         ]
       },

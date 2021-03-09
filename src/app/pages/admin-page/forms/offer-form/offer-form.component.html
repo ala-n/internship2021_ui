@@ -110,12 +110,26 @@
           </mat-chip>
           <input
             placeholder="{{ 'new_tag' | translate }}"
+            #tagsInput
+            [formControl]="tagsCtrl"
+            [matAutocomplete]="auto"
             [matChipInputAddOnBlur]="true"
             [matChipInputFor]="tagList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="addTag($event)"
           />
         </mat-chip-list>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="selectedTag($event)"
+        >
+          <mat-option
+            *ngFor="let fruit of filteredTags | async"
+            [value]="fruit"
+          >
+            {{ fruit }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
   </div>
