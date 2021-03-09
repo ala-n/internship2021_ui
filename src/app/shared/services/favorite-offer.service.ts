@@ -26,7 +26,7 @@ export class FavoriteOfferService {
     return this.http.get(`${FavoriteOfferService.FAVORITE_OFFER_URL}/${id}`);
   }
 
-  deleteFavorite(id: string): Observable<Favorite> {
+  deleteFavoriteOffer(id: string): Observable<Favorite> {
     return this.http.delete(`${FavoriteOfferService.FAVORITE_OFFER_URL}/${id}`);
   }
 

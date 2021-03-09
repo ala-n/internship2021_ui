@@ -32,7 +32,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     this.isLoading$ = this.route.params.pipe(
       switchMap((params) => {
         this.offerId = params['id'];
-        this.isFavorited(this.offerId);
+        this.isFavoriteOffer(this.offerId);
         return this.offerService.getOfferById(params['id']);
       }),
       tap((offer: Offer) => {
@@ -47,25 +47,25 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  addFavorite(): void {
+  addFavoriteOffer(): void {
     this.favoriteOfferService
       .addFavoriteOffer(this.offerId)
       .subscribe((offer) => {
-        if (offer.offerId) this.isFavorited(offer.offerId);
+        if (offer.offerId) this.isFavoriteOffer(offer.offerId);
       });
   }
 
-  deleteFavorite(): void {
+  deleteFavoriteOffer(): void {
     this.favoriteOfferService
-      .deleteFavorite(this.offerId)
+      .deleteFavoriteOffer(this.offerId)
       .subscribe((offer) => {
-        if (offer !== {}) this.isFavorited(this.offerId);
+        if (offer !== {}) this.isFavoriteOffer(this.offerId);
       });
   }
 
-  isFavorited(id: string): void {
+  isFavoriteOffer(id: string): void {
     this.favoriteOfferService.isFavoriteOffer(id).subscribe((offer) => {
-      if (offer == null) this.favoriteIs = false;
+      if (offer === null) this.favoriteIs = false;
       else this.favoriteIs = true;
     });
   }
