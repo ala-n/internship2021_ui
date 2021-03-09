@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
-import { of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -22,7 +24,8 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
-    private readonly mapService: MapService
+    private readonly mapService: MapService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -34,11 +37,33 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       }),
       // for mocks
       // switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
-
-      // for backend
       map(() => false)
     );
   }
+
+  openDialog(): void {
+    this.dialog.open(PreOrderDialogComponent);
+  }
+
+  // openDialog(): void {
+  //   const dialogRef = this.dialog.open(FormDialogComponent);
+  //   dialogRef.afterClosed().subscribe((data) => {
+  //     const address = data.address;
+
+  //     this.officeForm.patchValue({
+  //       location: [coordinate.lat, coordinate.lng],
+  //       country: address.country,
+  //       cityId: address.city,
+  //       street: address.road,
+  //       house: address.house_number,
+  //       room: '',
+  //       phone: null,
+  //       email: this.office.email,
+  //       isActive: true
+  //     });
+  //     sub.unsubscribe();
+  //   });
+  // }
 
   ngOnDestroy(): void {
     this.mapService.clearOffer();

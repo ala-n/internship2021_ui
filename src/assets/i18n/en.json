@@ -84,5 +84,7 @@
   "title": "Title",
   "end_date": "End date",
   "required": "required",
-  "incorrect": "incorrect"
+  "incorrect": "incorrect",
+
+  "name_surname": "Name and surname"
 }
