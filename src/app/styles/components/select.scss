@@ -1,0 +1,16 @@
+::ng-deep .mat-primary {
+  .mat-option.mat-selected:not(.mat-option-disabled) {
+    color: $blue-primary;
+  }
+}
+::ng-deep .mat-primary {
+  .mat-pseudo-checkbox-checked {
+    background: $blue-primary;
+  }
+}
+::ng-deep .mat-select-panel {
+  min-width: 100% !important;
+}
+::ng-deep .cdk-overlay-pane {
+  transform: translateX(0) !important;
+}

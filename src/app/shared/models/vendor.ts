@@ -8,7 +8,7 @@ export interface Vendor {
   description: string;
   city: string;
   website: string;
-  offices: Office[];
+  vendorEntities: Office[];
   rate: number;
   createdAt: string;
   createdBy: string;

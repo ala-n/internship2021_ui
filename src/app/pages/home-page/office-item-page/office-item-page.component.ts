@@ -42,9 +42,9 @@ export class OfficeItemPageComponent implements OnInit, OnDestroy {
         forkJoin([
           this.vendorService.getVendorById(office.vendorId),
           // for mocks
-          this.offerService.getVendorOffers(office.vendorId)
+          // this.offerService.getVendorOffers(office.vendorId)
           // for backend
-          // this.offerService.getOfficeOffers(office.id)
+          this.offerService.getOfficeOffers(office.id)
         ])
       ),
       tap(([vendor, offers]) => {

@@ -24,20 +24,21 @@ export class SearchComponent implements OnInit {
 
   // show user when he enter data
   constructor(
-    private tagService: TagsService,
+    private tagsService: TagsService,
     private filterService: FilterService
   ) {}
 
   searchBy(): void {
     const tag = this.control.value.trim().toLowerCase();
+    const tagId = this.tagsService.getTagId(tag);
     this.control.setValue(tag);
-    this.filterService.filterByTags(tag);
+    this.filterService.filterByTags(tagId);
     this.control.setValue('');
   }
 
   ngOnInit(): void {
     this.control.setValue('');
-    this.tagService.getAllTags().subscribe((data: Tag[]) => {
+    this.tagsService.getAllTags().subscribe((data: Tag[]) => {
       this.parseSearchData(data);
     });
   }

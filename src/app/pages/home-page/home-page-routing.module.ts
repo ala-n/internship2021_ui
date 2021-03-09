@@ -24,8 +24,7 @@ const routes: Routes = [
       { path: 'vendors/:id', component: VendorItemPageComponent },
       { path: 'offices/:id', component: OfficeItemPageComponent }
     ]
-  },
-  { path: '**', redirectTo: 'error', pathMatch: 'full' }
+  }
 ];
 
 @NgModule({
