@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LogInComponent {
   model: LoginData = {};
+  errorMessage!: boolean;
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -24,6 +25,7 @@ export class LogInComponent {
       },
       (error) => {
         console.error(error);
+        this.errorMessage = true;
       }
     );
   }
