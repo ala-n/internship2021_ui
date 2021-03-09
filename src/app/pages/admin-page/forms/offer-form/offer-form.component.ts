@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { CityService } from '@shared/services/city.service';
+import { TagsService } from '@shared/services/tags.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -49,7 +50,8 @@ export class OfferFormComponent implements OnInit {
     private officeService: OfficeService,
     private cityService: CityService,
     private route: ActivatedRoute,
-    public navigationService: NavigationService
+    public navigationService: NavigationService,
+    private tagsService: TagsService
   ) {}
 
   get vendorNavId(): string {
@@ -66,7 +68,8 @@ export class OfferFormComponent implements OnInit {
           this.offer = offer;
           this.vendorName = offer.vendorName;
           this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
-          this.tags = offer.tags || [];
+          this.tags =
+            offer.tags.map((tag) => this.tagsService.getTagName(tag)) || [];
           this.getOfficesForSelect(offer.vendorId);
           this.offerForm.setValue({
             id: offer.id,
