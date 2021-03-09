@@ -20,7 +20,14 @@ export class TagsService {
   getAllTags(): Observable<Tag[]> {
     return this.http
       .get<Tag[]>(TagsService.TAGS_URL)
-      .pipe(tap((tags) => (this._tags = [...tags])));
+      .pipe(
+        tap(
+          (tags) => (
+            (this._tags = [...tags]),
+            this._tags.forEach((tag) => (tag.name = tag.name.toLowerCase()))
+          )
+        )
+      );
   }
 
   getTagsValue(): Observable<Tag[]> {
