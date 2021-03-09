@@ -104,17 +104,12 @@ export class OfficeFormComponent implements OnInit {
       )
       .subscribe((data) => {
         const address = data.address;
-
         this.officeForm.patchValue({
           location: [coordinate.lat, coordinate.lng],
           country: address.country,
           cityId: address.city,
           street: address.road,
-          house: address.house_number,
-          room: '',
-          phone: null,
-          email: this.office.email,
-          isActive: true
+          house: address.house_number
         });
         sub.unsubscribe();
       });

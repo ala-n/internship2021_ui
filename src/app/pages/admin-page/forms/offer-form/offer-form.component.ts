@@ -80,7 +80,7 @@ export class OfferFormComponent implements OnInit {
             dateStart: new Date(offer.dateStart).toISOString().substring(0, 10),
             dateEnd: new Date(offer.dateEnd).toISOString().substring(0, 10),
             promoCode: offer.promoCode,
-            photoUrl: offer.photoUrl[0],
+            photoUrl: offer.photoUrl[0] || null,
             vendorEntitiesId: this.offerOfficesId,
             tags: this.tags,
             isActive: offer.isActive
