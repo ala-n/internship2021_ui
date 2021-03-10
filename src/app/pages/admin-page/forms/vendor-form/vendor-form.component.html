@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="vendorForm" novalidate (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="vendorForm" novalidate>
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
@@ -68,8 +68,9 @@
     <button
       class="button button_c_icon-primary"
       mat-raised-button
-      type="submit"
+      type="button"
       (click)="navigationService.goBack()"
+      (click)="onSubmit()"
       [disabled]="vendorForm.invalid"
     >
       {{ 'save' | translate }}

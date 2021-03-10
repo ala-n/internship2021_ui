@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="offerForm" novalidate (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="offerForm" novalidate>
   <div class="form__header">
     <span class="text text_s_l text_c_primary text_upper"
       >{{ 'enter_information_about_offer_of' | translate }}
@@ -152,8 +152,9 @@
     <button
       class="button button_c_icon-primary"
       mat-raised-button
-      type="submit"
+      type="button"
       (click)="navigationService.goBack()"
+      (click)="onSubmit()"
       [disabled]="offerForm.invalid"
     >
       {{ 'save' | translate }}

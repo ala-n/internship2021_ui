@@ -151,7 +151,6 @@ export class OfficeFormComponent implements OnInit {
   checkCity(value: string): boolean {
     if (value && !this.options.includes(value)) {
       this.showSnackbar();
-      this.officeForm.controls['cityId'].setValue('');
       return false;
     }
     return true;
