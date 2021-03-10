@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Offer } from '@shared/models/offer';
 import { Observable } from 'rxjs';
 import { HttpService } from './http.service';
 
@@ -30,7 +31,7 @@ export class FavoriteOfferService {
     return this.http.delete(`${FavoriteOfferService.FAVORITE_OFFER_URL}/${id}`);
   }
 
-  getAllFavoriteOffers(): Observable<Favorite[]> {
+  getAllFavoriteOffers(): Observable<Offer[]> {
     return this.http.get(`${FavoriteOfferService.FAVORITE_OFFER_URL}/all`);
   }
 }
