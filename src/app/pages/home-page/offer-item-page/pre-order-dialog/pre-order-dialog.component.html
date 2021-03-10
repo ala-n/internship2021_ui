@@ -1,14 +1,55 @@
-<h1 mat-dialog-title>{{ 'pre-order' | translate }}</h1>
-<mat-dialog-content>
-  <form ngIf="user$ | async as user">
-    <mat-form-field appearance="outline">
+<h2 mat-dialog-title class="pre-order__title">{{ 'pre-order' | translate }}</h2>
+
+<form class="pre-order__form" (ngSubmit)="sendPreorder()" #form="ngForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="outline" class="pre-order__field">
       <mat-label>{{ 'name_surname' | translate }}</mat-label>
-      <input matInput value="`${user.name} ${user.surname}`" disabled />
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Hint</mat-hint>
+      <input matInput [(ngModel)]="model.name" name="name" disabled />
     </mat-form-field>
-  </form>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</mat-dialog-actions>
+    <mat-form-field appearance="outline" class="pre-order__field">
+      <mat-label>{{ 'phone' | translate }}</mat-label>
+      <input matInput [(ngModel)]="model.phone" name="phone" required />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="pre-order__field">
+      <mat-label>{{ 'comment' | translate }}</mat-label>
+      <textarea
+        matInput
+        [(ngModel)]="model.comment"
+        name="comment"
+        cdkTextareaAutosize
+        cdkAutosizeMinRows="3"
+        cdkAutosizeMaxRows="3"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field class="pre-order__field" appearance="outline">
+      <mat-label>{{ 'office' | translate }}</mat-label>
+      <mat-select
+        disableOptionCentering
+        multiple
+        [(ngModel)]="model.officeId"
+        name="office"
+        required
+      >
+        <mat-option *ngFor="let office of data.offices" [value]="office.id"
+          >{{ office.address.cityId }}, {{ office.address.street }},
+          {{ office.address.house }}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="pre-order__actions">
+    <button mat-button mat-dialog-close type="button">
+      {{ 'cancel' | translate }}
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      type="submit"
+      [disabled]="form.invalid"
+    >
+      {{ 'save' | translate }}
+    </button>
+  </mat-dialog-actions>
+</form>
