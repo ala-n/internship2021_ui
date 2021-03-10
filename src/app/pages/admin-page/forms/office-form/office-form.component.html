@@ -41,10 +41,11 @@
           <mat-label>{{ 'city' | translate }}</mat-label>
           <input
             matInput
+            #cityInput
             formControlName="cityId"
             [matAutocomplete]="auto"
-            (blur)="checkCity()"
-            (keyup.enter)="checkCity()"
+            (blur)="checkCity(cityInput.value)"
+            (keyup.enter)="checkCity(cityInput.value)"
           />
           <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
             <mat-option

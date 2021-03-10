@@ -116,6 +116,9 @@ export class OfficeFormComponent implements OnInit {
       )
       .subscribe((data) => {
         const address = data.address;
+        if (!this.checkCity(address.city)) {
+          return;
+        }
         this.officeForm.patchValue({
           location: [coordinate.lat, coordinate.lng],
           country: address.country,
@@ -145,14 +148,13 @@ export class OfficeFormComponent implements OnInit {
     );
   }
 
-  checkCity(): void {
-    if (
-      !this.options.includes(this.officeForm.controls['cityId'].value) &&
-      this.officeForm.controls['cityId'].value
-    ) {
+  checkCity(value: string): boolean {
+    if (value && !this.options.includes(value)) {
       this.showSnackbar();
       this.officeForm.controls['cityId'].setValue('');
+      return false;
     }
+    return true;
   }
 
   showSnackbar(): void {
