@@ -3,7 +3,7 @@ import { Offer } from '@shared/models/offer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
 import { FavoriteOfferService } from './favorite-offer.service';
-// import { HistoryOfferService } from './history-offer.service';
+import { HistoryOfferService } from './history-offer.service';
 import { OfferService } from './offer.service';
 import { SortService } from './sort.service';
 interface FilterConfig {
@@ -30,7 +30,8 @@ export class FilterService {
   constructor(
     private offerService: OfferService,
     private sortService: SortService,
-    private favoriteOfferService: FavoriteOfferService // private historyOfferService: HistoryOfferService
+    private favoriteOfferService: FavoriteOfferService,
+    private historyOfferService: HistoryOfferService
   ) {}
 
   filter(cfg: Partial<FilterConfig>): void {
@@ -73,20 +74,20 @@ export class FilterService {
         this.favoriteOfferService
           .getAllFavoriteOffers()
           .subscribe((offers: Offer[]) => this.list$.next(offers));
-      }
-      // else if (this.filterCfg.history) {
-      //   this.historyOfferService
-      //     .getAllHistoryOffers()
-      //     .subscribe((offers: Offer[]) => this.list$.next(offers));
-      // } else
-      {
-        this.offerService
-          .getOffers(this.filterCfg as { city: string })
-          .subscribe((offers: Offer[]) =>
-            this.list$.next(this.applyFilter(offers))
-          );
-      }
+      } else if (this.filterCfg.history) {
+        this.historyOfferService
+          .getAllHistoryOffers()
+          .subscribe((offers: Offer[]) => this.list$.next(offers));
+      } else this.allListOffers();
     }, 50);
+  }
+
+  allListOffers(): void {
+    this.offerService
+      .getOffers(this.filterCfg as { city: string })
+      .subscribe((offers: Offer[]) => {
+        this.list$.next(this.applyFilter(offers));
+      });
   }
 
   get resultList$(): Observable<Offer[]> {
@@ -107,11 +108,11 @@ export class FilterService {
   }
 
   getAllBookamrks(): void {
-    this.filterCfg.bookmarks = true;
+    this.filter({ bookmarks: true });
   }
 
   getAllHistory(): void {
-    this.filterCfg.history = true;
+    this.filter({ history: true });
   }
 
   isIntersects<T>(list: T[], list2: T[]): boolean {

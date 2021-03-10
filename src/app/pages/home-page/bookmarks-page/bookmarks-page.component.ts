@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { FilterService } from '@shared/services/filter.service';
 import { LocationService } from '@shared/services/location.service';
@@ -11,7 +11,7 @@ import { skip } from 'rxjs/operators';
   templateUrl: './bookmarks-page.component.html',
   styleUrls: ['./bookmarks-page.component.scss']
 })
-export class BookmarksPageComponent implements OnInit {
+export class BookmarksPageComponent implements OnInit, OnDestroy {
   offers$!: Observable<Offer[]>;
   city!: string;
 
@@ -22,10 +22,7 @@ export class BookmarksPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.locationService.city$.subscribe((city) => {
-      this.filterService.filter({ city });
-      this.city = city;
-    });
+    this.filterService.getAllBookamrks();
 
     this.tagsService.tag$.pipe(skip(1)).subscribe((tag) => {
       this.filterService.filter({ tag });
@@ -35,5 +32,9 @@ export class BookmarksPageComponent implements OnInit {
     this.offers$.subscribe(
       () => (this.city = this.filterService.filterCfg.city || '')
     );
+  }
+
+  ngOnDestroy(): void {
+    this.filterService.allListOffers();
   }
 }

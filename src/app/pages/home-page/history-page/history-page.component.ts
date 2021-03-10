@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { FilterService } from '@shared/services/filter.service';
 import { LocationService } from '@shared/services/location.service';
@@ -11,7 +11,7 @@ import { skip } from 'rxjs/operators';
   templateUrl: './history-page.component.html',
   styleUrls: ['./history-page.component.scss']
 })
-export class HistoryPageComponent implements OnInit {
+export class HistoryPageComponent implements OnInit, OnDestroy {
   offers$!: Observable<Offer[]>;
   city!: string;
 
@@ -22,6 +22,8 @@ export class HistoryPageComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.filterService.getAllHistory();
+
     this.locationService.city$.subscribe((city) => {
       this.filterService.filter({ city });
       this.city = city;
@@ -35,5 +37,9 @@ export class HistoryPageComponent implements OnInit {
     this.offers$.subscribe(
       () => (this.city = this.filterService.filterCfg.city || '')
     );
+  }
+
+  ngOnDestroy(): void {
+    this.filterService.allListOffers();
   }
 }

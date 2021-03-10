@@ -35,5 +35,6 @@ export class OfferListPageComponent {
     this.offers$.subscribe(
       () => (this.city = this.filterService.filterCfg.city || '')
     );
+    this.filterService.allListOffers();
   }
 }
