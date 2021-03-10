@@ -142,7 +142,6 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log(this.offerForm.value);
     this.offerForm.patchValue({
       photoUrl: [this.offerForm.value.photoUrl],
       tags: this.tags.map((tag: string) => this.tagsService.getTagId(tag))
@@ -156,11 +155,7 @@ export class OfferFormComponent implements OnInit {
 
   addTag(event: MatChipInputEvent): void {
     const input = event.input;
-    const value = event.value.toLowerCase();
-
-    if ((value || '').trim()) {
-      this.tags.push(value.trim());
-    }
+    let value = event.value.toLowerCase();
 
     if (value && !this.allTags.includes(value)) {
       input.value = '';
@@ -169,13 +164,19 @@ export class OfferFormComponent implements OnInit {
       return;
     }
 
+    value = this.checkTagReplica(value);
+
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+
     if (input) {
       input.value = '';
     }
   }
 
   removeTag(tag: string): void {
-    const index = this.tags.indexOf(tag);
+    const index = this.tags.lastIndexOf(tag);
 
     if (index >= 0) {
       this.tags.splice(index, 1);
@@ -183,9 +184,17 @@ export class OfferFormComponent implements OnInit {
   }
 
   selectedTag(event: MatAutocompleteSelectedEvent): void {
-    this.tags.push(event.option.viewValue);
+    this.checkTagReplica(event.option.viewValue);
     this.tagsInput.nativeElement.value = '';
     this.tagsCtrl.setValue(null);
+  }
+
+  checkTagReplica(value: string): string {
+    if (value && this.tags.includes(value)) {
+      value = '';
+      this.showSnackbar(true);
+    }
+    return value;
   }
 
   private _filter(value: string): string[] {
@@ -196,11 +205,19 @@ export class OfferFormComponent implements OnInit {
     );
   }
 
-  showSnackbar(): void {
-    const message =
-      this.translate.currentLang === 'en'
-        ? 'Please, select existing tag!'
-        : 'Пожалуйста, выберите существующий тэг!';
+  showSnackbar(exist?: boolean): void {
+    let message = '';
+    if (exist) {
+      message =
+        this.translate.currentLang === 'en'
+          ? 'Tag already added!'
+          : 'Тэг уже добавлен!';
+    } else {
+      message =
+        this.translate.currentLang === 'en'
+          ? 'Please, select existing tag!'
+          : 'Пожалуйста, выберите существующий тэг!';
+    }
     const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
     this.snackBar.open(message, action, {
       duration: 3000,
