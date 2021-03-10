@@ -1,3 +1,5 @@
+<app-sort></app-sort>
+<h3 class="history">{{ 'rated_offers' | translate }}</h3>
 <div class="offers" *ngIf="offers$ | async as offers">
   <app-offer-list [offers]="offers"></app-offer-list>
   <div

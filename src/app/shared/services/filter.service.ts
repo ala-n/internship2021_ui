@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+// import { FavoriteOfferService } from './favorite-offer.service';
 import { OfferService } from './offer.service';
 import { SortService } from './sort.service';
 
@@ -9,6 +10,8 @@ interface FilterConfig {
   city?: string;
   tag?: string;
   office?: string[];
+  bookmarks?: boolean;
+  history?: boolean;
 }
 
 @Injectable({
@@ -25,7 +28,7 @@ export class FilterService {
 
   constructor(
     private offerService: OfferService,
-    private sortService: SortService
+    private sortService: SortService // private favoriteOfferService: FavoriteOfferService
   ) {}
 
   filter(cfg: Partial<FilterConfig>): void {
@@ -58,11 +61,21 @@ export class FilterService {
   private updateList(): void {
     if (this.listUpdateTimeout) clearTimeout(this.listUpdateTimeout);
     setTimeout(() => {
+      // if (this.filterCfg.bookmarks) {
+      //   this.favoriteOfferService.getAllFavoriteOffers.subscribe(
+      //     (offers: Offer[]) => this.list$.next(offers)
+      //   );
+      // } else if (this.filterCfg.history) {
+      //   this.favoriteOfferService.getAllFavoriteOffers.subscribe(
+      //     (offers: Offer[]) => this.list$.next(offers)
+      //   );
+      // } else {
       this.offerService
         .getOffers(this.filterCfg as { city: string })
         .subscribe((offers: Offer[]) =>
           this.list$.next(this.applyFilter(offers))
         );
+      // }
     }, 50);
   }
 
@@ -82,6 +95,14 @@ export class FilterService {
       )
     );
   }
+
+  // getAllBookamrks(): void {
+  //   this.filterCfg.bookmarks = true;
+  // }
+
+  // getAllHistory(): void {
+  //   this.filterCfg.history = true;
+  // }
 
   isIntersects<T>(list: T[], list2: T[]): boolean {
     return list.some((item) => list2.includes(item));

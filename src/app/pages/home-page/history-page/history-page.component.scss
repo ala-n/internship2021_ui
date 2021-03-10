@@ -1,6 +1,5 @@
 @import '/src/app/styles/variables.scss';
 @import '/src/app/styles/blocks/links.scss';
-@import '/src/app/styles/blocks/text.scss';
 
 :host {
   position: absolute;
@@ -10,6 +9,12 @@
   bottom: 0;
   display: flex;
   flex-direction: column;
+}
+
+.history {
+  position: absolute;
+  top: 1em;
+  left: 1em;
 }
 
 .offers {
