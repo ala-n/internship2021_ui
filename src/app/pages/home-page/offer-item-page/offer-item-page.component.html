@@ -26,6 +26,12 @@
         {{ offer.description || 'description_text' | translate }}
       </p>
       <div class="item__footer">
+        <div class="item__rate">
+          <div class="item__text">{{ 'rate_text' | translate }}</div>
+          <button mat-flat-button class="button_upper button_c_icon-primary">
+            {{ 'rate' | translate }}
+          </button>
+        </div>
         <div class="item__favorite">
           <div>{{ 'bookmark_text' | translate }}</div>
           <button
