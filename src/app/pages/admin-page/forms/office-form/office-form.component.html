@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="officeForm" novalidate (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="officeForm" novalidate>
   <div class="form__header">
     <span class="text text_s_l text_c_primary text_upper"
       >{{ 'enter_information_about_office_of' | translate }}
@@ -39,7 +39,22 @@
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>{{ 'city' | translate }}</mat-label>
-          <input matInput formControlName="cityId" />
+          <input
+            matInput
+            #cityInput
+            formControlName="cityId"
+            [matAutocomplete]="auto"
+            (blur)="checkCity(cityInput.value)"
+            (keyup.enter)="checkCity(cityInput.value)"
+          />
+          <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option
+              *ngFor="let option of filteredOptions | async"
+              [value]="option"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-autocomplete>
           <mat-error *ngIf="officeForm.controls['cityId'].hasError('required')">
             {{ 'city' | translate }} {{ 'is' | translate }}
             <strong>{{ 'required' | translate }}</strong>
@@ -121,9 +136,10 @@
     <button
       class="button button_c_icon-primary"
       mat-raised-button
-      type="submit"
+      type="button"
       (click)="navigationService.goBack()"
-      [disabled]="officeForm.invalid"
+      (click)="onSubmit()"
+      [disabled]="!officeForm.valid"
     >
       {{ 'save' | translate }}
     </button>

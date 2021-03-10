@@ -22,6 +22,8 @@ import { HostnamePipe } from '@shared/pipes/hostname.pipe';
 import { OfferListComponent } from './custom-components/offer-list/offer-list.component';
 
 import '@shared/custom-components/rating-stars';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginationIntlService } from './services/matpaginationintl.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,13 @@ import '@shared/custom-components/rating-stars';
     HostnamePipe,
     OfferListComponent
   ],
-  entryComponents: [PopupComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: MatPaginationIntlService
+    }
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [PopupComponent]
 })
 export class SharedModule {}

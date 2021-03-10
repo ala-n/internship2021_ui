@@ -9,6 +9,11 @@
   border-radius: 4px 0 0;
   overflow-x: hidden;
 
+  ::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
+    justify-content: center;
+    width: 100%;
+  }
+
   &__menu {
     display: flex;
     align-items: center;

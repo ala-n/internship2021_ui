@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="offerForm" novalidate (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="offerForm" novalidate>
   <div class="form__header">
     <span class="text text_s_l text_c_primary text_upper"
       >{{ 'enter_information_about_offer_of' | translate }}
@@ -15,6 +15,10 @@
         <mat-error *ngIf="offerForm.controls['title'].hasError('required')">
           {{ 'title' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
+        </mat-error>
+        <mat-error *ngIf="offerForm.controls['title'].hasError('maxlength')">
+          {{ 'max_length' | translate }} {{ 'is' | translate }}
+          <strong>{{ '50' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -71,8 +75,8 @@
       </div>
       <div class="col">
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>{{ 'images' | translate }}</mat-label>
-          <input matInput formControlName="images" />
+          <mat-label>{{ 'image' | translate }}</mat-label>
+          <input matInput formControlName="photoUrl" />
         </mat-form-field>
       </div>
     </div>
@@ -105,17 +109,37 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'tags' | translate }}</mat-label>
         <mat-chip-list #tagList aria-label="Tag adding" formControlName="tags">
-          <mat-chip *ngFor="let tag of tags">
+          <mat-chip
+            *ngFor="let tag of tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeTag(tag)"
+          >
             {{ tag }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input
             placeholder="{{ 'new_tag' | translate }}"
+            #tagsInput
+            [formControl]="tagsCtrl"
+            [matAutocomplete]="auto"
             [matChipInputAddOnBlur]="true"
             [matChipInputFor]="tagList"
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="addTag($event)"
           />
         </mat-chip-list>
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="selectedTag($event)"
+        >
+          <mat-option
+            *ngFor="let fruit of filteredTags | async"
+            [value]="fruit"
+          >
+            {{ fruit }}
+          </mat-option>
+        </mat-autocomplete>
       </mat-form-field>
     </div>
   </div>
@@ -138,8 +162,9 @@
     <button
       class="button button_c_icon-primary"
       mat-raised-button
-      type="submit"
+      type="button"
       (click)="navigationService.goBack()"
+      (click)="onSubmit()"
       [disabled]="offerForm.invalid"
     >
       {{ 'save' | translate }}
