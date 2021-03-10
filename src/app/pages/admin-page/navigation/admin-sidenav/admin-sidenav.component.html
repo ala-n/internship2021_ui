@@ -34,7 +34,13 @@
     [opened]="(isHandset$ | async) === false"
     [(opened)]="isOpened"
   >
-    <mat-toolbar>{{ 'moderator_panel' | translate }}</mat-toolbar>
+    <mat-toolbar
+      *ngIf="navigationService.role === 'Moderator'; else adminPanel"
+      >{{ 'moderator_panel' | translate }}</mat-toolbar
+    >
+    <ng-template #adminPanel>
+      <mat-toolbar>{{ 'administrator_panel' | translate }}</mat-toolbar>
+    </ng-template>
     <mat-divider></mat-divider>
     <mat-nav-list class="admin-sidenav__list" (click)="closeSidenav()">
       <a
@@ -51,6 +57,7 @@
       >
       <a
         mat-list-item
+        *ngIf="navigationService.role === 'Admin'"
         [routerLink]="['statistics']"
         routerLinkActive="mat-list-item_active"
         >{{ 'statistics' | translate }}</a

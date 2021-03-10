@@ -56,7 +56,6 @@ export class VendorTableComponent implements OnInit, AfterViewInit {
       property: string
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ): any => {
-      //TODO question about types
       switch (property) {
         case 'updatedAt': {
           return new Date(item[property]);

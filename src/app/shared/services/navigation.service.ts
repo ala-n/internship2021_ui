@@ -8,6 +8,7 @@ export class NavigationService {
   isSidenavOpened!: boolean;
   isHomePageOpened!: boolean;
   isToolbarOpened!: boolean;
+  role!: string;
 
   constructor(private location: Location) {}
 
