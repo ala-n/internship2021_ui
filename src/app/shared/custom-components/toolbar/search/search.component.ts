@@ -42,7 +42,7 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.control.setValue('');
-    this.tagsService.getTagsValue().subscribe((data: Tag[]) => {
+    this.tagsService.getAllTags().subscribe((data: Tag[]) => {
       this.parseSearchData(data);
     });
   }
