@@ -26,7 +26,6 @@ export class HistoryOfferService {
       vendorId,
       rate
     };
-    console.log('зашел add');
     return this.http
       .post(`${HistoryOfferService.HISTORY_OFFER_URL}/add`, data)
       .subscribe();
@@ -37,7 +36,6 @@ export class HistoryOfferService {
   }
 
   putHistoryOffer(id: string, rate: number): Subscription {
-    console.log('зашел put');
     return this.http
       .put(`${HistoryOfferService.HISTORY_OFFER_URL}/${id}/${rate}`, '')
       .subscribe();

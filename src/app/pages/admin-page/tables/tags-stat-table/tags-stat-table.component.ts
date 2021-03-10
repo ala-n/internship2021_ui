@@ -46,7 +46,6 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
       .pipe(take(1))
       .subscribe((tags: Tag[]) => {
         if (tags) {
-          console.log(tags);
           this.dataSource.data = tags as Tag[];
           this.tags = this.dataSource.data.map((tag) => tag.name);
         }
