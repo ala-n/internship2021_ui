@@ -13,6 +13,7 @@ import { HistoryPageComponent } from './history-page/history-page.component';
 import { BookmarksPageComponent } from './bookmarks-page/bookmarks-page.component';
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
+import { PreOrderDialogComponent } from './offer-item-page/pre-order-dialog/pre-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ConcatPipe } from '@shared/pipes/concat.pipe';
     OfficeItemPageComponent,
     ConcatPipe,
     HistoryPageComponent,
-    BookmarksPageComponent
+    BookmarksPageComponent,
+    PreOrderDialogComponent
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

@@ -96,5 +96,7 @@
   "incorrect": "не корректный",
 
   "rated_offers": "Оцененные акции",
-  "favorite_offers": "Любимые акции"
+  "favorite_offers": "Любимые акции",
+  "name_surname": "Имя и фамилия",
+  "comment": "Комментарий"
 }

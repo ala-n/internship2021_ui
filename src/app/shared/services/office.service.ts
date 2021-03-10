@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-// import { map } from 'rxjs/operators';
 
 import { Office } from '@shared/models/office';
 import { HttpService } from './http.service';
