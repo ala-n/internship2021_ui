@@ -11,7 +11,6 @@ import { TagsService } from '@shared/services/tags.service';
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];
-  status = false;
 
   constructor(
     private tagsService: TagsService,
