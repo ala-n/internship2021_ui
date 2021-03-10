@@ -1,4 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 import { ActivatedRoute } from '@angular/router';
 
 import { Offer } from '@shared/models/offer';
@@ -16,13 +18,15 @@ import { map, switchMap, tap } from 'rxjs/operators';
 export class OfferItemPageComponent implements OnInit, OnDestroy {
   offer!: Offer;
   offices!: Office[];
+  @ViewChild('menuTrigger') menuTrigger!: MatMenuTrigger;
 
   isLoading$ = of(true);
 
   constructor(
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
-    private readonly mapService: MapService
+    private readonly mapService: MapService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
