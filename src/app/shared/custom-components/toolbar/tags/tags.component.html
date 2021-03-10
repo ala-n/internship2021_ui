@@ -3,7 +3,7 @@
     <mat-chip
       class="tags__item"
       (click)="resetTagSearch()"
-      [class.tags__item_active]="selectedAll"
+      [class.tags__item_active]="!currentTag"
       >all</mat-chip
     >
     <mat-chip
