@@ -43,5 +43,8 @@
         {{ 'Log in' | translate }}
       </button>
     </form>
+    <div class="error" *ngIf="errorMessage">
+      Login or password is incorrect. Please try again
+    </div>
   </mat-card>
 </div>

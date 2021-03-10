@@ -10,21 +10,19 @@ import { Router } from '@angular/router';
 })
 export class LogInComponent {
   model: LoginData = {};
+  errorMessage!: boolean;
   hide = true;
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {
-    this.authService.logout();
-  }
-
   login(): void {
     this.authService.login(this.model).subscribe(
       () => {
-        this.router.navigate(['../home']);
+        this.router.navigate(['./home']);
       },
       (error) => {
         console.error(error);
+        this.errorMessage = true;
       }
     );
   }
