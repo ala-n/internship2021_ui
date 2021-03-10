@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './custom-components/toolbar/toolbar.component';
 import { MapComponent } from './custom-components/map/map.component';
@@ -20,6 +20,8 @@ import { MapBaseComponent } from './custom-components/map/map-base/map-base.comp
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
 import { OfferListComponent } from './custom-components/offer-list/offer-list.component';
+
+import '@shared/custom-components/rating-stars';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { OfferListComponent } from './custom-components/offer-list/offer-list.co
     HostnamePipe,
     OfferListComponent
   ],
-  entryComponents: [PopupComponent]
+  entryComponents: [PopupComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class SharedModule {}

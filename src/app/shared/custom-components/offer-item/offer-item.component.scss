@@ -7,6 +7,8 @@ $small-card: 1500px;
 .offer-card {
   position: relative;
   display: flex;
+  justify-content: space-between;
+  height: 110px;
   color: $text-primary;
   margin-bottom: 0.5em;
 
@@ -19,10 +21,12 @@ $small-card: 1500px;
     object-fit: cover;
     width: 20%;
     height: 100%;
+    max-height: 75px;
     margin-right: 1em;
 
     @media screen and (max-width: $small-card) {
       max-width: 120px;
+      width: 25%;
     }
 
     @media screen and (max-width: $mobile) {
@@ -31,6 +35,8 @@ $small-card: 1500px;
   }
 
   &__text {
+    height: 100%;
+    align-self: flex-start;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -38,7 +44,7 @@ $small-card: 1500px;
 
     @media screen and (max-width: $small-card) {
       position: relative;
-      top: 0.3em;
+      top: 0.4em;
     }
   }
 
@@ -76,18 +82,20 @@ $small-card: 1500px;
   &__properties {
     position: relative;
     align-self: center;
+    display: flex;
+    flex-flow: column;
     top: 1em;
 
     @media screen and (max-width: $small-card) {
       align-self: flex-end;
-      display: flex;
-      align-items: center;
+      flex-flow: row;
       top: 0em;
     }
+  }
 
-    @media screen and (max-width: $mobile) {
-      line-height: 14px;
-    }
+  &__stars {
+    top: 0.1em;
+    position: relative;
   }
 
   &__statistics {
@@ -142,20 +150,12 @@ $small-card: 1500px;
   }
 
   @media screen and (max-width: $small-card) {
+    height: 115px;
     flex-flow: column;
     padding-bottom: 0.3em;
   }
-}
 
-.stars {
-  display: flex;
-  color: $blue-primary;
-
-  > mat-icon {
-    @media screen and (max-width: $mobile) {
-      width: 19px;
-      height: 19px;
-      font-size: 19px;
-    }
+  @media screen and (max-width: $mobile) {
+    height: auto;
   }
 }

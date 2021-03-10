@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
@@ -26,6 +26,7 @@ import { ConcatPipe } from '@shared/pipes/concat.pipe';
     HistoryPageComponent,
     BookmarksPageComponent
   ],
-  imports: [CommonModule, HomePageRoutingModule, SharedModule]
+  imports: [CommonModule, HomePageRoutingModule, SharedModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule {}
