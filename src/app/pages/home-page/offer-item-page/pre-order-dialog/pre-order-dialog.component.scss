@@ -1,0 +1,45 @@
+@import '/src/app/styles/variables.scss';
+@import '/src/app/styles/components/form-field.scss';
+
+:host {
+  overflow: hidden;
+  color: $text-primary;
+}
+
+.pre-order {
+  &__title {
+    text-align: center;
+  }
+
+  &__form {
+    width: 400px;
+
+    &::ng-deep .mat-form-field-wrapper {
+      padding-bottom: 0.5em;
+    }
+
+    @media screen and (max-width: $tablet) {
+      width: 70vw;
+    }
+  }
+
+  &__field {
+    display: block;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  mat-dialog-actions {
+    padding-top: 0;
+  }
+}
+
+::ng-deep .mat-dialog-container {
+  @media screen and (max-width: $mobile) {
+    padding: 1em;
+  }
+  overflow: hidden;
+}

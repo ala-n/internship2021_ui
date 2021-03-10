@@ -17,7 +17,11 @@
             {{ offer.promoCode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
-          <button mat-stroked-button class="button_upper button_c_primary">
+          <button
+            mat-stroked-button
+            class="button_upper button_c_primary"
+            (click)="openDialog()"
+          >
             {{ 'pre-order' | translate }}
           </button>
         </div>
