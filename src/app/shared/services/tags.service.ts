@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Tag } from '@shared/models/tag';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { share, tap } from 'rxjs/operators';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class TagsService {
   private _tag$ = new BehaviorSubject<string>('');
   public tag$ = this._tag$.asObservable();
   private _tags: Tag[] = [];
+  private _topTags$: Observable<Tag[]> | null = null;
 
   constructor(private http: HttpService) {}
 
@@ -34,9 +35,14 @@ export class TagsService {
     return this.http.get(`${TagsService.TAGS_URL}/${id}`);
   }
 
-  getTagsValue(): Observable<Tag[]> {
+  getTopTags(): Observable<Tag[]> {
     // return this.http.get(TagsService.TOP_TAGS_URL);
-    return this.http.get(`${TagsService.TAGS_URL}/topTags`);
+    if (!this._topTags$) {
+      this._topTags$ = this.http
+        .get<Tag[]>(`${TagsService.TAGS_URL}/topTags`)
+        .pipe(share());
+    }
+    return this._topTags$;
   }
 
   addTag(tag: Record<string, unknown>): Subscription {
