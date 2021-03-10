@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { mergeMap, take } from 'rxjs/operators';
+import { map, mergeMap, startWith, take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
 import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
-import { from } from 'rxjs';
+import { FormDialogComponent } from '../../dialogs/form-dialog/form-dialog.component';
+import { from, Observable } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
 import { CityService } from '@shared/services/city.service';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-office-form',
@@ -31,6 +32,9 @@ export class OfficeFormComponent implements OnInit {
     isActive: false
   });
 
+  options: string[] = [];
+  filteredOptions!: Observable<string[]>;
+
   office!: Office;
   offices: Office[] = [];
   vendorName!: string;
@@ -44,7 +48,8 @@ export class OfficeFormComponent implements OnInit {
     private route: ActivatedRoute,
     public navigationService: NavigationService,
     public dialog: MatDialog,
-    private mapService: MapService
+    private mapService: MapService,
+    private alertService: AlertService
   ) {}
 
   get vendorId(): string {
@@ -53,6 +58,11 @@ export class OfficeFormComponent implements OnInit {
 
   ngOnInit(): void {
     const officeId = this.route.snapshot.params.officeId;
+    this.options = this.cityService.cities.map((city) => city.name);
+    this.filteredOptions = this.officeForm.controls['cityId'].valueChanges.pipe(
+      startWith(''),
+      map((value) => this._filter(value))
+    );
     if (officeId) {
       this.officeService
         .getOfficeById(officeId)
@@ -63,7 +73,7 @@ export class OfficeFormComponent implements OnInit {
             id: this.office.id,
             location: this.office.location,
             country: this.office.address.country,
-            cityId: this.cityService.getCityName(office.address.cityId),
+            cityId: this.cityService.getCityName(office.address.cityId) || '',
             street: this.office.address.street,
             house: this.office.address.house,
             room: this.office.address.room,
@@ -104,17 +114,15 @@ export class OfficeFormComponent implements OnInit {
       )
       .subscribe((data) => {
         const address = data.address;
-
+        if (!this.checkCity(address.city)) {
+          return;
+        }
         this.officeForm.patchValue({
           location: [coordinate.lat, coordinate.lng],
           country: address.country,
           cityId: address.city,
           street: address.road,
-          house: address.house_number,
-          room: '',
-          phone: null,
-          email: this.office.email,
-          isActive: true
+          house: address.house_number
         });
         sub.unsubscribe();
       });
@@ -129,5 +137,20 @@ export class OfficeFormComponent implements OnInit {
     } else {
       this.vendorService.addOffice(this.officeForm.value, this.vendorId);
     }
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.options.filter(
+      (option) => option.toLowerCase().indexOf(filterValue) === 0
+    );
+  }
+
+  checkCity(value: string): boolean {
+    if (value && !this.options.includes(value)) {
+      this.alertService.showSnackbar('inavailible_city');
+      return false;
+    }
+    return true;
   }
 }

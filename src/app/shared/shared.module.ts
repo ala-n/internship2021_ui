@@ -19,6 +19,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginationIntlService } from './services/matpaginationintl.service';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,12 @@ import { HostnamePipe } from '@shared/pipes/hostname.pipe';
     GoBackButtonComponent,
     MapBaseComponent,
     HostnamePipe
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: MatPaginationIntlService
+    }
   ],
   entryComponents: [PopupComponent]
 })

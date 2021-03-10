@@ -11,7 +11,7 @@
       class="table__filter"
       value=""
       aria-label="Filter Tags"
-      (click)="applyFilter(group.value, 'isActive')"
+      (click)="applyFilter(group.value, 'isDeleted')"
     >
       <mat-button-toggle value="">{{ 'all' | translate }}</mat-button-toggle>
       <mat-button-toggle value="true">{{
@@ -34,9 +34,23 @@
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let tag">
-          <button class="button button_edit button_c_primary" mat-icon-button>
+          <button
+            *ngIf="tag.isDeleted === false; else restore"
+            class="button button_edit button_c_primary"
+            (click)="deactivate(tag.id)"
+            mat-icon-button
+          >
             <mat-icon>delete</mat-icon>
           </button>
+          <ng-template #restore>
+            <button
+              class="button button_edit button_c_primary"
+              (click)="activate(tag.id)"
+              mat-icon-button
+            >
+              <mat-icon>restore</mat-icon>
+            </button>
+          </ng-template>
         </td>
       </ng-container>
 
@@ -146,6 +160,13 @@
     </table>
   </div>
   <div class="table__footer">
+    <button
+      class="button button_hidden_mobile button_c_icon-primary"
+      mat-raised-button
+      (click)="openDialog()"
+    >
+      {{ 'add_tag' | translate }}
+    </button>
     <mat-paginator
       class="table__paginator"
       #paginator
@@ -155,5 +176,12 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
     >
     </mat-paginator>
+    <button
+      class="button button_hidden_tablet button_c_icon-primary"
+      mat-fab
+      (click)="openDialog()"
+    >
+      <mat-icon>add</mat-icon>
+    </button>
   </div>
 </div>

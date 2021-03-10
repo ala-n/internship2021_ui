@@ -1,5 +1,4 @@
-::ng-deep {
-  .autocomplete {
-    max-height: 10em;
-  }
+::ng-deep .mat-autocomplete-panel {
+  max-height: 10.5em !important;
+  text-transform: capitalize;
 }

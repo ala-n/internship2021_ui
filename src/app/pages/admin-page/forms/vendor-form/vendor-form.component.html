@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="vendorForm" novalidate (ngSubmit)="onSubmit()">
+<form class="form" [formGroup]="vendorForm" novalidate>
   <div class="row">
     <div class="col">
       <mat-form-field class="full-width" appearance="outline">
@@ -7,6 +7,10 @@
         <mat-error *ngIf="vendorForm.controls['name'].hasError('required')">
           {{ 'brand_name' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
+        </mat-error>
+        <mat-error *ngIf="vendorForm.controls['name'].hasError('maxlength')">
+          {{ 'max_length' | translate }} {{ 'is' | translate }}
+          <strong>{{ '50' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -29,6 +33,10 @@
         <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
           {{ 'title' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
+        </mat-error>
+        <mat-error *ngIf="vendorForm.controls['title'].hasError('maxlength')">
+          {{ 'max_length' | translate }} {{ 'is' | translate }}
+          <strong>{{ '50' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
@@ -68,8 +76,9 @@
     <button
       class="button button_c_icon-primary"
       mat-raised-button
-      type="submit"
+      type="button"
       (click)="navigationService.goBack()"
+      (click)="onSubmit()"
       [disabled]="vendorForm.invalid"
     >
       {{ 'save' | translate }}

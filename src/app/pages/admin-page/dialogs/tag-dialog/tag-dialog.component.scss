@@ -1,0 +1,7 @@
+@import '/src/app/styles/blocks/text.scss';
+
+.mat-dialog-content,
+.mat-dialog-actions {
+  display: flex;
+  justify-content: center;
+}
