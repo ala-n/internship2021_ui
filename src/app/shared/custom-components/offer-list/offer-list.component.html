@@ -1,0 +1,7 @@
+<a
+  class="link"
+  *ngFor="let offer of offers"
+  [routerLink]="['/home', locationService.city$ | async, 'offers', offer.id]"
+>
+  <app-offer-item [offer]="offer" class="offer-card"></app-offer-item
+></a>

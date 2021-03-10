@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
+import { FavoriteOfferService } from './favorite-offer.service';
+import { HistoryOfferService } from './history-offer.service';
 import { OfferService } from './offer.service';
 import { SortService } from './sort.service';
-
 interface FilterConfig {
   city?: string;
   tag?: string;
   office?: string[];
+  bookmarks?: boolean;
+  history?: boolean;
   text?: string;
 }
 
@@ -26,7 +29,9 @@ export class FilterService {
 
   constructor(
     private offerService: OfferService,
-    private sortService: SortService
+    private sortService: SortService,
+    private favoriteOfferService: FavoriteOfferService,
+    private historyOfferService: HistoryOfferService
   ) {}
 
   filter(cfg: Partial<FilterConfig>): void {
@@ -64,13 +69,25 @@ export class FilterService {
 
   private updateList(): void {
     if (this.listUpdateTimeout) clearTimeout(this.listUpdateTimeout);
-    setTimeout(() => {
-      this.offerService
-        .getOffers(this.filterCfg as { city: string })
-        .subscribe((offers: Offer[]) =>
-          this.list$.next(this.applyFilter(offers))
-        );
+    this.listUpdateTimeout = window.setTimeout(() => {
+      if (this.filterCfg.bookmarks) {
+        this.favoriteOfferService
+          .getAllFavoriteOffers()
+          .subscribe((offers: Offer[]) => this.list$.next(offers));
+      } else if (this.filterCfg.history) {
+        this.historyOfferService
+          .getAllHistoryOffers()
+          .subscribe((offers: Offer[]) => this.list$.next(offers));
+      } else this.allListOffers();
     }, 50);
+  }
+
+  allListOffers(): void {
+    this.offerService
+      .getOffers(this.filterCfg as { city: string })
+      .subscribe((offers: Offer[]) => {
+        this.list$.next(this.applyFilter(offers));
+      });
   }
 
   get resultList$(): Observable<Offer[]> {
@@ -88,6 +105,14 @@ export class FilterService {
         )
       )
     );
+  }
+
+  getAllBookamrks(): void {
+    this.filter({ bookmarks: true });
+  }
+
+  getAllHistory(): void {
+    this.filter({ history: true });
   }
 
   isIntersects<T>(list: T[], list2: T[]): boolean {

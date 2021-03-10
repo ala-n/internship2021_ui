@@ -95,6 +95,8 @@
   "required": "required",
   "incorrect": "incorrect",
 
+  "rated_offers": "Rated offers",
+  "favorite_offers": "Favorite offers",
   "name_surname": "Name and surname",
   "comment": "Comment"
 }
