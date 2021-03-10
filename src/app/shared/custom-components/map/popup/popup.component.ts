@@ -1,6 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Office } from '@shared/models/office';
 import { CityService } from '@shared/services/city.service';
+import { NavigationService } from '@shared/services/navigation.service';
 
 @Component({
   selector: 'app-popup',
@@ -16,7 +17,10 @@ export class PopupComponent {
 
   cityName!: string | undefined;
 
-  constructor(private citiService: CityService) {}
+  constructor(
+    private citiService: CityService,
+    public navigationService: NavigationService
+  ) {}
 
   ngOnInit(): void {
     this.cityName = this.citiService.getCityName(this.office.address.cityId);

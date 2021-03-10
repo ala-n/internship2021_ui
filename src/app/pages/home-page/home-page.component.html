@@ -3,15 +3,20 @@
   <button
     class="button button_mobile button_c_icon-primary button_hidden_desktop"
     mat-fab
-    (click)="toggleListView()"
+    (click)="navigationService.toggleMapView()"
   >
-    <mat-icon *ngIf="!isListVisible; else mapIcon">list</mat-icon>
+    <mat-icon *ngIf="!navigationService.isListVisible; else mapIcon"
+      >list</mat-icon
+    >
     <ng-template #mapIcon>
       <mat-icon>map</mat-icon>
     </ng-template>
   </button>
   <div class="home__main">
-    <div class="home__left" [class.home__left_hidden]="!isListVisible">
+    <div
+      class="home__left"
+      [class.home__left_hidden]="!navigationService.isListVisible"
+    >
       <router-outlet></router-outlet>
     </div>
     <app-map

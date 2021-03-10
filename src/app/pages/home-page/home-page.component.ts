@@ -11,11 +11,6 @@ import { delay, map } from 'rxjs/operators';
 })
 export class HomePageComponent implements OnInit {
   isLoading$ = of(true);
-  isListVisible = true;
-
-  toggleListView(): void {
-    this.isListVisible = !this.isListVisible;
-  }
 
   constructor(
     public navigationService: NavigationService,
