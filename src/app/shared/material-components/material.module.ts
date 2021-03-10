@@ -21,6 +21,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatMenuModule } from '@angular/material/menu';
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 const MaterialModules: any[] = [
@@ -45,7 +46,8 @@ const MaterialModules: any[] = [
   MatTableModule,
   MatToolbarModule,
   MatTabsModule,
-  ClipboardModule
+  ClipboardModule,
+  MatMenuModule
 ];
 
 @NgModule({

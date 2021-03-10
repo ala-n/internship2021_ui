@@ -3,10 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { CityGuard } from '@shared/guards/city.guard';
 
 import { HomePageComponent } from './home-page.component';
-import { OfferItemPageComponent } from './offer-item-page/offer-item-page.component';
 import { OfferListPageComponent } from './offer-list-page/offer-list-page.component';
+import { OfferItemPageComponent } from './offer-item-page/offer-item-page.component';
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
 import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.component';
+import { BookmarksPageComponent } from './bookmarks-page/bookmarks-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
 
 const routes: Routes = [
   {
@@ -20,6 +22,8 @@ const routes: Routes = [
     component: HomePageComponent,
     children: [
       { path: '', component: OfferListPageComponent },
+      { path: 'history', component: HistoryPageComponent },
+      { path: 'bookmarks', component: BookmarksPageComponent },
       { path: 'offers/:id', component: OfferItemPageComponent },
       { path: 'vendors/:id', component: VendorItemPageComponent },
       { path: 'offices/:id', component: OfficeItemPageComponent }

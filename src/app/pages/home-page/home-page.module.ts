@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomePageRoutingModule } from './home-page-routing.module';
@@ -9,8 +9,11 @@ import { OfferItemPageComponent } from './offer-item-page/offer-item-page.compon
 import { OfferListPageComponent } from './offer-list-page/offer-list-page.component';
 import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.component';
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
+import { BookmarksPageComponent } from './bookmarks-page/bookmarks-page.component';
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
+import { PreOrderDialogComponent } from './offer-item-page/pre-order-dialog/pre-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +23,12 @@ import { ConcatPipe } from '@shared/pipes/concat.pipe';
     OfferListPageComponent,
     VendorItemPageComponent,
     OfficeItemPageComponent,
-    ConcatPipe
+    ConcatPipe,
+    HistoryPageComponent,
+    BookmarksPageComponent,
+    PreOrderDialogComponent
   ],
-  imports: [CommonModule, HomePageRoutingModule, SharedModule]
+  imports: [CommonModule, HomePageRoutingModule, SharedModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class HomePageModule {}

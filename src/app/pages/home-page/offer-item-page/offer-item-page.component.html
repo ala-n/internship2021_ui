@@ -5,7 +5,7 @@
     <mat-tab label="{{ 'description' | translate }}">
       <div class="item__header">
         <div class="item__date-end">
-          {{ 'valid_to' | translate }} {{ offer.dateEnd }}
+          {{ 'valid_to' | translate }} {{ offer.dateEnd | date: 'dd.MM.yyyy' }}
         </div>
         <div class="item__actions">
           <button
@@ -17,7 +17,11 @@
             {{ offer.promoCode }}
             <mat-icon class="item__copy-icon">content_copy</mat-icon>
           </button>
-          <button mat-stroked-button class="button_upper button_c_primary">
+          <button
+            mat-stroked-button
+            class="button_upper button_c_primary"
+            (click)="openDialog()"
+          >
             {{ 'pre-order' | translate }}
           </button>
         </div>
@@ -28,9 +32,28 @@
       <div class="item__footer">
         <div class="item__rate">
           <div class="item__text">{{ 'rate_text' | translate }}</div>
-          <button mat-flat-button class="button_upper button_c_icon-primary">
+
+          <button
+            mat-button
+            [matMenuTriggerFor]="belowMenu"
+            class="button_upper button_c_icon-primary"
+          >
             {{ 'rate' | translate }}
           </button>
+          <mat-menu #belowMenu="matMenu" yPosition="below">
+            <div class="item__popup">
+              <rating-stars
+                [value]="offer.rate"
+                (change)="onRatingChange($event)"
+              ></rating-stars>
+            </div>
+          </mat-menu>
+
+          <mat-menu #menu="matMenu">
+            <div class="item__popup">
+              <rating-stars [value]="offer.rate"></rating-stars>
+            </div>
+          </mat-menu>
         </div>
         <div class="item__favorite">
           <div>{{ 'bookmark_text' | translate }}</div>

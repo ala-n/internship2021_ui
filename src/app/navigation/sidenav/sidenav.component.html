@@ -6,7 +6,9 @@
     position="end"
   >
     <div class="sidenav__header" (click)="navigationService.toggleSidenav()">
-      <span class="sidenav__username">Name Surname</span>
+      <span class="sidenav__username">{{
+        user.firstName + ' ' + user.lastName
+      }}</span>
       <button class="button button_no-hover" mat-icon-button>
         <mat-icon class="icon icon_s_l">perm_identity</mat-icon>
       </button>
@@ -14,11 +16,20 @@
     <div class="sidenav__content">
       <mat-divider></mat-divider>
       <mat-nav-list>
-        <a mat-list-item (click)="navigationService.toggleSidenav()">
+        <a
+          mat-list-item
+          routerLink="/home/history"
+          [routerLink]="['/home', locationService.city$ | async, 'history']"
+          (click)="navigationService.toggleSidenav()"
+        >
           <mat-icon>history</mat-icon>
           <span>{{ 'history' | translate }}</span>
         </a>
-        <a mat-list-item (click)="navigationService.toggleSidenav()">
+        <a
+          mat-list-item
+          [routerLink]="['/home', locationService.city$ | async, 'bookmarks']"
+          (click)="navigationService.toggleSidenav()"
+        >
           <mat-icon>star_border</mat-icon>
           <span>{{ 'bookmarks' | translate }}</span>
         </a>

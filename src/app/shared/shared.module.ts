@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './custom-components/toolbar/toolbar.component';
 import { MapComponent } from './custom-components/map/map.component';
@@ -19,6 +19,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
+import { OfferListComponent } from './custom-components/offer-list/offer-list.component';
+
+import '@shared/custom-components/rating-stars';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { MatPaginationIntlService } from './services/matpaginationintl.service';
 
@@ -34,7 +37,8 @@ import { MatPaginationIntlService } from './services/matpaginationintl.service';
     OfferItemComponent,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe
+    HostnamePipe,
+    OfferListComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +61,8 @@ import { MatPaginationIntlService } from './services/matpaginationintl.service';
     TranslateModule,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe
+    HostnamePipe,
+    OfferListComponent
   ],
   providers: [
     {
@@ -65,6 +70,7 @@ import { MatPaginationIntlService } from './services/matpaginationintl.service';
       useClass: MatPaginationIntlService
     }
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [PopupComponent]
 })
 export class SharedModule {}
