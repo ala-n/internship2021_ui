@@ -84,5 +84,8 @@
   "title": "Title",
   "end_date": "End date",
   "required": "required",
-  "incorrect": "incorrect"
+  "incorrect": "incorrect",
+
+  "rated_offers": "Rated offers",
+  "favorite_offers": "Favorite offers"
 }
