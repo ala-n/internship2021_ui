@@ -9,6 +9,7 @@ interface FilterConfig {
   city?: string;
   tag?: string;
   office?: string[];
+  text?: string;
 }
 
 @Injectable({
@@ -39,9 +40,15 @@ export class FilterService {
 
   private applyFilter(offers: Offer[]) {
     return offers.filter((offer) => {
-      if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
-        return false;
-      return true;
+      if (this.filterCfg.tag) {
+        if (this.filterCfg.tag && !offer.tags.includes(this.filterCfg.tag))
+          return false;
+        return true;
+      } else {
+        if (this.filterCfg.text && !offer.title.includes(this.filterCfg.text))
+          return false;
+        return true;
+      }
     });
   }
 
@@ -93,6 +100,10 @@ export class FilterService {
     } else {
       this.filter({ tag });
     }
+  }
+
+  filterByText(text: string): void {
+    this.filter({ text });
   }
 
   clearFilter(): void {
