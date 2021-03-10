@@ -6,7 +6,9 @@
     position="end"
   >
     <div class="sidenav__header" (click)="navigationService.toggleSidenav()">
-      <span class="sidenav__username">Name Surname</span>
+      <span class="sidenav__username">{{
+        user.firstName + ' ' + user.lastName
+      }}</span>
       <button class="button button_no-hover" mat-icon-button>
         <mat-icon class="icon icon_s_l">perm_identity</mat-icon>
       </button>

@@ -10,7 +10,9 @@
   >
     <mat-icon class="icon icon_s_l">menu</mat-icon>
   </button>
-  <span class="admin-toolbar__username">Name Surname</span>
+  <span class="admin-toolbar__username">{{
+    user.firstName + ' ' + user.lastName
+  }}</span>
   <button
     class="button button_no-hover"
     mat-icon-button

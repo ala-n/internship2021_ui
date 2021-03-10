@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavigationService } from '@shared/services/navigation.service';
 import { AuthService } from '@shared/services/auth.service';
 import { LocationService } from '@shared/services/location.service';
+import { UserService } from '@shared/services/user.service';
+import { User } from '@shared/models/user';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,11 +11,20 @@ import { LocationService } from '@shared/services/location.service';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  user!: User;
+
   constructor(
     public navigationService: NavigationService,
     private httpAuth: AuthService,
+    private userService: UserService,
     public locationService: LocationService
   ) {}
+
+  ngOnInit(): void {
+    this.userService.user$.subscribe((user) => {
+      if (user) this.user = user;
+    });
+  }
 
   logout(): void {
     this.httpAuth.logout();
