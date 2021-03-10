@@ -86,5 +86,6 @@
   "required": "required",
   "incorrect": "incorrect",
 
-  "name_surname": "Name and surname"
+  "name_surname": "Name and surname",
+  "comment": "Comment"
 }
