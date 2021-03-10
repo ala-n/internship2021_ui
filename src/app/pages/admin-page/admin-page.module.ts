@@ -21,6 +21,7 @@ import { VendorStatTableComponent } from './tables/vendor-stat-table/vendor-stat
 import { OfferStatTableComponent } from './tables/offer-stat-table/offer-stat-table.component';
 import { TagsStatTableComponent } from './tables/tags-stat-table/tags-stat-table.component';
 import { StatNavComponent } from './navigation/stat-nav/stat-nav.component';
+import { TagDialogComponent } from './tag-dialog/tag-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { StatNavComponent } from './navigation/stat-nav/stat-nav.component';
     VendorNavComponent,
     VendorStatTableComponent,
     VendorTableComponent,
-    TruncatePipe
+    TruncatePipe,
+    TagDialogComponent
   ],
   imports: [
     CommonModule,

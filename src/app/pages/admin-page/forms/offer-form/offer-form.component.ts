@@ -92,8 +92,9 @@ export class OfferFormComponent implements OnInit {
           this.vendorName = offer.vendorName;
           this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
           this.tags =
-            offer.tags.map((tag: string) => this.tagsService.getTagName(tag)) ||
-            [];
+            offer.tags
+              .map((tag: string) => this.tagsService.getTagName(tag))
+              .filter((tag: string) => tag !== '') || [];
           this.getOfficesForSelect(offer.vendorId);
           this.offerForm.setValue({
             id: offer.id,

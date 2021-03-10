@@ -1,10 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { TranslateService } from '@ngx-translate/core';
 import { Tag } from '@shared/models/tag';
 import { TagsService } from '@shared/services/tags.service';
 import { take } from 'rxjs/operators';
+import { TagDialogComponent } from '../../tag-dialog/tag-dialog.component';
 
 @Component({
   selector: 'app-tags-stat-table',
@@ -16,6 +20,8 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
   dataSource = new MatTableDataSource<Tag>();
   isLoading = true;
+  tag!: string;
+  tags!: string[];
 
   displayedColumns = [
     'delete',
@@ -29,21 +35,30 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     'updatedBy'
   ];
 
-  constructor(private tagsService: TagsService) {}
+  constructor(
+    private tagsService: TagsService,
+    public dialog: MatDialog,
+    private translate: TranslateService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.tagsService
       .getTagsForAdmin()
       .pipe(take(1))
       .subscribe((tags: Tag[]) => {
-        if (tags) this.dataSource.data = tags as Tag[];
+        if (tags) {
+          console.log(tags);
+          this.dataSource.data = tags as Tag[];
+          this.tags = this.dataSource.data.map((tag) => tag.name);
+        }
         this.isLoading = false;
       });
     // custom filter: search results only from vendor name column
     this.dataSource.filterPredicate = (data: Tag, filter) => {
       const filterObj = JSON.parse(filter);
       if (!filter) return true;
-      if (filterObj.isDeleted && String(data.isDeleted) !== filterObj.isDeleted)
+      if (filterObj.isDeleted && String(data.isDeleted) === filterObj.isDeleted)
         return false;
       if (!filterObj.name) return true;
       return (
@@ -77,6 +92,31 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  deactivate(id: string): void {
+    this.tagsService.deleteTag(id);
+  }
+
+  activate(id: string): void {
+    this.tagsService.restoreTag(id);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TagDialogComponent, {
+      width: '250px',
+      data: { name: this.tag }
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (!result) return;
+      result = result.charAt(0).toUpperCase() + result.slice(1).toLowerCase();
+      if (this.tags.includes(result)) {
+        this.showSnackbar();
+        return;
+      }
+      this.tagsService.addTag({ name: result });
+    });
+  }
+
   applyFilter(value: string, name: string): void {
     // we create an object where keys are properties to filter and values are values from controls
     const currentFilter = JSON.parse(this.dataSource.filter || '{}');
@@ -87,5 +127,19 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  showSnackbar(): void {
+    const message =
+      this.translate.currentLang === 'en'
+        ? 'Tag already exist!'
+        : 'Тэг существует!';
+    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
+    this.snackBar.open(message, action, {
+      duration: 3000,
+      verticalPosition: 'top',
+      horizontalPosition: 'center',
+      panelClass: ['snackbar']
+    });
   }
 }
