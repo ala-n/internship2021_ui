@@ -35,8 +35,13 @@
         </a>
         <a
           mat-list-item
+          [class.nav__button]="navigationService.role !== 'User'"
           routerLink="home"
-          *ngIf="navigationService.isHomePageOpened; else adminPageButton"
+          *ngIf="
+            navigationService.isHomePageOpened &&
+              navigationService.role !== 'User';
+            else adminPageButton
+          "
           (click)="navigationService.toggleSidenav()"
           (click)="navigationService.toggleHomePage()"
         >
@@ -46,9 +51,11 @@
         <ng-template #adminPageButton>
           <a
             mat-list-item
+            [class.nav__button]="navigationService.role !== 'User'"
             [routerLink]="['admin']"
             (click)="navigationService.toggleSidenav()"
             (click)="navigationService.toggleHomePage()"
+            *ngIf="navigationService.role !== 'User'"
           >
             <mat-icon>build</mat-icon>
             <span>{{ 'manage' | translate }}</span>

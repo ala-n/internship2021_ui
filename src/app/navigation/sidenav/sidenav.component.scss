@@ -60,7 +60,7 @@ main {
   }
 
   mat-nav-list {
-    a:last-child {
+    .nav__button {
       display: none;
     }
 
@@ -90,7 +90,7 @@ main {
     }
 
     mat-nav-list {
-      a:last-child {
+      .nav__button {
         display: block;
       }
 

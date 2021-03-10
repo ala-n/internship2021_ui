@@ -3,6 +3,7 @@ import { User } from '@shared/models/user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpService } from './http.service';
+import { NavigationService } from './navigation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,10 @@ import { HttpService } from './http.service';
 export class UserService {
   static USER_URL = 'api/user';
 
-  constructor(private http: HttpService) {}
+  constructor(
+    private http: HttpService,
+    private navigationService: NavigationService
+  ) {}
 
   // User is always be defined, because we get it in auth.guard.
   private _user$ = new BehaviorSubject<User | null>(null);
@@ -25,6 +29,7 @@ export class UserService {
     return user.pipe(
       tap((user) => {
         this._user$.next(user);
+        this.navigationService.role = user.role;
       }),
       map(() => true),
       catchError(() => of(false))
