@@ -16,8 +16,8 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 })
 export class VendorFormComponent implements OnInit {
   vendorForm = this.fb.group({
-    name: [null, Validators.required],
-    title: [null, Validators.required],
+    name: [null, [Validators.required, Validators.maxLength(50)]],
+    title: [null, [Validators.required, Validators.maxLength(50)]],
     description: null,
     website: [null, Validators.required],
     isActive: false

@@ -7,7 +7,7 @@ import { Office } from '@shared/models/office';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
-import { FormDialogComponent } from '../../form-dialog/form-dialog.component';
+import { FormDialogComponent } from '../../dialogs/form-dialog/form-dialog.component';
 import { from, Observable } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
 import { CityService } from '@shared/services/city.service';

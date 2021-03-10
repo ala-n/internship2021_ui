@@ -30,7 +30,7 @@ import { VendorService } from '@shared/services/vendor.service';
 export class OfferFormComponent implements OnInit {
   offerForm = this.fb.group({
     id: null,
-    title: [null, Validators.required],
+    title: [null, [Validators.required, Validators.maxLength(50)]],
     discount: [null, Validators.required],
     description: null,
     dateStart: null,

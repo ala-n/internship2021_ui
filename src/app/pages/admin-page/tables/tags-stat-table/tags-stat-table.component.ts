@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Tag } from '@shared/models/tag';
 import { TagsService } from '@shared/services/tags.service';
 import { take } from 'rxjs/operators';
-import { TagDialogComponent } from '../../tag-dialog/tag-dialog.component';
+import { TagDialogComponent } from '../../dialogs/tag-dialog/tag-dialog.component';
 
 @Component({
   selector: 'app-tags-stat-table',

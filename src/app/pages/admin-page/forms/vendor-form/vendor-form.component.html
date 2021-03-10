@@ -8,6 +8,10 @@
           {{ 'brand_name' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
         </mat-error>
+        <mat-error *ngIf="vendorForm.controls['name'].hasError('maxlength')">
+          {{ 'max_length' | translate }} {{ 'is' | translate }}
+          <strong>{{ '50' | translate }}</strong>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="col">
@@ -29,6 +33,10 @@
         <mat-error *ngIf="vendorForm.controls['title'].hasError('required')">
           {{ 'title' | translate }} {{ 'is' | translate }}
           <strong>{{ 'required' | translate }}</strong>
+        </mat-error>
+        <mat-error *ngIf="vendorForm.controls['title'].hasError('maxlength')">
+          {{ 'max_length' | translate }} {{ 'is' | translate }}
+          <strong>{{ '50' | translate }}</strong>
         </mat-error>
       </mat-form-field>
     </div>
