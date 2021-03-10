@@ -130,6 +130,7 @@ export class OfferFormComponent implements OnInit {
       .getVendorOffices(vendorId, true)
       .pipe(take(1))
       .subscribe((offices: Office[]) => {
+        offices = offices.filter((office) => office.isActive === true);
         offices.map(
           (office) =>
             (office.address.cityId = this.cityService.getCityName(
