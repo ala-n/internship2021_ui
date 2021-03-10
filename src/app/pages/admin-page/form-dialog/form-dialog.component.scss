@@ -1,5 +1,9 @@
 @import '/src/app/styles/variables.scss';
 
+:host {
+  color: $text-primary;
+}
+
 #mapAdmin {
   width: 60vw;
   height: 50vh;
