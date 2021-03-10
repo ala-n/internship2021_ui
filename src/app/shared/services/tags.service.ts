@@ -35,7 +35,7 @@ export class TagsService {
     return this.http.get(`${TagsService.TAGS_URL}/${id}`);
   }
 
-  getTagsValue(): Observable<Tag[]> {
+  getTopTags(): Observable<Tag[]> {
     // return this.http.get(TagsService.TOP_TAGS_URL);
     if (!this._topTags$) {
       this._topTags$ = this.http
