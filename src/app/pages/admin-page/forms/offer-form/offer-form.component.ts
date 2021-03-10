@@ -6,8 +6,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
 import {
   MatAutocomplete,
   MatAutocompleteSelectedEvent
@@ -21,6 +19,7 @@ import { TagsService } from '@shared/services/tags.service';
 import { OfferService } from '@shared/services/offer.service';
 import { OfficeService } from '@shared/services/office.service';
 import { VendorService } from '@shared/services/vendor.service';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -64,8 +63,7 @@ export class OfferFormComponent implements OnInit {
     private cityService: CityService,
     private tagsService: TagsService,
     private route: ActivatedRoute,
-    private translate: TranslateService,
-    private snackBar: MatSnackBar,
+    private alertService: AlertService,
     public navigationService: NavigationService
   ) {
     this.filteredTags = this.tagsCtrl.valueChanges.pipe(
@@ -160,7 +158,7 @@ export class OfferFormComponent implements OnInit {
     if (value && !this.allTags.includes(value)) {
       input.value = '';
       this.removeTag(value);
-      this.showSnackbar();
+      this.alertService.showSnackbar('select_existing');
       return;
     }
 
@@ -192,7 +190,7 @@ export class OfferFormComponent implements OnInit {
   checkTagReplica(value: string): string {
     if (value && this.tags.includes(value)) {
       value = '';
-      this.showSnackbar(true);
+      this.alertService.showSnackbar('tag_added');
     }
     return value;
   }
@@ -203,27 +201,5 @@ export class OfferFormComponent implements OnInit {
     return this.allTags.filter(
       (tag) => tag.toLowerCase().indexOf(filterValue) === 0
     );
-  }
-
-  showSnackbar(exist?: boolean): void {
-    let message = '';
-    if (exist) {
-      message =
-        this.translate.currentLang === 'en'
-          ? 'Tag already added!'
-          : 'Тэг уже добавлен!';
-    } else {
-      message =
-        this.translate.currentLang === 'en'
-          ? 'Please, select existing tag!'
-          : 'Пожалуйста, выберите существующий тэг!';
-    }
-    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
-    this.snackBar.open(message, action, {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      panelClass: ['snackbar']
-    });
   }
 }

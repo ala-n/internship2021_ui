@@ -11,8 +11,7 @@ import { FormDialogComponent } from '../../dialogs/form-dialog/form-dialog.compo
 import { from, Observable } from 'rxjs';
 import { MapService } from '@shared/services/map.service';
 import { CityService } from '@shared/services/city.service';
-import { TranslateService } from '@ngx-translate/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-office-form',
@@ -50,8 +49,7 @@ export class OfficeFormComponent implements OnInit {
     public navigationService: NavigationService,
     public dialog: MatDialog,
     private mapService: MapService,
-    private translate: TranslateService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) {}
 
   get vendorId(): string {
@@ -150,23 +148,9 @@ export class OfficeFormComponent implements OnInit {
 
   checkCity(value: string): boolean {
     if (value && !this.options.includes(value)) {
-      this.showSnackbar();
+      this.alertService.showSnackbar('inavailible_city');
       return false;
     }
     return true;
-  }
-
-  showSnackbar(): void {
-    const message =
-      this.translate.currentLang === 'en'
-        ? 'Please, input address from list of availible cities!'
-        : 'Пожалуйста, введите адресс из списка доступных городов!';
-    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
-    this.snackBar.open(message, action, {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      panelClass: ['snackbar']
-    });
   }
 }

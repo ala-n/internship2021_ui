@@ -1,11 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { TranslateService } from '@ngx-translate/core';
 import { Tag } from '@shared/models/tag';
+import { AlertService } from '@shared/services/alert.service';
 import { TagsService } from '@shared/services/tags.service';
 import { take } from 'rxjs/operators';
 import { TagDialogComponent } from '../../dialogs/tag-dialog/tag-dialog.component';
@@ -38,8 +37,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
   constructor(
     private tagsService: TagsService,
     public dialog: MatDialog,
-    private translate: TranslateService,
-    private snackBar: MatSnackBar
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -110,7 +108,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
       if (!result) return;
       result = result.charAt(0).toUpperCase() + result.slice(1).toLowerCase();
       if (this.tags.includes(result)) {
-        this.showSnackbar();
+        this.alertService.showSnackbar('tag_exist');
         return;
       }
       this.tagsService.addTag({ name: result });
@@ -127,19 +125,5 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  showSnackbar(): void {
-    const message =
-      this.translate.currentLang === 'en'
-        ? 'Tag already exist!'
-        : 'Тэг существует!';
-    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
-    this.snackBar.open(message, action, {
-      duration: 3000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      panelClass: ['snackbar']
-    });
   }
 }

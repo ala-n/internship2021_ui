@@ -5,9 +5,8 @@ import { VendorService } from '@shared/services/vendor.service';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { NavigationService } from '@shared/services/navigation.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-vendor-form',
@@ -31,8 +30,7 @@ export class VendorFormComponent implements OnInit {
     private vendorService: VendorService,
     private route: ActivatedRoute,
     public navigationService: NavigationService,
-    private snackBar: MatSnackBar,
-    private translate: TranslateService
+    private alertService: AlertService
   ) {}
 
   get vendorId(): string {
@@ -67,16 +65,6 @@ export class VendorFormComponent implements OnInit {
 
   showSnackbar(e: MatSlideToggleChange): void {
     if (e.checked || !this.vendorId) return;
-    const message =
-      this.translate.currentLang === 'en'
-        ? 'Deactivation of brand provides deactivation of all it`s offers and offices'
-        : 'Деактивация брэнда приведёт к деактивации всех его акций и оффисов';
-    const action = this.translate.currentLang === 'en' ? 'Close' : 'Закрыть';
-    this.snackBar.open(message, action, {
-      duration: 4000,
-      verticalPosition: 'top',
-      horizontalPosition: 'center',
-      panelClass: ['snackbar']
-    });
+    this.alertService.showSnackbar('vendor_deactivate');
   }
 }

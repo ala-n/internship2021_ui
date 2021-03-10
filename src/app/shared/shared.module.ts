@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ToolbarComponent } from './custom-components/toolbar/toolbar.component';
 import { MapComponent } from './custom-components/map/map.component';
@@ -59,18 +59,12 @@ import { MatPaginationIntlService } from './services/matpaginationintl.service';
     MapBaseComponent,
     HostnamePipe
   ],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: MatPaginationIntlService
+    }
+  ],
   entryComponents: [PopupComponent]
 })
-export class SharedModule {
-  static forRoot(): ModuleWithProviders<SharedModule> {
-    return {
-      ngModule: SharedModule,
-      providers: [
-        {
-          provide: MatPaginatorIntl,
-          useClass: MatPaginationIntlService
-        }
-      ]
-    };
-  }
-}
+export class SharedModule {}
