@@ -19,6 +19,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MapBaseComponent } from './custom-components/map/map-base/map-base.component';
 
 import { HostnamePipe } from '@shared/pipes/hostname.pipe';
+import { OfferListComponent } from './custom-components/offer-list/offer-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HostnamePipe } from '@shared/pipes/hostname.pipe';
     OfferItemComponent,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe
+    HostnamePipe,
+    OfferListComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { HostnamePipe } from '@shared/pipes/hostname.pipe';
     TranslateModule,
     GoBackButtonComponent,
     MapBaseComponent,
-    HostnamePipe
+    HostnamePipe,
+    OfferListComponent
   ],
   entryComponents: [PopupComponent]
 })

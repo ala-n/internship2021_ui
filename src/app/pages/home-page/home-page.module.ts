@@ -9,9 +9,10 @@ import { OfferItemPageComponent } from './offer-item-page/offer-item-page.compon
 import { OfferListPageComponent } from './offer-list-page/offer-list-page.component';
 import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.component';
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
+import { HistoryPageComponent } from './history-page/history-page.component';
+import { BookmarksPageComponent } from './bookmarks-page/bookmarks-page.component';
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
-import { ListPageComponent } from './list-page/list-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ListPageComponent } from './list-page/list-page.component';
     VendorItemPageComponent,
     OfficeItemPageComponent,
     ConcatPipe,
-    ListPageComponent
+    HistoryPageComponent,
+    BookmarksPageComponent
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule]
 })
