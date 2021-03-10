@@ -30,7 +30,7 @@ export class TagsService {
       );
   }
 
-  getTagsValue(): Observable<Tag[]> {
+  getTopTags(): Observable<Tag[]> {
     // return this.http.get(TagsService.TOP_TAGS_URL);
     return this.http.get(`${TagsService.TAGS_URL}/topTags`);
   }

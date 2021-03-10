@@ -11,8 +11,8 @@ import { TagsService } from '@shared/services/tags.service';
 })
 export class TagsComponent implements OnInit {
   tags!: Tag[];
-  selectedAll = true;
   status = false;
+  selectedAll = true;
 
   constructor(
     private tagsService: TagsService,
@@ -25,7 +25,7 @@ export class TagsComponent implements OnInit {
 
   ngOnInit(): void {
     this.tagsService
-      .getTagsValue()
+      .getTopTags()
       .subscribe((tags: Tag[]) => this.receiveData(tags));
   }
 
@@ -42,7 +42,7 @@ export class TagsComponent implements OnInit {
   }
 
   resetTagSearch(): void {
-    this.selectedAll = true;
+    this.selectedAll = false;
     this.filterService.clearFilter();
   }
 }
