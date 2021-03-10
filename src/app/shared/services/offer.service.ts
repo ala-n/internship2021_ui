@@ -31,9 +31,11 @@ export class OfferService {
     }
   }
 
-  getOfferById(id: string): Observable<Offer> {
+  getOfferById(id: string, statistics?: boolean): Observable<Offer> {
     // for backend and mocks
-    return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
+    if (statistics)
+      return this.http.get(`${OfferService.OFFERS_URL}/${id}?metricsView=true`);
+    else return this.http.get(`${OfferService.OFFERS_URL}/${id}`);
   }
 
   getVendorOffers(vendorId: string, inactive?: boolean): Observable<Offer[]> {
