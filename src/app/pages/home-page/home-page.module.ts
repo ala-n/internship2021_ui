@@ -11,6 +11,7 @@ import { VendorItemPageComponent } from './vendor-item-page/vendor-item-page.com
 import { OfficeItemPageComponent } from './office-item-page/office-item-page.component';
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
+import { ListPageComponent } from './list-page/list-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ConcatPipe } from '@shared/pipes/concat.pipe';
     OfferListPageComponent,
     VendorItemPageComponent,
     OfficeItemPageComponent,
-    ConcatPipe
+    ConcatPipe,
+    ListPageComponent
   ],
   imports: [CommonModule, HomePageRoutingModule, SharedModule]
 })
