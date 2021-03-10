@@ -31,8 +31,12 @@ export class SearchComponent implements OnInit {
   searchBy(): void {
     const tag = this.control.value.trim().toLowerCase();
     const tagId = this.tagsService.getTagId(tag);
-    this.control.setValue(tag);
-    this.filterService.filterByTags(tagId);
+    if (tagId) {
+      this.control.setValue(tag);
+      this.filterService.filterByTags(tagId);
+    } else {
+      this.filterService.filterByText(this.control.value);
+    }
     this.control.setValue('');
   }
 
