@@ -86,7 +86,7 @@ class RatingStars extends HTMLElement {
 
   connectedCallback() {
     this.update();
-    this.disconnectedCallback();
+    this.shadowRoot?.addEventListener('change', this._onChange);
   }
 
   disconnectedCallback() {
@@ -111,6 +111,7 @@ class RatingStars extends HTMLElement {
   private update(): void {
     if (!this.shadowRoot) return;
     const value = String(this.value);
+
     const inputs = Array.from(
       this.shadowRoot.querySelectorAll('input')
     ) as HTMLInputElement[];
@@ -127,8 +128,6 @@ class RatingStars extends HTMLElement {
       cancelable: true
     });
     this.dispatchEvent(event);
-
-    console.log(this.value);
   }
 }
 

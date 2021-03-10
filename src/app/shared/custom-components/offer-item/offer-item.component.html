@@ -21,7 +21,11 @@
   </div>
 
   <div class="offer-card__properties">
-    <rating-stars class="offer-card__stars" [value]="offer.rate"></rating-stars>
+    <rating-stars
+      class="offer-card__stars"
+      disabled
+      [value]="offer.rate"
+    ></rating-stars>
     <div class="offer-card__statistics">
       <div class="offer-card__views">
         <mat-icon aria-hidden="false" aria-label="views">visibility</mat-icon>

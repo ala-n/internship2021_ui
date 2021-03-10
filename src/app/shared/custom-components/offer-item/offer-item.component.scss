@@ -96,6 +96,15 @@ $small-card: 1500px;
   &__stars {
     top: 0.1em;
     position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 110px;
+      height: 24px;
+    }
   }
 
   &__statistics {

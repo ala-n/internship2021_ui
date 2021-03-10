@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { FavoriteOfferService } from '@shared/services/favorite-offer.service';
+import { HistoryOfferService } from '@shared/services/history-offer.service';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { of } from 'rxjs';
@@ -30,6 +31,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private readonly offerService: OfferService,
     private readonly mapService: MapService,
     private favoriteOfferService: FavoriteOfferService,
+    private historyOfferService: HistoryOfferService,
     public dialog: MatDialog
   ) {}
 
@@ -73,6 +75,30 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       if (offer === null) this.favoriteIs = false;
       else this.favoriteIs = true;
     });
+  }
+
+  onRatingChange(e: Event): void {
+    if (e.target) {
+      this.historyOfferService
+        .isHistoryOffer(this.offerId)
+        .subscribe((data) => {
+          if (data !== null) {
+            console.log(data, 'yes');
+
+            this.historyOfferService.putHistoryOffer(
+              this.offerId,
+              +(e.target as HTMLInputElement).value
+            );
+          } else {
+            console.log(data, 'null');
+            this.historyOfferService.addHistoryOffer(
+              this.offerId,
+              this.offer.vendorId,
+              +(e.target as HTMLInputElement).value
+            );
+          }
+        });
+    }
   }
 
   ngOnDestroy(): void {

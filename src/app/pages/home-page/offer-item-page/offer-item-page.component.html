@@ -38,7 +38,10 @@
           </button>
           <mat-menu #belowMenu="matMenu" yPosition="below">
             <div class="item__popup">
-              <rating-stars [value]="offer.rate"></rating-stars>
+              <rating-stars
+                [value]="offer.rate"
+                (change)="onRatingChange($event)"
+              ></rating-stars>
             </div>
           </mat-menu>
 
