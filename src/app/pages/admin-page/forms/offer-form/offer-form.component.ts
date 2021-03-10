@@ -42,6 +42,8 @@ export class OfferFormComponent implements OnInit {
   });
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  selectable = true;
+  removable = true;
   allTags: string[] = [];
   tags: string[] = [];
   tagsCtrl = new FormControl();
@@ -155,7 +157,9 @@ export class OfferFormComponent implements OnInit {
     const input = event.input;
     let value = event.value.toLowerCase();
 
-    if (value && !this.allTags.includes(value)) {
+    if (!value) return;
+
+    if (!this.allTags.includes(value)) {
       input.value = '';
       this.removeTag(value);
       this.alertService.showSnackbar('select_existing');
@@ -164,13 +168,21 @@ export class OfferFormComponent implements OnInit {
 
     value = this.checkTagReplica(value);
 
-    if ((value || '').trim()) {
+    if (value.trim()) {
       this.tags.push(value.trim());
     }
 
     if (input) {
       input.value = '';
     }
+  }
+
+  checkTagReplica(value: string): string {
+    if (value && this.tags.includes(value)) {
+      value = '';
+      this.alertService.showSnackbar('tag_added');
+    }
+    return value;
   }
 
   removeTag(tag: string): void {
@@ -182,17 +194,10 @@ export class OfferFormComponent implements OnInit {
   }
 
   selectedTag(event: MatAutocompleteSelectedEvent): void {
-    this.checkTagReplica(event.option.viewValue);
+    const value = this.checkTagReplica(event.option.viewValue);
+    value && this.tags.push(value);
     this.tagsInput.nativeElement.value = '';
     this.tagsCtrl.setValue(null);
-  }
-
-  checkTagReplica(value: string): string {
-    if (value && this.tags.includes(value)) {
-      value = '';
-      this.alertService.showSnackbar('tag_added');
-    }
-    return value;
   }
 
   private _filter(value: string): string[] {

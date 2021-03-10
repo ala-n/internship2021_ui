@@ -13,7 +13,6 @@ export class MatPaginationIntlService extends MatPaginatorIntl {
     // React whenever the language is changed
     this.translate.onLangChange.subscribe((_event: Event) => {
       this.translateLabels();
-      console.log('fire');
     });
 
     // Initialize the translations once at construction time

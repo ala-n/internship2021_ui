@@ -109,8 +109,14 @@
       <mat-form-field class="full-width" appearance="outline">
         <mat-label>{{ 'tags' | translate }}</mat-label>
         <mat-chip-list #tagList aria-label="Tag adding" formControlName="tags">
-          <mat-chip *ngFor="let tag of tags">
+          <mat-chip
+            *ngFor="let tag of tags"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeTag(tag)"
+          >
             {{ tag }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
           </mat-chip>
           <input
             placeholder="{{ 'new_tag' | translate }}"
