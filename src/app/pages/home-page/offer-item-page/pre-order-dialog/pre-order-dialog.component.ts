@@ -15,7 +15,9 @@ export class PreOrderDialogComponent {
     name: `${this.data.user.firstName} ${this.data.user.lastName}`,
     phone:
       this.data.user.phone === '' ? this.data.user.phone : '+7 950-64-34-190',
-    comment: 'promocode'.toLowerCase() + ': ' + this.data.promocode,
+    comment: this.data.promocode
+      ? 'promocode'.toLowerCase() + ': ' + this.data.promocode
+      : '',
     offerId: this.data.offerId
   };
 
