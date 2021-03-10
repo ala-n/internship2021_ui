@@ -73,7 +73,9 @@
         >
           {{ 'rating' | translate }}
         </th>
-        <td mat-cell *matCellDef="let offer">{{ offer.rate }}</td>
+        <td mat-cell *matCellDef="let offer">
+          {{ offer.rate | number: '1.0-1' }}
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="numberOfViews">

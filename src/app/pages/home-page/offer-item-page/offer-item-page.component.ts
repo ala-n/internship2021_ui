@@ -14,6 +14,7 @@ import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
 import { UserService } from '@shared/services/user.service';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -38,7 +39,8 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private favoriteOfferService: FavoriteOfferService,
     private historyOfferService: HistoryOfferService,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) {}
 
   ngOnInit(): void {
@@ -94,19 +96,17 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   }
 
   onRatingChange(e: Event): void {
+    this.alertService.showSnackbar('offer_rate');
     if (e.target) {
       this.historyOfferService
         .isHistoryOffer(this.offerId)
         .subscribe((data) => {
           if (data !== null) {
-            console.log(data, 'yes');
-
             this.historyOfferService.putHistoryOffer(
               this.offerId,
               +(e.target as HTMLInputElement).value
             );
           } else {
-            console.log(data, 'null');
             this.historyOfferService.addHistoryOffer(
               this.offerId,
               this.offer.vendorId,
