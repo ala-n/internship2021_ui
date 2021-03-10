@@ -1,18 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith, take } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
-import { Offer } from '@shared/models/offer';
-import { Office } from '@shared/models/office';
-import { NavigationService } from '@shared/services/navigation.service';
-import { OfferService } from '@shared/services/offer.service';
-import { OfficeService } from '@shared/services/office.service';
-import { VendorService } from '@shared/services/vendor.service';
-import { take } from 'rxjs/operators';
 
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
+import {
+  MatAutocomplete,
+  MatAutocompleteSelectedEvent
+} from '@angular/material/autocomplete';
+
+import { NavigationService } from '@shared/services/navigation.service';
+import { Offer } from '@shared/models/offer';
+import { Office } from '@shared/models/office';
 import { CityService } from '@shared/services/city.service';
 import { TagsService } from '@shared/services/tags.service';
+import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/office.service';
+import { VendorService } from '@shared/services/vendor.service';
+import { AlertService } from '@shared/services/alert.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -22,20 +29,25 @@ import { TagsService } from '@shared/services/tags.service';
 export class OfferFormComponent implements OnInit {
   offerForm = this.fb.group({
     id: null,
-    title: [null, Validators.required],
+    title: [null, [Validators.required, Validators.maxLength(50)]],
     discount: [null, Validators.required],
     description: null,
     dateStart: null,
     dateEnd: [null, Validators.required],
     promoCode: null,
-    images: null,
+    photoUrl: null,
     vendorEntitiesId: [null, Validators.required],
-    tags: null,
+    tags: [null],
     isActive: false
   });
 
   separatorKeysCodes: number[] = [ENTER, COMMA];
+  selectable = true;
+  removable = true;
+  allTags: string[] = [];
   tags: string[] = [];
+  tagsCtrl = new FormControl();
+  filteredTags: Observable<string[]>;
 
   offers: Offer[] = [];
   offer!: Offer;
@@ -43,22 +55,33 @@ export class OfferFormComponent implements OnInit {
   vendorOffices: Office[] = [];
   offerOfficesId!: string[];
 
+  @ViewChild('auto') matAutocomplete!: MatAutocomplete;
+  @ViewChild('tagsInput') tagsInput!: ElementRef<HTMLInputElement>;
   constructor(
     private fb: FormBuilder,
     private offerService: OfferService,
     private vendorService: VendorService,
     private officeService: OfficeService,
     private cityService: CityService,
+    private tagsService: TagsService,
     private route: ActivatedRoute,
-    public navigationService: NavigationService,
-    private tagsService: TagsService
-  ) {}
+    private alertService: AlertService,
+    public navigationService: NavigationService
+  ) {
+    this.filteredTags = this.tagsCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) =>
+        fruit ? this._filter(fruit) : this.allTags.slice()
+      )
+    );
+  }
 
   get vendorNavId(): string {
     return this.route.snapshot.params.id;
   }
 
   ngOnInit(): void {
+    this.allTags = this.tagsService.tags.map((tag) => tag.name);
     const offerId = this.route.snapshot.params.offerId;
     if (offerId) {
       this.offerService
@@ -69,7 +92,9 @@ export class OfferFormComponent implements OnInit {
           this.vendorName = offer.vendorName;
           this.offerOfficesId = offer.vendorEntities.map((entity) => entity.id);
           this.tags =
-            offer.tags.map((tag) => this.tagsService.getTagName(tag)) || [];
+            offer.tags
+              .map((tag: string) => this.tagsService.getTagName(tag))
+              .filter((tag: string) => tag !== '') || [];
           this.getOfficesForSelect(offer.vendorId);
           this.offerForm.setValue({
             id: offer.id,
@@ -79,7 +104,7 @@ export class OfferFormComponent implements OnInit {
             dateStart: new Date(offer.dateStart).toISOString().substring(0, 10),
             dateEnd: new Date(offer.dateEnd).toISOString().substring(0, 10),
             promoCode: offer.promoCode,
-            images: '',
+            photoUrl: offer.photoUrl[0] || null,
             vendorEntitiesId: this.offerOfficesId,
             tags: this.tags,
             isActive: offer.isActive
@@ -105,6 +130,7 @@ export class OfferFormComponent implements OnInit {
       .getVendorOffices(vendorId, true)
       .pipe(take(1))
       .subscribe((offices: Office[]) => {
+        offices = offices.filter((office) => office.isActive === true);
         offices.map(
           (office) =>
             (office.address.cityId = this.cityService.getCityName(
@@ -116,6 +142,10 @@ export class OfferFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.offerForm.patchValue({
+      photoUrl: [this.offerForm.value.photoUrl],
+      tags: this.tags.map((tag: string) => this.tagsService.getTagId(tag))
+    });
     if (this.offer) {
       this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
     } else {
@@ -125,14 +155,56 @@ export class OfferFormComponent implements OnInit {
 
   addTag(event: MatChipInputEvent): void {
     const input = event.input;
-    const value = event.value;
+    let value = event.value.toLowerCase();
 
-    if ((value || '').trim()) {
+    if (!value) return;
+
+    if (!this.allTags.includes(value)) {
+      input.value = '';
+      this.removeTag(value);
+      this.alertService.showSnackbar('select_existing');
+      return;
+    }
+
+    value = this.checkTagReplica(value);
+
+    if (value.trim()) {
       this.tags.push(value.trim());
     }
 
     if (input) {
       input.value = '';
     }
+  }
+
+  checkTagReplica(value: string): string {
+    if (value && this.tags.includes(value)) {
+      value = '';
+      this.alertService.showSnackbar('tag_added');
+    }
+    return value;
+  }
+
+  removeTag(tag: string): void {
+    const index = this.tags.lastIndexOf(tag);
+
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+  }
+
+  selectedTag(event: MatAutocompleteSelectedEvent): void {
+    const value = this.checkTagReplica(event.option.viewValue);
+    value && this.tags.push(value);
+    this.tagsInput.nativeElement.value = '';
+    this.tagsCtrl.setValue(null);
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+
+    return this.allTags.filter(
+      (tag) => tag.toLowerCase().indexOf(filterValue) === 0
+    );
   }
 }

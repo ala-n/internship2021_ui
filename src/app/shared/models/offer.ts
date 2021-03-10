@@ -21,6 +21,7 @@ export interface Offer extends OfferBase {
   dateEnd: string;
   rate: number;
   tags: string[];
+  images: string[];
   createdAt: string;
   createdBy: string;
   updatedAt: string;

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title class="text text_align_c">Enter new tag</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>{{ 'new_tag' | translate }}</mat-label>
+    <input matInput [(ngModel)]="tag.name" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">{{ 'cancel' | translate }}</button>
+  <button mat-button [mat-dialog-close]="tag.name" cdkFocusInitial>
+    {{ 'save' | translate }}
+  </button>
+</div>
