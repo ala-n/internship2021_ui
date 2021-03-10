@@ -6,9 +6,11 @@ import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
+import { User } from '@shared/models/user';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
+import { UserService } from '@shared/services/user.service';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -18,6 +20,7 @@ import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.com
 export class OfferItemPageComponent implements OnInit, OnDestroy {
   offer!: Offer;
   offices!: Office[];
+  user!: User | null;
 
   isLoading$ = of(true);
 
@@ -25,7 +28,8 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private readonly offerService: OfferService,
     private readonly mapService: MapService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -37,33 +41,22 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       }),
       // for mocks
       // switchMap((offer) => this.officeService.getVendorOffices(offer.vendorId)),
+      switchMap(() => this.userService.user$),
+      tap((user) => (this.user = user)),
       map(() => false)
     );
   }
 
   openDialog(): void {
-    this.dialog.open(PreOrderDialogComponent);
+    this.dialog.open(PreOrderDialogComponent, {
+      data: {
+        promocode: this.offer.promoCode,
+        offices: this.offer.vendorEntities,
+        user: this.user,
+        offerId: this.offer.id
+      }
+    });
   }
-
-  // openDialog(): void {
-  //   const dialogRef = this.dialog.open(FormDialogComponent);
-  //   dialogRef.afterClosed().subscribe((data) => {
-  //     const address = data.address;
-
-  //     this.officeForm.patchValue({
-  //       location: [coordinate.lat, coordinate.lng],
-  //       country: address.country,
-  //       cityId: address.city,
-  //       street: address.road,
-  //       house: address.house_number,
-  //       room: '',
-  //       phone: null,
-  //       email: this.office.email,
-  //       isActive: true
-  //     });
-  //     sub.unsubscribe();
-  //   });
-  // }
 
   ngOnDestroy(): void {
     this.mapService.clearOffer();
