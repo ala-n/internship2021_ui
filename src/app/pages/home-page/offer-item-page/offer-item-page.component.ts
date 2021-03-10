@@ -7,6 +7,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { User } from '@shared/models/user';
+import { FavoriteOfferService } from '@shared/services/favorite-offer.service';
 import { MapService } from '@shared/services/map.service';
 import { OfferService } from '@shared/services/offer.service';
 import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
@@ -22,6 +23,8 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   offices!: Office[];
   user!: User | null;
 
+  offerId!: string;
+  favoriteIs!: boolean;
   isLoading$ = of(true);
 
   constructor(
@@ -29,12 +32,17 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
     private readonly offerService: OfferService,
     private readonly mapService: MapService,
     public dialog: MatDialog,
-    private userService: UserService
+    private userService: UserService,
+    private favoriteOfferService: FavoriteOfferService
   ) {}
 
   ngOnInit(): void {
     this.isLoading$ = this.route.params.pipe(
-      switchMap((params) => this.offerService.getOfferById(params['id'])),
+      switchMap((params) => {
+        this.offerId = params['id'];
+        this.isFavoriteOffer(this.offerId);
+        return this.offerService.getOfferById(params['id']);
+      }),
       tap((offer: Offer) => {
         this.offer = offer;
         this.mapService.setOffer(offer);
@@ -55,6 +63,28 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         user: this.user,
         offerId: this.offer.id
       }
+    });
+  }
+
+  addFavoriteOffer(): void {
+    this.favoriteOfferService
+      .addFavoriteOffer(this.offer.id)
+      .subscribe((offer) => {
+        if (offer.offerId) this.isFavoriteOffer(offer.offerId);
+      });
+  }
+
+  deleteFavoriteOffer(): void {
+    this.favoriteOfferService
+      .deleteFavoriteOffer(this.offerId)
+      .subscribe((offer) => {
+        if (offer !== {}) this.isFavoriteOffer(this.offerId);
+      });
+  }
+  isFavoriteOffer(id: string): void {
+    this.favoriteOfferService.isFavoriteOffer(id).subscribe((offer) => {
+      if (offer === null) this.favoriteIs = false;
+      else this.favoriteIs = true;
     });
   }
 
