@@ -8,6 +8,7 @@ export class NavigationService {
   isSidenavOpened!: boolean;
   isHomePageOpened!: boolean;
   isToolbarOpened!: boolean;
+  isListVisible!: boolean;
   role!: string;
 
   constructor(private location: Location) {}
@@ -24,6 +25,10 @@ export class NavigationService {
     if (this.isHomePageOpened) {
       this.isHomePageOpened = false;
     }
+  }
+
+  toggleMapView(): void {
+    this.isListVisible = !this.isListVisible;
   }
 
   setHomePageVisibility(value: boolean): void {
