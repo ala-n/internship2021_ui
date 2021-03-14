@@ -56,9 +56,15 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.vendor) {
-      this.vendorService.updateVendor(this.vendorForm.value, this.vendorId);
+      this.vendorService
+        .updateVendor(this.vendorForm.value, this.vendorId)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.vendorService.addVendor(this.vendorForm.value);
+      this.vendorService
+        .addVendor(this.vendorForm.value)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

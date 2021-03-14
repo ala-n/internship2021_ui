@@ -3,7 +3,7 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
@@ -84,6 +84,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   deleteFavoriteOffer(): void {
     this.favoriteOfferService
       .deleteFavoriteOffer(this.offerId)
+      .pipe(take(1))
       .subscribe((offer) => {
         if (offer !== {}) this.isFavoriteOffer(this.offerId);
       });
@@ -102,16 +103,20 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         .isHistoryOffer(this.offerId)
         .subscribe((data) => {
           if (data !== null) {
-            this.historyOfferService.putHistoryOffer(
-              this.offerId,
-              +(e.target as HTMLInputElement).value
-            );
+            this.historyOfferService
+              .putHistoryOffer(
+                this.offerId,
+                +(e.target as HTMLInputElement).value
+              )
+              .subscribe();
           } else {
-            this.historyOfferService.addHistoryOffer(
-              this.offerId,
-              this.offer.vendorId,
-              +(e.target as HTMLInputElement).value
-            );
+            this.historyOfferService
+              .addHistoryOffer(
+                this.offerId,
+                this.offer.vendorId,
+                +(e.target as HTMLInputElement).value
+              )
+              .subscribe();
           }
         });
     }

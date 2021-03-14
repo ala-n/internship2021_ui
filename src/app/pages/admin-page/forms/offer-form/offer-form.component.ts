@@ -147,9 +147,15 @@ export class OfferFormComponent implements OnInit {
       tags: this.tags.map((tag: string) => this.tagsService.getTagId(tag))
     });
     if (this.offer) {
-      this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
+      this.offerService
+        .updateOffer(this.offerForm.value, this.offer.vendorId)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.offerService.addOffer(this.offerForm.value, this.vendorNavId);
+      this.offerService
+        .addOffer(this.offerForm.value, this.vendorNavId)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

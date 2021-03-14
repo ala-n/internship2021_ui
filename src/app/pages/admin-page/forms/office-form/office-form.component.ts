@@ -133,9 +133,15 @@ export class OfficeFormComponent implements OnInit {
       this.cityService.getCityId(this.officeForm.value.cityId)
     );
     if (this.office) {
-      this.officeService.updateOffice(this.officeForm.value);
+      this.officeService
+        .updateOffice(this.officeForm.value)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.vendorService.addOffice(this.officeForm.value, this.vendorId);
+      this.vendorService
+        .addOffice(this.officeForm.value, this.vendorId)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

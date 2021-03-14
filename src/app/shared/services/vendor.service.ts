@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
@@ -42,19 +42,19 @@ export class VendorService {
     return this.http.get<Vendor>(url);
   }
 
-  addVendor(vendor: Vendor): Subscription {
+  addVendor(vendor: Vendor): Observable<Vendor> {
     const url = VendorService.VENDORS_URL;
-    return this.http.post<Vendor>(url, vendor).subscribe();
+    return this.http.post<Vendor, Vendor>(url, vendor);
   }
 
-  updateVendor(vendor: Vendor, vendorId: string): Subscription {
+  updateVendor(vendor: Vendor, vendorId: string): Observable<Vendor> {
     const url = `${VendorService.VENDORS_URL}/${vendorId}`;
-    return this.http.put<Vendor>(url, vendor).subscribe();
+    return this.http.put<Vendor, Vendor>(url, vendor);
   }
 
-  addOffice(office: Office, vendorId: string): Subscription {
+  addOffice(office: Office, vendorId: string): Observable<Office> {
     const url = `${VendorService.VENDORS_URL}/${vendorId}/vendorEntities`;
     office.vendorId = vendorId;
-    return this.http.post<Office>(url, office).subscribe();
+    return this.http.post<Office, Office>(url, office);
   }
 }

@@ -90,11 +90,11 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
   }
 
   deactivate(id: string): void {
-    this.tagsService.deleteTag(id);
+    this.tagsService.deleteTag(id).pipe(take(1)).subscribe();
   }
 
   activate(id: string): void {
-    this.tagsService.restoreTag(id);
+    this.tagsService.restoreTag(id).pipe(take(1)).subscribe();
   }
 
   openDialog(): void {
@@ -110,7 +110,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
         this.alertService.showSnackbar('tag_exist');
         return;
       }
-      this.tagsService.addTag({ name: result });
+      this.tagsService.addTag({ name: result }).pipe(take(1)).subscribe();
     });
   }
 
