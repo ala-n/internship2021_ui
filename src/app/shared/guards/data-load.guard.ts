@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { CityService } from '@shared/services/city.service';
-import { LocationService } from '@shared/services/location.service';
-import { NavigationService } from '@shared/services/navigation.service';
-import { TagsService } from '@shared/services/tags.service';
-import { UserService } from '@shared/services/user.service';
+import { CityService } from '@shared/services/http/city/city.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
+import { UserService } from '@shared/services/http/user/user.service';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { TagsService } from '@shared/services/http/tag/tags.service';
+import { LocationService } from '@shared/services/state/location.service';
 
 @Injectable({
   providedIn: 'root'

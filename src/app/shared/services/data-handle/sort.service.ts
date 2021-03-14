@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { BehaviorSubject } from 'rxjs';
-import { MapService } from './map.service';
+import { MapService } from '../map/map.service';
 
 type OfferWithDistance = {
   offer: Offer;

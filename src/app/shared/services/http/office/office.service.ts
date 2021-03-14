@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Office } from '@shared/models/office';
-import { HttpService } from './http.service';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'

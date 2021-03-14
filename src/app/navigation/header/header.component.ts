@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from '@shared/models/user';
-import { NavigationService } from '@shared/services/navigation.service';
-import { UserService } from '@shared/services/user.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
+import { UserService } from '@shared/services/http/user/user.service';
 
 @Component({
   selector: 'app-header',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from '@shared/services/location.service';
-import { NavigationService } from '@shared/services/navigation.service';
+import { LocationService } from '@shared/services/state/location.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 

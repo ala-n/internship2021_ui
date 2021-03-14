@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import vendors from '../mocks/vendors';
-import offers from '../mocks/offers';
-import vendorEntities from '../mocks/offices';
-import topTags from '../mocks/top-tags';
-import tags from '../mocks/tags';
-import user from '../mocks/user';
+import vendors from '../../mocks/vendors';
+import offers from '../../mocks/offers';
+import vendorEntities from '../../mocks/offices';
+import topTags from '../../mocks/top-tags';
+import tags from '../../mocks/tags';
+import user from '../../mocks/user';
 // import cities from '../mocks/cities';
 
 @Injectable({

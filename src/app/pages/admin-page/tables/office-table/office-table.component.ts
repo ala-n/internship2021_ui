@@ -4,8 +4,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute } from '@angular/router';
 import { Office } from '@shared/models/office';
-import { CityService } from '@shared/services/city.service';
-import { OfficeService } from '@shared/services/office.service';
+import { CityService } from '@shared/services/http/city/city.service';
+import { OfficeService } from '@shared/services/http/office/office.service';
 import { take } from 'rxjs/operators';
 
 @Component({

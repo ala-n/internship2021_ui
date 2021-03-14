@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MapService } from '@shared/services/map.service';
-import { SortService } from '@shared/services/sort.service';
-import { AlertService } from '@shared/services/alert.service';
+import { SortService } from '@shared/services/data-handle/sort.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-sort',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tag } from '@shared/models/tag';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { share, tap } from 'rxjs/operators';
-import { HttpService } from './http.service';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'

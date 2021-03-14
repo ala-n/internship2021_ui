@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationService } from '@shared/services/navigation.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 
 @Component({
   selector: 'app-toolbar',

@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tag } from '@shared/models/tag';
-import { AlertService } from '@shared/services/alert.service';
-import { TagsService } from '@shared/services/tags.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
 import { take } from 'rxjs/operators';
 import { TagDialogComponent } from '../../dialogs/tag-dialog/tag-dialog.component';
 

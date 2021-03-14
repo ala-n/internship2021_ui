@@ -5,8 +5,8 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-import { LocationService } from '@shared/services/location.service';
-import { MapService } from '@shared/services/map.service';
+import { MapService } from '@shared/services/map/map.service';
+import { LocationService } from '@shared/services/state/location.service';
 import * as L from 'leaflet';
 import { Layer } from 'leaflet';
 import { GeoSearchControl } from 'leaflet-geosearch';

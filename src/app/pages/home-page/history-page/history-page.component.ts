@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Offer } from '@shared/models/offer';
-import { FilterService } from '@shared/services/filter.service';
-import { LocationService } from '@shared/services/location.service';
-import { TagsService } from '@shared/services/tags.service';
+import { FilterService } from '@shared/services/data-handle/filter.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
+import { LocationService } from '@shared/services/state/location.service';
 import { Observable } from 'rxjs';
 import { skip } from 'rxjs/operators';
 

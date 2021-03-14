@@ -8,13 +8,13 @@ import { map, switchMap, take, tap } from 'rxjs/operators';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { User } from '@shared/models/user';
-import { FavoriteOfferService } from '@shared/services/favorite-offer.service';
-import { HistoryOfferService } from '@shared/services/history-offer.service';
-import { MapService } from '@shared/services/map.service';
-import { OfferService } from '@shared/services/offer.service';
 import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
-import { UserService } from '@shared/services/user.service';
-import { AlertService } from '@shared/services/alert.service';
+import { UserService } from '@shared/services/http/user/user.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { OfferService } from '@shared/services/http/offer/offer.service';
+import { FavoriteOfferService } from '@shared/services/http/user/favorite-offer.service';
+import { HistoryOfferService } from '@shared/services/http/user/history-offer.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-offer-item-page',

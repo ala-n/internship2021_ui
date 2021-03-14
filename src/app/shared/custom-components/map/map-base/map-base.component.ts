@@ -6,13 +6,13 @@ import {
   SimpleChanges,
   OnDestroy
 } from '@angular/core';
-import { MapService } from '@shared/services/map.service';
 import * as L from 'leaflet';
 import 'leaflet.markercluster';
 import 'leaflet.locatecontrol';
-import { LocationService } from '@shared/services/location.service';
-import { FilterService } from '@shared/services/filter.service';
 import { Router } from '@angular/router';
+import { LocationService } from '@shared/services/state/location.service';
+import { MapService } from '@shared/services/map/map.service';
+import { FilterService } from '@shared/services/data-handle/filter.service';
 export type MarkerExtended = L.Marker & { officeId?: string };
 
 @Component({

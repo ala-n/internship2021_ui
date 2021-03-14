@@ -3,7 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Vendor } from '@shared/models/vendor';
-import { VendorService } from '@shared/services/vendor.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
 import { take } from 'rxjs/operators';
 
 @Component({

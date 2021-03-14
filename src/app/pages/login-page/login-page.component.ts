@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '@shared/services/auth.service';
+import { AuthService } from '@shared/services/http/auth.service';
 import { LoginData } from '@shared/models/login_data';
 import { Router } from '@angular/router';
 

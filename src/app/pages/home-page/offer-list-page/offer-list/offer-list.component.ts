@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Offer } from '@shared/models/offer';
-import { LocationService } from '@shared/services/location.service';
+import { LocationService } from '@shared/services/state/location.service';
 
 @Component({
   selector: 'app-offer-list',

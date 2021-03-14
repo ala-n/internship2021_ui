@@ -3,8 +3,8 @@ import { Observable } from 'rxjs';
 
 import { Vendor } from '@shared/models/vendor';
 import { Office } from '@shared/models/office';
-import { CityService } from './city.service';
-import { HttpService } from './http.service';
+import { CityService } from '../city/city.service';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
