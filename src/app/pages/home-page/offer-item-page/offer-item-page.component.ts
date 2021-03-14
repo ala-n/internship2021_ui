@@ -48,7 +48,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
       switchMap((params) => {
         this.offerId = params['id'];
         this.isFavoriteOffer(this.offerId);
-        return this.offerService.getOfferById(params['id']);
+        return this.offerService.getOfferById(params['id'], true);
       }),
       tap((offer: Offer) => {
         this.offer = offer;
