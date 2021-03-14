@@ -14,9 +14,9 @@
 }
 
 ::ng-deep .mat-ripple.mat-tab-label.mat-focus-indicator.ng-star-inserted {
-  color: $background-light;
+  // color: $background-light;
   border-radius: 10px 10px 0 0;
-  background-color: rgba($color: $background-tabs, $alpha: 0.8);
+  // background-color: rgba($color: $background-tabs, $alpha: 0.8);
   min-width: 100px;
 
   &.mat-tab-label-active {
@@ -31,7 +31,7 @@
 }
 
 ::ng-deep .mat-tab-body-wrapper {
-  background-color: $background-light;
+  // background-color: $background-light;
   border-radius: 0 0 10px 10px;
   padding: 1.5em;
   line-height: 24px;
@@ -45,6 +45,6 @@
   text-transform: uppercase;
 }
 
-::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
-  background-color: $background-tabs;
-}
+// ::ng-deep .mat-tab-group.mat-primary .mat-ink-bar {
+//   background-color: $background-tabs;
+// }

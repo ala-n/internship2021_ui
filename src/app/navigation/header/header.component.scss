@@ -1,6 +1,12 @@
 @import '/src/app/styles/custom-theme.scss';
 @import '/src/app/styles/variables.scss';
 
+@mixin light-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+}
+
 .header {
   display: flex;
   align-items: center;
