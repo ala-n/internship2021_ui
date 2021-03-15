@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { NavigationService } from '@shared/services/navigation.service';
-import { UserService } from '@shared/services/user.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
+import { UserService } from '@shared/services/http/user/user.service';
 import { User } from '@shared/models/user';
 
 @Component({

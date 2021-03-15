@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-
-import { Offer } from '../models/offer';
-import { CityService } from './city.service';
-import { HttpService } from './http.service';
+import { Offer } from '@shared/models/offer';
+import { Observable } from 'rxjs';
+import { CityService } from '../city/city.service';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -68,15 +67,15 @@ export class OfferService {
     return this.http.get<Offer[]>(url);
   }
 
-  addOffer(offer: Offer, vendorId: string): Subscription {
+  addOffer(offer: Offer, vendorId: string): Observable<Offer> {
     const url = OfferService.OFFERS_URL;
     offer.vendorId = vendorId;
-    return this.http.post(url, offer).subscribe();
+    return this.http.post(url, offer);
   }
 
-  updateOffer(offer: Offer, vendorId: string): Subscription {
+  updateOffer(offer: Offer, vendorId: string): Observable<Offer> {
     const url = `${OfferService.OFFERS_URL}/${offer.id}`;
     offer.vendorId = vendorId;
-    return this.http.put(url, offer).subscribe();
+    return this.http.put(url, offer);
   }
 }

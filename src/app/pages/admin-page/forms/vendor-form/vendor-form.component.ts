@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Vendor } from '@shared/models/vendor';
-import { VendorService } from '@shared/services/vendor.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs/operators';
-import { NavigationService } from '@shared/services/navigation.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
-import { AlertService } from '@shared/services/alert.service';
+import { AlertService } from '@shared/services/message/alert.service';
 
 @Component({
   selector: 'app-vendor-form',
@@ -56,9 +56,15 @@ export class VendorFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.vendor) {
-      this.vendorService.updateVendor(this.vendorForm.value, this.vendorId);
+      this.vendorService
+        .updateVendor(this.vendorForm.value, this.vendorId)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.vendorService.addVendor(this.vendorForm.value);
+      this.vendorService
+        .addVendor(this.vendorForm.value)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

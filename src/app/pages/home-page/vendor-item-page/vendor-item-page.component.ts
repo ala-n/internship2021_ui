@@ -2,11 +2,11 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Offer } from '@shared/models/offer';
 import { Vendor } from '@shared/models/vendor';
-import { MapService } from '@shared/services/map.service';
-import { OfferService } from '@shared/services/offer.service';
-import { VendorService } from '@shared/services/vendor.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
 import { of, Subject } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { OfferService } from '@shared/services/http/offer/offer.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-vendor-item-page',

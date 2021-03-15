@@ -4,8 +4,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Tag } from '@shared/models/tag';
-import { AlertService } from '@shared/services/alert.service';
-import { TagsService } from '@shared/services/tags.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
 import { take } from 'rxjs/operators';
 import { TagDialogComponent } from '../../dialogs/tag-dialog/tag-dialog.component';
 
@@ -90,11 +90,11 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
   }
 
   deactivate(id: string): void {
-    this.tagsService.deleteTag(id);
+    this.tagsService.deleteTag(id).pipe(take(1)).subscribe();
   }
 
   activate(id: string): void {
-    this.tagsService.restoreTag(id);
+    this.tagsService.restoreTag(id).pipe(take(1)).subscribe();
   }
 
   openDialog(): void {
@@ -110,7 +110,7 @@ export class TagsStatTableComponent implements OnInit, AfterViewInit {
         this.alertService.showSnackbar('tag_exist');
         return;
       }
-      this.tagsService.addTag({ name: result });
+      this.tagsService.addTag({ name: result }).pipe(take(1)).subscribe();
     });
   }
 

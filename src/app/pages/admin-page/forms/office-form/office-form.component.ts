@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { map, mergeMap, startWith, take } from 'rxjs/operators';
-import { NavigationService } from '@shared/services/navigation.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 import { Office } from '@shared/models/office';
-import { OfficeService } from '@shared/services/office.service';
-import { VendorService } from '@shared/services/vendor.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormDialogComponent } from '../../dialogs/form-dialog/form-dialog.component';
 import { from, Observable } from 'rxjs';
-import { MapService } from '@shared/services/map.service';
-import { CityService } from '@shared/services/city.service';
-import { AlertService } from '@shared/services/alert.service';
+import { CityService } from '@shared/services/http/city/city.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { OfficeService } from '@shared/services/http/office/office.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-office-form',
@@ -133,9 +133,15 @@ export class OfficeFormComponent implements OnInit {
       this.cityService.getCityId(this.officeForm.value.cityId)
     );
     if (this.office) {
-      this.officeService.updateOffice(this.officeForm.value);
+      this.officeService
+        .updateOffice(this.officeForm.value)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.vendorService.addOffice(this.officeForm.value, this.vendorId);
+      this.vendorService
+        .addOffice(this.officeForm.value, this.vendorId)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

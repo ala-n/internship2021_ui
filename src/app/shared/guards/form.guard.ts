@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
-import { AlertService } from '@shared/services/alert.service';
+import { AlertService } from '@shared/services/message/alert.service';
 
 @Injectable()
 export class FormGuard implements CanActivate {

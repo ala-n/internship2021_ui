@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Tag } from '@shared/models/tag';
-import { FilterService } from '@shared/services/filter.service';
-import { TagsService } from '@shared/services/tags.service';
+import { FilterService } from '@shared/services/data-handle/filter.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
 
 @Component({
   selector: 'app-tags',

@@ -1,7 +1,7 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { Office } from '@shared/models/office';
-import { CityService } from '@shared/services/city.service';
-import { NavigationService } from '@shared/services/navigation.service';
+import { CityService } from '@shared/services/http/city/city.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 
 @Component({
   selector: 'app-popup',

@@ -3,18 +3,18 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, take, tap } from 'rxjs/operators';
 
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { User } from '@shared/models/user';
-import { FavoriteOfferService } from '@shared/services/favorite-offer.service';
-import { HistoryOfferService } from '@shared/services/history-offer.service';
-import { MapService } from '@shared/services/map.service';
-import { OfferService } from '@shared/services/offer.service';
 import { PreOrderDialogComponent } from './pre-order-dialog/pre-order-dialog.component';
-import { UserService } from '@shared/services/user.service';
-import { AlertService } from '@shared/services/alert.service';
+import { UserService } from '@shared/services/http/user/user.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { OfferService } from '@shared/services/http/offer/offer.service';
+import { FavoriteOfferService } from '@shared/services/http/user/favorite-offer.service';
+import { HistoryOfferService } from '@shared/services/http/user/history-offer.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-offer-item-page',
@@ -84,6 +84,7 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
   deleteFavoriteOffer(): void {
     this.favoriteOfferService
       .deleteFavoriteOffer(this.offerId)
+      .pipe(take(1))
       .subscribe((offer) => {
         if (offer !== {}) this.isFavoriteOffer(this.offerId);
       });
@@ -102,16 +103,20 @@ export class OfferItemPageComponent implements OnInit, OnDestroy {
         .isHistoryOffer(this.offerId)
         .subscribe((data) => {
           if (data !== null) {
-            this.historyOfferService.putHistoryOffer(
-              this.offerId,
-              +(e.target as HTMLInputElement).value
-            );
+            this.historyOfferService
+              .putHistoryOffer(
+                this.offerId,
+                +(e.target as HTMLInputElement).value
+              )
+              .subscribe();
           } else {
-            this.historyOfferService.addHistoryOffer(
-              this.offerId,
-              this.offer.vendorId,
-              +(e.target as HTMLInputElement).value
-            );
+            this.historyOfferService
+              .addHistoryOffer(
+                this.offerId,
+                this.offer.vendorId,
+                +(e.target as HTMLInputElement).value
+              )
+              .subscribe();
           }
         });
     }

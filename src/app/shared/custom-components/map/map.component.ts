@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MapService } from '@shared/services/map.service';
 import { Observable, Subscription } from 'rxjs';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
-import { LocationService } from '@shared/services/location.service';
 import type { MarkerExtended } from './map-base/map-base.component';
-import { FilterService } from '@shared/services/filter.service';
+import { LocationService } from '@shared/services/state/location.service';
+import { FilterService } from '@shared/services/data-handle/filter.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-map',

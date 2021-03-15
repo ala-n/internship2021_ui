@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, mergeMap } from 'rxjs/operators';
-import { FavoriteOfferService } from './favorite-offer.service';
-import { HistoryOfferService } from './history-offer.service';
-import { OfferService } from './offer.service';
+import { OfferService } from '../http/offer/offer.service';
+import { FavoriteOfferService } from '../http/user/favorite-offer.service';
+import { HistoryOfferService } from '../http/user/history-offer.service';
 import { SortService } from './sort.service';
 interface FilterConfig {
   city?: string;
