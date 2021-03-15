@@ -14,7 +14,7 @@ import { BookmarksPageComponent } from './bookmarks-page/bookmarks-page.componen
 
 import { ConcatPipe } from '@shared/pipes/concat.pipe';
 import { PreOrderDialogComponent } from './offer-item-page/pre-order-dialog/pre-order-dialog.component';
-import { OfferItemComponent } from './offer-item-page/offer-item/offer-item.component';
+import { OfferItemComponent } from './offer-item/offer-item.component';
 import { OfferListComponent } from './offer-list-page/offer-list/offer-list.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TagsComponent } from './toolbar/tags/tags.component';
