@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
 import { Tag } from '@shared/models/tag';
-import { TagsService } from '@shared/services/tags.service';
-import { FilterService } from '@shared/services/filter.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
+import { FilterService } from '@shared/services/data-handle/filter.service';
 
 @Component({
   selector: 'app-search',

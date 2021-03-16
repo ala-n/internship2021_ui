@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
 import { Observable } from 'rxjs';
-import { HttpService } from './http.service';
+import { HttpService } from '../http.service';
 
 interface Favorite {
   id?: string;

@@ -3,10 +3,10 @@ import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CityService } from '@shared/services/city.service';
-import { LocationService } from '@shared/services/location.service';
+import { CityService } from '@shared/services/http/city/city.service';
 import { Router } from '@angular/router';
 import { City } from '@shared/models/city';
+import { LocationService } from '@shared/services/state/location.service';
 
 @Component({
   selector: 'app-location',

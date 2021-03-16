@@ -5,11 +5,11 @@ import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Office } from '@shared/models/office';
 import { Vendor } from '@shared/models/vendor';
-import { MapService } from '@shared/services/map.service';
-import { OfficeService } from '@shared/services/office.service';
-import { VendorService } from '@shared/services/vendor.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
 import { Offer } from '@shared/models/offer';
-import { OfferService } from '@shared/services/offer.service';
+import { OfficeService } from '@shared/services/http/office/office.service';
+import { OfferService } from '@shared/services/http/offer/offer.service';
+import { MapService } from '@shared/services/map/map.service';
 
 @Component({
   selector: 'app-office-item-page',

@@ -11,15 +11,15 @@ import {
   MatAutocompleteSelectedEvent
 } from '@angular/material/autocomplete';
 
-import { NavigationService } from '@shared/services/navigation.service';
+import { NavigationService } from '@shared/services/state/navigation.service';
 import { Offer } from '@shared/models/offer';
 import { Office } from '@shared/models/office';
-import { CityService } from '@shared/services/city.service';
-import { TagsService } from '@shared/services/tags.service';
-import { OfferService } from '@shared/services/offer.service';
-import { OfficeService } from '@shared/services/office.service';
-import { VendorService } from '@shared/services/vendor.service';
-import { AlertService } from '@shared/services/alert.service';
+import { CityService } from '@shared/services/http/city/city.service';
+import { VendorService } from '@shared/services/http/vendor/vendor.service';
+import { AlertService } from '@shared/services/message/alert.service';
+import { OfferService } from '@shared/services/http/offer/offer.service';
+import { OfficeService } from '@shared/services/http/office/office.service';
+import { TagsService } from '@shared/services/http/tag/tags.service';
 
 @Component({
   selector: 'app-offer-form',
@@ -147,9 +147,15 @@ export class OfferFormComponent implements OnInit {
       tags: this.tags.map((tag: string) => this.tagsService.getTagId(tag))
     });
     if (this.offer) {
-      this.offerService.updateOffer(this.offerForm.value, this.offer.vendorId);
+      this.offerService
+        .updateOffer(this.offerForm.value, this.offer.vendorId)
+        .pipe(take(1))
+        .subscribe();
     } else {
-      this.offerService.addOffer(this.offerForm.value, this.vendorNavId);
+      this.offerService
+        .addOffer(this.offerForm.value, this.vendorNavId)
+        .pipe(take(1))
+        .subscribe();
     }
   }
 

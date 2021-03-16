@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Tag } from '@shared/models/tag';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { share, tap } from 'rxjs/operators';
-import { HttpService } from './http.service';
+import { HttpService } from '../http.service';
 
 @Injectable({
   providedIn: 'root'
@@ -45,19 +45,19 @@ export class TagsService {
     return this._topTags$;
   }
 
-  addTag(tag: Record<string, unknown>): Subscription {
+  addTag(tag: Record<string, unknown>): Observable<Tag> {
     const url = TagsService.TAGS_URL;
-    return this.http.post<Tag>(url, tag).subscribe();
+    return this.http.post<Tag, Record<string, unknown>>(url, tag);
   }
 
-  deleteTag(id: string): Subscription {
+  deleteTag(id: string): Observable<Tag> {
     const url = TagsService.TAGS_URL;
-    return this.http.delete<Tag>(`${url}/${id}`).subscribe();
+    return this.http.delete<Tag>(`${url}/${id}`);
   }
 
-  restoreTag(id: string): Subscription {
+  restoreTag(id: string): Observable<Tag> {
     const url = TagsService.TAGS_URL;
-    return this.http.put<Tag>(`${url}/${id}`, {}).subscribe();
+    return this.http.put<Tag, Record<string, unknown>>(`${url}/${id}`, {});
   }
 
   getTagsForAdmin(): Observable<Tag[]> {

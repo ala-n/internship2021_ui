@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Offer } from '@shared/models/offer';
-import { Observable, Subscription } from 'rxjs';
-import { HttpService } from './http.service';
+import { Observable } from 'rxjs';
+import { HttpService } from '../http.service';
 
 interface History {
   id?: 'string';
@@ -20,24 +20,27 @@ export class HistoryOfferService {
     return this.http.get(`${HistoryOfferService.HISTORY_OFFER_URL}/all`);
   }
 
-  addHistoryOffer(id: string, vendorId: string, rate: number): Subscription {
+  addHistoryOffer(
+    id: string,
+    vendorId: string,
+    rate: number
+  ): Observable<History> {
     const data = {
       offerId: id,
       vendorId,
       rate
     };
-    return this.http
-      .post(`${HistoryOfferService.HISTORY_OFFER_URL}/add`, data)
-      .subscribe();
+    return this.http.post(`${HistoryOfferService.HISTORY_OFFER_URL}/add`, data);
   }
 
   isHistoryOffer(id: string): Observable<History> {
     return this.http.get(`${HistoryOfferService.HISTORY_OFFER_URL}/${id}`);
   }
 
-  putHistoryOffer(id: string, rate: number): Subscription {
-    return this.http
-      .put(`${HistoryOfferService.HISTORY_OFFER_URL}/${id}/${rate}`, '')
-      .subscribe();
+  putHistoryOffer(id: string, rate: number): Observable<History> {
+    return this.http.put(
+      `${HistoryOfferService.HISTORY_OFFER_URL}/${id}/${rate}`,
+      ''
+    );
   }
 }

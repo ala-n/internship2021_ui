@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { User } from '@shared/models/user';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import { HttpService } from './http.service';
-import { NavigationService } from './navigation.service';
+import { HttpService } from '../http.service';
+import { NavigationService } from '../../state/navigation.service';
 
 @Injectable({
   providedIn: 'root'
