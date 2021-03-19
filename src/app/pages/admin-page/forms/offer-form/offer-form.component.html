@@ -145,7 +145,7 @@
   </div>
   <div class="row">
     <div class="col">
-      <mat-slide-toggle formControlName="isActive">{{
+      <mat-slide-toggle color="primary" formControlName="isActive">{{
         'activate' | translate
       }}</mat-slide-toggle>
     </div>
@@ -160,7 +160,8 @@
       {{ 'cancel' | translate }}
     </button>
     <button
-      class="button button_c_icon-primary"
+      class="button"
+      color="primary"
       mat-raised-button
       type="button"
       (click)="navigationService.goBack()"

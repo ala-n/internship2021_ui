@@ -24,17 +24,6 @@
     }
   }
 
-  &_c {
-    &_primary {
-      color: $background-blue;
-    }
-
-    &_icon-primary {
-      color: #fff;
-      background-color: $background-blue;
-    }
-  }
-
   &_hidden {
     &_mobile {
       @media screen and (max-width: $mobile) {

@@ -35,7 +35,8 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let vendor">
           <button
-            class="button_edit button_c_primary"
+            class="button_edit"
+            color="primary"
             [routerLink]="['details', vendor.id, 'edit']"
             mat-icon-button
           >
@@ -124,7 +125,8 @@
   </div>
   <div class="table__footer">
     <button
-      class="button button_hidden_mobile button_c_icon-primary"
+      class="button button_hidden_mobile"
+      color="primary"
       mat-raised-button
       [routerLink]="['details', 'form']"
     >
@@ -140,7 +142,8 @@
     >
     </mat-paginator>
     <button
-      class="button button_hidden_tablet button_c_icon-primary"
+      class="button button_hidden_tablet"
+      color="primary"
       mat-fab
       [routerLink]="['details', 'form']"
     >

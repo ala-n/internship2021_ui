@@ -6,7 +6,7 @@ $primary: (
   Light: #5aabec,
   Dark: #005089,
   contrast: (
-    Main: #f5f5f5,
+    Main: #fff,
     Light: #000,
     Dark: #fff
   )
@@ -25,7 +25,7 @@ $warn: $mat-red;
 
 $exadel-theme-primary: mat-palette($primary, Main, Light, Dark);
 $exadel-theme-accent: mat-palette($accent, Main, Light, Dark);
-$exadel-theme-warn: mat-palette($mat-red, A500, A200, A700);
+$exadel-theme-warn: mat-palette($mat-red);
 //creating your theme
 $exadel-theme: mat-light-theme(
   (

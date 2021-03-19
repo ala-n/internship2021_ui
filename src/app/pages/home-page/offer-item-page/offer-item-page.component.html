@@ -11,7 +11,8 @@
           <button
             *ngIf="offer.promoCode"
             mat-button
-            class="button_upper button_c_primary"
+            class="button_upper"
+            color="primary"
             [cdkCopyToClipboard]="offer.promoCode"
           >
             {{ offer.promoCode }}
@@ -19,7 +20,8 @@
           </button>
           <button
             mat-stroked-button
-            class="button_upper button_c_primary"
+            class="button_upper"
+            color="primary"
             (click)="openDialog()"
           >
             {{ 'pre-order' | translate }}
@@ -36,7 +38,8 @@
           <button
             mat-button
             [matMenuTriggerFor]="belowMenu"
-            class="button_upper button_c_icon-primary"
+            class="button_upper"
+            color="primary"
           >
             {{ 'rate' | translate }}
           </button>
